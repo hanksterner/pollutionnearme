@@ -1,0 +1,17 @@
+=== PollutionNearMe Build Ledger ===
+Entry 1
+[2025-11-04 13:41 EST]
+Event: Custom Domain Live, HTTPS Pending
+Actions:
+  • GitHub repository "pollutionnearme" created (public).
+  • index.html committed with starter landing page.
+  • GitHub Pages enabled at hanksterner.github.io/pollutionnearme/.
+  • Custom domain pollutionnearme.org bound successfully.
+  • DNS verified: four A records (@) → GitHub Pages IPs.
+  • DNS verified: CNAME (www) → hanksterner.github.io.
+  • Site resolves correctly at pollutionnearme.org.
+  • GitHub Pages reports: "Certificate not yet issued."
+Status: Candidate baseline live at custom domain, awaiting TLS provisioning.
+Next Ritual: Monitor DNS propagation; enable "Enforce HTTPS" once certificate is issued.
+Seal: Not yet — pending operational proof of HTTPS enforcement.
+------------------------------------------------------------
