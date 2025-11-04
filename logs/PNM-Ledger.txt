@@ -15,3 +15,58 @@ Status: Candidate baseline live at custom domain, awaiting TLS provisioning.
 Next Ritual: Monitor DNS propagation; enable "Enforce HTTPS" once certificate is issued.
 Seal: Not yet — pending operational proof of HTTPS enforcement.
 ------------------------------------------------------------
+=== PollutionNearMe Build Ledger ===
+Entry 2
+[2025-11-04 14:50 EST]
+Event: HTTPS Enforced
+Actions:
+  • TLS certificate issued by GitHub Pages / Let’s Encrypt.
+  • "Enforce HTTPS" enabled in repository Pages settings.
+  • All traffic to pollutionnearme.org and www.pollutionnearme.org now redirects securely to HTTPS.
+Status: Candidate baseline hardened with encryption; site is live and secure.
+Next Ritual: Establish site scaffold (core routes and placeholders) to prepare for functional content.
+Seal: Not yet — pending operational proof of scaffold and first data integration.
+------------------------------------------------------------
+=== PollutionNearMe Build Ledger ===
+Entry 3
+[2025-11-04 14:54 EST]
+Event: Build Plan Established
+Actions:
+  • Formalized multi‑phase build plan to guide development of PollutionNearMe.
+  • Plan includes site scaffold, data integration, brand identity, functional expansion, and public launch ritual.
+  • Documented phases and actions for reproducibility and public accountability.
+Status: Build plan logged; execution to proceed phase by phase with ledger updates at significant milestones.
+Next Ritual: Begin Phase 1 — Site Skeleton Baseline (create placeholder routes and navigation).
+Seal: Not yet — pending operational proof of scaffold deployment.
+------------------------------------------------------------
+
+=== PollutionNearMe Build Plan ===
+Phase 1: Site Skeleton Baseline
+  • Create minimal placeholder pages:
+      - / → Landing page with mission statement.
+      - /about → Purpose, credibility, and context.
+      - /logs → Public ledger (already seeded).
+      - /data → Placeholder for pollution data interface.
+  • Add simple navigation linking these routes.
+  • Commit and verify all routes resolve without 404s.
+
+Phase 2: Data Integration Candidate
+  • Define the YuE‑Interface container baseline for pollution data ingestion.
+  • Connect /data route to a placeholder API response (mock JSON).
+  • Log first operational proof of data output.
+
+Phase 3: Brand & Identity Layer
+  • Apply consistent design language (colors, typography, logo).
+  • Add metadata for SEO and social sharing.
+  • Harden copy to align with the project’s ritual tone.
+
+Phase 4: Functional Expansion
+  • Integrate live pollution data sources (e.g., AQI APIs).
+  • Build interactive map or charts for /data.
+  • Add user‑facing features (search by location, shareable reports).
+
+Phase 5: Public Launch Ritual
+  • Seal baseline once reproducibility and HTTPS stability are proven.
+  • Announce via ledger, social channels, and brand assets.
+  • Begin iterative updates with strict ledger documentation.
+------------------------------------------------------------
