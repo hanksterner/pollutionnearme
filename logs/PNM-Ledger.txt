@@ -127,3 +127,22 @@ Status: Data strategy baseline sealed; all future visualization and integration 
 Next Ritual: Phase 4 — Data Visualization Candidate (implement charts/tables for AQI, TRI, and Violations using placeholder feeds).
 Seal: Complete.
 ------------------------------------------------------------
+=== PollutionNearMe Build Ledger ===
+Entry 8
+[2025-11-05 16:14 EST]
+Event: Phase 4 Execution Plan — Data Visualization Candidate
+Actions:
+  • Selected core categories for visualization: AQI, TRI, and Violations (per Entry 7 baseline).
+  • Defined presentation strategy:
+      - AQI → bar/line charts showing current values and trends, color‑coded by thresholds (green/red).
+      - TRI → bar charts by chemical/facility, sortable tables for annual totals.
+      - Violations → leaderboards/tables by facility or region, highlighting counts and penalties.
+  • Established dual‑layer display:
+      - Raw JSON remains visible for transparency.
+      - Charts/tables provide elegant, jargon‑free summaries for readability.
+  • Chosen Chart.js as lightweight, responsive library for initial candidate visuals.
+  • Planned table styling with consistent headers, borders, and neutral colors for clarity.
+Status: Execution plan sealed; ready to implement chart and table scaffolds in data.html and app.js.
+Next Ritual: Implement AQI placeholder chart + table as first operational proof of visualization layer.
+Seal: Not yet — pending live rendering of AQI chart and table.
+------------------------------------------------------------
