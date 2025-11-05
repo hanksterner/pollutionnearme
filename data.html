@@ -11,6 +11,7 @@
   <meta property="og:url" content="https://pollutionnearme.org/data">
   <meta property="og:image" content="/assets/og-image.png">
   <link rel="stylesheet" href="css/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script src="js/app.js" defer></script>
 </head>
 <body>
@@ -23,10 +24,24 @@
 
   <main>
     <section>
-      <h2>Data Feed</h2>
-      <p>Below is a placeholder dataset. Each record includes source and timestamp.</p>
+      <h2>Raw Data Feed</h2>
       <pre id="data-output">[Awaiting data feed]</pre>
       <p class="note">Source: EPA placeholder dataset. Last updated: 2025‑11‑04T20:40:00Z</p>
+    </section>
+
+    <section id="charts">
+      <h2>Visualizations</h2>
+      <canvas id="aqiChart" width="400" height="200"></canvas>
+    </section>
+
+    <section id="tables">
+      <h2>Data Table</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>City</th><th>AQI</th><th>Status</th><th>Last Updated</th></tr>
+        </thead>
+        <tbody id="data-table-body"></tbody>
+      </table>
     </section>
   </main>
 
