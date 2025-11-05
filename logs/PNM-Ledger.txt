@@ -109,3 +109,21 @@ Status: Phase 3 baseline sealed; brand identity is clean, business‑like, and
 Next Ritual: Phase 4 — Data Visualization Candidate (introduce charts/tables for EPA datasets, apply accent/alert colors to thresholds).
 Seal: Complete.
 ------------------------------------------------------------
+=== PollutionNearMe Build Ledger ===
+Entry 7
+[2025-11-04 22:36 EST]
+Event: Data Strategy Baseline Established
+Actions:
+  • Defined core data categories for integration:
+      - Air Quality Index (AQI): hourly/daily values, pollutant breakdowns.
+      - Toxic Release Inventory (TRI): facility-level chemical release reports.
+      - Violation & Enforcement Data: Clean Air/Water/RCRA violations, inspections, penalties.
+      - Superfund/Hazardous Sites: location, cleanup status, risk categories.
+      - Water Quality: Safe Drinking Water Act compliance, contaminant levels.
+  • Identified optional/future layers: greenhouse gas reporting, noise/light pollution, community health indicators.
+  • Established Phase 4 candidate set: AQI + TRI + Violations as initial visualization focus.
+  • Confirmed each category has clear units, thresholds, and natural visual mappings (time series, bar charts, leaderboards, maps).
+Status: Data strategy baseline sealed; all future visualization and integration work will reference this schema.
+Next Ritual: Phase 4 — Data Visualization Candidate (implement charts/tables for AQI, TRI, and Violations using placeholder feeds).
+Seal: Complete.
+------------------------------------------------------------
