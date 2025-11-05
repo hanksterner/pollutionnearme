@@ -1,20 +1,35 @@
-<!-- about.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About - PollutionNearMe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Pollution Near Me</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <nav>
-    <a href="/">Home</a> |
-    <a href="/about">About</a> |
-    <a href="/data">Data</a>
-  </nav>
+  <header>
+    <h1>About Pollution Near Me</h1>
+    <p>Transparency and accountability for environmental data.</p>
+  </header>
+
+  <div id="nav"></div>
+
   <main>
-    <h1>About PollutionNearMe</h1>
-    <p>This project documents environmental data and builds a public-facing interface for awareness.</p>
+    <section>
+      <h2>Our Purpose</h2>
+      <p>Pollution Near Me is an open project to expose toxic sites, violations, and environmental risks. 
+         We document the build process in a private ledger and provide a public-facing interface for awareness.</p>
+    </section>
   </main>
+
+  <footer>
+    &copy; 2025 Pollution Near Me. All rights reserved.
+  </footer>
+
+  <script>
+    fetch('/nav.html')
+      .then(res => res.text())
+      .then(html => { document.getElementById('nav').innerHTML = html; });
+  </script>
 </body>
 </html>
