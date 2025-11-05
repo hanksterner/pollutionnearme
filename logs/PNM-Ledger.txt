@@ -83,3 +83,15 @@ Status: Scaffold operational; multi‑page structure reproducible and consistent
 Next Ritual: Prepare Phase 2 — Data Integration Candidate (connect /data to placeholder JSON feed).
 Seal: Not yet — pending operational proof of data output.
 ------------------------------------------------------------
+=== PollutionNearMe Build Ledger ===
+Entry 5
+[2025-11-04 21:32 EST]
+Event: Data Integration Candidate
+Actions:
+  • Created /data/placeholder.json with mock AQI values.
+  • Updated js/app.js to fetch and render JSON into <pre id="data-output">.
+  • Verified operational proof: /data page displays structured JSON in browser.
+Status: Candidate baseline for data output established; reproducible under HTTPS.
+Next Ritual: Advance to Phase 3 — Brand & Identity Layer (apply design language, metadata, and ritual copy hardening).
+Seal: Not yet — pending integration of live EPA data sources and validation of reproducibility.
+------------------------------------------------------------
