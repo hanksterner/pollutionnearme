@@ -159,3 +159,18 @@ Status: Candidate baseline achieved; AQI visualization is functional though mini
 Next Ritual: Refine visualization elegance (scales, labels, responsive layout) and extend scaffolds for TRI and Violations.
 Seal: Candidate.
 ------------------------------------------------------------
+=== PollutionNearMe Build Ledger ===
+Entry 10
+[2025-11-05 18:29 EST]
+Event: TRI & Violations Visualization Candidate Operational Proof
+Actions:
+  • Added /data/tri.json and /data/violations.json placeholder feeds.
+  • Extended app.js to render TRI and Violations alongside AQI:
+      - TRI: raw JSON, facility/chemical table, red bars scaled by release amount.
+      - Violations: raw JSON, violation table, leaderboard rows by facility.
+  • Confirmed CSP‑safe rendering with no external libraries.
+  • Verified AQI, TRI, and Violations now all display raw + table + visualization.
+Status: Candidate baseline achieved; Phase 4 visualization layer is functional across all three core categories.
+Next Ritual: Refine elegance (labels, responsive layout, color cues) and prepare Phase 5 expansion for Superfund and Water Quality feeds.
+Seal: Candidate.
+------------------------------------------------------------
