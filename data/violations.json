@@ -1,0 +1,20 @@
+[
+  {
+    "facility": "Riverside Chemical Plant",
+    "type": "Clean Air Act",
+    "count": 3,
+    "penalty": 150000
+  },
+  {
+    "facility": "SteelWorks Inc.",
+    "type": "Clean Water Act",
+    "count": 2,
+    "penalty": 95000
+  },
+  {
+    "facility": "Valley Plastics",
+    "type": "RCRA Hazardous Waste",
+    "count": 5,
+    "penalty": 210000
+  }
+]
