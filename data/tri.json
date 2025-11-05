@@ -1,0 +1,20 @@
+[
+  {
+    "facility": "Riverside Chemical Plant",
+    "chemical": "Benzene",
+    "release_lbs": 125000,
+    "year": 2024
+  },
+  {
+    "facility": "SteelWorks Inc.",
+    "chemical": "Lead",
+    "release_lbs": 48000,
+    "year": 2024
+  },
+  {
+    "facility": "Valley Plastics",
+    "chemical": "Toluene",
+    "release_lbs": 76000,
+    "year": 2024
+  }
+]
