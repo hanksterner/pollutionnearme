@@ -1,22 +1,36 @@
-<!-- data.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Data - PollutionNearMe</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data - Pollution Near Me</title>
   <link rel="stylesheet" href="css/style.css">
   <script src="js/app.js" defer></script>
 </head>
 <body>
-  <nav>
-    <a href="/">Home</a> |
-    <a href="/about">About</a> |
-    <a href="/data">Data</a>
-  </nav>
-  <main>
+  <header>
     <h1>Pollution Data</h1>
-    <p>Placeholder: This page will display pollution data once integration is complete.</p>
-    <pre id="data-output">[Awaiting data feed]</pre>
+    <p>Placeholder for live environmental data integration.</p>
+  </header>
+
+  <div id="nav"></div>
+
+  <main>
+    <section>
+      <h2>Data Feed</h2>
+      <p>This page will display pollution data once integration is complete.</p>
+      <pre id="data-output">[Awaiting data feed]</pre>
+    </section>
   </main>
+
+  <footer>
+    &copy; 2025 Pollution Near Me. All rights reserved.
+  </footer>
+
+  <script>
+    fetch('/nav.html')
+      .then(res => res.text())
+      .then(html => { document.getElementById('nav').innerHTML = html; });
+  </script>
 </body>
 </html>
