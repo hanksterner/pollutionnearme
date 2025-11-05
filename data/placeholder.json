@@ -1,1 +1,6 @@
-placeholder json file
+{
+  "city": "Pittsburgh",
+  "aqi": 42,
+  "status": "Good",
+  "last_updated": "2025-11-04T20:40:00Z"
+}
