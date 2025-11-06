@@ -210,7 +210,22 @@ Actions:
   • Queried TRI_FORM_R for STATE=PA, REPORTING_YEAR=2022, ROWS=1:10.
   • Received valid JSON with release totals, transfer destinations, SIC/NAICS codes.
   • Confirmed schema includes: doc_ctrl_num, air_total_release, water_total_release, land_total_release, off_site_recycle_transfers, potw_name/address, off_site_loc_name/address.
-  • Operational proof: Pennsylvania facilities with measurable releases and transfers are accessible.
+  • Operational proof: Pennsylvania facilities with measurable releases and transfers are accessible.=== Entry 13 — 2025-11-06 14:26 EST ===
+Event: Patched Visualization Script + Conceptual Refinement of Data Presentation
+Actions:
+• Corrected js/app.js by closing the Violations block and ensuring AQI/TRI/Violations sections are CSP‑safe.
+• Verified operational proof: /data page now renders AQI, TRI, and Violations without console errors.
+• Observed TRI feed populating correctly from data/tri.json.
+• Initiated conceptual refinement: shift from raw technical tables toward citizen‑facing storytelling.
+   - Replace jargon (e.g., “TRI”, “release_lbs”) with plain language (“Toxic Releases”, “Pollution released (pounds)”).
+   - Contextualize numbers with relatable scales (e.g., “20 lbs ≈ weight of a car tire”, “19,530 lbs ≈ 10 pickup trucks”).
+   - Apply severity color‑coding (green/yellow/red) and icons (factories, hazard symbols).
+   - Frame data locally: “Your Area: [City] — Air quality is Good today, but factories released 19,530 lbs of toxic chemicals last year.”
+   - Add actionable takeaways: “What this means for you” sections after each dataset.
+Status: Technical fix sealed; conceptual refinement logged as guiding principle for presentation layer.
+Next Ritual: Implement citizen‑friendly HTML blocks in data.html to replace raw JSON dumps with plain‑language summaries, icons, and contextual comparisons.
+Seal: Candidate — pending operational proof of refined presentation layer.
+
 Status: Candidate baseline for TRI feed achieved.
 Next Ritual: Wire TRI_FORM_R schema into visualization layer (facility + chemical + release totals).
 Seal: Candidate.
