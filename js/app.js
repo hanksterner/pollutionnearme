@@ -145,12 +145,19 @@ fetch('/data/violations.json')
       });
     }
 
-    // === Violations Summary ===
+    // === Violations Summary with Contextual Comparison ===
     const vSummary = document.getElementById('violations-summary');
     if (vSummary && violations.length > 0) {
       const totalViolations = violations.reduce((sum, v) => sum + v.count, 0);
       const totalPenalty = violations.reduce((sum, v) => sum + v.penalty, 0);
-      vSummary.textContent = `Facilities committed ${totalViolations} violations, with penalties totaling $${totalPenalty.toLocaleString()}.`;
+
+      let penaltyComparison;
+      if (totalPenalty < 50000) penaltyComparison = "≈ cost of a new car.";
+      else if (totalPenalty < 200000) penaltyComparison = "≈ cost of a house down payment.";
+      else if (totalPenalty < 1000000) penaltyComparison = "≈ cost of a small apartment building.";
+      else penaltyComparison = "≈ millions in damages — enough to fund a school or hospital.";
+
+      vSummary.textContent = `Facilities committed ${totalViolations} violations, with penalties totaling $${totalPenalty.toLocaleString()}, ${penaltyComparison}`;
     }
   })
   .catch(err => {
