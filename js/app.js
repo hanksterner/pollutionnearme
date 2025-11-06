@@ -46,6 +46,16 @@ fetch('/data/placeholder.json')
       barWrapper.appendChild(bar);
       chartContainer.appendChild(barWrapper);
     }
+
+    // === AQI Summary ===
+    const aqiSummary = document.getElementById('aqi-summary');
+    if (aqiSummary) {
+      let statusText;
+      if (data.aqi <= 50) statusText = "Air quality is Good — safe to breathe outdoors.";
+      else if (data.aqi <= 100) statusText = "Air quality is Moderate — sensitive groups should be cautious.";
+      else statusText = "Air quality is Unhealthy — limit outdoor activity.";
+      aqiSummary.textContent = statusText;
+    }
   })
   .catch(err => {
     const out = document.getElementById('data-output');
@@ -97,6 +107,13 @@ fetch('/data/tri.json')
         triChart.appendChild(barWrapper);
       });
     }
+
+    // === TRI Summary ===
+    const triSummary = document.getElementById('tri-summary');
+    if (triSummary && tri.length > 0) {
+      const total = tri.reduce((sum, item) => sum + item.release_lbs, 0);
+      triSummary.textContent = `Local facilities released ${total.toLocaleString()} lbs of toxic chemicals in ${tri[0].year}.`;
+    }
   })
   .catch(err => {
     const triOut = document.getElementById('tri-output');
@@ -133,6 +150,14 @@ fetch('/data/violations.json')
         row.textContent = `${v.facility} – ${v.count} violations`;
         leaderboard.appendChild(row);
       });
+    }
+
+    // === Violations Summary ===
+    const vSummary = document.getElementById('violations-summary');
+    if (vSummary && violations.length > 0) {
+      const totalViolations = violations.reduce((sum, v) => sum + v.count, 0);
+      const totalPenalty = violations.reduce((sum, v) => sum + v.penalty, 0);
+      vSummary.textContent = `Facilities committed ${totalViolations} violations, with penalties totaling $${totalPenalty.toLocaleString()}.`;
     }
   })
   .catch(err => {
