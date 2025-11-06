@@ -1,15 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pollution Near Me — Local Impact</title>
-  <meta name="description"
-    content="Understand pollution in your community with clear, citizen-friendly data and visualizations.">
+  <meta name="description" content="Understand pollution in your community with clear, citizen-friendly data and visualizations.">
   <meta property="og:title" content="Pollution Near Me — Local Impact">
-  <meta property="og:description"
-    content="See how much pollution factories release, how clean the air is, and which facilities break the rules.">
+  <meta property="og:description" content="See how much pollution factories release, how clean the air is, and which facilities break the rules.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pollutionnearme.org/data">
   <meta property="og:image" content="/assets/og-image.png">
@@ -22,75 +19,52 @@
       border-top: 4px solid var(--secondary);
       margin-top: 2rem;
     }
-
-    section h2 {
-      margin-bottom: 0.5rem;
-    }
-
+    section h2 { margin-bottom: 0.5rem; }
     .summary {
       font-size: 1.1rem;
       margin-bottom: 1rem;
       color: var(--secondary);
     }
-
     .data-table {
       margin-top: 1rem;
       border-collapse: collapse;
       width: 100%;
     }
-
-    .data-table th,
-    .data-table td {
+    .data-table th, .data-table td {
       border: 1px solid #ddd;
       padding: 0.5rem;
       text-align: center;
     }
-
-    .data-table th {
-      background: var(--secondary-light);
-    }
-
+    .data-table th { background: var(--secondary-light); }
     /* Severity coloring */
-    .aqi-good {
-      background: #d4edda;
-      color: #155724;
+    .aqi-good { background: #d4edda; color: #155724; }
+    .aqi-moderate { background: #fff3cd; color: #856404; }
+    .aqi-unhealthy { background: #f8d7da; color: #721c24; }
+    .pollution-low { background: #d4edda; }
+    .pollution-medium { background: #fff3cd; }
+    .pollution-high { background: #f8d7da; }
+    .penalty-small { background: #d4edda; }
+    .penalty-medium { background: #fff3cd; }
+    .penalty-large { background: #f8d7da; font-weight: bold; }
+    /* Legend styling */
+    #legend {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #fff;
+      border: 1px solid #ccc;
+      border-radius: 4px;
     }
-
-    .aqi-moderate {
-      background: #fff3cd;
-      color: #856404;
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
     }
-
-    .aqi-unhealthy {
-      background: #f8d7da;
-      color: #721c24;
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.9rem;
     }
-
-    .pollution-low {
-      background: #d4edda;
-    }
-
-    .pollution-medium {
-      background: #fff3cd;
-    }
-
-    .pollution-high {
-      background: #f8d7da;
-    }
-
-    .penalty-small {
-      background: #d4edda;
-    }
-
-    .penalty-medium {
-      background: #fff3cd;
-    }
-
-    .penalty-large {
-      background: #f8d7da;
-      font-weight: bold;
-    }
-
     footer {
       margin-top: 3rem;
       padding: 1rem;
@@ -101,7 +75,6 @@
     }
   </style>
 </head>
-
 <body>
   <header>
     <h1>Pollution Near Me</h1>
@@ -111,16 +84,6 @@
   <div id="nav"></div>
 
   <main>
-    <!-- AQI Legend Section -->
-    <section id="legend-aqi">
-      <h2>Legend — Air Quality</h2>
-      <div class="legend">
-        <div class="legend-item"><span class="legend-icon">✅</span> AQI Good</div>
-        <div class="legend-item"><span class="legend-icon">⚠️</span> AQI Moderate</div>
-        <div class="legend-item"><span class="legend-icon">❌</span> AQI Unhealthy</div>
-      </div>
-    </section>
-
     <!-- AQI Section -->
     <section id="aqi">
       <h2>🌤 Air Quality Today</h2>
@@ -131,25 +94,10 @@
       <div id="charts"></div>
       <table class="data-table">
         <thead>
-          <tr>
-            <th>City</th>
-            <th>AQI</th>
-            <th>Status</th>
-            <th>Last Updated</th>
-          </tr>
+          <tr><th>City</th><th>AQI</th><th>Status</th><th>Last Updated</th></tr>
         </thead>
         <tbody id="data-table-body"></tbody>
       </table>
-    </section>
-
-    <!-- TRI Legend Section -->
-    <section id="legend-tri">
-      <h2>Legend — Pollution Releases</h2>
-      <div class="legend">
-        <div class="legend-item"><span class="legend-icon">🟦</span> Low Pollution (&lt;1,000 lbs)</div>
-        <div class="legend-item"><span class="legend-icon">🟨</span> Medium Pollution (1,000–10,000 lbs)</div>
-        <div class="legend-item"><span class="legend-icon">🟥</span> High Pollution (&gt;10,000 lbs)</div>
-      </div>
     </section>
 
     <!-- TRI Section -->
@@ -161,26 +109,11 @@
       </p>
       <table class="data-table">
         <thead>
-          <tr>
-            <th>Facility</th>
-            <th>Chemical</th>
-            <th>Pollution Released</th>
-            <th>Year</th>
-          </tr>
+          <tr><th>Facility</th><th>Chemical</th><th>Pollution Released</th><th>Year</th></tr>
         </thead>
         <tbody id="tri-table-body"></tbody>
       </table>
       <div id="tri-chart"></div>
-    </section>
-
-    <!-- Violations Legend Section -->
-    <section id="legend-violations">
-      <h2>Legend — Violations & Penalties</h2>
-      <div class="legend">
-        <div class="legend-item"><span class="legend-icon">💵</span> Small Penalty (&lt;$50k)</div>
-        <div class="legend-item"><span class="legend-icon">💰</span> Medium Penalty ($50k–$200k)</div>
-        <div class="legend-item"><span class="legend-icon">🏦</span> Large Penalty (&gt;$200k)</div>
-      </div>
     </section>
 
     <!-- Violations Section -->
@@ -192,16 +125,27 @@
       </p>
       <table class="data-table">
         <thead>
-          <tr>
-            <th>Facility</th>
-            <th>Violation</th>
-            <th>Count</th>
-            <th>Penalty</th>
-          </tr>
+          <tr><th>Facility</th><th>Violation</th><th>Count</th><th>Penalty</th></tr>
         </thead>
         <tbody id="violations-table-body"></tbody>
       </table>
       <div id="violations-leaderboard"></div>
+    </section>
+
+    <!-- Unified Legend Section -->
+    <section id="legend">
+      <h2>Legend</h2>
+      <div class="legend">
+        <div class="legend-item"><span>✅</span> AQI Good</div>
+        <div class="legend-item"><span>⚠️</span> AQI Moderate</div>
+        <div class="legend-item"><span>❌</span> AQI Unhealthy</div>
+        <div class="legend-item"><span>🟦</span> Low Pollution</div>
+        <div class="legend-item"><span>🟨</span> Medium Pollution</div>
+        <div class="legend-item"><span>🟥</span> High Pollution</div>
+        <div class="legend-item"><span>💵</span> Small Penalty</div>
+        <div class="legend-item"><span>💰</span> Medium Penalty</div>
+        <div class="legend-item"><span>🏦</span> Large Penalty</div>
+      </div>
     </section>
   </main>
 
@@ -215,5 +159,4 @@
       .then(html => { document.getElementById('nav').innerHTML = html; });
   </script>
 </body>
-
 </html>
