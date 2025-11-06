@@ -202,3 +202,16 @@ Status: Checklist sealed; ready for operational proof runs.
 Next Ritual: Execute test calls and log Entry 12 with raw JSON excerpts + schema notes.
 Seal: Complete.
 ------------------------------------------------------------
+=== PollutionNearMe Build Ledger ===
+Entry 12
+[2025-11-05 21:58 EST]
+Event: TRI Data Access Proof
+Actions:
+  • Queried TRI_FORM_R for STATE=PA, REPORTING_YEAR=2022, ROWS=1:10.
+  • Received valid JSON with release totals, transfer destinations, SIC/NAICS codes.
+  • Confirmed schema includes: doc_ctrl_num, air_total_release, water_total_release, land_total_release, off_site_recycle_transfers, potw_name/address, off_site_loc_name/address.
+  • Operational proof: Pennsylvania facilities with measurable releases and transfers are accessible.
+Status: Candidate baseline for TRI feed achieved.
+Next Ritual: Wire TRI_FORM_R schema into visualization layer (facility + chemical + release totals).
+Seal: Candidate.
+------------------------------------------------------------
