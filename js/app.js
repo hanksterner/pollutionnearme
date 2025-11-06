@@ -130,3 +130,14 @@ fetch('/data/violations.json')
     if (leaderboard) {
       violations.forEach(v => {
         const row = document.createElement('div');
+        row.textContent = `${v.facility} – ${v.count} violations`;
+        leaderboard.appendChild(row);
+      });
+    }
+  })
+  .catch(err => {
+    const vOut = document.getElementById('violations-output');
+    if (vOut) {
+      vOut.textContent = 'Error loading violations data: ' + err;
+    }
+  });
