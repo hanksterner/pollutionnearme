@@ -2,13 +2,9 @@
 fetch('/data/placeholder.json')
   .then(res => res.json())
   .then(data => {
-    // Raw JSON
     const out = document.getElementById('data-output');
-    if (out) {
-      out.textContent = JSON.stringify(data, null, 2);
-    }
+    if (out) out.textContent = JSON.stringify(data, null, 2);
 
-    // Table
     const tableBody = document.getElementById('data-table-body');
     if (tableBody) {
       tableBody.innerHTML = `
@@ -20,10 +16,9 @@ fetch('/data/placeholder.json')
         </tr>`;
     }
 
-    // Simple bar visualization (CSP‑safe)
     const chartContainer = document.getElementById('charts');
     if (chartContainer) {
-      const maxAQI = 500; // AQI scale max
+      const maxAQI = 500;
       const barWidth = (data.aqi / maxAQI) * 100;
 
       const barWrapper = document.createElement('div');
@@ -59,9 +54,7 @@ fetch('/data/placeholder.json')
   })
   .catch(err => {
     const out = document.getElementById('data-output');
-    if (out) {
-      out.textContent = 'Error loading AQI data: ' + err;
-    }
+    if (out) out.textContent = 'Error loading AQI data: ' + err;
   });
 
 
@@ -70,9 +63,7 @@ fetch('/data/tri.json')
   .then(res => res.json())
   .then(tri => {
     const triOut = document.getElementById('tri-output');
-    if (triOut) {
-      triOut.textContent = JSON.stringify(tri, null, 2);
-    }
+    if (triOut) triOut.textContent = JSON.stringify(tri, null, 2);
 
     const triBody = document.getElementById('tri-table-body');
     if (triBody) {
@@ -94,7 +85,7 @@ fetch('/data/tri.json')
         barWrapper.style.height = '20px';
 
         const bar = document.createElement('div');
-        const width = Math.min((item.release_lbs / 100000) * 100, 100); // scale
+        const width = Math.min((item.release_lbs / 100000) * 100, 100);
         bar.style.width = width + '%';
         bar.style.height = '100%';
         bar.style.background = 'var(--alert)';
@@ -108,18 +99,22 @@ fetch('/data/tri.json')
       });
     }
 
-    // === TRI Summary ===
+    // === TRI Summary with Contextual Comparison ===
     const triSummary = document.getElementById('tri-summary');
     if (triSummary && tri.length > 0) {
       const total = tri.reduce((sum, item) => sum + item.release_lbs, 0);
-      triSummary.textContent = `Local facilities released ${total.toLocaleString()} lbs of toxic chemicals in ${tri[0].year}.`;
+      let comparison;
+      if (total < 100) comparison = "≈ the weight of a car tire.";
+      else if (total < 1000) comparison = "≈ the weight of a motorcycle.";
+      else if (total < 10000) comparison = "≈ the weight of a pickup truck.";
+      else if (total < 50000) comparison = "≈ the weight of a school bus.";
+      else comparison = "≈ multiple semi‑trucks full of waste.";
+      triSummary.textContent = `Local facilities released ${total.toLocaleString()} lbs of toxic chemicals in ${tri[0].year}, ${comparison}`;
     }
   })
   .catch(err => {
     const triOut = document.getElementById('tri-output');
-    if (triOut) {
-      triOut.textContent = 'Error loading TRI data: ' + err;
-    }
+    if (triOut) triOut.textContent = 'Error loading TRI data: ' + err;
   });
 
 
@@ -128,9 +123,7 @@ fetch('/data/violations.json')
   .then(res => res.json())
   .then(violations => {
     const vOut = document.getElementById('violations-output');
-    if (vOut) {
-      vOut.textContent = JSON.stringify(violations, null, 2);
-    }
+    if (vOut) vOut.textContent = JSON.stringify(violations, null, 2);
 
     const vBody = document.getElementById('violations-table-body');
     if (vBody) {
@@ -162,7 +155,5 @@ fetch('/data/violations.json')
   })
   .catch(err => {
     const vOut = document.getElementById('violations-output');
-    if (vOut) {
-      vOut.textContent = 'Error loading violations data: ' + err;
-    }
+    if (vOut) vOut.textContent = 'Error loading violations data: ' + err;
   });
