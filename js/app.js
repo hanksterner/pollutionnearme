@@ -130,18 +130,3 @@ fetch('/data/violations.json')
     if (leaderboard) {
       violations.forEach(v => {
         const row = document.createElement('div');
-        row.style.display = 'flex';
-        row.style.justifyContent = 'space-between';
-        row.style.borderBottom = '1px solid var(--secondary)';
-        row.style.padding = '0.25rem 0';
-        row.innerHTML = `<span>${v.facility}</span><span>${v.count} violations</span>`;
-        leaderboard.appendChild(row);
-      });
-    }
-  })
-  .catch(err => {
-    const vOut = document.getElementById('violations-output');
-    if (vOut) {
-      vOut.textContent = 'Error loading violations data: ' + err;
-    }
-  });
