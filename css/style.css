@@ -138,23 +138,20 @@ pre#violations-output {
   background: var(--secondary-light);
 }
 
-/* Severity coloring */
+/* === Severity coloring === */
 /* AQI health levels */
 .aqi-good {
   background-color: #d4edda;
-  /* light green */
   color: #155724;
 }
 
 .aqi-moderate {
   background-color: #fff3cd;
-  /* light yellow */
   color: #856404;
 }
 
 .aqi-unhealthy {
   background-color: #f8d7da;
-  /* light red */
   color: #721c24;
   font-weight: bold;
 }
@@ -162,37 +159,70 @@ pre#violations-output {
 /* Pollution release levels */
 .pollution-low {
   background-color: #e6f7ff;
-  /* pale blue */
 }
 
 .pollution-medium {
   background-color: #ffeeba;
-  /* amber */
 }
 
 .pollution-high {
   background-color: #f5c6cb;
-  /* strong red */
   font-weight: bold;
 }
 
 /* Violation penalty levels */
 .penalty-small {
   background-color: #e2f0d9;
-  /* soft green */
 }
 
 .penalty-medium {
   background-color: #fff3cd;
-  /* yellow */
 }
 
 .penalty-large {
   background-color: #f8d7da;
-  /* red */
   font-weight: bold;
   border-left: 4px solid #dc3545;
-  /* accent stripe */
+}
+
+/* === Inline icon pseudo-elements === */
+/* AQI icons */
+.aqi-good td:nth-child(2)::after {
+  content: " ✅";
+}
+
+.aqi-moderate td:nth-child(2)::after {
+  content: " ⚠️";
+}
+
+.aqi-unhealthy td:nth-child(2)::after {
+  content: " ❌";
+}
+
+/* TRI icons */
+.pollution-low td:nth-child(3)::after {
+  content: " 🟦";
+}
+
+.pollution-medium td:nth-child(3)::after {
+  content: " 🟨";
+}
+
+.pollution-high td:nth-child(3)::after {
+  content: " 🟥";
+}
+
+/* Violations icons */
+.penalty-small td:nth-child(4)::after {
+  content: " 💵";
+}
+
+.penalty-medium td:nth-child(4)::after {
+  content: " 💰";
+}
+
+.penalty-large td:nth-child(4)::after {
+  content: " 🏦";
 }
 
 /* Notes */
