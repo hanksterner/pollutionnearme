@@ -111,19 +111,13 @@
   <div id="nav"></div>
 
   <main>
-    <!-- Legend Section -->
-    <section id="legend">
-      <h2>Legend</h2>
+    <!-- AQI Legend Section -->
+    <section id="legend-aqi">
+      <h2>Legend — Air Quality</h2>
       <div class="legend">
         <div class="legend-item"><span class="legend-icon">✅</span> AQI Good</div>
         <div class="legend-item"><span class="legend-icon">⚠️</span> AQI Moderate</div>
         <div class="legend-item"><span class="legend-icon">❌</span> AQI Unhealthy</div>
-        <div class="legend-item"><span class="legend-icon">🟦</span> Low Pollution</div>
-        <div class="legend-item"><span class="legend-icon">🟨</span> Medium Pollution</div>
-        <div class="legend-item"><span class="legend-icon">🟥</span> High Pollution</div>
-        <div class="legend-item"><span class="legend-icon">💵</span> Small Penalty</div>
-        <div class="legend-item"><span class="legend-icon">💰</span> Medium Penalty</div>
-        <div class="legend-item"><span class="legend-icon">🏦</span> Large Penalty</div>
       </div>
     </section>
 
@@ -148,6 +142,16 @@
       </table>
     </section>
 
+    <!-- TRI Legend Section -->
+    <section id="legend-tri">
+      <h2>Legend — Pollution Releases</h2>
+      <div class="legend">
+        <div class="legend-item"><span class="legend-icon">🟦</span> Low Pollution (&lt;1,000 lbs)</div>
+        <div class="legend-item"><span class="legend-icon">🟨</span> Medium Pollution (1,000–10,000 lbs)</div>
+        <div class="legend-item"><span class="legend-icon">🟥</span> High Pollution (&gt;10,000 lbs)</div>
+      </div>
+    </section>
+
     <!-- TRI Section -->
     <section id="tri">
       <h2>🏭 Pollution Releases</h2>
@@ -167,6 +171,16 @@
         <tbody id="tri-table-body"></tbody>
       </table>
       <div id="tri-chart"></div>
+    </section>
+
+    <!-- Violations Legend Section -->
+    <section id="legend-violations">
+      <h2>Legend — Violations & Penalties</h2>
+      <div class="legend">
+        <div class="legend-item"><span class="legend-icon">💵</span> Small Penalty (&lt;$50k)</div>
+        <div class="legend-item"><span class="legend-icon">💰</span> Medium Penalty ($50k–$200k)</div>
+        <div class="legend-item"><span class="legend-icon">🏦</span> Large Penalty (&gt;$200k)</div>
+      </div>
     </section>
 
     <!-- Violations Section -->
