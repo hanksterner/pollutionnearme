@@ -22,105 +22,27 @@
       border-top: 4px solid var(--secondary);
       margin-top: 2rem;
     }
-
-    section h2 {
-      margin-bottom: 0.5rem;
-    }
-
-    .summary {
-      font-size: 1.1rem;
-      margin-bottom: 1rem;
-      color: var(--secondary);
-    }
-
-    .data-table {
-      margin-top: 1rem;
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    .data-table th,
-    .data-table td {
-      border: 1px solid #ddd;
-      padding: 0.5rem;
-      text-align: center;
-    }
-
-    .data-table th {
-      background: var(--secondary-light);
-    }
-
-    /* Severity coloring */
-    .aqi-good {
-      background: #d4edda;
-      color: #155724;
-    }
-
-    .aqi-moderate {
-      background: #fff3cd;
-      color: #856404;
-    }
-
-    .aqi-unhealthy {
-      background: #f8d7da;
-      color: #721c24;
-    }
-
-    .pollution-low {
-      background: #d4edda;
-    }
-
-    .pollution-medium {
-      background: #fff3cd;
-    }
-
-    .pollution-high {
-      background: #f8d7da;
-    }
-
-    .penalty-small {
-      background: #d4edda;
-    }
-
-    .penalty-medium {
-      background: #fff3cd;
-    }
-
-    .penalty-large {
-      background: #f8d7da;
-      font-weight: bold;
-    }
-
-    /* Legend styling */
-    #legend {
-      margin-top: 2rem;
-      padding: 1rem;
-      background: #fff;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-      font-size: 0.9rem;
-    }
-
-    footer {
-      margin-top: 3rem;
-      padding: 1rem;
-      border-top: 2px solid #ccc;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #666;
-    }
+    section h2 { margin-bottom: 0.5rem; }
+    .summary { font-size: 1.1rem; margin-bottom: 1rem; color: var(--secondary); }
+    .data-table { margin-top: 1rem; border-collapse: collapse; width: 100%; }
+    .data-table th, .data-table td { border: 1px solid #ddd; padding: 0.5rem; text-align: center; }
+    .data-table th { background: var(--secondary-light); }
+    .aqi-good { background: #d4edda; color: #155724; }
+    .aqi-moderate { background: #fff3cd; color: #856404; }
+    .aqi-unhealthy { background: #f8d7da; color: #721c24; }
+    .pollution-low { background: #d4edda; }
+    .pollution-medium { background: #fff3cd; }
+    .pollution-high { background: #f8d7da; }
+    .penalty-small { background: #d4edda; }
+    .penalty-medium { background: #fff3cd; }
+    .penalty-large { background: #f8d7da; font-weight: bold; }
+    #legend { margin-top: 2rem; padding: 1rem; background: #fff; border: 1px solid #ccc; border-radius: 4px; }
+    .legend { display: flex; flex-wrap: wrap; gap: 1rem; }
+    .legend-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; }
+    footer { margin-top: 3rem; padding: 1rem; border-top: 2px solid #ccc; text-align: center; font-size: 0.9rem; color: #666; }
+    /* Debug toggle */
+    #debug-toggle { margin: 2rem 0; text-align: center; }
+    #debug-output { display: none; background: #f9f9f9; border: 1px solid #ccc; padding: 1rem; font-size: 0.85rem; overflow-x: auto; }
   </style>
 </head>
 
@@ -143,12 +65,7 @@
       <div id="charts"></div>
       <table class="data-table">
         <thead>
-          <tr>
-            <th>City</th>
-            <th>AQI</th>
-            <th>Status</th>
-            <th>Last Updated</th>
-          </tr>
+          <tr><th>City</th><th>AQI</th><th>Status</th><th>Last Updated</th></tr>
         </thead>
         <tbody id="data-table-body"></tbody>
       </table>
@@ -163,12 +80,7 @@
       </p>
       <table class="data-table">
         <thead>
-          <tr>
-            <th>Facility</th>
-            <th>Chemical</th>
-            <th>Pollution Released</th>
-            <th>Year</th>
-          </tr>
+          <tr><th>Facility</th><th>Chemical</th><th>Pollution Released</th><th>Year</th></tr>
         </thead>
         <tbody id="tri-table-body"></tbody>
       </table>
@@ -184,12 +96,7 @@
       </p>
       <table class="data-table">
         <thead>
-          <tr>
-            <th>Facility</th>
-            <th>Violation</th>
-            <th>Count</th>
-            <th>Penalty</th>
-          </tr>
+          <tr><th>Facility</th><th>Violation</th><th>Count</th><th>Penalty</th></tr>
         </thead>
         <tbody id="violations-table-body"></tbody>
       </table>
@@ -211,6 +118,19 @@
         <div class="legend-item"><span>🏦</span> Large Penalty</div>
       </div>
     </section>
+
+    <!-- Debug Toggle -->
+    <section id="debug-toggle">
+      <button onclick="toggleDebug()">Toggle Debug Data</button>
+      <div id="debug-output">
+        <h3>Raw AQI JSON</h3>
+        <pre id="data-output"></pre>
+        <h3>Raw TRI JSON</h3>
+        <pre id="tri-output"></pre>
+        <h3>Raw Violations JSON</h3>
+        <pre id="violations-output"></pre>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -221,7 +141,11 @@
     fetch('/nav.html')
       .then(res => res.text())
       .then(html => { document.getElementById('nav').innerHTML = html; });
+
+    function toggleDebug() {
+      const debug = document.getElementById('debug-output');
+      debug.style.display = (debug.style.display === 'none') ? 'block' : 'none';
+    }
   </script>
 </body>
-
 </html>
