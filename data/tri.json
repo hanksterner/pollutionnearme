@@ -1,20 +1,2793 @@
 [
   {
-    "facility": "Riverside Chemical Plant",
-    "chemical": "Benzene",
-    "release_lbs": 125000,
-    "year": 2024
-  },
-  {
-    "facility": "SteelWorks Inc.",
-    "chemical": "Lead",
-    "release_lbs": 48000,
-    "year": 2024
-  },
-  {
-    "facility": "Valley Plastics",
-    "chemical": "Toluene",
-    "release_lbs": 76000,
-    "year": 2024
+  doc_ctrl_num                  : 1300140000023
+  sic_codes                     : 3479
+  fugitive_release_na           : 0
+  fugitive_tot_rel              : 5
+  fugitive_basis_est_code       : E
+  fugitive_release_range_code   : 1
+  stack_release_na              : 0
+  stack_tot_rel                 : 5
+  stack_basis_est_code          : E
+  stack_release_range_code      : 1
+  air_total_release             : 10
+  water_body_name_1             : NA
+  water_release_1               : 0
+  water_basis_est_code_1        :
+  water_release_na_1            : 0
+  water_release_range_code_1    :
+  water_storm_water_na_1        : 0
+  storm_water_percent_1         :
+  water_body_name_2             :
+  water_release_2               :
+  water_basis_est_code_2        :
+  water_release_na_2            :
+  water_release_range_code_2    :
+  water_storm_water_na_2        :
+  storm_water_percent_2         :
+  water_body_name_3             :
+  water_release_3               :
+  water_basis_est_code_3        :
+  water_release_na_3            :
+  water_release_range_code_3    :
+  water_storm_water_na_3        :
+  storm_water_percent_3         :
+  water_bodies_add_ind          : 0
+  water_total_release           : 0
+  uninj_i_release_na            : 1
+  uninj_i_tot_rel               : 0
+  uninj_i_basis_est_code        :
+  uninj_i_release_range_code    :
+  uninj_iiv_release_na          : 1
+  uninj_iiv_tot_rel             : 0
+  uninj_iiv_basis_est_code      :
+  uninj_iiv_release_range_code  :
+  uninj_8795_release_na         :
+  uninj_8795_tot_rel            :
+  uninj_8795_basis_est_code     :
+  uninj_8795_release_range_code :
+  uninj_total_release           : 0
+  rcra_c_release_na             : 1
+  rcra_c_tot_rel                : 0
+  rcra_c_basis_est_code         :
+  rcra_c_release_range_code     :
+  oth_landf_release_na          : 1
+  oth_landf_tot_rel             : 0
+  oth_landf_basis_est_code      :
+  oth_landf_release_range_code  :
+  land_trea_release_na          : 1
+  land_trea_tot_rel             : 0
+  land_trea_basis_est_code      :
+  land_trea_release_range_code  :
+  surf_imp_release_na           : 1
+  surf_imp_tot_rel              : 0
+  surf_imp_basis_est_code       :
+  surf_release_range_code       :
+  oth_disp_release_na           : 1
+  oth_disp_tot_rel              : 0
+  oth_disp_basis_est_code       :
+  oth_disp_release_range_code   :
+  landf_8795_release_na         :
+  landf_8795_tot_rel            :
+  landf_8795_basis_est_code     :
+  landf_8795_release_range_code :
+  land_total_release            : 0
+  potw_tot_transfer             : 5
+  potw_basis_est_code           : M
+  potw_name_1                   : GREATER JOHNSTOWN REDEVELOPMENT AUTHORITY
+  potw_address_1                : 401 WASHINGTON STREET
+  potw_city_1                   : JOHNSTOWN
+  potw_state_1                  : PA
+  potw_county_1                 : CAMBRIA
+  potw_zip_code_1               : 15901
+  potw_name_2                   :
+  potw_address_2                :
+  potw_city_2                   :
+  potw_state_2                  :
+  potw_county_2                 :
+  potw_zip_code_2               :
+  potw_add_address_ind          : 0
+  rcra_id_num_1                 : NA
+  off_site_loc_name_1           : METALCHEM, INC US ZINC
+  off_site_address_1            : 1725 WASHINGTON ROAD
+  off_site_city_1               : PITTSBURGH
+  off_site_state_1              : PA
+  off_site_county_1             : ALLEGHENY
+  off_site_province_1           :
+  off_site_zip_code_1           : 15241
+  off_site_control_ind_1        : 0
+  rcra_id_num_2                 :
+  off_site_loc_name_2           :
+  off_site_address_2            :
+  off_site_city_2               :
+  off_site_state_2              :
+  off_site_county_2             :
+  off_site_province_2           :
+  off_site_zip_code_2           :
+  off_site_control_ind_2        :
+  rcra_id_num_3                 :
+  off_site_loc_name_3           :
+  off_site_address_3            :
+  off_site_city_3               :
+  off_site_state_3              :
+  off_site_county_3             :
+  off_site_province_3           :
+  off_site_zip_code_3           :
+  off_site_control_ind_3        :
+  rcra_id_num_4                 :
+  off_site_loc_name_4           :
+  off_site_address_4            :
+  off_site_city_4               :
+  off_site_state_4              :
+  off_site_county_4             :
+  off_site_province_4           :
+  off_site_zip_code_4           :
+  off_site_control_ind_4        :
+  rcra_id_num_5                 :
+  off_site_loc_name_5           :
+  off_site_address_5            :
+  off_site_city_5               :
+  off_site_state_5              :
+  off_site_county_5             :
+  off_site_province_5           :
+  off_site_zip_code_5           :
+  off_site_control_ind_5        :
+  off_site_add_ind              : 0
+  off_site_total_transfers      : 5
+  disp_storage_only             : 0
+  disp_solid_stab               : 0
+  disp_wastewater_treat         : 0
+  disp_ungrnd_inj               : 0
+  disp_landfill_surf_imp        : 0
+  disp_land_treatment           : 0
+  disp_other_land_disp          : 0
+  disp_other_offsite_mgmt       : 0
+  disp_trans_waste_broker       : 0
+  disp_unknown                  : 0
+  off_site_energy_rec_transfers : 0
+  off_site_recycle_transfers    : 750
+  off_site_waste_transfers      : 0
+  off_site_oloc_transfers       : 0
+  ons_wastestream_code_1        : S
+  ons_method_codes_1            : NA
+  ons_influent_conc_range_1     : 3
+  ons_sequential_treat_87_90_1  :
+  ons_efficiency_est_1          : 96
+  ons_efficiency_est_na_1       : 0
+  ons_operating_data_ind_1      : 0
+  ons_efficiency_range_code_1   :
+  ons_wastestream_code_2        : W
+  ons_method_codes_2            : P13
+  ons_influent_conc_range_2     : 4
+  ons_sequential_treat_87_90_2  :
+  ons_efficiency_est_2          : 99.5
+  ons_efficiency_est_na_2       : 0
+  ons_operating_data_ind_2      : 1
+  ons_efficiency_range_code_2   :
+  ons_wastestream_code_3        :
+  ons_method_codes_3            :
+  ons_influent_conc_range_3     :
+  ons_sequential_treat_87_90_3  :
+  ons_efficiency_est_3          :
+  ons_efficiency_est_na_3       :
+  ons_operating_data_ind_3      :
+  ons_efficiency_range_code_3   :
+  ons_wastestream_code_4        :
+  ons_method_codes_4            :
+  ons_influent_conc_range_4     :
+  ons_sequential_treat_87_90_4  :
+  ons_efficiency_est_4          :
+  ons_efficiency_est_na_4       :
+  ons_operating_data_ind_4      :
+  ons_efficiency_range_code_4   :
+  ons_wastestream_code_5        :
+  ons_method_codes_5            :
+  ons_influent_conc_range_5     :
+  ons_sequential_treat_87_90_5  :
+  ons_efficiency_est_5          :
+  ons_efficiency_est_na_5       :
+  ons_operating_data_ind_5      :
+  ons_efficiency_range_code_5   :
+  ons_wastestream_code_6        :
+  ons_method_codes_6            :
+  ons_influent_conc_range_6     :
+  ons_sequential_treat_87_90_6  :
+  ons_efficiency_est_6          :
+  ons_efficiency_est_na_6       :
+  ons_operating_data_ind_6      :
+  ons_efficiency_range_code_6   :
+  ons_wastestream_code_7        :
+  ons_method_codes_7            :
+  ons_influent_conc_range_7     :
+  ons_sequential_treat_87_90_7  :
+  ons_efficiency_est_7          :
+  ons_efficiency_est_na_7       :
+  ons_operating_data_ind_7      :
+  ons_efficiency_range_code_7   :
+  ons_wastestream_code_8        :
+  ons_method_codes_8            :
+  ons_influent_conc_range_8     :
+  ons_sequential_treat_87_90_8  :
+  ons_efficiency_est_8          :
+  ons_efficiency_est_na_8       :
+  ons_operating_data_ind_8      :
+  ons_efficiency_range_code_8   :
+  ons_wastestream_code_9        :
+  ons_method_codes_9            :
+  ons_influent_conc_range_9     :
+  ons_sequential_treat_87_90_9  :
+  ons_efficiency_est_9          :
+  ons_efficiency_est_na_9       :
+  ons_operating_data_ind_9      :
+  ons_efficiency_range_code_9   :
+  ons_wastestream_add_ind       : 0
+  onsite_energy_proc_ind        :
+  onsite_energy_proc_codes      : U09
+  onsite_energy_proc_add_ind    : 0
+  onsite_recycle_proc_code_ind  :
+  onsite_recycle_proc_codes     : R30
+  onsite_recycle_proc_add_ind   : 0
+  source_reduction_ind          :
+  source_reduction_act_1        : W13
+  source_reduction_methods_1    : T09T01NA
+  source_reduction_act_2        : W64
+  source_reduction_methods_2    : T05NA
+  source_reduction_act_3        : NA
+  source_reduction_methods_3    :
+  source_reduction_act_4        :
+  source_reduction_methods_4    :
+  source_reduction_add_ind      : 0
+  sub_surf_imp_release_na       :
+  sub_surf_imp_tot_rel          :
+  sub_surf_imp_basis_est_code   :
+  sub_surf_release_range_code   :
+  oth_surf_imp_release_na       :
+  oth_surf_imp_tot_rel          :
+  oth_surf_imp_basis_est_code   :
+  oth_surf_release_range_code   :
+  primary_sic_code              : 3479
+  naics_codes                   : 332812
+  primary_naics_code            : 332812
+  reach_code_1                  :
+  reach_code_2                  :
+  reach_code_3                  :
+  est_annual_reduct_1           :
+  est_annual_reduct_2           :
+  est_annual_reduct_3           :
+  est_annual_reduct_4           :
+  potw_percentage_to_81c_1      :
+  potw_percentage_to_81c_2      :
+  potw_percentage_to_81d_1      :
+  potw_percentage_to_81d_2      :
+  potw_percentage_to_87_1       :
+  potw_percentage_to_87_2       :
+  potw_percentage_provided_1    :
+  potw_percentage_provided_2    :
+  potw_1_total_transfer         :
+  potw_2_total_transfer         :
+  potw_release_1                :
+  potw_release_2                :
+  potw_treatment_1              :
+  potw_treatment_2              :
+  potw_basis_est_code_1         :
+  potw_basis_est_code_2         :
+  potw_epa_registry_id_1        :
+  potw_epa_registry_id_2        :
+  off_site_epa_registry_id_1    :
+  off_site_epa_registry_id_2    :
+  off_site_epa_registry_id_3    :
+  off_site_epa_registry_id_4    :
+  off_site_epa_registry_id_5    :
+  
+  doc_ctrl_num                  : 1300140000035
+  sic_codes                     : 3441
+  fugitive_release_na           : 0
+  fugitive_tot_rel              : 2753
+  fugitive_basis_est_code       : M
+  fugitive_release_range_code   :
+  stack_release_na              : 1
+  stack_tot_rel                 : 0
+  stack_basis_est_code          :
+  stack_release_range_code      :
+  air_total_release             : 2753
+  water_body_name_1             : NA
+  water_release_1               : 0
+  water_basis_est_code_1        :
+  water_release_na_1            : 0
+  water_release_range_code_1    :
+  water_storm_water_na_1        : 0
+  storm_water_percent_1         :
+  water_body_name_2             :
+  water_release_2               :
+  water_basis_est_code_2        :
+  water_release_na_2            :
+  water_release_range_code_2    :
+  water_storm_water_na_2        :
+  storm_water_percent_2         :
+  water_body_name_3             :
+  water_release_3               :
+  water_basis_est_code_3        :
+  water_release_na_3            :
+  water_release_range_code_3    :
+  water_storm_water_na_3        :
+  storm_water_percent_3         :
+  water_bodies_add_ind          : 0
+  water_total_release           : 0
+  uninj_i_release_na            : 1
+  uninj_i_tot_rel               : 0
+  uninj_i_basis_est_code        :
+  uninj_i_release_range_code    :
+  uninj_iiv_release_na          : 1
+  uninj_iiv_tot_rel             : 0
+  uninj_iiv_basis_est_code      :
+  uninj_iiv_release_range_code  :
+  uninj_8795_release_na         :
+  uninj_8795_tot_rel            :
+  uninj_8795_basis_est_code     :
+  uninj_8795_release_range_code :
+  uninj_total_release           : 0
+  rcra_c_release_na             : 1
+  rcra_c_tot_rel                : 0
+  rcra_c_basis_est_code         :
+  rcra_c_release_range_code     :
+  oth_landf_release_na          : 1
+  oth_landf_tot_rel             : 0
+  oth_landf_basis_est_code      :
+  oth_landf_release_range_code  :
+  land_trea_release_na          : 1
+  land_trea_tot_rel             : 0
+  land_trea_basis_est_code      :
+  land_trea_release_range_code  :
+  surf_imp_release_na           : 1
+  surf_imp_tot_rel              : 0
+  surf_imp_basis_est_code       :
+  surf_release_range_code       :
+  oth_disp_release_na           : 1
+  oth_disp_tot_rel              : 0
+  oth_disp_basis_est_code       :
+  oth_disp_release_range_code   :
+  landf_8795_release_na         :
+  landf_8795_tot_rel            :
+  landf_8795_basis_est_code     :
+  landf_8795_release_range_code :
+  land_total_release            : 0
+  potw_tot_transfer             : 0
+  potw_basis_est_code           :
+  potw_name_1                   : NA
+  potw_address_1                :
+  potw_city_1                   :
+  potw_state_1                  :
+  potw_county_1                 :
+  potw_zip_code_1               :
+  potw_name_2                   :
+  potw_address_2                :
+  potw_city_2                   :
+  potw_state_2                  :
+  potw_county_2                 :
+  potw_zip_code_2               :
+  potw_add_address_ind          : 0
+  rcra_id_num_1                 : TND000772186
+  off_site_loc_name_1           : POLUTION CONTROL INDUSTRIES
+  off_site_address_1            : 5485 TAY-FOR DRIVE
+  off_site_city_1               : MILLINGTON
+  off_site_state_1              : TN
+  off_site_county_1             : USA
+  off_site_province_1           :
+  off_site_zip_code_1           : 38053
+  off_site_control_ind_1        : 0
+  rcra_id_num_2                 : ALD981020894
+  off_site_loc_name_2           : FISHER INDUSTRIAL SERVICE, INC
+  off_site_address_2            : 402 WEBSTER CHAPEL RD.
+  off_site_city_2               : GLENCOE
+  off_site_state_2              : AL
+  off_site_county_2             : USA
+  off_site_province_2           :
+  off_site_zip_code_2           : 35905
+  off_site_control_ind_2        : 0
+  rcra_id_num_3                 :
+  off_site_loc_name_3           :
+  off_site_address_3            :
+  off_site_city_3               :
+  off_site_state_3              :
+  off_site_county_3             :
+  off_site_province_3           :
+  off_site_zip_code_3           :
+  off_site_control_ind_3        :
+  rcra_id_num_4                 :
+  off_site_loc_name_4           :
+  off_site_address_4            :
+  off_site_city_4               :
+  off_site_state_4              :
+  off_site_county_4             :
+  off_site_province_4           :
+  off_site_zip_code_4           :
+  off_site_control_ind_4        :
+  rcra_id_num_5                 :
+  off_site_loc_name_5           :
+  off_site_address_5            :
+  off_site_city_5               :
+  off_site_state_5              :
+  off_site_county_5             :
+  off_site_province_5           :
+  off_site_zip_code_5           :
+  off_site_control_ind_5        :
+  off_site_add_ind              : 0
+  off_site_total_transfers      : 0
+  disp_storage_only             : 0
+  disp_solid_stab               : 0
+  disp_wastewater_treat         : 0
+  disp_ungrnd_inj               : 0
+  disp_landfill_surf_imp        : 0
+  disp_land_treatment           : 0
+  disp_other_land_disp          : 0
+  disp_other_offsite_mgmt       : 0
+  disp_trans_waste_broker       : 0
+  disp_unknown                  : 0
+  off_site_energy_rec_transfers : 0
+  off_site_recycle_transfers    : 16574
+  off_site_waste_transfers      : 0
+  off_site_oloc_transfers       : 0
+  ons_wastestream_code_1        : N
+  ons_method_codes_1            :
+  ons_influent_conc_range_1     :
+  ons_sequential_treat_87_90_1  :
+  ons_efficiency_est_1          :
+  ons_efficiency_est_na_1       : 0
+  ons_operating_data_ind_1      : 2
+  ons_efficiency_range_code_1   :
+  ons_wastestream_code_2        :
+  ons_method_codes_2            :
+  ons_influent_conc_range_2     :
+  ons_sequential_treat_87_90_2  :
+  ons_efficiency_est_2          :
+  ons_efficiency_est_na_2       :
+  ons_operating_data_ind_2      :
+  ons_efficiency_range_code_2   :
+  ons_wastestream_code_3        :
+  ons_method_codes_3            :
+  ons_influent_conc_range_3     :
+  ons_sequential_treat_87_90_3  :
+  ons_efficiency_est_3          :
+  ons_efficiency_est_na_3       :
+  ons_operating_data_ind_3      :
+  ons_efficiency_range_code_3   :
+  ons_wastestream_code_4        :
+  ons_method_codes_4            :
+  ons_influent_conc_range_4     :
+  ons_sequential_treat_87_90_4  :
+  ons_efficiency_est_4          :
+  ons_efficiency_est_na_4       :
+  ons_operating_data_ind_4      :
+  ons_efficiency_range_code_4   :
+  ons_wastestream_code_5        :
+  ons_method_codes_5            :
+  ons_influent_conc_range_5     :
+  ons_sequential_treat_87_90_5  :
+  ons_efficiency_est_5          :
+  ons_efficiency_est_na_5       :
+  ons_operating_data_ind_5      :
+  ons_efficiency_range_code_5   :
+  ons_wastestream_code_6        :
+  ons_method_codes_6            :
+  ons_influent_conc_range_6     :
+  ons_sequential_treat_87_90_6  :
+  ons_efficiency_est_6          :
+  ons_efficiency_est_na_6       :
+  ons_operating_data_ind_6      :
+  ons_efficiency_range_code_6   :
+  ons_wastestream_code_7        :
+  ons_method_codes_7            :
+  ons_influent_conc_range_7     :
+  ons_sequential_treat_87_90_7  :
+  ons_efficiency_est_7          :
+  ons_efficiency_est_na_7       :
+  ons_operating_data_ind_7      :
+  ons_efficiency_range_code_7   :
+  ons_wastestream_code_8        :
+  ons_method_codes_8            :
+  ons_influent_conc_range_8     :
+  ons_sequential_treat_87_90_8  :
+  ons_efficiency_est_8          :
+  ons_efficiency_est_na_8       :
+  ons_operating_data_ind_8      :
+  ons_efficiency_range_code_8   :
+  ons_wastestream_code_9        :
+  ons_method_codes_9            :
+  ons_influent_conc_range_9     :
+  ons_sequential_treat_87_90_9  :
+  ons_efficiency_est_9          :
+  ons_efficiency_est_na_9       :
+  ons_operating_data_ind_9      :
+  ons_efficiency_range_code_9   :
+  ons_wastestream_add_ind       : 0
+  onsite_energy_proc_ind        : NA
+  onsite_energy_proc_codes      : NA
+  onsite_energy_proc_add_ind    : 0
+  onsite_recycle_proc_code_ind  : NA
+  onsite_recycle_proc_codes     : NA
+  onsite_recycle_proc_add_ind   : 0
+  source_reduction_ind          :
+  source_reduction_act_1        : W51
+  source_reduction_methods_1    : T04
+  source_reduction_act_2        : NA
+  source_reduction_methods_2    :
+  source_reduction_act_3        :
+  source_reduction_methods_3    :
+  source_reduction_act_4        :
+  source_reduction_methods_4    :
+  source_reduction_add_ind      : 0
+  sub_surf_imp_release_na       :
+  sub_surf_imp_tot_rel          :
+  sub_surf_imp_basis_est_code   :
+  sub_surf_release_range_code   :
+  oth_surf_imp_release_na       :
+  oth_surf_imp_tot_rel          :
+  oth_surf_imp_basis_est_code   :
+  oth_surf_release_range_code   :
+  primary_sic_code              : 3441
+  naics_codes                   : 332312
+  primary_naics_code            : 332312
+  reach_code_1                  :
+  reach_code_2                  :
+  reach_code_3                  :
+  est_annual_reduct_1           :
+  est_annual_reduct_2           :
+  est_annual_reduct_3           :
+  est_annual_reduct_4           :
+  potw_percentage_to_81c_1      :
+  potw_percentage_to_81c_2      :
+  potw_percentage_to_81d_1      :
+  potw_percentage_to_81d_2      :
+  potw_percentage_to_87_1       :
+  potw_percentage_to_87_2       :
+  potw_percentage_provided_1    :
+  potw_percentage_provided_2    :
+  potw_1_total_transfer         :
+  potw_2_total_transfer         :
+  potw_release_1                :
+  potw_release_2                :
+  potw_treatment_1              :
+  potw_treatment_2              :
+  potw_basis_est_code_1         :
+  potw_basis_est_code_2         :
+  potw_epa_registry_id_1        :
+  potw_epa_registry_id_2        :
+  off_site_epa_registry_id_1    :
+  off_site_epa_registry_id_2    :
+  off_site_epa_registry_id_3    :
+  off_site_epa_registry_id_4    :
+  off_site_epa_registry_id_5    :
+  
+  doc_ctrl_num                  : 1300140000047
+  sic_codes                     : 3441
+  fugitive_release_na           : 0
+  fugitive_tot_rel              : 9765
+  fugitive_basis_est_code       : M
+  fugitive_release_range_code   :
+  stack_release_na              : 1
+  stack_tot_rel                 : 0
+  stack_basis_est_code          :
+  stack_release_range_code      :
+  air_total_release             : 9765
+  water_body_name_1             : NA
+  water_release_1               : 0
+  water_basis_est_code_1        :
+  water_release_na_1            : 0
+  water_release_range_code_1    :
+  water_storm_water_na_1        : 0
+  storm_water_percent_1         :
+  water_body_name_2             :
+  water_release_2               :
+  water_basis_est_code_2        :
+  water_release_na_2            :
+  water_release_range_code_2    :
+  water_storm_water_na_2        :
+  storm_water_percent_2         :
+  water_body_name_3             :
+  water_release_3               :
+  water_basis_est_code_3        :
+  water_release_na_3            :
+  water_release_range_code_3    :
+  water_storm_water_na_3        :
+  storm_water_percent_3         :
+  water_bodies_add_ind          : 0
+  water_total_release           : 0
+  uninj_i_release_na            : 1
+  uninj_i_tot_rel               : 0
+  uninj_i_basis_est_code        :
+  uninj_i_release_range_code    :
+  uninj_iiv_release_na          : 1
+  uninj_iiv_tot_rel             : 0
+  uninj_iiv_basis_est_code      :
+  uninj_iiv_release_range_code  :
+  uninj_8795_release_na         :
+  uninj_8795_tot_rel            :
+  uninj_8795_basis_est_code     :
+  uninj_8795_release_range_code :
+  uninj_total_release           : 0
+  rcra_c_release_na             : 1
+  rcra_c_tot_rel                : 0
+  rcra_c_basis_est_code         :
+  rcra_c_release_range_code     :
+  oth_landf_release_na          : 1
+  oth_landf_tot_rel             : 0
+  oth_landf_basis_est_code      :
+  oth_landf_release_range_code  :
+  land_trea_release_na          : 1
+  land_trea_tot_rel             : 0
+  land_trea_basis_est_code      :
+  land_trea_release_range_code  :
+  surf_imp_release_na           : 1
+  surf_imp_tot_rel              : 0
+  surf_imp_basis_est_code       :
+  surf_release_range_code       :
+  oth_disp_release_na           : 1
+  oth_disp_tot_rel              : 0
+  oth_disp_basis_est_code       :
+  oth_disp_release_range_code   :
+  landf_8795_release_na         :
+  landf_8795_tot_rel            :
+  landf_8795_basis_est_code     :
+  landf_8795_release_range_code :
+  land_total_release            : 0
+  potw_tot_transfer             : 0
+  potw_basis_est_code           :
+  potw_name_1                   : NA
+  potw_address_1                :
+  potw_city_1                   :
+  potw_state_1                  :
+  potw_county_1                 :
+  potw_zip_code_1               :
+  potw_name_2                   :
+  potw_address_2                :
+  potw_city_2                   :
+  potw_state_2                  :
+  potw_county_2                 :
+  potw_zip_code_2               :
+  potw_add_address_ind          : 0
+  rcra_id_num_1                 : ALD981020894
+  off_site_loc_name_1           : FISHER INDUSTRIAL SERVICE, INC
+  off_site_address_1            : 402 WEBSTER CHAPEL RD.
+  off_site_city_1               : GLENCOE
+  off_site_state_1              : AL
+  off_site_county_1             : USA
+  off_site_province_1           :
+  off_site_zip_code_1           : 35905
+  off_site_control_ind_1        : 0
+  rcra_id_num_2                 : TND000772186
+  off_site_loc_name_2           : POLUTION CONTROL INDUSTRIES
+  off_site_address_2            : 5485 TAY-FOR DRIVE
+  off_site_city_2               : MILLINGTON
+  off_site_state_2              : TN
+  off_site_county_2             : USA
+  off_site_province_2           :
+  off_site_zip_code_2           : 38053
+  off_site_control_ind_2        : 0
+  rcra_id_num_3                 :
+  off_site_loc_name_3           :
+  off_site_address_3            :
+  off_site_city_3               :
+  off_site_state_3              :
+  off_site_county_3             :
+  off_site_province_3           :
+  off_site_zip_code_3           :
+  off_site_control_ind_3        :
+  rcra_id_num_4                 :
+  off_site_loc_name_4           :
+  off_site_address_4            :
+  off_site_city_4               :
+  off_site_state_4              :
+  off_site_county_4             :
+  off_site_province_4           :
+  off_site_zip_code_4           :
+  off_site_control_ind_4        :
+  rcra_id_num_5                 :
+  off_site_loc_name_5           :
+  off_site_address_5            :
+  off_site_city_5               :
+  off_site_state_5              :
+  off_site_county_5             :
+  off_site_province_5           :
+  off_site_zip_code_5           :
+  off_site_control_ind_5        :
+  off_site_add_ind              : 0
+  off_site_total_transfers      : 0
+  disp_storage_only             : 0
+  disp_solid_stab               : 0
+  disp_wastewater_treat         : 0
+  disp_ungrnd_inj               : 0
+  disp_landfill_surf_imp        : 0
+  disp_land_treatment           : 0
+  disp_other_land_disp          : 0
+  disp_other_offsite_mgmt       : 0
+  disp_trans_waste_broker       : 0
+  disp_unknown                  : 0
+  off_site_energy_rec_transfers : 0
+  off_site_recycle_transfers    : 5808
+  off_site_waste_transfers      : 0
+  off_site_oloc_transfers       : 0
+  ons_wastestream_code_1        : N
+  ons_method_codes_1            :
+  ons_influent_conc_range_1     :
+  ons_sequential_treat_87_90_1  :
+  ons_efficiency_est_1          :
+  ons_efficiency_est_na_1       : 0
+  ons_operating_data_ind_1      : 2
+  ons_efficiency_range_code_1   :
+  ons_wastestream_code_2        :
+  ons_method_codes_2            :
+  ons_influent_conc_range_2     :
+  ons_sequential_treat_87_90_2  :
+  ons_efficiency_est_2          :
+  ons_efficiency_est_na_2       :
+  ons_operating_data_ind_2      :
+  ons_efficiency_range_code_2   :
+  ons_wastestream_code_3        :
+  ons_method_codes_3            :
+  ons_influent_conc_range_3     :
+  ons_sequential_treat_87_90_3  :
+  ons_efficiency_est_3          :
+  ons_efficiency_est_na_3       :
+  ons_operating_data_ind_3      :
+  ons_efficiency_range_code_3   :
+  ons_wastestream_code_4        :
+  ons_method_codes_4            :
+  ons_influent_conc_range_4     :
+  ons_sequential_treat_87_90_4  :
+  ons_efficiency_est_4          :
+  ons_efficiency_est_na_4       :
+  ons_operating_data_ind_4      :
+  ons_efficiency_range_code_4   :
+  ons_wastestream_code_5        :
+  ons_method_codes_5            :
+  ons_influent_conc_range_5     :
+  ons_sequential_treat_87_90_5  :
+  ons_efficiency_est_5          :
+  ons_efficiency_est_na_5       :
+  ons_operating_data_ind_5      :
+  ons_efficiency_range_code_5   :
+  ons_wastestream_code_6        :
+  ons_method_codes_6            :
+  ons_influent_conc_range_6     :
+  ons_sequential_treat_87_90_6  :
+  ons_efficiency_est_6          :
+  ons_efficiency_est_na_6       :
+  ons_operating_data_ind_6      :
+  ons_efficiency_range_code_6   :
+  ons_wastestream_code_7        :
+  ons_method_codes_7            :
+  ons_influent_conc_range_7     :
+  ons_sequential_treat_87_90_7  :
+  ons_efficiency_est_7          :
+  ons_efficiency_est_na_7       :
+  ons_operating_data_ind_7      :
+  ons_efficiency_range_code_7   :
+  ons_wastestream_code_8        :
+  ons_method_codes_8            :
+  ons_influent_conc_range_8     :
+  ons_sequential_treat_87_90_8  :
+  ons_efficiency_est_8          :
+  ons_efficiency_est_na_8       :
+  ons_operating_data_ind_8      :
+  ons_efficiency_range_code_8   :
+  ons_wastestream_code_9        :
+  ons_method_codes_9            :
+  ons_influent_conc_range_9     :
+  ons_sequential_treat_87_90_9  :
+  ons_efficiency_est_9          :
+  ons_efficiency_est_na_9       :
+  ons_operating_data_ind_9      :
+  ons_efficiency_range_code_9   :
+  ons_wastestream_add_ind       : 0
+  onsite_energy_proc_ind        : NA
+  onsite_energy_proc_codes      : NA
+  onsite_energy_proc_add_ind    : 0
+  onsite_recycle_proc_code_ind  : NA
+  onsite_recycle_proc_codes     : NA
+  onsite_recycle_proc_add_ind   : 0
+  source_reduction_ind          :
+  source_reduction_act_1        : W19
+  source_reduction_methods_1    : T04T06
+  source_reduction_act_2        : NA
+  source_reduction_methods_2    :
+  source_reduction_act_3        :
+  source_reduction_methods_3    :
+  source_reduction_act_4        :
+  source_reduction_methods_4    :
+  source_reduction_add_ind      : 0
+  sub_surf_imp_release_na       :
+  sub_surf_imp_tot_rel          :
+  sub_surf_imp_basis_est_code   :
+  sub_surf_release_range_code   :
+  oth_surf_imp_release_na       :
+  oth_surf_imp_tot_rel          :
+  oth_surf_imp_basis_est_code   :
+  oth_surf_release_range_code   :
+  primary_sic_code              : 3441
+  naics_codes                   : 332312
+  primary_naics_code            : 332312
+  reach_code_1                  :
+  reach_code_2                  :
+  reach_code_3                  :
+  est_annual_reduct_1           :
+  est_annual_reduct_2           :
+  est_annual_reduct_3           :
+  est_annual_reduct_4           :
+  potw_percentage_to_81c_1      :
+  potw_percentage_to_81c_2      :
+  potw_percentage_to_81d_1      :
+  potw_percentage_to_81d_2      :
+  potw_percentage_to_87_1       :
+  potw_percentage_to_87_2       :
+  potw_percentage_provided_1    :
+  potw_percentage_provided_2    :
+  potw_1_total_transfer         :
+  potw_2_total_transfer         :
+  potw_release_1                :
+  potw_release_2                :
+  potw_treatment_1              :
+  potw_treatment_2              :
+  potw_basis_est_code_1         :
+  potw_basis_est_code_2         :
+  potw_epa_registry_id_1        :
+  potw_epa_registry_id_2        :
+  off_site_epa_registry_id_1    :
+  off_site_epa_registry_id_2    :
+  off_site_epa_registry_id_3    :
+  off_site_epa_registry_id_4    :
+  off_site_epa_registry_id_5    :
+  
+  doc_ctrl_num                  : 1300140000050
+  sic_codes                     : 3441
+  fugitive_release_na           : 0
+  fugitive_tot_rel              : 1759
+  fugitive_basis_est_code       : M
+  fugitive_release_range_code   :
+  stack_release_na              : 1
+  stack_tot_rel                 : 0
+  stack_basis_est_code          :
+  stack_release_range_code      :
+  air_total_release             : 1759
+  water_body_name_1             : NA
+  water_release_1               : 0
+  water_basis_est_code_1        :
+  water_release_na_1            : 0
+  water_release_range_code_1    :
+  water_storm_water_na_1        : 0
+  storm_water_percent_1         :
+  water_body_name_2             :
+  water_release_2               :
+  water_basis_est_code_2        :
+  water_release_na_2            :
+  water_release_range_code_2    :
+  water_storm_water_na_2        :
+  storm_water_percent_2         :
+  water_body_name_3             :
+  water_release_3               :
+  water_basis_est_code_3        :
+  water_release_na_3            :
+  water_release_range_code_3    :
+  water_storm_water_na_3        :
+  storm_water_percent_3         :
+  water_bodies_add_ind          : 0
+  water_total_release           : 0
+  uninj_i_release_na            : 1
+  uninj_i_tot_rel               : 0
+  uninj_i_basis_est_code        :
+  uninj_i_release_range_code    :
+  uninj_iiv_release_na          : 1
+  uninj_iiv_tot_rel             : 0
+  uninj_iiv_basis_est_code      :
+  uninj_iiv_release_range_code  :
+  uninj_8795_release_na         :
+  uninj_8795_tot_rel            :
+  uninj_8795_basis_est_code     :
+  uninj_8795_release_range_code :
+  uninj_total_release           : 0
+  rcra_c_release_na             : 1
+  rcra_c_tot_rel                : 0
+  rcra_c_basis_est_code         :
+  rcra_c_release_range_code     :
+  oth_landf_release_na          : 1
+  oth_landf_tot_rel             : 0
+  oth_landf_basis_est_code      :
+  oth_landf_release_range_code  :
+  land_trea_release_na          : 1
+  land_trea_tot_rel             : 0
+  land_trea_basis_est_code      :
+  land_trea_release_range_code  :
+  surf_imp_release_na           : 1
+  surf_imp_tot_rel              : 0
+  surf_imp_basis_est_code       :
+  surf_release_range_code       :
+  oth_disp_release_na           : 1
+  oth_disp_tot_rel              : 0
+  oth_disp_basis_est_code       :
+  oth_disp_release_range_code   :
+  landf_8795_release_na         :
+  landf_8795_tot_rel            :
+  landf_8795_basis_est_code     :
+  landf_8795_release_range_code :
+  land_total_release            : 0
+  potw_tot_transfer             : 0
+  potw_basis_est_code           :
+  potw_name_1                   : NA
+  potw_address_1                :
+  potw_city_1                   :
+  potw_state_1                  :
+  potw_county_1                 :
+  potw_zip_code_1               :
+  potw_name_2                   :
+  potw_address_2                :
+  potw_city_2                   :
+  potw_state_2                  :
+  potw_county_2                 :
+  potw_zip_code_2               :
+  potw_add_address_ind          : 0
+  rcra_id_num_1                 : ALD981020894
+  off_site_loc_name_1           : FISHER INDUSTRIAL SERVICE, INC
+  off_site_address_1            : 402 WEBSTER CHAPEL RD.
+  off_site_city_1               : GLENCOE
+  off_site_state_1              : AL
+  off_site_county_1             : USA
+  off_site_province_1           :
+  off_site_zip_code_1           : 35905
+  off_site_control_ind_1        : 0
+  rcra_id_num_2                 : TND000772186
+  off_site_loc_name_2           : POLUTION CONTROL INDUSTRIES
+  off_site_address_2            : 5485 TAY-FOR DRIVE
+  off_site_city_2               : MILLINGTON
+  off_site_state_2              : TN
+  off_site_county_2             : USA
+  off_site_province_2           :
+  off_site_zip_code_2           : 38053
+  off_site_control_ind_2        : 0
+  rcra_id_num_3                 :
+  off_site_loc_name_3           :
+  off_site_address_3            :
+  off_site_city_3               :
+  off_site_state_3              :
+  off_site_county_3             :
+  off_site_province_3           :
+  off_site_zip_code_3           :
+  off_site_control_ind_3        :
+  rcra_id_num_4                 :
+  off_site_loc_name_4           :
+  off_site_address_4            :
+  off_site_city_4               :
+  off_site_state_4              :
+  off_site_county_4             :
+  off_site_province_4           :
+  off_site_zip_code_4           :
+  off_site_control_ind_4        :
+  rcra_id_num_5                 :
+  off_site_loc_name_5           :
+  off_site_address_5            :
+  off_site_city_5               :
+  off_site_state_5              :
+  off_site_county_5             :
+  off_site_province_5           :
+  off_site_zip_code_5           :
+  off_site_control_ind_5        :
+  off_site_add_ind              : 0
+  off_site_total_transfers      : 0
+  disp_storage_only             : 0
+  disp_solid_stab               : 0
+  disp_wastewater_treat         : 0
+  disp_ungrnd_inj               : 0
+  disp_landfill_surf_imp        : 0
+  disp_land_treatment           : 0
+  disp_other_land_disp          : 0
+  disp_other_offsite_mgmt       : 0
+  disp_trans_waste_broker       : 0
+  disp_unknown                  : 0
+  off_site_energy_rec_transfers : 0
+  off_site_recycle_transfers    : 2475
+  off_site_waste_transfers      : 0
+  off_site_oloc_transfers       : 0
+  ons_wastestream_code_1        : N
+  ons_method_codes_1            :
+  ons_influent_conc_range_1     :
+  ons_sequential_treat_87_90_1  :
+  ons_efficiency_est_1          :
+  ons_efficiency_est_na_1       : 0
+  ons_operating_data_ind_1      : 2
+  ons_efficiency_range_code_1   :
+  ons_wastestream_code_2        :
+  ons_method_codes_2            :
+  ons_influent_conc_range_2     :
+  ons_sequential_treat_87_90_2  :
+  ons_efficiency_est_2          :
+  ons_efficiency_est_na_2       :
+  ons_operating_data_ind_2      :
+  ons_efficiency_range_code_2   :
+  ons_wastestream_code_3        :
+  ons_method_codes_3            :
+  ons_influent_conc_range_3     :
+  ons_sequential_treat_87_90_3  :
+  ons_efficiency_est_3          :
+  ons_efficiency_est_na_3       :
+  ons_operating_data_ind_3      :
+  ons_efficiency_range_code_3   :
+  ons_wastestream_code_4        :
+  ons_method_codes_4            :
+  ons_influent_conc_range_4     :
+  ons_sequential_treat_87_90_4  :
+  ons_efficiency_est_4          :
+  ons_efficiency_est_na_4       :
+  ons_operating_data_ind_4      :
+  ons_efficiency_range_code_4   :
+  ons_wastestream_code_5        :
+  ons_method_codes_5            :
+  ons_influent_conc_range_5     :
+  ons_sequential_treat_87_90_5  :
+  ons_efficiency_est_5          :
+  ons_efficiency_est_na_5       :
+  ons_operating_data_ind_5      :
+  ons_efficiency_range_code_5   :
+  ons_wastestream_code_6        :
+  ons_method_codes_6            :
+  ons_influent_conc_range_6     :
+  ons_sequential_treat_87_90_6  :
+  ons_efficiency_est_6          :
+  ons_efficiency_est_na_6       :
+  ons_operating_data_ind_6      :
+  ons_efficiency_range_code_6   :
+  ons_wastestream_code_7        :
+  ons_method_codes_7            :
+  ons_influent_conc_range_7     :
+  ons_sequential_treat_87_90_7  :
+  ons_efficiency_est_7          :
+  ons_efficiency_est_na_7       :
+  ons_operating_data_ind_7      :
+  ons_efficiency_range_code_7   :
+  ons_wastestream_code_8        :
+  ons_method_codes_8            :
+  ons_influent_conc_range_8     :
+  ons_sequential_treat_87_90_8  :
+  ons_efficiency_est_8          :
+  ons_efficiency_est_na_8       :
+  ons_operating_data_ind_8      :
+  ons_efficiency_range_code_8   :
+  ons_wastestream_code_9        :
+  ons_method_codes_9            :
+  ons_influent_conc_range_9     :
+  ons_sequential_treat_87_90_9  :
+  ons_efficiency_est_9          :
+  ons_efficiency_est_na_9       :
+  ons_operating_data_ind_9      :
+  ons_efficiency_range_code_9   :
+  ons_wastestream_add_ind       : 0
+  onsite_energy_proc_ind        : NA
+  onsite_energy_proc_codes      : NA
+  onsite_energy_proc_add_ind    : 0
+  onsite_recycle_proc_code_ind  : NA
+  onsite_recycle_proc_codes     : NA
+  onsite_recycle_proc_add_ind   : 0
+  source_reduction_ind          :
+  source_reduction_act_1        : W19
+  source_reduction_methods_1    : T04
+  source_reduction_act_2        : NA
+  source_reduction_methods_2    :
+  source_reduction_act_3        :
+  source_reduction_methods_3    :
+  source_reduction_act_4        :
+  source_reduction_methods_4    :
+  source_reduction_add_ind      : 0
+  sub_surf_imp_release_na       :
+  sub_surf_imp_tot_rel          :
+  sub_surf_imp_basis_est_code   :
+  sub_surf_release_range_code   :
+  oth_surf_imp_release_na       :
+  oth_surf_imp_tot_rel          :
+  oth_surf_imp_basis_est_code   :
+  oth_surf_release_range_code   :
+  primary_sic_code              : 3441
+  naics_codes                   : 332312
+  primary_naics_code            : 332312
+  reach_code_1                  :
+  reach_code_2                  :
+  reach_code_3                  :
+  est_annual_reduct_1           :
+  est_annual_reduct_2           :
+  est_annual_reduct_3           :
+  est_annual_reduct_4           :
+  potw_percentage_to_81c_1      :
+  potw_percentage_to_81c_2      :
+  potw_percentage_to_81d_1      :
+  potw_percentage_to_81d_2      :
+  potw_percentage_to_87_1       :
+  potw_percentage_to_87_2       :
+  potw_percentage_provided_1    :
+  potw_percentage_provided_2    :
+  potw_1_total_transfer         :
+  potw_2_total_transfer         :
+  potw_release_1                :
+  potw_release_2                :
+  potw_treatment_1              :
+  potw_treatment_2              :
+  potw_basis_est_code_1         :
+  potw_basis_est_code_2         :
+  potw_epa_registry_id_1        :
+  potw_epa_registry_id_2        :
+  off_site_epa_registry_id_1    :
+  off_site_epa_registry_id_2    :
+  off_site_epa_registry_id_3    :
+  off_site_epa_registry_id_4    :
+  off_site_epa_registry_id_5    :
+  
+  doc_ctrl_num                  : 1300140000124
+  sic_codes                     : 3792
+  fugitive_release_na           : 0
+  fugitive_tot_rel              : 13297
+  fugitive_basis_est_code       : O
+  fugitive_release_range_code   :
+  stack_release_na              : 0
+  stack_tot_rel                 : 53189
+  stack_basis_est_code          : C
+  stack_release_range_code      :
+  air_total_release             : 66486
+  water_body_name_1             : NA
+  water_release_1               : 0
+  water_basis_est_code_1        :
+  water_release_na_1            : 0
+  water_release_range_code_1    :
+  water_storm_water_na_1        : 0
+  storm_water_percent_1         :
+  water_body_name_2             :
+  water_release_2               :
+  water_basis_est_code_2        :
+  water_release_na_2            :
+  water_release_range_code_2    :
+  water_storm_water_na_2        :
+  storm_water_percent_2         :
+  water_body_name_3             :
+  water_release_3               :
+  water_basis_est_code_3        :
+  water_release_na_3            :
+  water_release_range_code_3    :
+  water_storm_water_na_3        :
+  storm_water_percent_3         :
+  water_bodies_add_ind          : 0
+  water_total_release           : 0
+  uninj_i_release_na            : 1
+  uninj_i_tot_rel               : 0
+  uninj_i_basis_est_code        :
+  uninj_i_release_range_code    :
+  uninj_iiv_release_na          : 1
+  uninj_iiv_tot_rel             : 0
+  uninj_iiv_basis_est_code      :
+  uninj_iiv_release_range_code  :
+  uninj_8795_release_na         :
+  uninj_8795_tot_rel            :
+  uninj_8795_basis_est_code     :
+  uninj_8795_release_range_code :
+  uninj_total_release           : 0
+  rcra_c_release_na             : 1
+  rcra_c_tot_rel                : 0
+  rcra_c_basis_est_code         :
+  rcra_c_release_range_code     :
+  oth_landf_release_na          : 1
+  oth_landf_tot_rel             : 0
+  oth_landf_basis_est_code      :
+  oth_landf_release_range_code  :
+  land_trea_release_na          : 1
+  land_trea_tot_rel             : 0
+  land_trea_basis_est_code      :
+  land_trea_release_range_code  :
+  surf_imp_release_na           : 1
+  surf_imp_tot_rel              : 0
+  surf_imp_basis_est_code       :
+  surf_release_range_code       :
+  oth_disp_release_na           : 1
+  oth_disp_tot_rel              : 0
+  oth_disp_basis_est_code       :
+  oth_disp_release_range_code   :
+  landf_8795_release_na         :
+  landf_8795_tot_rel            :
+  landf_8795_basis_est_code     :
+  landf_8795_release_range_code :
+  land_total_release            : 0
+  potw_tot_transfer             : 0
+  potw_basis_est_code           :
+  potw_name_1                   : NA
+  potw_address_1                :
+  potw_city_1                   :
+  potw_state_1                  :
+  potw_county_1                 :
+  potw_zip_code_1               :
+  potw_name_2                   :
+  potw_address_2                :
+  potw_city_2                   :
+  potw_state_2                  :
+  potw_county_2                 :
+  potw_zip_code_2               :
+  potw_add_address_ind          : 0
+  rcra_id_num_1                 : MOD981123391
+  off_site_loc_name_1           : HAZ-MAT RESPONSE DISPOSAL
+  off_site_address_1            : 6300 STADIUM DR
+  off_site_city_1               : KANSAS CITY
+  off_site_state_1              : MO
+  off_site_county_1             : JACKSON
+  off_site_province_1           :
+  off_site_zip_code_1           : 64129
+  off_site_control_ind_1        : 0
+  rcra_id_num_2                 :
+  off_site_loc_name_2           :
+  off_site_address_2            :
+  off_site_city_2               :
+  off_site_state_2              :
+  off_site_county_2             :
+  off_site_province_2           :
+  off_site_zip_code_2           :
+  off_site_control_ind_2        :
+  rcra_id_num_3                 :
+  off_site_loc_name_3           :
+  off_site_address_3            :
+  off_site_city_3               :
+  off_site_state_3              :
+  off_site_county_3             :
+  off_site_province_3           :
+  off_site_zip_code_3           :
+  off_site_control_ind_3        :
+  rcra_id_num_4                 :
+  off_site_loc_name_4           :
+  off_site_address_4            :
+  off_site_city_4               :
+  off_site_state_4              :
+  off_site_county_4             :
+  off_site_province_4           :
+  off_site_zip_code_4           :
+  off_site_control_ind_4        :
+  rcra_id_num_5                 :
+  off_site_loc_name_5           :
+  off_site_address_5            :
+  off_site_city_5               :
+  off_site_state_5              :
+  off_site_county_5             :
+  off_site_province_5           :
+  off_site_zip_code_5           :
+  off_site_control_ind_5        :
+  off_site_add_ind              : 0
+  off_site_total_transfers      : 0
+  disp_storage_only             : 0
+  disp_solid_stab               : 0
+  disp_wastewater_treat         : 0
+  disp_ungrnd_inj               : 0
+  disp_landfill_surf_imp        : 0
+  disp_land_treatment           : 0
+  disp_other_land_disp          : 0
+  disp_other_offsite_mgmt       : 0
+  disp_trans_waste_broker       : 0
+  disp_unknown                  : 0
+  off_site_energy_rec_transfers : 4500
+  off_site_recycle_transfers    : 0
+  off_site_waste_transfers      : 0
+  off_site_oloc_transfers       : 0
+  ons_wastestream_code_1        : N
+  ons_method_codes_1            :
+  ons_influent_conc_range_1     :
+  ons_sequential_treat_87_90_1  :
+  ons_efficiency_est_1          :
+  ons_efficiency_est_na_1       : 0
+  ons_operating_data_ind_1      : 2
+  ons_efficiency_range_code_1   :
+  ons_wastestream_code_2        :
+  ons_method_codes_2            :
+  ons_influent_conc_range_2     :
+  ons_sequential_treat_87_90_2  :
+  ons_efficiency_est_2          :
+  ons_efficiency_est_na_2       :
+  ons_operating_data_ind_2      :
+  ons_efficiency_range_code_2   :
+  ons_wastestream_code_3        :
+  ons_method_codes_3            :
+  ons_influent_conc_range_3     :
+  ons_sequential_treat_87_90_3  :
+  ons_efficiency_est_3          :
+  ons_efficiency_est_na_3       :
+  ons_operating_data_ind_3      :
+  ons_efficiency_range_code_3   :
+  ons_wastestream_code_4        :
+  ons_method_codes_4            :
+  ons_influent_conc_range_4     :
+  ons_sequential_treat_87_90_4  :
+  ons_efficiency_est_4          :
+  ons_efficiency_est_na_4       :
+  ons_operating_data_ind_4      :
+  ons_efficiency_range_code_4   :
+  ons_wastestream_code_5        :
+  ons_method_codes_5            :
+  ons_influent_conc_range_5     :
+  ons_sequential_treat_87_90_5  :
+  ons_efficiency_est_5          :
+  ons_efficiency_est_na_5       :
+  ons_operating_data_ind_5      :
+  ons_efficiency_range_code_5   :
+  ons_wastestream_code_6        :
+  ons_method_codes_6            :
+  ons_influent_conc_range_6     :
+  ons_sequential_treat_87_90_6  :
+  ons_efficiency_est_6          :
+  ons_efficiency_est_na_6       :
+  ons_operating_data_ind_6      :
+  ons_efficiency_range_code_6   :
+  ons_wastestream_code_7        :
+  ons_method_codes_7            :
+  ons_influent_conc_range_7     :
+  ons_sequential_treat_87_90_7  :
+  ons_efficiency_est_7          :
+  ons_efficiency_est_na_7       :
+  ons_operating_data_ind_7      :
+  ons_efficiency_range_code_7   :
+  ons_wastestream_code_8        :
+  ons_method_codes_8            :
+  ons_influent_conc_range_8     :
+  ons_sequential_treat_87_90_8  :
+  ons_efficiency_est_8          :
+  ons_efficiency_est_na_8       :
+  ons_operating_data_ind_8      :
+  ons_efficiency_range_code_8   :
+  ons_wastestream_code_9        :
+  ons_method_codes_9            :
+  ons_influent_conc_range_9     :
+  ons_sequential_treat_87_90_9  :
+  ons_efficiency_est_9          :
+  ons_efficiency_est_na_9       :
+  ons_operating_data_ind_9      :
+  ons_efficiency_range_code_9   :
+  ons_wastestream_add_ind       : 0
+  onsite_energy_proc_ind        : NA
+  onsite_energy_proc_codes      : NA
+  onsite_energy_proc_add_ind    : 0
+  onsite_recycle_proc_code_ind  : NA
+  onsite_recycle_proc_codes     : NA
+  onsite_recycle_proc_add_ind   : 0
+  source_reduction_ind          : NA
+  source_reduction_act_1        : NA
+  source_reduction_methods_1    :
+  source_reduction_act_2        :
+  source_reduction_methods_2    :
+  source_reduction_act_3        :
+  source_reduction_methods_3    :
+  source_reduction_act_4        :
+  source_reduction_methods_4    :
+  source_reduction_add_ind      : 0
+  sub_surf_imp_release_na       :
+  sub_surf_imp_tot_rel          :
+  sub_surf_imp_basis_est_code   :
+  sub_surf_release_range_code   :
+  oth_surf_imp_release_na       :
+  oth_surf_imp_tot_rel          :
+  oth_surf_imp_basis_est_code   :
+  oth_surf_release_range_code   :
+  primary_sic_code              : 3792
+  naics_codes                   : 336214
+  primary_naics_code            : 336214
+  reach_code_1                  :
+  reach_code_2                  :
+  reach_code_3                  :
+  est_annual_reduct_1           :
+  est_annual_reduct_2           :
+  est_annual_reduct_3           :
+  est_annual_reduct_4           :
+  potw_percentage_to_81c_1      :
+  potw_percentage_to_81c_2      :
+  potw_percentage_to_81d_1      :
+  potw_percentage_to_81d_2      :
+  potw_percentage_to_87_1       :
+  potw_percentage_to_87_2       :
+  potw_percentage_provided_1    :
+  potw_percentage_provided_2    :
+  potw_1_total_transfer         :
+  potw_2_total_transfer         :
+  potw_release_1                :
+  potw_release_2                :
+  potw_treatment_1              :
+  potw_treatment_2              :
+  potw_basis_est_code_1         :
+  potw_basis_est_code_2         :
+  potw_epa_registry_id_1        :
+  potw_epa_registry_id_2        :
+  off_site_epa_registry_id_1    :
+  off_site_epa_registry_id_2    :
+  off_site_epa_registry_id_3    :
+  off_site_epa_registry_id_4    :
+  off_site_epa_registry_id_5    :
+  
+  doc_ctrl_num                  : 1300140000136
+  sic_codes                     : 3792
+  fugitive_release_na           : 0
+  fugitive_tot_rel              : 2542
+  fugitive_basis_est_code       : O
+  fugitive_release_range_code   :
+  stack_release_na              : 0
+  stack_tot_rel                 : 22874
+  stack_basis_est_code          : C
+  stack_release_range_code      :
+  air_total_release             : 25416
+  water_body_name_1             : NA
+  water_release_1               : 0
+  water_basis_est_code_1        :
+  water_release_na_1            : 0
+  water_release_range_code_1    :
+  water_storm_water_na_1        : 0
+  storm_water_percent_1         :
+  water_body_name_2             :
+  water_release_2               :
+  water_basis_est_code_2        :
+  water_release_na_2            :
+  water_release_range_code_2    :
+  water_storm_water_na_2        :
+  storm_water_percent_2         :
+  water_body_name_3             :
+  water_release_3               :
+  water_basis_est_code_3        :
+  water_release_na_3            :
+  water_release_range_code_3    :
+  water_storm_water_na_3        :
+  storm_water_percent_3         :
+  water_bodies_add_ind          : 0
+  water_total_release           : 0
+  uninj_i_release_na            : 1
+  uninj_i_tot_rel               : 0
+  uninj_i_basis_est_code        :
+  uninj_i_release_range_code    :
+  uninj_iiv_release_na          : 1
+  uninj_iiv_tot_rel             : 0
+  uninj_iiv_basis_est_code      :
+  uninj_iiv_release_range_code  :
+  uninj_8795_release_na         :
+  uninj_8795_tot_rel            :
+  uninj_8795_basis_est_code     :
+  uninj_8795_release_range_code :
+  uninj_total_release           : 0
+  rcra_c_release_na             : 1
+  rcra_c_tot_rel                : 0
+  rcra_c_basis_est_code         :
+  rcra_c_release_range_code     :
+  oth_landf_release_na          : 1
+  oth_landf_tot_rel             : 0
+  oth_landf_basis_est_code      :
+  oth_landf_release_range_code  :
+  land_trea_release_na          : 1
+  land_trea_tot_rel             : 0
+  land_trea_basis_est_code      :
+  land_trea_release_range_code  :
+  surf_imp_release_na           : 1
+  surf_imp_tot_rel              : 0
+  surf_imp_basis_est_code       :
+  surf_release_range_code       :
+  oth_disp_release_na           : 1
+  oth_disp_tot_rel              : 0
+  oth_disp_basis_est_code       :
+  oth_disp_release_range_code   :
+  landf_8795_release_na         :
+  landf_8795_tot_rel            :
+  landf_8795_basis_est_code     :
+  landf_8795_release_range_code :
+  land_total_release            : 0
+  potw_tot_transfer             : 0
+  potw_basis_est_code           :
+  potw_name_1                   : NA
+  potw_address_1                :
+  potw_city_1                   :
+  potw_state_1                  :
+  potw_county_1                 :
+  potw_zip_code_1               :
+  potw_name_2                   :
+  potw_address_2                :
+  potw_city_2                   :
+  potw_state_2                  :
+  potw_county_2                 :
+  potw_zip_code_2               :
+  potw_add_address_ind          : 0
+  rcra_id_num_1                 : ARD981057870
+  off_site_loc_name_1           : RINECO
+  off_site_address_1            : 1007 VULCAN RD-HASKELL
+  off_site_city_1               : BENTON
+  off_site_state_1              : AR
+  off_site_county_1             : HASKELL
+  off_site_province_1           :
+  off_site_zip_code_1           : 72015
+  off_site_control_ind_1        : 0
+  rcra_id_num_2                 : MOD000669069
+  off_site_loc_name_2           : SAFETY-KLEEN SYSTEMS
+  off_site_address_2            : 734 NORTHWEST BYPASS 66
+  off_site_city_2               : SPRINGFIELD
+  off_site_state_2              : MO
+  off_site_county_2             : GREENE
+  off_site_province_2           :
+  off_site_zip_code_2           : 65802
+  off_site_control_ind_2        : 0
+  rcra_id_num_3                 : KSD981506025
+  off_site_loc_name_3           : SAFETY-KLEEN ARAGONITE
+  off_site_address_3            : HWY 169 N INDUSTRIAL PARK
+  off_site_city_3               : COFFEYVILLE
+  off_site_state_3              : KS
+  off_site_county_3             : MONTGOMERY
+  off_site_province_3           :
+  off_site_zip_code_3           : 67337
+  off_site_control_ind_3        : 0
+  rcra_id_num_4                 : KSD007246846
+  off_site_loc_name_4           : SAFETY-KLEEN WICHITA
+  off_site_address_4            : 2549 N NEW YORK
+  off_site_city_4               : WICHITA
+  off_site_state_4              : KS
+  off_site_county_4             : SEDGWICK
+  off_site_province_4           :
+  off_site_zip_code_4           : 67219
+  off_site_control_ind_4        : 0
+  rcra_id_num_5                 :
+  off_site_loc_name_5           :
+  off_site_address_5            :
+  off_site_city_5               :
+  off_site_state_5              :
+  off_site_county_5             :
+  off_site_province_5           :
+  off_site_zip_code_5           :
+  off_site_control_ind_5        :
+  off_site_add_ind              : 0
+  off_site_total_transfers      : 0
+  disp_storage_only             : 0
+  disp_solid_stab               : 0
+  disp_wastewater_treat         : 0
+  disp_ungrnd_inj               : 0
+  disp_landfill_surf_imp        : 0
+  disp_land_treatment           : 0
+  disp_other_land_disp          : 0
+  disp_other_offsite_mgmt       : 0
+  disp_trans_waste_broker       : 0
+  disp_unknown                  : 0
+  off_site_energy_rec_transfers : 12925
+  off_site_recycle_transfers    : 112
+  off_site_waste_transfers      : 0
+  off_site_oloc_transfers       : 0
+  ons_wastestream_code_1        : N
+  ons_method_codes_1            :
+  ons_influent_conc_range_1     :
+  ons_sequential_treat_87_90_1  :
+  ons_efficiency_est_1          :
+  ons_efficiency_est_na_1       : 0
+  ons_operating_data_ind_1      : 2
+  ons_efficiency_range_code_1   :
+  ons_wastestream_code_2        :
+  ons_method_codes_2            :
+  ons_influent_conc_range_2     :
+  ons_sequential_treat_87_90_2  :
+  ons_efficiency_est_2          :
+  ons_efficiency_est_na_2       :
+  ons_operating_data_ind_2      :
+  ons_efficiency_range_code_2   :
+  ons_wastestream_code_3        :
+  ons_method_codes_3            :
+  ons_influent_conc_range_3     :
+  ons_sequential_treat_87_90_3  :
+  ons_efficiency_est_3          :
+  ons_efficiency_est_na_3       :
+  ons_operating_data_ind_3      :
+  ons_efficiency_range_code_3   :
+  ons_wastestream_code_4        :
+  ons_method_codes_4            :
+  ons_influent_conc_range_4     :
+  ons_sequential_treat_87_90_4  :
+  ons_efficiency_est_4          :
+  ons_efficiency_est_na_4       :
+  ons_operating_data_ind_4      :
+  ons_efficiency_range_code_4   :
+  ons_wastestream_code_5        :
+  ons_method_codes_5            :
+  ons_influent_conc_range_5     :
+  ons_sequential_treat_87_90_5  :
+  ons_efficiency_est_5          :
+  ons_efficiency_est_na_5       :
+  ons_operating_data_ind_5      :
+  ons_efficiency_range_code_5   :
+  ons_wastestream_code_6        :
+  ons_method_codes_6            :
+  ons_influent_conc_range_6     :
+  ons_sequential_treat_87_90_6  :
+  ons_efficiency_est_6          :
+  ons_efficiency_est_na_6       :
+  ons_operating_data_ind_6      :
+  ons_efficiency_range_code_6   :
+  ons_wastestream_code_7        :
+  ons_method_codes_7            :
+  ons_influent_conc_range_7     :
+  ons_sequential_treat_87_90_7  :
+  ons_efficiency_est_7          :
+  ons_efficiency_est_na_7       :
+  ons_operating_data_ind_7      :
+  ons_efficiency_range_code_7   :
+  ons_wastestream_code_8        :
+  ons_method_codes_8            :
+  ons_influent_conc_range_8     :
+  ons_sequential_treat_87_90_8  :
+  ons_efficiency_est_8          :
+  ons_efficiency_est_na_8       :
+  ons_operating_data_ind_8      :
+  ons_efficiency_range_code_8   :
+  ons_wastestream_code_9        :
+  ons_method_codes_9            :
+  ons_influent_conc_range_9     :
+  ons_sequential_treat_87_90_9  :
+  ons_efficiency_est_9          :
+  ons_efficiency_est_na_9       :
+  ons_operating_data_ind_9      :
+  ons_efficiency_range_code_9   :
+  ons_wastestream_add_ind       : 0
+  onsite_energy_proc_ind        : NA
+  onsite_energy_proc_codes      : NA
+  onsite_energy_proc_add_ind    : 0
+  onsite_recycle_proc_code_ind  : NA
+  onsite_recycle_proc_codes     : NA
+  onsite_recycle_proc_add_ind   : 0
+  source_reduction_ind          : NA
+  source_reduction_act_1        : NA
+  source_reduction_methods_1    :
+  source_reduction_act_2        :
+  source_reduction_methods_2    :
+  source_reduction_act_3        :
+  source_reduction_methods_3    :
+  source_reduction_act_4        :
+  source_reduction_methods_4    :
+  source_reduction_add_ind      : 0
+  sub_surf_imp_release_na       :
+  sub_surf_imp_tot_rel          :
+  sub_surf_imp_basis_est_code   :
+  sub_surf_release_range_code   :
+  oth_surf_imp_release_na       :
+  oth_surf_imp_tot_rel          :
+  oth_surf_imp_basis_est_code   :
+  oth_surf_release_range_code   :
+  primary_sic_code              : 3792
+  naics_codes                   : 336214
+  primary_naics_code            : 336214
+  reach_code_1                  :
+  reach_code_2                  :
+  reach_code_3                  :
+  est_annual_reduct_1           :
+  est_annual_reduct_2           :
+  est_annual_reduct_3           :
+  est_annual_reduct_4           :
+  potw_percentage_to_81c_1      :
+  potw_percentage_to_81c_2      :
+  potw_percentage_to_81d_1      :
+  potw_percentage_to_81d_2      :
+  potw_percentage_to_87_1       :
+  potw_percentage_to_87_2       :
+  potw_percentage_provided_1    :
+  potw_percentage_provided_2    :
+  potw_1_total_transfer         :
+  potw_2_total_transfer         :
+  potw_release_1                :
+  potw_release_2                :
+  potw_treatment_1              :
+  potw_treatment_2              :
+  potw_basis_est_code_1         :
+  potw_basis_est_code_2         :
+  potw_epa_registry_id_1        :
+  potw_epa_registry_id_2        :
+  off_site_epa_registry_id_1    :
+  off_site_epa_registry_id_2    :
+  off_site_epa_registry_id_3    :
+  off_site_epa_registry_id_4    :
+  off_site_epa_registry_id_5    :
+  
+  doc_ctrl_num                  : 1300140000148
+  sic_codes                     : 3713
+  fugitive_release_na           : 0
+  fugitive_tot_rel              : 1292
+  fugitive_basis_est_code       : C
+  fugitive_release_range_code   :
+  stack_release_na              : 0
+  stack_tot_rel                 : 11625
+  stack_basis_est_code          : C
+  stack_release_range_code      :
+  air_total_release             : 12917
+  water_body_name_1             : NA
+  water_release_1               : 0
+  water_basis_est_code_1        :
+  water_release_na_1            : 0
+  water_release_range_code_1    :
+  water_storm_water_na_1        : 0
+  storm_water_percent_1         :
+  water_body_name_2             :
+  water_release_2               :
+  water_basis_est_code_2        :
+  water_release_na_2            :
+  water_release_range_code_2    :
+  water_storm_water_na_2        :
+  storm_water_percent_2         :
+  water_body_name_3             :
+  water_release_3               :
+  water_basis_est_code_3        :
+  water_release_na_3            :
+  water_release_range_code_3    :
+  water_storm_water_na_3        :
+  storm_water_percent_3         :
+  water_bodies_add_ind          : 0
+  water_total_release           : 0
+  uninj_i_release_na            : 1
+  uninj_i_tot_rel               : 0
+  uninj_i_basis_est_code        :
+  uninj_i_release_range_code    :
+  uninj_iiv_release_na          : 1
+  uninj_iiv_tot_rel             : 0
+  uninj_iiv_basis_est_code      :
+  uninj_iiv_release_range_code  :
+  uninj_8795_release_na         :
+  uninj_8795_tot_rel            :
+  uninj_8795_basis_est_code     :
+  uninj_8795_release_range_code :
+  uninj_total_release           : 0
+  rcra_c_release_na             : 1
+  rcra_c_tot_rel                : 0
+  rcra_c_basis_est_code         :
+  rcra_c_release_range_code     :
+  oth_landf_release_na          : 1
+  oth_landf_tot_rel             : 0
+  oth_landf_basis_est_code      :
+  oth_landf_release_range_code  :
+  land_trea_release_na          : 1
+  land_trea_tot_rel             : 0
+  land_trea_basis_est_code      :
+  land_trea_release_range_code  :
+  surf_imp_release_na           : 1
+  surf_imp_tot_rel              : 0
+  surf_imp_basis_est_code       :
+  surf_release_range_code       :
+  oth_disp_release_na           : 1
+  oth_disp_tot_rel              : 0
+  oth_disp_basis_est_code       :
+  oth_disp_release_range_code   :
+  landf_8795_release_na         :
+  landf_8795_tot_rel            :
+  landf_8795_basis_est_code     :
+  landf_8795_release_range_code :
+  land_total_release            : 0
+  potw_tot_transfer             : 0
+  potw_basis_est_code           :
+  potw_name_1                   : NA
+  potw_address_1                :
+  potw_city_1                   :
+  potw_state_1                  :
+  potw_county_1                 :
+  potw_zip_code_1               :
+  potw_name_2                   :
+  potw_address_2                :
+  potw_city_2                   :
+  potw_state_2                  :
+  potw_county_2                 :
+  potw_zip_code_2               :
+  potw_add_address_ind          : 0
+  rcra_id_num_1                 : IND000780403
+  off_site_loc_name_1           : RECLAIMED ENERGY
+  off_site_address_1            : 1500 WESTERN AVE
+  off_site_city_1               : CONNERSVILLE
+  off_site_state_1              : IN
+  off_site_county_1             : FAYETTE
+  off_site_province_1           :
+  off_site_zip_code_1           : 47331
+  off_site_control_ind_1        : 0
+  rcra_id_num_2                 :
+  off_site_loc_name_2           :
+  off_site_address_2            :
+  off_site_city_2               :
+  off_site_state_2              :
+  off_site_county_2             :
+  off_site_province_2           :
+  off_site_zip_code_2           :
+  off_site_control_ind_2        :
+  rcra_id_num_3                 :
+  off_site_loc_name_3           :
+  off_site_address_3            :
+  off_site_city_3               :
+  off_site_state_3              :
+  off_site_county_3             :
+  off_site_province_3           :
+  off_site_zip_code_3           :
+  off_site_control_ind_3        :
+  rcra_id_num_4                 :
+  off_site_loc_name_4           :
+  off_site_address_4            :
+  off_site_city_4               :
+  off_site_state_4              :
+  off_site_county_4             :
+  off_site_province_4           :
+  off_site_zip_code_4           :
+  off_site_control_ind_4        :
+  rcra_id_num_5                 :
+  off_site_loc_name_5           :
+  off_site_address_5            :
+  off_site_city_5               :
+  off_site_state_5              :
+  off_site_county_5             :
+  off_site_province_5           :
+  off_site_zip_code_5           :
+  off_site_control_ind_5        :
+  off_site_add_ind              : 0
+  off_site_total_transfers      : 0
+  disp_storage_only             : 0
+  disp_solid_stab               : 0
+  disp_wastewater_treat         : 0
+  disp_ungrnd_inj               : 0
+  disp_landfill_surf_imp        : 0
+  disp_land_treatment           : 0
+  disp_other_land_disp          : 0
+  disp_other_offsite_mgmt       : 0
+  disp_trans_waste_broker       : 0
+  disp_unknown                  : 0
+  off_site_energy_rec_transfers : 597
+  off_site_recycle_transfers    : 0
+  off_site_waste_transfers      : 0
+  off_site_oloc_transfers       : 0
+  ons_wastestream_code_1        : N
+  ons_method_codes_1            :
+  ons_influent_conc_range_1     :
+  ons_sequential_treat_87_90_1  :
+  ons_efficiency_est_1          :
+  ons_efficiency_est_na_1       : 0
+  ons_operating_data_ind_1      : 2
+  ons_efficiency_range_code_1   :
+  ons_wastestream_code_2        :
+  ons_method_codes_2            :
+  ons_influent_conc_range_2     :
+  ons_sequential_treat_87_90_2  :
+  ons_efficiency_est_2          :
+  ons_efficiency_est_na_2       :
+  ons_operating_data_ind_2      :
+  ons_efficiency_range_code_2   :
+  ons_wastestream_code_3        :
+  ons_method_codes_3            :
+  ons_influent_conc_range_3     :
+  ons_sequential_treat_87_90_3  :
+  ons_efficiency_est_3          :
+  ons_efficiency_est_na_3       :
+  ons_operating_data_ind_3      :
+  ons_efficiency_range_code_3   :
+  ons_wastestream_code_4        :
+  ons_method_codes_4            :
+  ons_influent_conc_range_4     :
+  ons_sequential_treat_87_90_4  :
+  ons_efficiency_est_4          :
+  ons_efficiency_est_na_4       :
+  ons_operating_data_ind_4      :
+  ons_efficiency_range_code_4   :
+  ons_wastestream_code_5        :
+  ons_method_codes_5            :
+  ons_influent_conc_range_5     :
+  ons_sequential_treat_87_90_5  :
+  ons_efficiency_est_5          :
+  ons_efficiency_est_na_5       :
+  ons_operating_data_ind_5      :
+  ons_efficiency_range_code_5   :
+  ons_wastestream_code_6        :
+  ons_method_codes_6            :
+  ons_influent_conc_range_6     :
+  ons_sequential_treat_87_90_6  :
+  ons_efficiency_est_6          :
+  ons_efficiency_est_na_6       :
+  ons_operating_data_ind_6      :
+  ons_efficiency_range_code_6   :
+  ons_wastestream_code_7        :
+  ons_method_codes_7            :
+  ons_influent_conc_range_7     :
+  ons_sequential_treat_87_90_7  :
+  ons_efficiency_est_7          :
+  ons_efficiency_est_na_7       :
+  ons_operating_data_ind_7      :
+  ons_efficiency_range_code_7   :
+  ons_wastestream_code_8        :
+  ons_method_codes_8            :
+  ons_influent_conc_range_8     :
+  ons_sequential_treat_87_90_8  :
+  ons_efficiency_est_8          :
+  ons_efficiency_est_na_8       :
+  ons_operating_data_ind_8      :
+  ons_efficiency_range_code_8   :
+  ons_wastestream_code_9        :
+  ons_method_codes_9            :
+  ons_influent_conc_range_9     :
+  ons_sequential_treat_87_90_9  :
+  ons_efficiency_est_9          :
+  ons_efficiency_est_na_9       :
+  ons_operating_data_ind_9      :
+  ons_efficiency_range_code_9   :
+  ons_wastestream_add_ind       : 0
+  onsite_energy_proc_ind        : NA
+  onsite_energy_proc_codes      : NA
+  onsite_energy_proc_add_ind    : 0
+  onsite_recycle_proc_code_ind  : NA
+  onsite_recycle_proc_codes     : NA
+  onsite_recycle_proc_add_ind   : 0
+  source_reduction_ind          : NA
+  source_reduction_act_1        : NA
+  source_reduction_methods_1    :
+  source_reduction_act_2        :
+  source_reduction_methods_2    :
+  source_reduction_act_3        :
+  source_reduction_methods_3    :
+  source_reduction_act_4        :
+  source_reduction_methods_4    :
+  source_reduction_add_ind      : 0
+  sub_surf_imp_release_na       :
+  sub_surf_imp_tot_rel          :
+  sub_surf_imp_basis_est_code   :
+  sub_surf_release_range_code   :
+  oth_surf_imp_release_na       :
+  oth_surf_imp_tot_rel          :
+  oth_surf_imp_basis_est_code   :
+  oth_surf_release_range_code   :
+  primary_sic_code              : 3713
+  naics_codes                   : 336211
+  primary_naics_code            : 336211
+  reach_code_1                  :
+  reach_code_2                  :
+  reach_code_3                  :
+  est_annual_reduct_1           :
+  est_annual_reduct_2           :
+  est_annual_reduct_3           :
+  est_annual_reduct_4           :
+  potw_percentage_to_81c_1      :
+  potw_percentage_to_81c_2      :
+  potw_percentage_to_81d_1      :
+  potw_percentage_to_81d_2      :
+  potw_percentage_to_87_1       :
+  potw_percentage_to_87_2       :
+  potw_percentage_provided_1    :
+  potw_percentage_provided_2    :
+  potw_1_total_transfer         :
+  potw_2_total_transfer         :
+  potw_release_1                :
+  potw_release_2                :
+  potw_treatment_1              :
+  potw_treatment_2              :
+  potw_basis_est_code_1         :
+  potw_basis_est_code_2         :
+  potw_epa_registry_id_1        :
+  potw_epa_registry_id_2        :
+  off_site_epa_registry_id_1    :
+  off_site_epa_registry_id_2    :
+  off_site_epa_registry_id_3    :
+  off_site_epa_registry_id_4    :
+  off_site_epa_registry_id_5    :
+  
+  doc_ctrl_num                  : 1300140000151
+  sic_codes                     : 2015
+  fugitive_release_na           : 1
+  fugitive_tot_rel              : 0
+  fugitive_basis_est_code       :
+  fugitive_release_range_code   :
+  stack_release_na              : 1
+  stack_tot_rel                 : 0
+  stack_basis_est_code          :
+  stack_release_range_code      :
+  air_total_release             : 0
+  water_body_name_1             : STONEY CREEK
+  water_release_1               : 2245889
+  water_basis_est_code_1        : M
+  water_release_na_1            : 0
+  water_release_range_code_1    :
+  water_storm_water_na_1        : 0
+  storm_water_percent_1         : 0
+  water_body_name_2             :
+  water_release_2               :
+  water_basis_est_code_2        :
+  water_release_na_2            :
+  water_release_range_code_2    :
+  water_storm_water_na_2        :
+  storm_water_percent_2         :
+  water_body_name_3             :
+  water_release_3               :
+  water_basis_est_code_3        :
+  water_release_na_3            :
+  water_release_range_code_3    :
+  water_storm_water_na_3        :
+  storm_water_percent_3         :
+  water_bodies_add_ind          : 0
+  water_total_release           : 2245889
+  uninj_i_release_na            : 1
+  uninj_i_tot_rel               : 0
+  uninj_i_basis_est_code        :
+  uninj_i_release_range_code    :
+  uninj_iiv_release_na          : 1
+  uninj_iiv_tot_rel             : 0
+  uninj_iiv_basis_est_code      :
+  uninj_iiv_release_range_code  :
+  uninj_8795_release_na         :
+  uninj_8795_tot_rel            :
+  uninj_8795_basis_est_code     :
+  uninj_8795_release_range_code :
+  uninj_total_release           : 0
+  rcra_c_release_na             : 1
+  rcra_c_tot_rel                : 0
+  rcra_c_basis_est_code         :
+  rcra_c_release_range_code     :
+  oth_landf_release_na          : 1
+  oth_landf_tot_rel             : 0
+  oth_landf_basis_est_code      :
+  oth_landf_release_range_code  :
+  land_trea_release_na          : 1
+  land_trea_tot_rel             : 0
+  land_trea_basis_est_code      :
+  land_trea_release_range_code  :
+  surf_imp_release_na           : 0
+  surf_imp_tot_rel              : 6363
+  surf_imp_basis_est_code       : M
+  surf_release_range_code       :
+  oth_disp_release_na           : 1
+  oth_disp_tot_rel              : 0
+  oth_disp_basis_est_code       :
+  oth_disp_release_range_code   :
+  landf_8795_release_na         :
+  landf_8795_tot_rel            :
+  landf_8795_basis_est_code     :
+  landf_8795_release_range_code :
+  land_total_release            : 6363
+  potw_tot_transfer             : 0
+  potw_basis_est_code           :
+  potw_name_1                   : NA
+  potw_address_1                :
+  potw_city_1                   :
+  potw_state_1                  :
+  potw_county_1                 :
+  potw_zip_code_1               :
+  potw_name_2                   :
+  potw_address_2                :
+  potw_city_2                   :
+  potw_state_2                  :
+  potw_county_2                 :
+  potw_zip_code_2               :
+  potw_add_address_ind          : 0
+  rcra_id_num_1                 : NA
+  off_site_loc_name_1           : VALLEY FERTILIZER & CHEMICAL COMPANY, INC.
+  off_site_address_1            : 201 VALLEY ROAD
+  off_site_city_1               : MOUNT JACKSON
+  off_site_state_1              : VA
+  off_site_county_1             : SHENANDOAH
+  off_site_province_1           :
+  off_site_zip_code_1           : 22842
+  off_site_control_ind_1        : 0
+  rcra_id_num_2                 : NA
+  off_site_loc_name_2           : FARMS - MISCELLANEOUS
+  off_site_address_2            : STATE RTE. 710 & 693
+  off_site_city_2               : EDINBURG
+  off_site_state_2              : VA
+  off_site_county_2             : SHENANDOAH
+  off_site_province_2           :
+  off_site_zip_code_2           : 22824
+  off_site_control_ind_2        : 0
+  rcra_id_num_3                 :
+  off_site_loc_name_3           :
+  off_site_address_3            :
+  off_site_city_3               :
+  off_site_state_3              :
+  off_site_county_3             :
+  off_site_province_3           :
+  off_site_zip_code_3           :
+  off_site_control_ind_3        :
+  rcra_id_num_4                 :
+  off_site_loc_name_4           :
+  off_site_address_4            :
+  off_site_city_4               :
+  off_site_state_4              :
+  off_site_county_4             :
+  off_site_province_4           :
+  off_site_zip_code_4           :
+  off_site_control_ind_4        :
+  rcra_id_num_5                 :
+  off_site_loc_name_5           :
+  off_site_address_5            :
+  off_site_city_5               :
+  off_site_state_5              :
+  off_site_county_5             :
+  off_site_province_5           :
+  off_site_zip_code_5           :
+  off_site_control_ind_5        :
+  off_site_add_ind              : 0
+  off_site_total_transfers      : 3611
+  disp_storage_only             : 0
+  disp_solid_stab               : 0
+  disp_wastewater_treat         : 0
+  disp_ungrnd_inj               : 0
+  disp_landfill_surf_imp        : 0
+  disp_land_treatment           : 3611
+  disp_other_land_disp          : 0
+  disp_other_offsite_mgmt       : 0
+  disp_trans_waste_broker       : 0
+  disp_unknown                  : 0
+  off_site_energy_rec_transfers : 0
+  off_site_recycle_transfers    : 0
+  off_site_waste_transfers      : 0
+  off_site_oloc_transfers       : 0
+  ons_wastestream_code_1        : N
+  ons_method_codes_1            :
+  ons_influent_conc_range_1     :
+  ons_sequential_treat_87_90_1  :
+  ons_efficiency_est_1          :
+  ons_efficiency_est_na_1       : 0
+  ons_operating_data_ind_1      : 2
+  ons_efficiency_range_code_1   :
+  ons_wastestream_code_2        :
+  ons_method_codes_2            :
+  ons_influent_conc_range_2     :
+  ons_sequential_treat_87_90_2  :
+  ons_efficiency_est_2          :
+  ons_efficiency_est_na_2       :
+  ons_operating_data_ind_2      :
+  ons_efficiency_range_code_2   :
+  ons_wastestream_code_3        :
+  ons_method_codes_3            :
+  ons_influent_conc_range_3     :
+  ons_sequential_treat_87_90_3  :
+  ons_efficiency_est_3          :
+  ons_efficiency_est_na_3       :
+  ons_operating_data_ind_3      :
+  ons_efficiency_range_code_3   :
+  ons_wastestream_code_4        :
+  ons_method_codes_4            :
+  ons_influent_conc_range_4     :
+  ons_sequential_treat_87_90_4  :
+  ons_efficiency_est_4          :
+  ons_efficiency_est_na_4       :
+  ons_operating_data_ind_4      :
+  ons_efficiency_range_code_4   :
+  ons_wastestream_code_5        :
+  ons_method_codes_5            :
+  ons_influent_conc_range_5     :
+  ons_sequential_treat_87_90_5  :
+  ons_efficiency_est_5          :
+  ons_efficiency_est_na_5       :
+  ons_operating_data_ind_5      :
+  ons_efficiency_range_code_5   :
+  ons_wastestream_code_6        :
+  ons_method_codes_6            :
+  ons_influent_conc_range_6     :
+  ons_sequential_treat_87_90_6  :
+  ons_efficiency_est_6          :
+  ons_efficiency_est_na_6       :
+  ons_operating_data_ind_6      :
+  ons_efficiency_range_code_6   :
+  ons_wastestream_code_7        :
+  ons_method_codes_7            :
+  ons_influent_conc_range_7     :
+  ons_sequential_treat_87_90_7  :
+  ons_efficiency_est_7          :
+  ons_efficiency_est_na_7       :
+  ons_operating_data_ind_7      :
+  ons_efficiency_range_code_7   :
+  ons_wastestream_code_8        :
+  ons_method_codes_8            :
+  ons_influent_conc_range_8     :
+  ons_sequential_treat_87_90_8  :
+  ons_efficiency_est_8          :
+  ons_efficiency_est_na_8       :
+  ons_operating_data_ind_8      :
+  ons_efficiency_range_code_8   :
+  ons_wastestream_code_9        :
+  ons_method_codes_9            :
+  ons_influent_conc_range_9     :
+  ons_sequential_treat_87_90_9  :
+  ons_efficiency_est_9          :
+  ons_efficiency_est_na_9       :
+  ons_operating_data_ind_9      :
+  ons_efficiency_range_code_9   :
+  ons_wastestream_add_ind       : 0
+  onsite_energy_proc_ind        : NA
+  onsite_energy_proc_codes      : NA
+  onsite_energy_proc_add_ind    : 0
+  onsite_recycle_proc_code_ind  : NA
+  onsite_recycle_proc_codes     : NA
+  onsite_recycle_proc_add_ind   : 0
+  source_reduction_ind          : NA
+  source_reduction_act_1        : NA
+  source_reduction_methods_1    :
+  source_reduction_act_2        :
+  source_reduction_methods_2    :
+  source_reduction_act_3        :
+  source_reduction_methods_3    :
+  source_reduction_act_4        :
+  source_reduction_methods_4    :
+  source_reduction_add_ind      : 0
+  sub_surf_imp_release_na       :
+  sub_surf_imp_tot_rel          :
+  sub_surf_imp_basis_est_code   :
+  sub_surf_release_range_code   :
+  oth_surf_imp_release_na       :
+  oth_surf_imp_tot_rel          :
+  oth_surf_imp_basis_est_code   :
+  oth_surf_release_range_code   :
+  primary_sic_code              : 2015
+  naics_codes                   : 311615
+  primary_naics_code            : 311615
+  reach_code_1                  :
+  reach_code_2                  :
+  reach_code_3                  :
+  est_annual_reduct_1           :
+  est_annual_reduct_2           :
+  est_annual_reduct_3           :
+  est_annual_reduct_4           :
+  potw_percentage_to_81c_1      :
+  potw_percentage_to_81c_2      :
+  potw_percentage_to_81d_1      :
+  potw_percentage_to_81d_2      :
+  potw_percentage_to_87_1       :
+  potw_percentage_to_87_2       :
+  potw_percentage_provided_1    :
+  potw_percentage_provided_2    :
+  potw_1_total_transfer         :
+  potw_2_total_transfer         :
+  potw_release_1                :
+  potw_release_2                :
+  potw_treatment_1              :
+  potw_treatment_2              :
+  potw_basis_est_code_1         :
+  potw_basis_est_code_2         :
+  potw_epa_registry_id_1        :
+  potw_epa_registry_id_2        :
+  off_site_epa_registry_id_1    :
+  off_site_epa_registry_id_2    :
+  off_site_epa_registry_id_3    :
+  off_site_epa_registry_id_4    :
+  off_site_epa_registry_id_5    :
+  
+  doc_ctrl_num                  : 1300140000163
+  sic_codes                     : 3089
+  fugitive_release_na           : 0
+  fugitive_tot_rel              : 750
+  fugitive_basis_est_code       : O
+  fugitive_release_range_code   : 4
+  stack_release_na              : 0
+  stack_tot_rel                 : 12000
+  stack_basis_est_code          : O
+  stack_release_range_code      :
+  air_total_release             : 12750
+  water_body_name_1             : NA
+  water_release_1               : 0
+  water_basis_est_code_1        :
+  water_release_na_1            : 0
+  water_release_range_code_1    :
+  water_storm_water_na_1        : 0
+  storm_water_percent_1         :
+  water_body_name_2             :
+  water_release_2               :
+  water_basis_est_code_2        :
+  water_release_na_2            :
+  water_release_range_code_2    :
+  water_storm_water_na_2        :
+  storm_water_percent_2         :
+  water_body_name_3             :
+  water_release_3               :
+  water_basis_est_code_3        :
+  water_release_na_3            :
+  water_release_range_code_3    :
+  water_storm_water_na_3        :
+  storm_water_percent_3         :
+  water_bodies_add_ind          : 0
+  water_total_release           : 0
+  uninj_i_release_na            : 1
+  uninj_i_tot_rel               : 0
+  uninj_i_basis_est_code        :
+  uninj_i_release_range_code    :
+  uninj_iiv_release_na          : 1
+  uninj_iiv_tot_rel             : 0
+  uninj_iiv_basis_est_code      :
+  uninj_iiv_release_range_code  :
+  uninj_8795_release_na         :
+  uninj_8795_tot_rel            :
+  uninj_8795_basis_est_code     :
+  uninj_8795_release_range_code :
+  uninj_total_release           : 0
+  rcra_c_release_na             : 1
+  rcra_c_tot_rel                : 0
+  rcra_c_basis_est_code         :
+  rcra_c_release_range_code     :
+  oth_landf_release_na          : 1
+  oth_landf_tot_rel             : 0
+  oth_landf_basis_est_code      :
+  oth_landf_release_range_code  :
+  land_trea_release_na          : 1
+  land_trea_tot_rel             : 0
+  land_trea_basis_est_code      :
+  land_trea_release_range_code  :
+  surf_imp_release_na           : 1
+  surf_imp_tot_rel              : 0
+  surf_imp_basis_est_code       :
+  surf_release_range_code       :
+  oth_disp_release_na           : 1
+  oth_disp_tot_rel              : 0
+  oth_disp_basis_est_code       :
+  oth_disp_release_range_code   :
+  landf_8795_release_na         :
+  landf_8795_tot_rel            :
+  landf_8795_basis_est_code     :
+  landf_8795_release_range_code :
+  land_total_release            : 0
+  potw_tot_transfer             : 0
+  potw_basis_est_code           :
+  potw_name_1                   : NA
+  potw_address_1                :
+  potw_city_1                   :
+  potw_state_1                  :
+  potw_county_1                 :
+  potw_zip_code_1               :
+  potw_name_2                   :
+  potw_address_2                :
+  potw_city_2                   :
+  potw_state_2                  :
+  potw_county_2                 :
+  potw_zip_code_2               :
+  potw_add_address_ind          : 0
+  rcra_id_num_1                 : NA
+  off_site_loc_name_1           : NA
+  off_site_address_1            :
+  off_site_city_1               :
+  off_site_state_1              :
+  off_site_county_1             :
+  off_site_province_1           :
+  off_site_zip_code_1           :
+  off_site_control_ind_1        : 2
+  rcra_id_num_2                 :
+  off_site_loc_name_2           :
+  off_site_address_2            :
+  off_site_city_2               :
+  off_site_state_2              :
+  off_site_county_2             :
+  off_site_province_2           :
+  off_site_zip_code_2           :
+  off_site_control_ind_2        :
+  rcra_id_num_3                 :
+  off_site_loc_name_3           :
+  off_site_address_3            :
+  off_site_city_3               :
+  off_site_state_3              :
+  off_site_county_3             :
+  off_site_province_3           :
+  off_site_zip_code_3           :
+  off_site_control_ind_3        :
+  rcra_id_num_4                 :
+  off_site_loc_name_4           :
+  off_site_address_4            :
+  off_site_city_4               :
+  off_site_state_4              :
+  off_site_county_4             :
+  off_site_province_4           :
+  off_site_zip_code_4           :
+  off_site_control_ind_4        :
+  rcra_id_num_5                 :
+  off_site_loc_name_5           :
+  off_site_address_5            :
+  off_site_city_5               :
+  off_site_state_5              :
+  off_site_county_5             :
+  off_site_province_5           :
+  off_site_zip_code_5           :
+  off_site_control_ind_5        :
+  off_site_add_ind              : 0
+  off_site_total_transfers      : 0
+  disp_storage_only             : 0
+  disp_solid_stab               : 0
+  disp_wastewater_treat         : 0
+  disp_ungrnd_inj               : 0
+  disp_landfill_surf_imp        : 0
+  disp_land_treatment           : 0
+  disp_other_land_disp          : 0
+  disp_other_offsite_mgmt       : 0
+  disp_trans_waste_broker       : 0
+  disp_unknown                  : 0
+  off_site_energy_rec_transfers : 0
+  off_site_recycle_transfers    : 0
+  off_site_waste_transfers      : 0
+  off_site_oloc_transfers       : 0
+  ons_wastestream_code_1        : N
+  ons_method_codes_1            :
+  ons_influent_conc_range_1     :
+  ons_sequential_treat_87_90_1  :
+  ons_efficiency_est_1          :
+  ons_efficiency_est_na_1       : 0
+  ons_operating_data_ind_1      : 2
+  ons_efficiency_range_code_1   :
+  ons_wastestream_code_2        :
+  ons_method_codes_2            :
+  ons_influent_conc_range_2     :
+  ons_sequential_treat_87_90_2  :
+  ons_efficiency_est_2          :
+  ons_efficiency_est_na_2       :
+  ons_operating_data_ind_2      :
+  ons_efficiency_range_code_2   :
+  ons_wastestream_code_3        :
+  ons_method_codes_3            :
+  ons_influent_conc_range_3     :
+  ons_sequential_treat_87_90_3  :
+  ons_efficiency_est_3          :
+  ons_efficiency_est_na_3       :
+  ons_operating_data_ind_3      :
+  ons_efficiency_range_code_3   :
+  ons_wastestream_code_4        :
+  ons_method_codes_4            :
+  ons_influent_conc_range_4     :
+  ons_sequential_treat_87_90_4  :
+  ons_efficiency_est_4          :
+  ons_efficiency_est_na_4       :
+  ons_operating_data_ind_4      :
+  ons_efficiency_range_code_4   :
+  ons_wastestream_code_5        :
+  ons_method_codes_5            :
+  ons_influent_conc_range_5     :
+  ons_sequential_treat_87_90_5  :
+  ons_efficiency_est_5          :
+  ons_efficiency_est_na_5       :
+  ons_operating_data_ind_5      :
+  ons_efficiency_range_code_5   :
+  ons_wastestream_code_6        :
+  ons_method_codes_6            :
+  ons_influent_conc_range_6     :
+  ons_sequential_treat_87_90_6  :
+  ons_efficiency_est_6          :
+  ons_efficiency_est_na_6       :
+  ons_operating_data_ind_6      :
+  ons_efficiency_range_code_6   :
+  ons_wastestream_code_7        :
+  ons_method_codes_7            :
+  ons_influent_conc_range_7     :
+  ons_sequential_treat_87_90_7  :
+  ons_efficiency_est_7          :
+  ons_efficiency_est_na_7       :
+  ons_operating_data_ind_7      :
+  ons_efficiency_range_code_7   :
+  ons_wastestream_code_8        :
+  ons_method_codes_8            :
+  ons_influent_conc_range_8     :
+  ons_sequential_treat_87_90_8  :
+  ons_efficiency_est_8          :
+  ons_efficiency_est_na_8       :
+  ons_operating_data_ind_8      :
+  ons_efficiency_range_code_8   :
+  ons_wastestream_code_9        :
+  ons_method_codes_9            :
+  ons_influent_conc_range_9     :
+  ons_sequential_treat_87_90_9  :
+  ons_efficiency_est_9          :
+  ons_efficiency_est_na_9       :
+  ons_operating_data_ind_9      :
+  ons_efficiency_range_code_9   :
+  ons_wastestream_add_ind       : 0
+  onsite_energy_proc_ind        : NA
+  onsite_energy_proc_codes      : NA
+  onsite_energy_proc_add_ind    : 0
+  onsite_recycle_proc_code_ind  : NA
+  onsite_recycle_proc_codes     : NA
+  onsite_recycle_proc_add_ind   : 0
+  source_reduction_ind          :
+  source_reduction_act_1        : W82
+  source_reduction_methods_1    : T11
+  source_reduction_act_2        : NA
+  source_reduction_methods_2    :
+  source_reduction_act_3        :
+  source_reduction_methods_3    :
+  source_reduction_act_4        :
+  source_reduction_methods_4    :
+  source_reduction_add_ind      : 0
+  sub_surf_imp_release_na       :
+  sub_surf_imp_tot_rel          :
+  sub_surf_imp_basis_est_code   :
+  sub_surf_release_range_code   :
+  oth_surf_imp_release_na       :
+  oth_surf_imp_tot_rel          :
+  oth_surf_imp_basis_est_code   :
+  oth_surf_release_range_code   :
+  primary_sic_code              : 3089
+  naics_codes                   : 326122
+  primary_naics_code            : 326122
+  reach_code_1                  :
+  reach_code_2                  :
+  reach_code_3                  :
+  est_annual_reduct_1           :
+  est_annual_reduct_2           :
+  est_annual_reduct_3           :
+  est_annual_reduct_4           :
+  potw_percentage_to_81c_1      :
+  potw_percentage_to_81c_2      :
+  potw_percentage_to_81d_1      :
+  potw_percentage_to_81d_2      :
+  potw_percentage_to_87_1       :
+  potw_percentage_to_87_2       :
+  potw_percentage_provided_1    :
+  potw_percentage_provided_2    :
+  potw_1_total_transfer         :
+  potw_2_total_transfer         :
+  potw_release_1                :
+  potw_release_2                :
+  potw_treatment_1              :
+  potw_treatment_2              :
+  potw_basis_est_code_1         :
+  potw_basis_est_code_2         :
+  potw_epa_registry_id_1        :
+  potw_epa_registry_id_2        :
+  off_site_epa_registry_id_1    :
+  off_site_epa_registry_id_2    :
+  off_site_epa_registry_id_3    :
+  off_site_epa_registry_id_4    :
+  off_site_epa_registry_id_5    :
+  
+  doc_ctrl_num                  : 1300140000175
+  sic_codes                     : 2599
+  fugitive_release_na           : 0
+  fugitive_tot_rel              : 6964
+  fugitive_basis_est_code       : C
+  fugitive_release_range_code   :
+  stack_release_na              : 1
+  stack_tot_rel                 : 0
+  stack_basis_est_code          :
+  stack_release_range_code      :
+  air_total_release             : 6964
+  water_body_name_1             : NA
+  water_release_1               : 0
+  water_basis_est_code_1        :
+  water_release_na_1            : 0
+  water_release_range_code_1    :
+  water_storm_water_na_1        : 0
+  storm_water_percent_1         :
+  water_body_name_2             :
+  water_release_2               :
+  water_basis_est_code_2        :
+  water_release_na_2            :
+  water_release_range_code_2    :
+  water_storm_water_na_2        :
+  storm_water_percent_2         :
+  water_body_name_3             :
+  water_release_3               :
+  water_basis_est_code_3        :
+  water_release_na_3            :
+  water_release_range_code_3    :
+  water_storm_water_na_3        :
+  storm_water_percent_3         :
+  water_bodies_add_ind          : 0
+  water_total_release           : 0
+  uninj_i_release_na            : 1
+  uninj_i_tot_rel               : 0
+  uninj_i_basis_est_code        :
+  uninj_i_release_range_code    :
+  uninj_iiv_release_na          : 1
+  uninj_iiv_tot_rel             : 0
+  uninj_iiv_basis_est_code      :
+  uninj_iiv_release_range_code  :
+  uninj_8795_release_na         :
+  uninj_8795_tot_rel            :
+  uninj_8795_basis_est_code     :
+  uninj_8795_release_range_code :
+  uninj_total_release           : 0
+  rcra_c_release_na             : 1
+  rcra_c_tot_rel                : 0
+  rcra_c_basis_est_code         :
+  rcra_c_release_range_code     :
+  oth_landf_release_na          : 1
+  oth_landf_tot_rel             : 0
+  oth_landf_basis_est_code      :
+  oth_landf_release_range_code  :
+  land_trea_release_na          : 1
+  land_trea_tot_rel             : 0
+  land_trea_basis_est_code      :
+  land_trea_release_range_code  :
+  surf_imp_release_na           : 1
+  surf_imp_tot_rel              : 0
+  surf_imp_basis_est_code       :
+  surf_release_range_code       :
+  oth_disp_release_na           : 1
+  oth_disp_tot_rel              : 0
+  oth_disp_basis_est_code       :
+  oth_disp_release_range_code   :
+  landf_8795_release_na         :
+  landf_8795_tot_rel            :
+  landf_8795_basis_est_code     :
+  landf_8795_release_range_code :
+  land_total_release            : 0
+  potw_tot_transfer             : 0
+  potw_basis_est_code           :
+  potw_name_1                   : NA
+  potw_address_1                :
+  potw_city_1                   :
+  potw_state_1                  :
+  potw_county_1                 :
+  potw_zip_code_1               :
+  potw_name_2                   :
+  potw_address_2                :
+  potw_city_2                   :
+  potw_state_2                  :
+  potw_county_2                 :
+  potw_zip_code_2               :
+  potw_add_address_ind          : 0
+  rcra_id_num_1                 : ARD981057870
+  off_site_loc_name_1           : RINECO
+  off_site_address_1            : 819 VULCAN ROAD
+  off_site_city_1               : BENTON
+  off_site_state_1              : AR
+  off_site_county_1             : SALINE
+  off_site_province_1           :
+  off_site_zip_code_1           : 72105
+  off_site_control_ind_1        : 0
+  rcra_id_num_2                 :
+  off_site_loc_name_2           :
+  off_site_address_2            :
+  off_site_city_2               :
+  off_site_state_2              :
+  off_site_county_2             :
+  off_site_province_2           :
+  off_site_zip_code_2           :
+  off_site_control_ind_2        :
+  rcra_id_num_3                 :
+  off_site_loc_name_3           :
+  off_site_address_3            :
+  off_site_city_3               :
+  off_site_state_3              :
+  off_site_county_3             :
+  off_site_province_3           :
+  off_site_zip_code_3           :
+  off_site_control_ind_3        :
+  rcra_id_num_4                 :
+  off_site_loc_name_4           :
+  off_site_address_4            :
+  off_site_city_4               :
+  off_site_state_4              :
+  off_site_county_4             :
+  off_site_province_4           :
+  off_site_zip_code_4           :
+  off_site_control_ind_4        :
+  rcra_id_num_5                 :
+  off_site_loc_name_5           :
+  off_site_address_5            :
+  off_site_city_5               :
+  off_site_state_5              :
+  off_site_county_5             :
+  off_site_province_5           :
+  off_site_zip_code_5           :
+  off_site_control_ind_5        :
+  off_site_add_ind              : 0
+  off_site_total_transfers      : 0
+  disp_storage_only             : 0
+  disp_solid_stab               : 0
+  disp_wastewater_treat         : 0
+  disp_ungrnd_inj               : 0
+  disp_landfill_surf_imp        : 0
+  disp_land_treatment           : 0
+  disp_other_land_disp          : 0
+  disp_other_offsite_mgmt       : 0
+  disp_trans_waste_broker       : 0
+  disp_unknown                  : 0
+  off_site_energy_rec_transfers : 245
+  off_site_recycle_transfers    : 0
+  off_site_waste_transfers      : 0
+  off_site_oloc_transfers       : 0
+  ons_wastestream_code_1        : N
+  ons_method_codes_1            :
+  ons_influent_conc_range_1     :
+  ons_sequential_treat_87_90_1  :
+  ons_efficiency_est_1          :
+  ons_efficiency_est_na_1       : 0
+  ons_operating_data_ind_1      : 2
+  ons_efficiency_range_code_1   :
+  ons_wastestream_code_2        :
+  ons_method_codes_2            :
+  ons_influent_conc_range_2     :
+  ons_sequential_treat_87_90_2  :
+  ons_efficiency_est_2          :
+  ons_efficiency_est_na_2       :
+  ons_operating_data_ind_2      :
+  ons_efficiency_range_code_2   :
+  ons_wastestream_code_3        :
+  ons_method_codes_3            :
+  ons_influent_conc_range_3     :
+  ons_sequential_treat_87_90_3  :
+  ons_efficiency_est_3          :
+  ons_efficiency_est_na_3       :
+  ons_operating_data_ind_3      :
+  ons_efficiency_range_code_3   :
+  ons_wastestream_code_4        :
+  ons_method_codes_4            :
+  ons_influent_conc_range_4     :
+  ons_sequential_treat_87_90_4  :
+  ons_efficiency_est_4          :
+  ons_efficiency_est_na_4       :
+  ons_operating_data_ind_4      :
+  ons_efficiency_range_code_4   :
+  ons_wastestream_code_5        :
+  ons_method_codes_5            :
+  ons_influent_conc_range_5     :
+  ons_sequential_treat_87_90_5  :
+  ons_efficiency_est_5          :
+  ons_efficiency_est_na_5       :
+  ons_operating_data_ind_5      :
+  ons_efficiency_range_code_5   :
+  ons_wastestream_code_6        :
+  ons_method_codes_6            :
+  ons_influent_conc_range_6     :
+  ons_sequential_treat_87_90_6  :
+  ons_efficiency_est_6          :
+  ons_efficiency_est_na_6       :
+  ons_operating_data_ind_6      :
+  ons_efficiency_range_code_6   :
+  ons_wastestream_code_7        :
+  ons_method_codes_7            :
+  ons_influent_conc_range_7     :
+  ons_sequential_treat_87_90_7  :
+  ons_efficiency_est_7          :
+  ons_efficiency_est_na_7       :
+  ons_operating_data_ind_7      :
+  ons_efficiency_range_code_7   :
+  ons_wastestream_code_8        :
+  ons_method_codes_8            :
+  ons_influent_conc_range_8     :
+  ons_sequential_treat_87_90_8  :
+  ons_efficiency_est_8          :
+  ons_efficiency_est_na_8       :
+  ons_operating_data_ind_8      :
+  ons_efficiency_range_code_8   :
+  ons_wastestream_code_9        :
+  ons_method_codes_9            :
+  ons_influent_conc_range_9     :
+  ons_sequential_treat_87_90_9  :
+  ons_efficiency_est_9          :
+  ons_efficiency_est_na_9       :
+  ons_operating_data_ind_9      :
+  ons_efficiency_range_code_9   :
+  ons_wastestream_add_ind       : 0
+  onsite_energy_proc_ind        : NA
+  onsite_energy_proc_codes      : NA
+  onsite_energy_proc_add_ind    : 0
+  onsite_recycle_proc_code_ind  : NA
+  onsite_recycle_proc_codes     : NA
+  onsite_recycle_proc_add_ind   : 0
+  source_reduction_ind          : NA
+  source_reduction_act_1        : NA
+  source_reduction_methods_1    :
+  source_reduction_act_2        :
+  source_reduction_methods_2    :
+  source_reduction_act_3        :
+  source_reduction_methods_3    :
+  source_reduction_act_4        :
+  source_reduction_methods_4    :
+  source_reduction_add_ind      : 0
+  sub_surf_imp_release_na       :
+  sub_surf_imp_tot_rel          :
+  sub_surf_imp_basis_est_code   :
+  sub_surf_release_range_code   :
+  oth_surf_imp_release_na       :
+  oth_surf_imp_tot_rel          :
+  oth_surf_imp_basis_est_code   :
+  oth_surf_release_range_code   :
+  primary_sic_code              : 2599
+  naics_codes                   : 337127
+  primary_naics_code            : 337127
+  reach_code_1                  :
+  reach_code_2                  :
+  reach_code_3                  :
+  est_annual_reduct_1           :
+  est_annual_reduct_2           :
+  est_annual_reduct_3           :
+  est_annual_reduct_4           :
+  potw_percentage_to_81c_1      :
+  potw_percentage_to_81c_2      :
+  potw_percentage_to_81d_1      :
+  potw_percentage_to_81d_2      :
+  potw_percentage_to_87_1       :
+  potw_percentage_to_87_2       :
+  potw_percentage_provided_1    :
+  potw_percentage_provided_2    :
+  potw_1_total_transfer         :
+  potw_2_total_transfer         :
+  potw_release_1                :
+  potw_release_2                :
+  potw_treatment_1              :
+  potw_treatment_2              :
+  potw_basis_est_code_1         :
+  potw_basis_est_code_2         :
+  potw_epa_registry_id_1        :
+  potw_epa_registry_id_2        :
+  off_site_epa_registry_id_1    :
+  off_site_epa_registry_id_2    :
+  off_site_epa_registry_id_3    :
+  off_site_epa_registry_id_4    :
+off_site_epa_registry_id_5    :
   }
 ]
