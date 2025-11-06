@@ -7,8 +7,13 @@ fetch('/data/placeholder.json')
 
     const tableBody = document.getElementById('data-table-body');
     if (tableBody) {
+      let rowClass = '';
+      if (data.aqi <= 50) rowClass = 'aqi-good';
+      else if (data.aqi <= 100) rowClass = 'aqi-moderate';
+      else rowClass = 'aqi-unhealthy';
+
       tableBody.innerHTML = `
-        <tr>
+        <tr class="${rowClass}">
           <td>${data.city}</td>
           <td>${data.aqi}</td>
           <td>${data.status}</td>
@@ -16,6 +21,7 @@ fetch('/data/placeholder.json')
         </tr>`;
     }
 
+    // Bar visualization
     const chartContainer = document.getElementById('charts');
     if (chartContainer) {
       const maxAQI = 500;
@@ -42,7 +48,7 @@ fetch('/data/placeholder.json')
       chartContainer.appendChild(barWrapper);
     }
 
-    // === AQI Summary ===
+    // AQI Summary
     const aqiSummary = document.getElementById('aqi-summary');
     if (aqiSummary) {
       let statusText;
@@ -67,13 +73,20 @@ fetch('/data/tri.json')
 
     const triBody = document.getElementById('tri-table-body');
     if (triBody) {
-      triBody.innerHTML = tri.map(item => `
-        <tr>
-          <td>${item.facility}</td>
-          <td>${item.chemical}</td>
-          <td>${item.release_lbs}</td>
-          <td>${item.year}</td>
-        </tr>`).join('');
+      triBody.innerHTML = tri.map(item => {
+        let rowClass = '';
+        if (item.release_lbs < 1000) rowClass = 'pollution-low';
+        else if (item.release_lbs < 10000) rowClass = 'pollution-medium';
+        else rowClass = 'pollution-high';
+
+        return `
+          <tr class="${rowClass}">
+            <td>${item.facility}</td>
+            <td>${item.chemical}</td>
+            <td>${item.release_lbs}</td>
+            <td>${item.year}</td>
+          </tr>`;
+      }).join('');
     }
 
     const triChart = document.getElementById('tri-chart');
@@ -99,7 +112,7 @@ fetch('/data/tri.json')
       });
     }
 
-    // === TRI Summary with Contextual Comparison ===
+    // TRI Summary with Contextual Comparison
     const triSummary = document.getElementById('tri-summary');
     if (triSummary && tri.length > 0) {
       const total = tri.reduce((sum, item) => sum + item.release_lbs, 0);
@@ -127,13 +140,20 @@ fetch('/data/violations.json')
 
     const vBody = document.getElementById('violations-table-body');
     if (vBody) {
-      vBody.innerHTML = violations.map(v => `
-        <tr>
-          <td>${v.facility}</td>
-          <td>${v.type}</td>
-          <td>${v.count}</td>
-          <td>${v.penalty}</td>
-        </tr>`).join('');
+      vBody.innerHTML = violations.map(v => {
+        let rowClass = '';
+        if (v.penalty < 50000) rowClass = 'penalty-small';
+        else if (v.penalty < 200000) rowClass = 'penalty-medium';
+        else rowClass = 'penalty-large';
+
+        return `
+          <tr class="${rowClass}">
+            <td>${v.facility}</td>
+            <td>${v.type}</td>
+            <td>${v.count}</td>
+            <td>$${v.penalty.toLocaleString()}</td>
+          </tr>`;
+      }).join('');
     }
 
     const leaderboard = document.getElementById('violations-leaderboard');
@@ -145,7 +165,7 @@ fetch('/data/violations.json')
       });
     }
 
-    // === Violations Summary with Contextual Comparison ===
+    // Violations Summary with Contextual Comparison
     const vSummary = document.getElementById('violations-summary');
     if (vSummary && violations.length > 0) {
       const totalViolations = violations.reduce((sum, v) => sum + v.count, 0);
