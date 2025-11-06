@@ -21,7 +21,7 @@ fetch('/data/placeholder.json')
         </tr>`;
     }
 
-    // Bar visualization
+    // Bar visualization with direct label
     const chartContainer = document.getElementById('charts');
     if (chartContainer) {
       const maxAQI = 500;
@@ -30,25 +30,34 @@ fetch('/data/placeholder.json')
       const barWrapper = document.createElement('div');
       barWrapper.style.background = '#eee';
       barWrapper.style.border = '1px solid var(--secondary)';
-      barWrapper.style.height = '30px';
+      barWrapper.style.height = '40px';
       barWrapper.style.width = '100%';
       barWrapper.style.marginTop = '1rem';
+      barWrapper.style.position = 'relative';
 
       const bar = document.createElement('div');
       bar.style.height = '100%';
       bar.style.width = barWidth + '%';
       bar.style.background = data.aqi <= 50 ? 'var(--accent)' : 'var(--alert)';
-      bar.style.textAlign = 'right';
-      bar.style.color = '#fff';
-      bar.style.paddingRight = '0.5rem';
-      bar.style.fontWeight = 'bold';
-      bar.textContent = data.aqi;
+
+      const label = document.createElement('span');
+      label.style.position = 'absolute';
+      label.style.left = '50%';
+      label.style.top = '50%';
+      label.style.transform = 'translate(-50%, -50%)';
+      label.style.color = '#fff';
+      label.style.fontWeight = 'bold';
+      label.style.textShadow = '0 1px 2px rgba(0,0,0,0.5)';
+
+      if (data.aqi <= 50) label.textContent = `${data.aqi} Good ✅`;
+      else if (data.aqi <= 100) label.textContent = `${data.aqi} Moderate ⚠️`;
+      else label.textContent = `${data.aqi} Unhealthy ❌`;
 
       barWrapper.appendChild(bar);
+      barWrapper.appendChild(label);
       chartContainer.appendChild(barWrapper);
     }
 
-    // AQI Summary
     const aqiSummary = document.getElementById('aqi-summary');
     if (aqiSummary) {
       let statusText;
@@ -95,34 +104,39 @@ fetch('/data/tri.json')
         const barWrapper = document.createElement('div');
         barWrapper.style.background = '#eee';
         barWrapper.style.margin = '0.25rem 0';
-        barWrapper.style.height = '20px';
+        barWrapper.style.height = '25px';
+        barWrapper.style.position = 'relative';
 
         const bar = document.createElement('div');
         const width = Math.min((item.release_lbs / 100000) * 100, 100);
         bar.style.width = width + '%';
         bar.style.height = '100%';
         bar.style.background = 'var(--alert)';
-        bar.style.color = '#fff';
-        bar.style.fontSize = '0.8rem';
-        bar.style.textAlign = 'right';
-        bar.textContent = item.release_lbs + ' lbs';
+
+        const label = document.createElement('span');
+        label.style.position = 'absolute';
+        label.style.left = '50%';
+        label.style.top = '50%';
+        label.style.transform = 'translate(-50%, -50%)';
+        label.style.color = '#fff';
+        label.style.fontSize = '0.8rem';
+        label.style.fontWeight = 'bold';
+        label.style.textShadow = '0 1px 2px rgba(0,0,0,0.5)';
+
+        if (item.release_lbs < 1000) label.textContent = `${item.release_lbs} lbs Low 🟦`;
+        else if (item.release_lbs < 10000) label.textContent = `${item.release_lbs} lbs Medium 🟨`;
+        else label.textContent = `${item.release_lbs} lbs High 🟥`;
 
         barWrapper.appendChild(bar);
+        barWrapper.appendChild(label);
         triChart.appendChild(barWrapper);
       });
     }
 
-    // TRI Summary with Contextual Comparison
     const triSummary = document.getElementById('tri-summary');
     if (triSummary && tri.length > 0) {
       const total = tri.reduce((sum, item) => sum + item.release_lbs, 0);
-      let comparison;
-      if (total < 100) comparison = "≈ the weight of a car tire.";
-      else if (total < 1000) comparison = "≈ the weight of a motorcycle.";
-      else if (total < 10000) comparison = "≈ the weight of a pickup truck.";
-      else if (total < 50000) comparison = "≈ the weight of a school bus.";
-      else comparison = "≈ multiple semi‑trucks full of waste.";
-      triSummary.textContent = `Local facilities released ${total.toLocaleString()} lbs of toxic chemicals in ${tri[0].year}, ${comparison}`;
+      triSummary.textContent = `Local facilities released ${total.toLocaleString()} lbs of toxic chemicals in ${tri[0].year}.`;
     }
   })
   .catch(err => {
@@ -159,25 +173,22 @@ fetch('/data/violations.json')
     const leaderboard = document.getElementById('violations-leaderboard');
     if (leaderboard) {
       violations.forEach(v => {
+        let icon = '';
+        if (v.penalty < 50000) icon = '💵 Small';
+        else if (v.penalty < 200000) icon = '💰 Medium';
+        else icon = '🏦 Large';
+
         const row = document.createElement('div');
-        row.textContent = `${v.facility} – ${v.count} violations`;
+        row.textContent = `${v.facility} – ${v.count} violations (${icon})`;
         leaderboard.appendChild(row);
       });
     }
 
-    // Violations Summary with Contextual Comparison
     const vSummary = document.getElementById('violations-summary');
     if (vSummary && violations.length > 0) {
       const totalViolations = violations.reduce((sum, v) => sum + v.count, 0);
       const totalPenalty = violations.reduce((sum, v) => sum + v.penalty, 0);
-
-      let penaltyComparison;
-      if (totalPenalty < 50000) penaltyComparison = "≈ cost of a new car.";
-      else if (totalPenalty < 200000) penaltyComparison = "≈ cost of a house down payment.";
-      else if (totalPenalty < 1000000) penaltyComparison = "≈ cost of a small apartment building.";
-      else penaltyComparison = "≈ millions in damages — enough to fund a school or hospital.";
-
-      vSummary.textContent = `Facilities committed ${totalViolations} violations, with penalties totaling $${totalPenalty.toLocaleString()}, ${penaltyComparison}`;
+      vSummary.textContent = `Facilities committed ${totalViolations} violations, with penalties totaling $${totalPenalty.toLocaleString()}.`;
     }
   })
   .catch(err => {
