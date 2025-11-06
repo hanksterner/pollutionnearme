@@ -23,19 +23,15 @@
   <div id="nav"></div>
 
   <main>
-    <section>
-      <h2>Raw Data Feed</h2>
-      <pre id="data-output">[Awaiting data feed]</pre>
+    <!-- AQI Section -->
+    <section id="aqi">
+      <h2>Air Quality Index (AQI)</h2>
+      <pre id="data-output">[Awaiting AQI feed]</pre>
       <p class="note">Source: EPA placeholder dataset. Last updated: 2025‑11‑04T20:40:00Z</p>
-    </section>
-
-    <section id="charts">
-      <h2>Visualizations</h2>
-      <canvas id="aqiChart" width="400" height="200"></canvas>
-    </section>
-
-    <section id="tables">
-      <h2>Data Table</h2>
+      <div id="charts">
+        <h3>AQI Visualization</h3>
+        <canvas id="aqiChart" width="400" height="200"></canvas>
+      </div>
       <table class="data-table">
         <thead>
           <tr><th>City</th><th>AQI</th><th>Status</th><th>Last Updated</th></tr>
@@ -44,29 +40,31 @@
       </table>
     </section>
 
+    <!-- TRI Section -->
     <section id="tri">
-    <h2>Toxic Release Inventory</h2>
-    <pre id="tri-output">[Awaiting TRI feed]</pre>
-    <table class="data-table">
-      <thead>
-        <tr><th>Facility</th><th>Chemical</th><th>Release (lbs)</th><th>Year</th></tr>
-      </thead>
-      <tbody id="tri-table-body"></tbody>
-    </table>
-    <div id="tri-chart"></div>
-  </section>
+      <h2>Toxic Release Inventory (TRI)</h2>
+      <pre id="tri-output">[Awaiting TRI feed]</pre>
+      <table class="data-table">
+        <thead>
+          <tr><th>Facility</th><th>Chemical</th><th>Release (lbs)</th><th>Year</th></tr>
+        </thead>
+        <tbody id="tri-table-body"></tbody>
+      </table>
+      <div id="tri-chart"></div>
+    </section>
 
-  <section id="violations">
-    <h2>Violations & Enforcement</h2>
-    <pre id="violations-output">[Awaiting violations feed]</pre>
-    <table class="data-table">
-      <thead>
-        <tr><th>Facility</th><th>Violation Type</th><th>Count</th><th>Penalty ($)</th></tr>
-      </thead>
-      <tbody id="violations-table-body"></tbody>
-    </table>
-    <div id="violations-leaderboard"></div>
-  </section>
+    <!-- Violations Section -->
+    <section id="violations">
+      <h2>Violations & Enforcement</h2>
+      <pre id="violations-output">[Awaiting violations feed]</pre>
+      <table class="data-table">
+        <thead>
+          <tr><th>Facility</th><th>Violation Type</th><th>Count</th><th>Penalty ($)</th></tr>
+        </thead>
+        <tbody id="violations-table-body"></tbody>
+      </table>
+      <div id="violations-leaderboard"></div>
+    </section>
   </main>
 
   <footer>
