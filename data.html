@@ -35,10 +35,21 @@
     .data-table th, .data-table td {
       border: 1px solid #ddd;
       padding: 0.5rem;
+      text-align: center;
     }
     .data-table th {
       background: var(--secondary-light);
     }
+    /* Severity coloring */
+    .aqi-good { background: #d4edda; color: #155724; }
+    .aqi-moderate { background: #fff3cd; color: #856404; }
+    .aqi-unhealthy { background: #f8d7da; color: #721c24; }
+    .pollution-low { background: #d4edda; }
+    .pollution-medium { background: #fff3cd; }
+    .pollution-high { background: #f8d7da; }
+    .penalty-small { background: #d4edda; }
+    .penalty-medium { background: #fff3cd; }
+    .penalty-large { background: #f8d7da; font-weight: bold; }
     footer {
       margin-top: 3rem;
       padding: 1rem;
