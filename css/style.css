@@ -95,17 +95,27 @@ section h2 {
   color: var(--secondary);
 }
 
-/* Map placeholder */
-#map {
-  width: 100%;
-  height: 400px;
-  background: #ddd;
-  margin: 2rem 0;
+/* Legend block */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1rem 0;
+  padding: 1rem;
+  background: #fff;
+  border: 1px solid var(--secondary-light);
+  border-radius: 4px;
+}
+
+.legend-item {
   display: flex;
   align-items: center;
-  justify-content: center;
-  color: #555;
-  font-style: italic;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.legend-icon {
+  font-size: 1.2rem;
 }
 
 /* Data output */
@@ -139,7 +149,6 @@ pre#violations-output {
 }
 
 /* === Severity coloring === */
-/* AQI health levels */
 .aqi-good {
   background-color: #d4edda;
   color: #155724;
@@ -156,7 +165,6 @@ pre#violations-output {
   font-weight: bold;
 }
 
-/* Pollution release levels */
 .pollution-low {
   background-color: #e6f7ff;
 }
@@ -170,7 +178,6 @@ pre#violations-output {
   font-weight: bold;
 }
 
-/* Violation penalty levels */
 .penalty-small {
   background-color: #e2f0d9;
 }
@@ -186,7 +193,6 @@ pre#violations-output {
 }
 
 /* === Inline icon pseudo-elements === */
-/* AQI icons */
 .aqi-good td:nth-child(2)::after {
   content: " ✅";
 }
@@ -199,7 +205,6 @@ pre#violations-output {
   content: " ❌";
 }
 
-/* TRI icons */
 .pollution-low td:nth-child(3)::after {
   content: " 🟦";
 }
@@ -212,7 +217,6 @@ pre#violations-output {
   content: " 🟥";
 }
 
-/* Violations icons */
 .penalty-small td:nth-child(4)::after {
   content: " 💵";
 }
