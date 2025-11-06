@@ -174,3 +174,31 @@ Status: Candidate baseline achieved; Phase 4 visualization layer is functional
 Next Ritual: Refine elegance (labels, responsive layout, color cues) and prepare Phase 5 expansion for Superfund and Water Quality feeds.
 Seal: Candidate.
 ------------------------------------------------------------
+=== PollutionNearMe Build Ledger ===
+Entry 11
+[2025-11-05 21:30 EST]
+Event: Phase 4.1 — Data Access Proof Checklist
+Actions:
+  • Defined test calls for each core EPA data source to confirm accessibility and schema.
+  • Ritual: run one fetch/curl per source, log raw JSON, and document key fields.
+  • Candidate endpoints:
+      - Air Quality (AirNow API):
+        https://www.airnowapi.org/aq/observation/zipCode/current/?format=application/json&zipCode=15213&API_KEY=YOUR_KEY
+        → Expect: [{ "DateObserved", "AQI", "Category": { "Name" } }]
+      - Toxic Release Inventory (TRI via Envirofacts):
+        https://data.epa.gov/efservice/TRI_BASIC/STATE/PA/JSON
+        → Expect: [{ "TRIFID", "CHEMICAL", "RELEASE_QTY", "YEAR" }]
+      - Violations & Enforcement (ECHO):
+        https://echo.epa.gov/api/facilities?state=PA&program=CAA
+        → Expect: { "Results": [ { "FacilityName", "ViolationCount", "LastPenaltyAmount" } ] }
+      - Superfund Sites (SEMS via Envirofacts):
+        https://data.epa.gov/efservice/SEMS_SITE/STATE/PA/JSON
+        → Expect: [{ "SITE_NAME", "NPL_STATUS", "CITY_NAME" }]
+      - Water Quality (SDWIS):
+        https://data.epa.gov/efservice/SDWIS_SYSTEM/STATE/PA/JSON
+        → Expect: [{ "PWSID", "NAME", "POPULATION_SERVED", "VIOLATIONS" }]
+  • Next Ritual: For each endpoint, run fetch/curl, capture JSON, and log schema in ledger.
+Status: Checklist sealed; ready for operational proof runs.
+Next Ritual: Execute test calls and log Entry 12 with raw JSON excerpts + schema notes.
+Seal: Complete.
+------------------------------------------------------------
