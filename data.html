@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Data — Pollution Near Me</title>
-  <meta name="description" content="Explore pollution data, updated continuously from EPA and environmental sources.">
-  <meta property="og:title" content="Data — Pollution Near Me">
-  <meta property="og:description" content="Transparent, data-driven reporting on pollution and environmental risks.">
+  <title>Pollution Near Me — Local Impact</title>
+  <meta name="description" content="Understand pollution in your community with clear, citizen-friendly data and visualizations.">
+  <meta property="og:title" content="Pollution Near Me — Local Impact">
+  <meta property="og:description" content="See how much pollution factories release, how clean the air is, and which facilities break the rules.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pollutionnearme.org/data">
   <meta property="og:image" content="/assets/og-image.png">
@@ -16,8 +16,8 @@
 </head>
 <body>
   <header>
-    <h1>Pollution Data</h1>
-    <p>Live environmental data integration in progress.</p>
+    <h1>Pollution Near Me</h1>
+    <p>Clear, meaningful pollution data for your community.</p>
   </header>
 
   <div id="nav"></div>
@@ -25,13 +25,12 @@
   <main>
     <!-- AQI Section -->
     <section id="aqi">
-      <h2>Air Quality Index (AQI)</h2>
-      <pre id="data-output">[Awaiting AQI feed]</pre>
-      <p class="note">Source: EPA placeholder dataset. Last updated: 2025‑11‑04T20:40:00Z</p>
-      <div id="charts">
-        <h3>AQI Visualization</h3>
-        <canvas id="aqiChart" width="400" height="200"></canvas>
-      </div>
+      <h2>🌤 Air Quality Today</h2>
+      <p class="summary">
+        The Air Quality Index (AQI) tells you how safe it is to breathe outdoors.
+        <span id="aqi-summary">[Awaiting AQI feed]</span>
+      </p>
+      <div id="charts"></div>
       <table class="data-table">
         <thead>
           <tr><th>City</th><th>AQI</th><th>Status</th><th>Last Updated</th></tr>
@@ -42,11 +41,14 @@
 
     <!-- TRI Section -->
     <section id="tri">
-      <h2>Toxic Release Inventory (TRI)</h2>
-      <pre id="tri-output">[Awaiting TRI feed]</pre>
+      <h2>🏭 Pollution Releases</h2>
+      <p class="summary">
+        Factories and facilities report how many pounds of toxic chemicals they release each year.
+        <span id="tri-summary">[Awaiting TRI feed]</span>
+      </p>
       <table class="data-table">
         <thead>
-          <tr><th>Facility</th><th>Chemical</th><th>Release (lbs)</th><th>Year</th></tr>
+          <tr><th>Facility</th><th>Chemical</th><th>Pollution Released</th><th>Year</th></tr>
         </thead>
         <tbody id="tri-table-body"></tbody>
       </table>
@@ -55,11 +57,14 @@
 
     <!-- Violations Section -->
     <section id="violations">
-      <h2>Violations & Enforcement</h2>
-      <pre id="violations-output">[Awaiting violations feed]</pre>
+      <h2>⚖️ Violations & Penalties</h2>
+      <p class="summary">
+        Some facilities break environmental laws. Here are recent violations and penalties in your area.
+        <span id="violations-summary">[Awaiting violations feed]</span>
+      </p>
       <table class="data-table">
         <thead>
-          <tr><th>Facility</th><th>Violation Type</th><th>Count</th><th>Penalty ($)</th></tr>
+          <tr><th>Facility</th><th>Violation</th><th>Count</th><th>Penalty</th></tr>
         </thead>
         <tbody id="violations-table-body"></tbody>
       </table>
@@ -68,7 +73,7 @@
   </main>
 
   <footer>
-    &copy; 2025 Pollution Near Me. All rights reserved.
+    <p>&copy; 2025 Pollution Near Me. Data sources: EPA & environmental agencies.</p>
   </footer>
 
   <script>
