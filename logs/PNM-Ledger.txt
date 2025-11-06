@@ -215,3 +215,15 @@ Status: Candidate baseline for TRI feed achieved.
 Next Ritual: Wire TRI_FORM_R schema into visualization layer (facility + chemical + release totals).
 Seal: Candidate.
 ------------------------------------------------------------
+=== PollutionNearMe Build Ledger ===
+Entry 12 [2025-11-06 12:54 EST]
+Event: TRI Data Snapshot Staged & Published
+Actions:
+• Staged EPA TRI scrape pull locally in D:\pollutionnearme\data\tri.json.
+• Committed with message: "Entry 12: Stage TRI data snapshot in tri.json".
+• Synced branch alignment: rebased local master → main, pushed to origin/main.
+• Verified operational proof: tri.json accessible in repo at /data and served via GitHub Pages at https://pollutionnearme.org/data/tri.json.
+Status: Candidate baseline achieved; reproducible under HTTPS with Pages propagation confirmed.
+Next Ritual: Wire TRI schema into visualization layer (facility + chemical + release totals) and log operational proof of rendering.
+Seal: Candidate.
+------------------------------------------------------------
