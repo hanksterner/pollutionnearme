@@ -2,12 +2,18 @@
 
 /* Color variables */
 :root {
-  --primary: #1C2A39;   /* deep navy */
-  --secondary: #5A6B7A; /* steel gray */
-  --accent: #2ECC71;    /* data green */
-  --alert: #E74C3C;     /* data red */
+  --primary: #1C2A39;
+  /* deep navy */
+  --secondary: #5A6B7A;
+  /* steel gray */
+  --accent: #2ECC71;
+  /* data green */
+  --alert: #E74C3C;
+  /* data red */
   --background: #f5f7fa;
   --text: #222;
+  --secondary-light: #e0e6eb;
+  /* lighter steel gray for table headers */
 }
 
 /* Global */
@@ -21,7 +27,9 @@ body {
 }
 
 /* Headings */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: 'Inter', Helvetica, sans-serif;
   font-weight: 700;
   margin-top: 0;
@@ -34,10 +42,12 @@ header {
   padding: 2rem 1rem;
   text-align: center;
 }
+
 header h1 {
   margin: 0;
   font-size: 2.5rem;
 }
+
 header p {
   margin: 0.5rem 0 0;
   font-size: 1.2rem;
@@ -49,12 +59,14 @@ nav {
   padding: 0.75rem;
   text-align: center;
 }
+
 nav a {
   color: #fff;
   margin: 0 1rem;
   text-decoration: none;
   font-weight: bold;
 }
+
 nav a:hover {
   text-decoration: underline;
 }
@@ -64,6 +76,23 @@ main {
   max-width: 960px;
   margin: 0 auto;
   padding: 2rem 1rem;
+}
+
+/* Section styling */
+section {
+  padding: 2rem 1rem;
+  border-top: 4px solid var(--secondary);
+  margin-top: 2rem;
+}
+
+section h2 {
+  margin-bottom: 0.5rem;
+}
+
+.summary {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  color: var(--secondary);
 }
 
 /* Map placeholder */
@@ -80,13 +109,90 @@ main {
 }
 
 /* Data output */
-pre#data-output {
+pre#data-output,
+pre#tri-output,
+pre#violations-output {
   background: #fff;
   border: 1px solid var(--secondary);
   padding: 1rem;
   text-align: left;
   overflow-x: auto;
   font-family: 'Source Code Pro', monospace;
+}
+
+/* Data tables */
+.data-table {
+  margin-top: 1rem;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.data-table th,
+.data-table td {
+  border: 1px solid #ddd;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.data-table th {
+  background: var(--secondary-light);
+}
+
+/* Severity coloring */
+/* AQI health levels */
+.aqi-good {
+  background-color: #d4edda;
+  /* light green */
+  color: #155724;
+}
+
+.aqi-moderate {
+  background-color: #fff3cd;
+  /* light yellow */
+  color: #856404;
+}
+
+.aqi-unhealthy {
+  background-color: #f8d7da;
+  /* light red */
+  color: #721c24;
+  font-weight: bold;
+}
+
+/* Pollution release levels */
+.pollution-low {
+  background-color: #e6f7ff;
+  /* pale blue */
+}
+
+.pollution-medium {
+  background-color: #ffeeba;
+  /* amber */
+}
+
+.pollution-high {
+  background-color: #f5c6cb;
+  /* strong red */
+  font-weight: bold;
+}
+
+/* Violation penalty levels */
+.penalty-small {
+  background-color: #e2f0d9;
+  /* soft green */
+}
+
+.penalty-medium {
+  background-color: #fff3cd;
+  /* yellow */
+}
+
+.penalty-large {
+  background-color: #f8d7da;
+  /* red */
+  font-weight: bold;
+  border-left: 4px solid #dc3545;
+  /* accent stripe */
 }
 
 /* Notes */
