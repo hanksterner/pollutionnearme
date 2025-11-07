@@ -25,10 +25,19 @@
   <header>
     <h1>Pollution Near Me</h1>
     <p>Transparent environmental data, updated continuously.</p>
-    <nav id="nav">
-      <a href="/">Home</a> | 
-      <a href="/about.html">About</a>
-    </nav>
+
+    <!-- Gray banner with hamburger + search -->
+    <div class="banner">
+      <button class="hamburger" onclick="toggleMenu()">☰</button>
+      <nav id="nav" class="hidden">
+        <a href="/">Home</a>
+        <a href="/about.html">About</a>
+      </nav>
+      <div id="search">
+        <input type="text" id="location-search" placeholder="Enter ZIP, city, address, or business">
+        <button onclick="searchLocation()">Search</button>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -44,11 +53,6 @@
         <p>Violations: 10 ($455k penalties)</p>
         <p>Superfund Sites: 2 nearby</p>
       </div>
-      <div id="search">
-        <label for="location-search">Search your community:</label>
-        <input type="text" id="location-search" placeholder="Enter ZIP, city, address, or business">
-        <button onclick="searchLocation()">Search</button>
-      </div>
     </section>
 
     <!-- Snapshot Tiles -->
@@ -61,7 +65,6 @@
 
     <!-- Ad Block -->
     <section id="ads">
-      <!-- Google AdSense Banner -->
       <ins class="adsbygoogle"
            style="display:block"
            data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
@@ -85,6 +88,11 @@
       const query = document.getElementById('location-search').value;
       // TODO: implement geocoding + map re-center
       alert("Search for: " + query);
+    }
+
+    function toggleMenu() {
+      const nav = document.getElementById('nav');
+      nav.classList.toggle('hidden');
     }
   </script>
 </body>
