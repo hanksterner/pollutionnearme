@@ -231,7 +231,7 @@ Next Ritual: Wire TRI_FORM_R schema into visualization layer (facility + chemica
 Seal: Candidate.
 ------------------------------------------------------------
 === PollutionNearMe Build Ledger ===
-Entry 12 [2025-11-06 12:54 EST]
+Entry 13 [2025-11-06 12:54 EST]
 Event: TRI Data Snapshot Staged & Published
 Actions:
 • Staged EPA TRI scrape pull locally in D:\pollutionnearme\data\tri.json.
@@ -242,3 +242,23 @@ Status: Candidate baseline achieved; reproducible under HTTPS with Pages propaga
 Next Ritual: Wire TRI schema into visualization layer (facility + chemical + release totals) and log operational proof of rendering.
 Seal: Candidate.
 ------------------------------------------------------------
+=== PollutionNearMe Build Ledger === 
+Entry 14 [2025-11-06 22:48 EST]
+
+Event: MVP Homepage Strategy Sealed — National Map, Snapshot Tiles, Search, Analytics, Ads
+
+Actions:
+• Finalized homepage concept: map centered on U.S. with top offenders visualized (TRI, AQI, Violations, Superfund).
+• Snapshot tiles defined: Air Quality Today, Pollution Releases, Violations & Penalties, Superfund Sites.
+• Search bar strategy confirmed: accepts ZIP, city, address, or business name; no IP-based auto-localization.
+• Engagement flow established: national data provokes curiosity, search enables local exploration.
+• Google Analytics setup snippet prepared for GA4 integration.
+• AdSense ad blocks defined: horizontal banner + optional sidebar, styled for clarity and thematic fit.
+• MVP scope locked: homepage will serve as orientation layer with map, snapshot, search, and monetization-ready layout.
+• Next ritual: generate homepage wireframe HTML with all components scaffolded and ready for implementation.
+
+Status: MVP homepage strategy sealed; ready to scaffold and commit.
+
+Next Ritual: Generate and commit homepage wireframe (index.html) with map placeholder, snapshot tiles, search input, ad blocks, and mission statement.
+
+Seal: Complete.
