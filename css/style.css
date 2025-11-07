@@ -53,7 +53,7 @@ header p {
   font-size: 1.2rem;
 }
 
-/* Navigation */
+/* Navigation (legacy) */
 nav {
   background: var(--secondary);
   padding: 0.75rem;
@@ -243,4 +243,80 @@ footer {
   padding: 1rem;
   font-size: 0.9rem;
   text-align: center;
+}
+
+/* Footer links */
+footer a {
+  color: #ddd;
+  /* softer gray to blend with footer */
+  text-decoration: none;
+  /* remove underline */
+  margin: 0 0.5rem;
+  font-weight: 500;
+}
+
+footer a:hover {
+  color: #fff;
+  /* brighten on hover */
+  text-decoration: underline;
+}
+
+/* === New Banner + Hamburger + Search === */
+.banner {
+  background-color: var(--secondary-light);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.5rem 1rem;
+}
+
+.hamburger {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--primary);
+}
+
+#nav {
+  display: flex;
+  gap: 1rem;
+}
+
+#nav.hidden {
+  display: none;
+}
+
+#nav a {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+#nav a:hover {
+  text-decoration: underline;
+}
+
+#search {
+  display: flex;
+  gap: 0.5rem;
+}
+
+#search input {
+  padding: 0.4rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+#search button {
+  padding: 0.4rem 0.8rem;
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+#search button:hover {
+  background-color: var(--secondary);
 }
