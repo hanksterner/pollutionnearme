@@ -11,33 +11,80 @@
   <meta property="og:url" content="https://pollutionnearme.org/">
   <meta property="og:image" content="/assets/og-image.png">
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
 </head>
 <body>
   <header>
     <h1>Pollution Near Me</h1>
     <p>Transparent environmental data, updated continuously.</p>
+    <nav id="nav"></nav>
   </header>
 
-  <div id="nav"></div>
-
   <main>
-    <section id="intro">
+    <!-- Hero Section -->
+    <section id="hero">
+      <div id="map">
+        Map placeholder (EPA data will render here)
+      </div>
+      <div id="snapshot-card">
+        <h2>Top Offenders Snapshot</h2>
+        <p>Air Quality: Moderate ⚠️</p>
+        <p>Pollution Releases: 25,056 lbs</p>
+        <p>Violations: 10 ($455k penalties)</p>
+        <p>Superfund Sites: 2 nearby</p>
+        <a href="/data">Explore your community’s pollution data →</a>
+      </div>
+      <div id="search">
+        <input type="text" id="location-search" placeholder="Enter ZIP, city, address, or business">
+        <button onclick="searchLocation()">Search</button>
+      </div>
+    </section>
+
+    <!-- Snapshot Tiles -->
+    <section id="tiles">
+      <div class="tile">🌤 <strong>Air Quality Today</strong><br>AQI: Moderate ⚠️</div>
+      <div class="tile">🏭 <strong>Pollution Releases</strong><br>25,056 lbs ≈ school bus</div>
+      <div class="tile">⚖️ <strong>Violations & Penalties</strong><br>10 violations, $455k ≈ apartment building</div>
+      <div class="tile">🧪 <strong>Superfund Sites</strong><br>2 sites nearby</div>
+    </section>
+
+    <!-- Ad Block -->
+    <section id="ads">
+      <!-- Google AdSense Banner -->
+      <ins class="adsbygoogle"
+           style="display:block"
+           data-ad-client="ca-pub-xxxxxxxxxxxxxxxx"
+           data-ad-slot="1234567890"
+           data-ad-format="auto"
+           data-full-width-responsive="true"></ins>
+      <script>
+           (adsbygoogle = window.adsbygoogle || []).push({});
+      </script>
+    </section>
+
+    <!-- Mission Statement -->
+    <section id="mission">
       <h2>Mission</h2>
       <p>We expose and track pollution data across the U.S. with clarity, accountability, and reproducibility.</p>
     </section>
 
-    <section id="map">
-      Map placeholder (EPA data will render here)
-    </section>
-
-    <section id="data">
-      <h2>Snapshot</h2>
-      <p>Key metrics and sample data will appear here as tables and leaderboards.</p>
+    <!-- Latest Updates / Ledger Feed -->
+    <section id="updates">
+      <h2>Latest Updates</h2>
+      <p>Entry 14: MVP homepage strategy sealed — national map, snapshot tiles, search input, analytics and ad blocks defined.</p>
     </section>
   </main>
 
   <footer>
-    &copy; 2025 Pollution Near Me. All rights reserved.
+    &copy; 2025 Pollution Near Me. Data sources: EPA & environmental agencies.
   </footer>
 
   <script src="js/app.js"></script>
@@ -45,6 +92,12 @@
     fetch('/nav.html')
       .then(res => res.text())
       .then(html => { document.getElementById('nav').innerHTML = html; });
+
+    function searchLocation() {
+      const query = document.getElementById('location-search').value;
+      // TODO: implement geocoding + map re-center
+      alert("Search for: " + query);
+    }
   </script>
 </body>
 </html>
