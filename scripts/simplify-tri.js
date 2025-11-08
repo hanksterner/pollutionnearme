@@ -18,10 +18,10 @@ if (rawText.charCodeAt(0) === 0xFEFF) {
   rawText = rawText.slice(1);
 }
 
-// Remove any leading non‑JSON characters (e.g. �� from BOM)
-rawText = rawText.replace(/^[^
-
-  \[{] +/, '');
+// Remove any leading non‑JSON characters (e.g. BOM artifacts like ��)
+while (rawText.length > 0 && rawText[0] !== '[' && rawText[0] !== '{') {
+  rawText = rawText.slice(1);
+}
 
 let raw;
 try {
