@@ -21,7 +21,7 @@ fetch('/data/placeholder.json')
         </tr>`;
     }
 
-    // Bar visualization with direct label
+    // Bar visualization
     const chartContainer = document.getElementById('charts');
     if (chartContainer) {
       const maxAQI = 500;
@@ -47,7 +47,6 @@ fetch('/data/placeholder.json')
       label.style.transform = 'translate(-50%, -50%)';
       label.style.color = '#fff';
       label.style.fontWeight = 'bold';
-      label.style.textShadow = '0 1px 2px rgba(0,0,0,0.5)';
 
       if (data.aqi <= 50) label.textContent = `${data.aqi} Good ✅`;
       else if (data.aqi <= 100) label.textContent = `${data.aqi} Moderate ⚠️`;
@@ -65,6 +64,16 @@ fetch('/data/placeholder.json')
       else if (data.aqi <= 100) statusText = "Air quality is Moderate — sensitive groups should be cautious.";
       else statusText = "Air quality is Unhealthy — limit outdoor activity.";
       aqiSummary.textContent = statusText;
+    }
+
+    // Snapshot tiles
+    const tileAqi = document.getElementById('tile-aqi');
+    if (tileAqi) {
+      tileAqi.innerHTML = `🌤 <strong>Air Quality Today</strong><br>${data.aqi} ${data.status}`;
+    }
+    const snapAqi = document.getElementById('snapshot-aqi');
+    if (snapAqi) {
+      snapAqi.textContent = `Air Quality: ${data.aqi} ${data.status}`;
     }
   })
   .catch(err => {
@@ -98,51 +107,28 @@ fetch('/data/tri.json')
       }).join('');
     }
 
-    const triChart = document.getElementById('tri-chart');
-    if (triChart) {
-      tri.forEach(item => {
-        const barWrapper = document.createElement('div');
-        barWrapper.style.background = '#eee';
-        barWrapper.style.margin = '0.25rem 0';
-        barWrapper.style.height = '25px';
-        barWrapper.style.position = 'relative';
-
-        const bar = document.createElement('div');
-        const width = Math.min((item.release_lbs / 100000) * 100, 100);
-        bar.style.width = width + '%';
-        bar.style.height = '100%';
-        bar.style.background = 'var(--alert)';
-
-        const label = document.createElement('span');
-        label.style.position = 'absolute';
-        label.style.left = '50%';
-        label.style.top = '50%';
-        label.style.transform = 'translate(-50%, -50%)';
-        label.style.color = '#fff';
-        label.style.fontSize = '0.8rem';
-        label.style.fontWeight = 'bold';
-        label.style.textShadow = '0 1px 2px rgba(0,0,0,0.5)';
-
-        if (item.release_lbs < 1000) label.textContent = `${item.release_lbs} lbs Low 🟦`;
-        else if (item.release_lbs < 10000) label.textContent = `${item.release_lbs} lbs Medium 🟨`;
-        else label.textContent = `${item.release_lbs} lbs High 🟥`;
-
-        barWrapper.appendChild(bar);
-        barWrapper.appendChild(label);
-        triChart.appendChild(barWrapper);
-      });
-    }
-
     const triSummary = document.getElementById('tri-summary');
     if (triSummary && tri.length > 0) {
       const total = tri.reduce((sum, item) => sum + item.release_lbs, 0);
       triSummary.textContent = `Local facilities released ${total.toLocaleString()} lbs of toxic chemicals in ${tri[0].year}.`;
     }
 
-    // === TRI Map Integration ===
+    // Snapshot tiles
+    const tileReleases = document.getElementById('tile-releases');
+    if (tileReleases && tri.length > 0) {
+      const total = tri.reduce((sum, item) => sum + item.release_lbs, 0);
+      tileReleases.innerHTML = `🏭 <strong>Pollution Releases</strong><br>${total.toLocaleString()} lbs`;
+    }
+    const snapReleases = document.getElementById('snapshot-releases');
+    if (snapReleases && tri.length > 0) {
+      const total = tri.reduce((sum, item) => sum + item.release_lbs, 0);
+      snapReleases.textContent = `Pollution Releases: ${total.toLocaleString()} lbs`;
+    }
+
+    // Map integration
     const mapDiv = document.getElementById('map');
     if (mapDiv) {
-      const map = L.map('map').setView([40.9, -77.7], 7); // Center on PA
+      const map = L.map('map').setView([40.9, -77.7], 7);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
       }).addTo(map);
@@ -196,14 +182,38 @@ fetch('/data/violations.json')
       }).join('');
     }
 
-    const leaderboard = document.getElementById('violations-leaderboard');
-    if (leaderboard) {
-      violations.forEach(v => {
-        let icon = '';
-        if (v.penalty < 50000) icon = '💵 Small';
-        else if (v.penalty < 200000) icon = '💰 Medium';
-        else icon = '🏦 Large';
+    const vSummary = document.getElementById('violations-summary');
+    if (vSummary && violations.length > 0) {
+      const totalViolations = violations.reduce((sum, v) => sum + v.count, 0);
+      const totalPenalty = violations.reduce((sum, v) => sum + v.penalty, 0);
+      vSummary.textContent = `Facilities committed ${totalViolations} violations, with penalties totaling $${totalPenalty.toLocaleString()}.`;
+    }
 
-        const row = document.createElement('div');
-        row.textContent = `${v.facility} – ${v.count} violations (${icon})`;
-        leaderboard.appendChild
+    // Snapshot tiles
+    const tileViolations = document.getElementById('tile-violations');
+    if (tileViolations && violations.length > 0) {
+      const totalViolations = violations.reduce((sum, v) => sum + v.count, 0);
+      const totalPenalty = violations.reduce((sum, v) => sum + v.penalty, 0);
+      tileViolations.innerHTML = `⚖️ <strong>Violations & Penalties</strong><br>${totalViolations} violations, $${totalPenalty.toLocaleString()}`;
+    }
+    const snapViolations = document.getElementById('snapshot-violations');
+    if (snapViolations && violations.length > 0) {
+      const totalViolations = violations.reduce((sum, v) => sum + v.count, 0);
+      const totalPenalty = violations.reduce((sum, v) => sum + v.penalty, 0);
+      snapViolations.textContent = `Violations: ${totalViolations} ($${totalPenalty.toLocaleString()} penalties)`;
+    }
+
+    // Superfund snapshot placeholder (until data source wired)
+    const tileSuperfund = document.getElementById('tile-superfund');
+    if (tileSuperfund) {
+      tileSuperfund.innerHTML = `🧪 <strong>Superfund Sites</strong><br>Data source pending`;
+    }
+    const snapSuperfund = document.getElementById('snapshot-superfund');
+    if (snapSuperfund) {
+      snapSuperfund.textContent = `Superfund Sites: data source pending`;
+    }
+  })
+  .catch(err => {
+    const vOut = document.getElementById('violations-output');
+    if (vOut) vOut.textContent = 'Error loading violations data: ' + err;
+  });
