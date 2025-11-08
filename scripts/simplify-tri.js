@@ -35,14 +35,19 @@ function normalizeRow(row) {
 }
 
 // --- Transform into simplified schema ---
-const simplified = raw.map(row => {
+const simplified = raw.map((row, idx) => {
   const n = normalizeRow(row);
 
-  const fugitive = parseFloat(n["FUGITIVE TOT REL"]) || 0;
-  const stack = parseFloat(n["STACK TOT REL"]) || 0;
-  const air = parseFloat(n["AIR TOTAL RELEASE"]) || 0;
-  const water = parseFloat(n["WATER TOTAL RELEASE"]) || 0;
-  const land = parseFloat(n["LAND TOTAL RELEASE"]) || 0;
+  // Debug: print keys for the first few rows
+  if (idx < 5) {
+    console.log(`🔎 Row ${idx} keys:`, Object.keys(n));
+  }
+
+  const fugitive = parseFloat(n["FUGITIVE TOT REL"] || "0");
+  const stack = parseFloat(n["STACK TOT REL"] || "0");
+  const air = parseFloat(n["AIR TOTAL RELEASE"] || "0");
+  const water = parseFloat(n["WATER TOTAL RELEASE"] || "0");
+  const land = parseFloat(n["LAND TOTAL RELEASE"] || "0");
 
   const totalRelease = fugitive + stack + air + water + land;
 
