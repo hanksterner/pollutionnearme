@@ -26,22 +26,36 @@ try {
   process.exit(1);
 }
 
+// --- Flatten helper ---
+function flattenRecord(record) {
+  const flat = {};
+  for (const key of Object.keys(record)) {
+    const inner = record[key];
+    if (inner && typeof inner === 'object') {
+      const innerKey = Object.keys(inner)[0];
+      flat[innerKey.trim()] = inner[innerKey];
+    }
+  }
+  return flat;
+}
+
 // --- Transform into simplified schema ---
 const simplified = raw.map(record => {
-  // Aggregate release totals across major channels
-  const fugitive = Number(record.fugitive_tot_rel) || 0;
-  const stack = Number(record.stack_tot_rel) || 0;
-  const air = Number(record.air_total_release) || 0;
-  const water = Number(record.water_total_release) || 0;
-  const land = Number(record.land_total_release) || 0;
+  const flat = flattenRecord(record);
+
+  const fugitive = Number(flat["FUGITIVE TOT REL"]) || 0;
+  const stack = Number(flat["STACK TOT REL"]) || 0;
+  const air = Number(flat["AIR TOTAL RELEASE"]) || 0;
+  const water = Number(flat["WATER TOTAL RELEASE"]) || 0;
+  const land = Number(flat["LAND TOTAL RELEASE"]) || 0;
 
   const totalRelease = fugitive + stack + air + water + land;
 
   return {
-    facility: record.facility_name || record.potw_name_1 || record.off_site_loc_name_1 || "Unknown Facility",
-    chemical: record.chemical || "Unknown Chemical",
+    facility: flat["FACILITY NAME"] || "Unknown Facility",
+    chemical: flat["CHEMICAL"] || "Unknown Chemical",
     release_lbs: totalRelease,
-    year: record.reporting_year || 2023
+    year: flat["YEAR"] || 2023
   };
 });
 
