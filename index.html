@@ -27,16 +27,17 @@
 <body>
   <header>
     <h1>Pollution Near Me</h1>
-    <!-- tagline moved closer to title -->
     <p class="tagline">Transparent environmental data, updated continuously.</p>
 
-    <!-- Gray banner with hamburger + centered search -->
+    <!-- Hamburger menu in top-left corner -->
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
+    <nav id="nav" class="hidden">
+      <a href="/">Home</a>
+      <a href="/about.html">About</a>
+    </nav>
+
+    <!-- Gray banner with centered search -->
     <div class="banner">
-      <button class="hamburger" onclick="toggleMenu()">☰</button>
-      <nav id="nav" class="hidden">
-        <a href="/">Home</a>
-        <a href="/about.html">About</a>
-      </nav>
       <div id="search">
         <input type="text" id="location-search" placeholder="Enter ZIP, city, address, or business">
         <button onclick="searchLocation()">Search</button>
