@@ -307,3 +307,24 @@ Operational Proof:
 ✔ Raw files excluded from version control, simplified outputs remain tracked
 
 ──────────────────────────────
+──────────────────────────────
+Entry 14 — 2025-11-08 16:15 EST
+Event: EPA TRI Data Pull, Conversion, and Simplification Sequence Sealed
+Actions:
+• Pulled EPA TRI dataset (TRI_FORM_R) for Pennsylvania and staged locally as data/tri-pa_raw.json.
+• Confirmed schema with numbered headers (e.g., "5.1 - FUGITIVE AIR", "5.2 - STACK AIR", "ON-SITE RELEASE TOTAL").
+• Implemented normalizeRow() in scripts/simplify-tri.js to strip numeric prefixes and uppercase keys.
+• Added numeric parsing for fugitive, stack, water, land, and total release fields.
+• Ceremony commands executed:
+  Remove-Item data/tri.json
+  node scripts/simplify-tri.js data/tri-pa_raw.json data/tri.json
+  Get-Content data/tri.json -TotalCount 20
+  git add scripts/simplify-tri.js
+  git add data/tri.json
+  git commit -m "Entry 22 — 2025-11-08 16:10 EST: Map EPA headers (5.1–5.5, ON-SITE/OFF-SITE totals) in simplify-tri.js to resolve release_lbs values"
+  git push origin main
+• Operational proof: data/tri.json regenerated with 3427 records; facility and chemical names preserved; non-zero release_lbs observed (e.g., INTERSTATE CHEMICAL CO INC: 76 lbs, GRAFTECH USA LLC: 83.2 lbs).
+Status: ✅ Candidate baseline sealed; reproducible pipeline from EPA CSV → tri-pa_raw.json → tri.json confirmed.
+Next Ritual: Integrate tri.json into PollutionNearMe visualization layer, validate rendering of release metrics, and log operational proof of citizen-facing presentation.
+Seal: Kurt + Copilot
+──────────────────────────────
