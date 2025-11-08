@@ -18,6 +18,11 @@ if (rawText.charCodeAt(0) === 0xFEFF) {
   rawText = rawText.slice(1);
 }
 
+// Remove any leading non‑JSON characters (e.g. �� from BOM)
+rawText = rawText.replace(/^[^
+
+  \[{] +/, '');
+
 let raw;
 try {
   raw = JSON.parse(rawText);
