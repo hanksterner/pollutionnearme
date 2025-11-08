@@ -34,22 +34,30 @@ function normalizeRow(row) {
   return normalized;
 }
 
+function toNum(val) {
+  const n = parseFloat(val);
+  return isNaN(n) ? 0 : n;
+}
+
 // --- Transform into simplified schema ---
-const simplified = raw.map((row, idx) => {
+const simplified = raw.map(row => {
   const n = normalizeRow(row);
 
-  // Debug: print keys for the first few rows
-  if (idx < 5) {
-    console.log(`🔎 Row ${idx} keys:`, Object.keys(n));
-  }
+  // Use actual EPA headers
+  const fugitive = toNum(n["5.1 - FUGITIVE AIR"]);
+  const stack = toNum(n["5.2 - STACK AIR"]);
+  const water = toNum(n["5.3 - WATER"]);
+  const land = toNum(n["5.4 - UNDERGROUND"]) +
+    toNum(n["5.5.1 - LANDFILLS"]) +
+    toNum(n["5.5.2 - LAND TREATMENT"]) +
+    toNum(n["5.5.3 - SURFACE IMPNDMNT"]) +
+    toNum(n["5.5.4 - OTHER DISPOSAL"]);
 
-  const fugitive = parseFloat(n["FUGITIVE TOT REL"] || "0");
-  const stack = parseFloat(n["STACK TOT REL"] || "0");
-  const air = parseFloat(n["AIR TOTAL RELEASE"] || "0");
-  const water = parseFloat(n["WATER TOTAL RELEASE"] || "0");
-  const land = parseFloat(n["LAND TOTAL RELEASE"] || "0");
+  // Prefer ON-SITE RELEASE TOTAL if present
+  const onsiteTotal = toNum(n["ON-SITE RELEASE TOTAL"]);
+  const offsiteTotal = toNum(n["OFF-SITE RELEASE TOTAL"]);
 
-  const totalRelease = fugitive + stack + air + water + land;
+  const totalRelease = onsiteTotal || (fugitive + stack + water + land) + offsiteTotal;
 
   return {
     facility: n["FACILITY NAME"] || "Unknown Facility",
