@@ -292,3 +292,18 @@ Document refinement tasks for post-MVP polish:
 
 Seal:
 Candidate — MVP scaffold sealed for reproducibility; refinement tasks logged for future iteration.
+──────────────────────────────
+Entry 13 — 2025-11-08 13:31 EST
+
+Action: Added .gitignore rules to exclude large raw TRI data files from repo.
+Details:
+- Created .gitignore with patterns: data/tri-*_raw.json, data/tri-*_raw.csv
+- Staged and committed as "Add .gitignore rules to exclude large raw TRI data files from repo"
+- Pushed commit ee07312 to origin/main
+
+Operational Proof:
+✔ .gitignore present at repo root
+✔ Remote branch main updated (0d90165..ee07312)
+✔ Raw files excluded from version control, simplified outputs remain tracked
+
+──────────────────────────────
