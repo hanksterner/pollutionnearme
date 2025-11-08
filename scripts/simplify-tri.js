@@ -9,15 +9,8 @@ const outputFile = process.argv[3] || 'data/tri.json';
 console.log(`📂 Reading from ${inputFile}`);
 console.log(`📄 Will write simplified output to ${outputFile}`);
 
-// --- Load raw file safely ---
 let rawText = fs.readFileSync(inputFile, 'utf8');
-
-// Strip BOM if present
-if (rawText.charCodeAt(0) === 0xFEFF) {
-  rawText = rawText.slice(1);
-}
-
-// Remove any leading non‑JSON characters (e.g. BOM artifacts like ��)
+if (rawText.charCodeAt(0) === 0xFEFF) rawText = rawText.slice(1);
 while (rawText.length > 0 && rawText[0] !== '[' && rawText[0] !== '{') {
   rawText = rawText.slice(1);
 }
@@ -34,7 +27,6 @@ try {
 function normalizeRow(row) {
   const normalized = {};
   for (const k of Object.keys(row)) {
-    // Remove leading digits, dot, and spaces (e.g. "20. FUGITIVE TOT REL" -> "FUGITIVE TOT REL")
     const cleanKey = k.replace(/^\d+\.\s*/, '').trim().toUpperCase();
     const val = (row[k] || "").toString().trim();
     normalized[cleanKey] = val;
@@ -62,6 +54,5 @@ const simplified = raw.map(row => {
   };
 });
 
-// --- Write simplified file ---
 fs.writeFileSync(outputFile, JSON.stringify(simplified, null, 2));
 console.log(`✅ Simplified TRI data written to ${outputFile} (${simplified.length} records)`);
