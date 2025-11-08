@@ -14,6 +14,16 @@
   <meta property="og:image" content="/assets/og-image.png">
   <link rel="stylesheet" href="css/style.css">
 
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+
+  <style>
+    #map {
+      height: 600px;
+      width: 100%;
+    }
+  </style>
+
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
@@ -48,9 +58,7 @@
   <main>
     <!-- Hero Section -->
     <section id="hero">
-      <div id="map">
-        Map placeholder (EPA data will render here)
-      </div>
+      <div id="map"></div>
       <div id="snapshot-card">
         <h2>Top Offenders Snapshot</h2>
         <p>Air Quality: Moderate ⚠️</p>
@@ -83,6 +91,9 @@
     <a href="/terms.html">Terms of Service</a> | <a href="/privacy.html">Privacy Statement</a>
   </footer>
 
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
   <script src="js/app.js"></script>
   <script>
     function searchLocation() {
@@ -95,6 +106,36 @@
       const nav = document.getElementById('nav');
       nav.classList.toggle('hidden');
     }
+
+    // Initialize Leaflet map
+    async function initMap() {
+      const map = L.map('map').setView([40.9, -77.7], 7); // Center on PA
+
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      const data = await fetch('data/tri.json').then(r => r.json());
+
+      data.forEach(fac => {
+        if (!fac.latitude || !fac.longitude) return;
+
+        const marker = L.circleMarker([fac.latitude, fac.longitude], {
+          radius: Math.max(3, Math.log(fac.release_lbs + 1)),
+          color: fac.release_lbs > 1000 ? 'red' : fac.release_lbs > 100 ? 'orange' : 'green',
+          fillOpacity: 0.6
+        }).addTo(map);
+
+        marker.bindPopup(`
+          <strong>${fac.facility}</strong><br/>
+          ${fac.chemical}<br/>
+          ${fac.release_lbs} lbs released<br/>
+          ${fac.city}, ${fac.county}
+        `);
+      });
+    }
+
+    initMap();
   </script>
 </body>
 
