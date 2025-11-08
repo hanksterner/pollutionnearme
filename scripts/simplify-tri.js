@@ -37,8 +37,9 @@ function flattenRecord(record) {
   for (const key of Object.keys(record)) {
     const inner = record[key];
     if (inner && typeof inner === 'object') {
-      const innerKey = Object.keys(inner)[0];
-      flat[innerKey.trim()] = inner[innerKey];
+      const innerKeyRaw = Object.keys(inner)[0];
+      const innerKey = innerKeyRaw.trim(); // trim spaces around the key
+      flat[innerKey] = inner[innerKeyRaw];
     }
   }
   return flat;
