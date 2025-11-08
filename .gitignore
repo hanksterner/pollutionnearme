@@ -1,0 +1,3 @@
+# Ignore raw EPA TRI data files
+data/tri-*_raw.json
+data/tri-*_raw.csv
