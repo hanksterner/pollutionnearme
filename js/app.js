@@ -138,6 +138,32 @@ fetch('/data/tri.json')
       const total = tri.reduce((sum, item) => sum + item.release_lbs, 0);
       triSummary.textContent = `Local facilities released ${total.toLocaleString()} lbs of toxic chemicals in ${tri[0].year}.`;
     }
+
+    // === TRI Map Integration ===
+    const mapDiv = document.getElementById('map');
+    if (mapDiv) {
+      const map = L.map('map').setView([40.9, -77.7], 7); // Center on PA
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+      }).addTo(map);
+
+      tri.forEach(item => {
+        if (!item.latitude || !item.longitude) return;
+
+        const marker = L.circleMarker([item.latitude, item.longitude], {
+          radius: Math.max(3, Math.log(item.release_lbs + 1)),
+          color: item.release_lbs > 1000 ? 'red' : item.release_lbs > 100 ? 'orange' : 'green',
+          fillOpacity: 0.6
+        }).addTo(map);
+
+        marker.bindPopup(`
+          <strong>${item.facility}</strong><br/>
+          ${item.chemical}<br/>
+          ${item.release_lbs} lbs released<br/>
+          ${item.city}, ${item.county}
+        `);
+      });
+    }
   })
   .catch(err => {
     const triOut = document.getElementById('tri-output');
@@ -180,18 +206,4 @@ fetch('/data/violations.json')
 
         const row = document.createElement('div');
         row.textContent = `${v.facility} – ${v.count} violations (${icon})`;
-        leaderboard.appendChild(row);
-      });
-    }
-
-    const vSummary = document.getElementById('violations-summary');
-    if (vSummary && violations.length > 0) {
-      const totalViolations = violations.reduce((sum, v) => sum + v.count, 0);
-      const totalPenalty = violations.reduce((sum, v) => sum + v.penalty, 0);
-      vSummary.textContent = `Facilities committed ${totalViolations} violations, with penalties totaling $${totalPenalty.toLocaleString()}.`;
-    }
-  })
-  .catch(err => {
-    const vOut = document.getElementById('violations-output');
-    if (vOut) vOut.textContent = 'Error loading violations data: ' + err;
-  });
+        leaderboard.appendChild
