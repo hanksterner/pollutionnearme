@@ -9,8 +9,15 @@ const outputFile = process.argv[3] || 'data/tri.json';
 console.log(`📂 Reading from ${inputFile}`);
 console.log(`📄 Will write simplified output to ${outputFile}`);
 
+// --- Load raw file safely ---
 let rawText = fs.readFileSync(inputFile, 'utf8');
-if (rawText.charCodeAt(0) === 0xFEFF) rawText = rawText.slice(1);
+
+// Strip BOM if present
+if (rawText.charCodeAt(0) === 0xFEFF) {
+  rawText = rawText.slice(1);
+}
+
+// Remove any leading non‑JSON characters (e.g. BOM artifacts like ��)
 while (rawText.length > 0 && rawText[0] !== '[' && rawText[0] !== '{') {
   rawText = rawText.slice(1);
 }
@@ -27,7 +34,7 @@ try {
 function normalizeRow(row) {
   const normalized = {};
   for (const k of Object.keys(row)) {
-    // Remove leading digits, dot, and spaces (e.g. "4. FACILITY NAME" -> "FACILITY NAME")
+    // Remove leading digits, dot, and spaces (e.g. "20. FUGITIVE TOT REL" -> "FUGITIVE TOT REL")
     const cleanKey = k.replace(/^\d+\.\s*/, '').trim().toUpperCase();
     const val = (row[k] || "").toString().trim();
     normalized[cleanKey] = val;
@@ -35,14 +42,15 @@ function normalizeRow(row) {
   return normalized;
 }
 
+// --- Transform into simplified schema ---
 const simplified = raw.map(row => {
   const n = normalizeRow(row);
 
-  const fugitive = Number(n["FUGITIVE TOT REL"]) || 0;
-  const stack = Number(n["STACK TOT REL"]) || 0;
-  const air = Number(n["AIR TOTAL RELEASE"]) || 0;
-  const water = Number(n["WATER TOTAL RELEASE"]) || 0;
-  const land = Number(n["LAND TOTAL RELEASE"]) || 0;
+  const fugitive = parseFloat(n["FUGITIVE TOT REL"]) || 0;
+  const stack = parseFloat(n["STACK TOT REL"]) || 0;
+  const air = parseFloat(n["AIR TOTAL RELEASE"]) || 0;
+  const water = parseFloat(n["WATER TOTAL RELEASE"]) || 0;
+  const land = parseFloat(n["LAND TOTAL RELEASE"]) || 0;
 
   const totalRelease = fugitive + stack + air + water + land;
 
@@ -54,5 +62,6 @@ const simplified = raw.map(row => {
   };
 });
 
+// --- Write simplified file ---
 fs.writeFileSync(outputFile, JSON.stringify(simplified, null, 2));
 console.log(`✅ Simplified TRI data written to ${outputFile} (${simplified.length} records)`);
