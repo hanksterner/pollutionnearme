@@ -23,20 +23,34 @@ try {
   process.exit(1);
 }
 
+// --- Normalize keys: strip numeric prefixes, trim, uppercase ---
+function normalizeRow(row) {
+  const normalized = {};
+  for (const k of Object.keys(row)) {
+    // Remove leading digits, dot, and spaces (e.g. "4. FACILITY NAME" -> "FACILITY NAME")
+    const cleanKey = k.replace(/^\d+\.\s*/, '').trim().toUpperCase();
+    const val = (row[k] || "").toString().trim();
+    normalized[cleanKey] = val;
+  }
+  return normalized;
+}
+
 const simplified = raw.map(row => {
-  const fugitive = Number((row["FUGITIVE TOT REL"] || "").trim()) || 0;
-  const stack = Number((row["STACK TOT REL"] || "").trim()) || 0;
-  const air = Number((row["AIR TOTAL RELEASE"] || "").trim()) || 0;
-  const water = Number((row["WATER TOTAL RELEASE"] || "").trim()) || 0;
-  const land = Number((row["LAND TOTAL RELEASE"] || "").trim()) || 0;
+  const n = normalizeRow(row);
+
+  const fugitive = Number(n["FUGITIVE TOT REL"]) || 0;
+  const stack = Number(n["STACK TOT REL"]) || 0;
+  const air = Number(n["AIR TOTAL RELEASE"]) || 0;
+  const water = Number(n["WATER TOTAL RELEASE"]) || 0;
+  const land = Number(n["LAND TOTAL RELEASE"]) || 0;
 
   const totalRelease = fugitive + stack + air + water + land;
 
   return {
-    facility: (row["FACILITY NAME"] || "").trim() || "Unknown Facility",
-    chemical: (row["CHEMICAL"] || "").trim() || "Unknown Chemical",
+    facility: n["FACILITY NAME"] || "Unknown Facility",
+    chemical: n["CHEMICAL"] || "Unknown Chemical",
     release_lbs: totalRelease,
-    year: (row["YEAR"] || "").trim() || 2023
+    year: n["YEAR"] || 2023
   };
 });
 
