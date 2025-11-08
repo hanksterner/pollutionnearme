@@ -23,7 +23,6 @@ try {
   process.exit(1);
 }
 
-// --- Normalize keys: strip numeric prefixes, trim, uppercase ---
 function normalizeRow(row) {
   const normalized = {};
   for (const k of Object.keys(row)) {
@@ -39,11 +38,9 @@ function toNum(val) {
   return isNaN(n) ? 0 : n;
 }
 
-// --- Transform into simplified schema ---
 const simplified = raw.map(row => {
   const n = normalizeRow(row);
 
-  // Use actual EPA headers
   const fugitive = toNum(n["5.1 - FUGITIVE AIR"]);
   const stack = toNum(n["5.2 - STACK AIR"]);
   const water = toNum(n["5.3 - WATER"]);
@@ -53,17 +50,27 @@ const simplified = raw.map(row => {
     toNum(n["5.5.3 - SURFACE IMPNDMNT"]) +
     toNum(n["5.5.4 - OTHER DISPOSAL"]);
 
-  // Prefer ON-SITE RELEASE TOTAL if present
   const onsiteTotal = toNum(n["ON-SITE RELEASE TOTAL"]);
   const offsiteTotal = toNum(n["OFF-SITE RELEASE TOTAL"]);
 
-  const totalRelease = onsiteTotal || (fugitive + stack + water + land) + offsiteTotal;
+  const totalRelease = (onsiteTotal || (fugitive + stack + water + land)) + offsiteTotal;
+
+  // Geo + context fields
+  const lat = parseFloat(n["LATITUDE"]);
+  const lon = parseFloat(n["LONGITUDE"]);
+  const latitude = isNaN(lat) ? null : lat;
+  const longitude = isNaN(lon) ? null : lon;
 
   return {
     facility: n["FACILITY NAME"] || "Unknown Facility",
     chemical: n["CHEMICAL"] || "Unknown Chemical",
     release_lbs: totalRelease,
-    year: n["YEAR"] || 2023
+    year: n["YEAR"] || 2023,
+    latitude,
+    longitude,
+    city: n["CITY"] || "",
+    county: n["COUNTY"] || "",
+    zip: n["ZIP"] || ""
   };
 });
 
