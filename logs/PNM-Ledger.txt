@@ -262,3 +262,33 @@ Status: MVP homepage strategy sealed; ready to scaffold and commit.
 Next Ritual: Generate and commit homepage wireframe (index.html) with map placeholder, snapshot tiles, search input, ad blocks, and mission statement.
 
 Seal: Complete.
+=== PollutionNearMe Build Ledger ===
+Entry 15 [2025-11-08 11:57 EST]
+
+Event: MVP Homepage Scaffold Committed — Tagline, Banner, Hamburger, Search
+
+Actions:
+• Updated index.html with corrected layout:
+  - Tagline repositioned directly under site title for clearer hierarchy.
+  - Hamburger menu anchored at top-left corner of site, outside banner, per UX convention.
+  - Search bar centered in gray banner, widened to ~30 characters, styled with magnifying glass icon.
+  - Footer links styled to match identity layer (neutral gray, hover brighten).
+• Updated css/style.css with supporting rules:
+  - Banner remains steel gray, search bar centered and prominent.
+  - Hamburger positioned absolute top-left, nav hidden by default.
+  - Tagline spacing adjusted (tight above, breathing room below).
+• Verified operational proof: site renders under HTTPS with new layout, no console errors, consistent across pages.
+• Committed and pushed to origin/main; GitHub Pages propagation confirmed.
+
+Status:
+Candidate baseline achieved for MVP homepage scaffold. Layout is functional and compliant, but not yet refined for elegance.
+
+Next Ritual:
+Document refinement tasks for post-MVP polish:
+  - Elevate tagline typography and spacing for elegance.
+  - Enhance search bar design (responsive width, icon integration, subtle shadow).
+  - Refine hamburger/nav animation and placement for smoother UX.
+  - Harmonize banner and header spacing for visual balance.
+
+Seal:
+Candidate — MVP scaffold sealed for reproducibility; refinement tasks logged for future iteration.
