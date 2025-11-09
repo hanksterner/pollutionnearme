@@ -17,6 +17,10 @@
   <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
 
+  <!-- MarkerCluster CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+
   <style>
     #map {
       height: 600px;
@@ -39,14 +43,14 @@
     <h1>Pollution Near Me</h1>
     <p class="tagline">Transparent environmental data, updated continuously.</p>
 
-    <!-- Hamburger menu in top-left corner -->
+    <!-- Hamburger menu -->
     <button class="hamburger" onclick="toggleMenu()">☰</button>
     <nav id="nav" class="hidden">
       <a href="/">Home</a>
       <a href="/about.html">About</a>
     </nav>
 
-    <!-- Gray banner with centered search -->
+    <!-- Banner with search -->
     <div class="banner">
       <div id="search">
         <input type="text" id="location-search" placeholder="Enter ZIP, city, address, or business">
@@ -60,7 +64,7 @@
     <section id="hero">
       <div id="map"></div>
       <div id="snapshot-card">
-        <h2>Top Offenders Snapshot</h2>
+        <h2>National TRI 2023 Snapshot</h2>
         <p id="snapshot-aqi">Air Quality: loading…</p>
         <p id="snapshot-releases">Pollution Releases: loading…</p>
         <p id="snapshot-violations">Violations: loading…</p>
@@ -93,15 +97,15 @@
 
   <!-- Leaflet JS -->
   <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <!-- MarkerCluster JS -->
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
 
   <script src="js/app.js"></script>
   <script>
     function searchLocation() {
       const query = document.getElementById('location-search').value;
-      // TODO: implement geocoding + map re-center
       alert("Search for: " + query);
     }
-
     function toggleMenu() {
       const nav = document.getElementById('nav');
       nav.classList.toggle('hidden');
