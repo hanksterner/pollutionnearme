@@ -379,3 +379,26 @@ Actions:
 Status: Functional baseline restored; reproducible across Chrome and Edge.
 Next Ritual: Resume Phase 5 expansion — integrate Superfund and Water Quality feeds, refine snapshot copy, and prepare FAQ layer.
 Seal: Complete — Entry 17 logged.
+============================================================
+=== PollutionNearMe Build Ledger ===
+Entry 18 [2025-11-09 10:47 EST]
+Event: Search Bar Geocoding Integration & MVP Feature Completion
+
+Actions:
+• Updated js/app.js geocode function to bias queries toward United States (countrycodes=us) with global fallback.
+• Verified operational proof: ZIP codes (e.g., 17349), city names, business names, and full street addresses now resolve correctly.
+• Map recenters and places temporary marker on successful queries; feedback messaging added for no-result and error cases.
+• Confirmed search bar supports additional inputs: landmarks, neighborhoods, intersections, and natural features, though MVP scope focuses on ZIP/city/business/address.
+• Snapshot tiles validated: TRI 2023 national dataset renders totals; Violations.json schema confirmed; Superfund placeholder remains pending integration.
+• Footer styling polished with hierarchy and link set; accessibility checks passed (aria-expanded/aria-hidden, focus states, color contrast).
+• Performance check: map clusters stable with ~78k facilities; search queries execute without degrading responsiveness.
+
+Status:
+MVP homepage now fully operational with hero map, snapshot tiles, functional hamburger menu, polished footer, and robust search bar integration. Core national datasets (TRI, Violations) are wired; Superfund integration and FAQ/learn layer remain next rituals.
+
+Next Ritual:
+• Implement Superfund snapshot with national count or “near me” lookup.
+• Stage Learn/FAQ page explaining datasets and caveats.
+• Harden copy for citizen-facing clarity and seal MVP baseline for public launch.
+
+Seal: Complete — Entry 18 logged.
