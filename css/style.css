@@ -198,13 +198,9 @@ footer a:hover {
   display: inline-block;
   margin-bottom: 6px;
   font-weight: 700;
-  border-bottom: 2px solid var(--secondary);
-  padding-bottom: 2px;
-  transition: border-color 0.3s ease;
-}
-
-.snapshot-item strong:hover {
-  border-color: var(--accent);
+  border-bottom: 3px solid var(--secondary);
+  /* thicker underline */
+  padding-bottom: 3px;
 }
 
 .snapshot-value {
@@ -212,14 +208,6 @@ footer a:hover {
   font-size: 1.2em;
   font-weight: bold;
   color: var(--text);
-}
-
-.footnote {
-  font-size: 0.85em;
-  color: #555;
-  margin-top: 16px;
-  text-align: center;
-  font-style: italic;
 }
 
 .footnote {
