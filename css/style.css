@@ -264,13 +264,35 @@ header p.tagline {
   color: var(--text);
 }
 
-/* footnote */
+/* existing single-line footnote style */
 .footnote {
   font-size: 0.85em;
   color: #555;
   margin-top: 16px;
   text-align: center;
   font-style: italic;
+}
+
+/* new numbered footnotes block */
+.footnotes {
+  margin-top: 0.5rem;
+  font-size: 0.85em;
+  color: #555;
+  text-align: left;
+}
+
+.footnotes p {
+  margin: 0.2rem 0;
+  text-indent: -1.2em;
+  /* pulls number out to the left */
+  padding-left: 1.2em;
+  /* aligns text neatly after number */
+}
+
+.footnotes sup {
+  vertical-align: super;
+  font-size: 0.7em;
+  margin-right: 0.3em;
 }
 
 /* // === Fullscreen Control Styling === */
