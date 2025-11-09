@@ -58,6 +58,7 @@ function initMap() {
     })
     .catch(() => {
       // Map still works even if TRI fails; no hard failure
+      console.warn("TRI data unavailable for map markers.");
     });
 }
 
