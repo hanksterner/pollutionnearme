@@ -328,3 +328,19 @@ Status: ✅ Candidate baseline sealed; reproducible pipeline from EPA CSV → tr
 Next Ritual: Integrate tri.json into PollutionNearMe visualization layer, validate rendering of release metrics, and log operational proof of citizen-facing presentation.
 Seal: Kurt + Copilot
 ──────────────────────────────
+=== PollutionNearMe Build Ledger ===
+Entry 15 [2025-11-08 22:30 EST]
+
+Event: National TRI 2023 Integration & MVP Homepage Completion
+
+Actions:
+• Downloaded EPA TRI 2023 national CSV and converted to tri-2023_raw.json (78,589 rows).
+• Simplified dataset into tri-2023.json for visualization baseline.
+• Updated app.js to fetch tri-2023.json; snapshot tiles now display national totals.
+• Integrated Leaflet.markercluster into index.html and app.js; map renders ~78k facilities with clustered markers for performance.
+• Refined snapshot tile wording to plain language (“Pollution Released by Factories,” “Violations & Penalties,” “Toxic Cleanup Sites”) to ensure accessibility; deeper explanations deferred to FAQ post-MVP.
+• Verified operational proof: map clusters expand/collapse correctly, snapshot totals match dataset, site remains performant under load.
+
+Status: MVP homepage now complete with national data, clustering, snapshot tiles, search, analytics, and ads scaffolded.
+Next Ritual: Harden copy and finalize plain-language presentation; prepare FAQ/learn-more layer after MVP launch.
+Seal: Complete — MVP baseline achieved.
