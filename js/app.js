@@ -13,47 +13,45 @@ fetch('/data/tri-2023.json')
     }
 
     // === Map Initialization ===
-    const mapDiv = document.getElementById('map');
-    if (mapDiv) {
-      const map = L.map('map', {
-        fullscreenControl: true
-      }).setView([39.8, -98.6], 4); // Center US
+    const map = L.map('map', {
+      fullscreenControl: true
+    }).setView([39.8, -98.6], 4); // Center US
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors'
-      }).addTo(map);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
 
-      const markers = L.markerClusterGroup();
+    const markers = L.markerClusterGroup();
 
-      tri.forEach(item => {
-        if (!item.latitude || !item.longitude) return;
+    tri.forEach(item => {
+      if (!item.latitude || !item.longitude) return;
 
-        const marker = L.circleMarker([item.latitude, item.longitude], {
-          radius: Math.max(3, Math.log(item.release_lbs + 1)),
-          color: item.release_lbs > 1000 ? 'red' : item.release_lbs > 100 ? 'orange' : 'green',
-          fillOpacity: 0.6
-        });
+      const marker = L.circleMarker([item.latitude, item.longitude], {
+        radius: Math.max(3, Math.log(item.release_lbs + 1)),
+        color: item.release_lbs > 1000 ? 'red' : item.release_lbs > 100 ? 'orange' : 'green',
+        fillOpacity: 0.6
+      });
 
-        marker.bindPopup(`
+      marker.bindPopup(`
           <strong>${item.facility}</strong><br/>
           ${item.chemical}<br/>
           ${item.release_lbs} lbs released<br/>
           ${item.city}, ${item.county}
         `);
 
-        markers.addLayer(marker);
+      markers.addLayer(marker);
+    });
+
+    map.addLayer(markers);
+
+    // === Expand Map Button Control ===
+    const expandBtn = document.getElementById('expand-map');
+    if (expandBtn) {
+      expandBtn.addEventListener('click', () => {
+        map.toggleFullscreen();
       });
-
-      map.addLayer(markers);
-
-      // === Expand Map Button Control ===
-      const expandBtn = document.getElementById('expand-map');
-      if (expandBtn) {
-        expandBtn.addEventListener('click', () => {
-          map.toggleFullscreen();
-        });
-      }
     }
+  }
   });
 
 // === Violations Visualization ===

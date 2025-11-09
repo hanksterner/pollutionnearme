@@ -221,9 +221,3 @@ footer a:hover {
   text-align: center;
   font-style: italic;
 }
-
-/* // === Map Controls === */
-.map-controls {
-  text-align: center;
-  margin: 1rem 0;
-}
