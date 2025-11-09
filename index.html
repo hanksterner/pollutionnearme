@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>Pollution Near Me — Environmental Data & Accountability</title>
@@ -15,9 +16,12 @@
   <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js" defer></script>
 
   <!-- Fullscreen plugin -->
-  <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
-  <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js" defer></script>
+  <link rel="stylesheet"
+    href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
+  <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"
+    defer></script>
 </head>
+
 <body>
 
   <!-- Header -->
@@ -28,7 +32,7 @@
   </header>
 
   <!-- Navigation -->
-  <nav id="nav" class="hidden" aria-hidden="true">
+  <nav id="nav" aria-hidden="true">
     <a href="#">Home</a>
     <a href="#">About</a>
     <a href="#">Data Sources</a>
@@ -71,12 +75,16 @@
 
   <!-- Footer -->
   <footer>
-    © 2025 Pollution Near Me. Data sources: EPA & environmental agencies.
-    <br>
-    <a href="#">Terms of Service</a> | <a href="#">Privacy Statement</a>
+    <div>© 2025 Pollution Near Me. Data sources: EPA & environmental agencies.</div>
+    <div class="footer-links">
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Statement</a>
+      <a href="#">Contact</a>
+    </div>
   </footer>
 
   <!-- App Script -->
   <script src="js/app.js" defer></script>
 </body>
+
 </html>

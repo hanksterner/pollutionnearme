@@ -97,7 +97,6 @@ header p.tagline {
   position: absolute;
   top: calc(100% + 0.5rem);
   left: 0;
-  right: auto;
   width: 260px;
   max-width: calc(100% - 2rem);
   background: linear-gradient(180deg, rgba(90, 107, 122, 0.98), var(--secondary));
@@ -105,17 +104,21 @@ header p.tagline {
   border-radius: 8px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
   transform-origin: top left;
-  transform: translateY(-8px) scaleY(0.98);
   opacity: 0;
   pointer-events: none;
-  transition: transform 220ms cubic-bezier(.2, .9, .3, 1), opacity 180ms ease;
+  max-height: 0;
+  overflow: hidden;
+  transform: translateY(-8px) scaleY(0.98);
+  transition: transform 220ms cubic-bezier(.2, .9, .3, 1), opacity 180ms ease, max-height 220ms ease;
   z-index: 1050;
 }
 
-#nav:not(.hidden) {
-  transform: translateY(0) scaleY(1);
+#nav.open {
   opacity: 1;
   pointer-events: auto;
+  max-height: 400px;
+  /* enough to show all links */
+  transform: translateY(0) scaleY(1);
 }
 
 #nav a {
@@ -123,13 +126,12 @@ header p.tagline {
   text-decoration: none;
   display: block;
   padding: 0.5rem 0;
-  margin: 0;
   font-weight: 700;
   letter-spacing: 0.01em;
 }
 
 #nav a+a {
-  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
   padding-top: 0.75rem;
   margin-top: 0.5rem;
 }
@@ -202,7 +204,7 @@ header p.tagline {
   font-weight: 800;
 }
 
-/* ensure map sits below title with clear spacing */
+/* // === Map Section === */
 #map {
   display: block;
   width: 100%;
@@ -211,6 +213,7 @@ header p.tagline {
   background: #e9eef3;
   border-radius: 6px;
   overflow: hidden;
+  position: relative;
 }
 
 /* // === Snapshot Card Styling === */
@@ -282,18 +285,7 @@ header p.tagline {
   filter: brightness(0.95);
 }
 
-/* // === Accessibility and small tweaks === */
-a:focus,
-button:focus,
-input:focus {
-  outline-offset: 3px;
-}
-
-[data-hidden="true"] {
-  display: none !important;
-}
-
-/* // === Error state for map data */
+/* // === Error state for map data === */
 #map.data-error::after {
   content: "Data unavailable — check console for details";
   display: flex;
@@ -308,6 +300,46 @@ input:focus {
   top: 0;
   left: 0;
   right: 0;
+}
+
+/* // === Footer (polished) === */
+footer {
+  background: var(--primary);
+  color: #fff;
+  padding: 2rem 1rem;
+  font-size: 0.95rem;
+  text-align: center;
+  border-top: 4px solid var(--accent);
+}
+
+.footer-links {
+  margin-top: 0.75rem;
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a {
+  color: #ddd;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: #fff;
+}
+
+/* // === Accessibility and small tweaks === */
+a:focus,
+button:focus,
+input:focus {
+  outline-offset: 3px;
+}
+
+[data-hidden="true"] {
+  display: none !important;
 }
 
 /* // === Responsive === */
@@ -337,10 +369,12 @@ input:focus {
   }
 
   #nav {
-    width: 100%;
-    left: 0;
-    right: 0;
-    top: calc(100% + 0.5rem);
-    border-radius: 8px;
+    width: calc(100% - 2rem);
+    left: 1rem;
+    right: 1rem;
+  }
+
+  #nav.open {
+    max-height: 320px;
   }
 }
