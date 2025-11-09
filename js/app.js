@@ -17,8 +17,9 @@ function initMap() {
   }).addTo(map);
 
   const clusters = L.markerClusterGroup();
+  map.addLayer(clusters); // ensure map renders even if fetch fails
 
-  // Load TRI markers (optional visual proof even if snapshots fail)
+  // Load TRI markers
   fetch('/data/tri.json')
     .then(r => r.json())
     .then(tri => {
@@ -53,12 +54,9 @@ function initMap() {
 
         clusters.addLayer(marker);
       });
-
-      map.addLayer(clusters);
     })
-    .catch(() => {
-      // Map still works even if TRI fails; no hard failure
-      console.warn("TRI data unavailable for map markers.");
+    .catch(err => {
+      console.warn("TRI data unavailable for map markers.", err);
     });
 }
 
@@ -73,7 +71,8 @@ function loadSnapshots() {
       const el = document.querySelector('#snapshot-releases .snapshot-value');
       if (el) el.textContent = `${billions} billion lbs reported`;
     })
-    .catch(() => {
+    .catch(err => {
+      console.warn("TRI snapshot fetch failed", err);
       const el = document.querySelector('#snapshot-releases .snapshot-value');
       if (el) el.textContent = 'data unavailable';
     });
@@ -87,7 +86,8 @@ function loadSnapshots() {
       const el = document.querySelector('#snapshot-violations .snapshot-value');
       if (el) el.textContent = `${totalViolations} violations, $${totalPenalty.toLocaleString()} penalties`;
     })
-    .catch(() => {
+    .catch(err => {
+      console.warn("Violations snapshot fetch failed", err);
       const el = document.querySelector('#snapshot-violations .snapshot-value');
       if (el) el.textContent = 'data unavailable';
     });

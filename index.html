@@ -4,16 +4,19 @@
   <meta charset="UTF-8">
   <title>Pollution Near Me — Environmental Data & Accountability</title>
   <link rel="stylesheet" href="css/style.css">
+
   <!-- Leaflet core -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <!-- MarkerCluster (optional, but helpful for dense data) -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
+
+  <!-- MarkerCluster plugin -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-  <!-- Fullscreen control -->
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js" defer></script>
+
+  <!-- Fullscreen plugin -->
   <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
-  <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
+  <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js" defer></script>
 </head>
 <body>
 
@@ -70,6 +73,7 @@
     <a href="#">Terms of Service</a> | <a href="#">Privacy Statement</a>
   </footer>
 
-  <script src="js/app.js"></script>
+  <!-- // === App Script === -->
+  <script src="js/app.js" defer></script>
 </body>
 </html>
