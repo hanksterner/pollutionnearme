@@ -194,19 +194,26 @@ footer a:hover {
   line-height: 1.4;
 }
 
+/* Headings with permanent underline */
 .snapshot-item strong {
   display: inline-block;
   margin-bottom: 6px;
   font-weight: 700;
   border-bottom: 3px solid var(--secondary);
-  /* thicker underline */
   padding-bottom: 3px;
+}
+
+/* Ensure no decorative bullets remain */
+.snapshot-item::before {
+  content: none !important;
 }
 
 .snapshot-value {
   display: block;
-  font-size: 1.2em;
-  font-weight: bold;
+  font-size: 1em;
+  /* reduced size for balance */
+  font-weight: 600;
+  /* slightly lighter than bold */
   color: var(--text);
 }
 
