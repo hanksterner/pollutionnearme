@@ -20,5 +20,5 @@ const output = {
 };
 
 // Write to /data/superfund.json
-fs.writeFileSync('superfund.json', JSON.stringify(output, null, 2));
+fs.writeFileSync('data/superfund.json', JSON.stringify(output, null, 2));
 console.log(`Wrote ${sites.length} sites to superfund.json`);
