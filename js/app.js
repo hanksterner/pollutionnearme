@@ -4,31 +4,31 @@ document.addEventListener('DOMContentLoaded', () => {
   loadSnapshots();
 });
 
-// === Map Initialization (visible by default, fullscreen control in corner) ===
+// === Map Initialization ===
 function initMap() {
   const mapDiv = document.getElementById('map');
   if (!mapDiv) return;
 
   const map = L.map('map', { fullscreenControl: true })
-    .setView([39.8, -98.6], 4); // Center US
+    .setView([39.8, -98.6], 4); // US center
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
   }).addTo(map);
 
   const clusters = L.markerClusterGroup();
-  map.addLayer(clusters); // ensure map renders even if fetch fails
+  map.addLayer(clusters);
 
-  // Load TRI markers
-  fetch('/data/tri.json')
+  // Use sealed national dataset
+  fetch('/data/tri-2023.json')
     .then(r => r.json())
     .then(tri => {
       tri.forEach(item => {
-        const lat = item.latitude ?? item.lat;
-        const lon = item.longitude ?? item.lng ?? item.lon;
-        if (lat == null || lon == null) return;
+        const lat = toNum(item.latitude ?? item.lat);
+        const lon = toNum(item.longitude ?? item.lng ?? item.lon);
+        if (!isFinite(lat) || !isFinite(lon)) return;
 
-        const release = Number(item.release_lbs ?? item.release ?? 0);
+        const release = toNum(item.release_lbs ?? item.release);
         const radius = Math.max(3, Math.log(release + 1));
         const color = release > 1_000_000 ? 'red' : release > 100_000 ? 'orange' : 'green';
 
@@ -56,20 +56,32 @@ function initMap() {
       });
     })
     .catch(err => {
-      console.warn("TRI data unavailable for map markers.", err);
+      console.warn("TRI markers load failed", err);
     });
+}
+
+function toNum(v) {
+  const n = Number(v);
+  return isNaN(n) ? 0 : n;
 }
 
 // === Snapshot Data Loaders ===
 function loadSnapshots() {
-  // TRI totals
-  fetch('/data/tri.json')
+  // Pollution by Factories (national TRI 2023)
+  fetch('/data/tri-2023.json')
     .then(r => r.json())
     .then(tri => {
-      const total = tri.reduce((sum, item) => sum + Number(item.release_lbs ?? item.release ?? 0), 0);
+      const valid = tri.filter(item =>
+        isFinite(toNum(item.latitude ?? item.lat)) &&
+        isFinite(toNum(item.longitude ?? item.lng ?? item.lon))
+      );
+      const facilityCount = valid.length;
+      const total = valid.reduce((sum, item) =>
+        sum + toNum(item.release_lbs ?? item.release), 0
+      );
       const billions = (total / 1_000_000_000).toFixed(1);
       const el = document.querySelector('#snapshot-releases .snapshot-value');
-      if (el) el.textContent = `${billions} billion lbs reported`;
+      if (el) el.textContent = `${facilityCount} facilities, ${billions} billion lbs reported`;
     })
     .catch(err => {
       console.warn("TRI snapshot fetch failed", err);
@@ -81,8 +93,8 @@ function loadSnapshots() {
   fetch('/data/violations.json')
     .then(r => r.json())
     .then(vs => {
-      const totalViolations = vs.reduce((s, v) => s + Number(v.count ?? 0), 0);
-      const totalPenalty = vs.reduce((s, v) => s + Number(v.penalty ?? 0), 0);
+      const totalViolations = vs.reduce((s, v) => s + toNum(v.count), 0);
+      const totalPenalty = vs.reduce((s, v) => s + toNum(v.penalty), 0);
       const el = document.querySelector('#snapshot-violations .snapshot-value');
       if (el) el.textContent = `${totalViolations} violations, $${totalPenalty.toLocaleString()} penalties`;
     })
