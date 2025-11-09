@@ -1,122 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pollution Near Me — Environmental Data & Accountability</title>
-  <meta name="description"
-    content="Track toxic sites, violations, and environmental risks in your community with transparent, data-driven reporting.">
-  <meta property="og:title" content="Pollution Near Me — Environmental Data & Accountability">
-  <meta property="og:description" content="Transparent, data-driven reporting on pollution and environmental risks.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pollutionnearme.org/">
-  <meta property="og:image" content="/assets/og-image.png">
   <link rel="stylesheet" href="css/style.css">
-
-  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-
-  <!-- MarkerCluster CSS -->
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
-
-  <style>
-    #map {
-      height: 600px;
-      width: 100%;
-    }
-  </style>
-
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
+  <!-- Fullscreen plugin -->
+  <link rel="stylesheet" href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
+  <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"></script>
 </head>
-
 <body>
+
+  <!-- // === Header Section === -->
   <header>
+    <button class="hamburger">☰</button>
     <h1>Pollution Near Me</h1>
     <p class="tagline">Transparent environmental data, updated continuously.</p>
-
-    <!-- Hamburger menu -->
-    <button class="hamburger" onclick="toggleMenu()">☰</button>
-    <nav id="nav" class="hidden">
-      <a href="/">Home</a>
-      <a href="/about.html">About</a>
-    </nav>
-
-    <!-- Banner with search -->
-    <div class="banner">
-      <div id="search">
-        <input type="text" id="location-search" placeholder="Enter ZIP, city, address, or business">
-        <button onclick="searchLocation()">Search</button>
-      </div>
-    </div>
   </header>
 
-  <main>
-    <!-- Hero Section -->
-    <section id="hero">
-      <h2>Pollution in the United States</h2>
-      <div id="map"></div>
-    </section>
+  <!-- // === Navigation Section === -->
+  <nav id="nav" class="hidden">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Data Sources</a>
+    <a href="#">Contact</a>
+  </nav>
 
-    <!-- Snapshot Section -->
-    <section id="snapshot-card" class="card">
-      <h2>Key Pollution Data — 2023*</h2>
-      <div class="snapshot-grid">
-        <div class="snapshot-item" id="snapshot-releases">
-          <strong>Pollution by Factories</strong><br>
-          <span class="snapshot-value">loading…</span>
-        </div>
-        <div class="snapshot-item" id="snapshot-violations">
-          <strong>Violations & Fines</strong><br>
-          <span class="snapshot-value">loading…</span>
-        </div>
-        <div class="snapshot-item" id="snapshot-superfund">
-          <strong>Superfund Sites</strong><br>
-          <span class="snapshot-value">loading…</span>
-        </div>
+  <!-- // === Banner Section === -->
+  <div class="banner">
+    <form id="search">
+      <input type="text" placeholder="Enter ZIP, city, address, or business">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <!-- // === Snapshot Card Section === -->
+  <section id="snapshot-card" class="card">
+    <h2>Key Pollution Data — 2023*</h2>
+    <div class="snapshot-grid">
+      <div class="snapshot-item" id="snapshot-releases">
+        <strong>Pollution by Factories</strong><br>
+        <span class="snapshot-value">loading…</span>
       </div>
-      <p class="footnote">*2023 is the most recent year of national data available.</p>
-    </section>
+      <div class="snapshot-item" id="snapshot-violations">
+        <strong>Violations & Fines</strong><br>
+        <span class="snapshot-value">loading…</span>
+      </div>
+      <div class="snapshot-item" id="snapshot-superfund">
+        <strong>Superfund Sites</strong><br>
+        <span class="snapshot-value">loading…</span>
+      </div>
+    </div>
+    <p class="footnote">*2023 is the most recent year of national data available.</p>
+  </section>
 
-    <!-- Ad Block -->
-    <section id="ads">
-      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-xxxxxxxxxxxxxxxx" data-ad-slot="1234567890"
-        data-ad-format="auto" data-full-width-responsive="true"></ins>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({});
-      </script>
-    </section>
-  </main>
+  <!-- // === Map Controls Section === -->
+  <div class="map-controls">
+    <button id="expand-map">Expand Map</button>
+  </div>
 
+  <!-- // === Map Section === -->
+  <div id="map"></div>
+
+  <!-- // === Footer Section === -->
   <footer>
-    &copy; 2025 Pollution Near Me. Data sources: EPA & environmental agencies.
-    <a href="/terms.html">Terms of Service</a> | <a href="/privacy.html">Privacy Statement</a>
+    © 2025 Pollution Near Me. Data sources: EPA & environmental agencies.
+    <br>
+    <a href="#">Terms of Service</a> | <a href="#">Privacy Statement</a>
   </footer>
 
-  <!-- Leaflet JS -->
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-  <!-- MarkerCluster JS -->
-  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js"></script>
-
   <script src="js/app.js"></script>
-  <script>
-    function searchLocation() {
-      const query = document.getElementById('location-search').value;
-      alert("Search for: " + query);
-    }
-    function toggleMenu() {
-      const nav = document.getElementById('nav');
-      nav.classList.toggle('hidden');
-    }
-  </script>
 </body>
-
 </html>
