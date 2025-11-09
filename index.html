@@ -22,34 +22,36 @@
 
   <!-- Header -->
   <header>
-    <button class="hamburger">☰</button>
+    <button class="hamburger" id="hamburger" aria-controls="nav" aria-expanded="false" aria-label="Open menu">☰</button>
     <h1>Pollution Near Me</h1>
-    <p class="tagline">Independent environmental data and accountability.</p>
+    <p class="tagline">Exposing government environmental data in plain view.</p>
   </header>
 
   <!-- Navigation -->
-  <nav id="nav" class="hidden">
+  <nav id="nav" class="hidden" aria-hidden="true">
     <a href="#">Home</a>
     <a href="#">About</a>
     <a href="#">Data Sources</a>
     <a href="#">Contact</a>
   </nav>
 
-  <!-- Banner with search (no extra line between banner and map title) -->
+  <!-- Banner with search -->
   <div class="banner">
-    <form id="search">
-      <input type="text" placeholder="Enter ZIP, city, address, or business">
+    <form id="search" role="search" aria-label="Site search">
+      <input type="text" name="q" placeholder="Enter ZIP, city, address, or business" aria-label="Search location">
       <button type="submit">Search</button>
     </form>
   </div>
 
-  <!-- Hero map title and map (exact sealed title) -->
-  <h2 class="map-title">Pollution in the United States</h2>
-  <div id="map"></div>
+  <!-- Hero: properly spaced title above the map -->
+  <div class="map-hero">
+    <h2 class="map-title" id="map-title">Pollution Map of the United States</h2>
+    <div id="map" role="region" aria-labelledby="map-title"></div>
+  </div>
 
   <!-- Snapshot Card -->
-  <section id="snapshot-card" class="card">
-    <h2>Key Pollution Data — 2023*</h2>
+  <section id="snapshot-card" class="card" aria-labelledby="snapshot-heading">
+    <h2 id="snapshot-heading">Key Pollution Data — 2023*</h2>
     <div class="snapshot-grid">
       <div class="snapshot-item" id="snapshot-releases">
         <strong>Pollution by Factories</strong><br>
