@@ -221,3 +221,24 @@ footer a:hover {
   text-align: center;
   font-style: italic;
 }
+
+/* // === Map Section === */
+#map {
+  width: 100%;
+  height: 520px;
+  /* ensure map is visible */
+  border-top: 4px solid var(--secondary);
+  background: #e9eef3;
+  /* fallback background while tiles load */
+}
+
+/* Optional: tweak fullscreen control color to match accent */
+.leaflet-control-fullscreen a {
+  background: var(--accent);
+  color: #fff;
+  border-radius: 4px;
+}
+
+.leaflet-control-fullscreen a:hover {
+  filter: brightness(0.9);
+}
