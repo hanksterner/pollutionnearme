@@ -1,10 +1,257 @@
-/* =========================================================================
-   PollutionNearMe - app.js (updated with Superfund snapshot + markers)
-   ========================================================================= */
+// === Boot & Globals ===
+let GLOBAL_MAP;
+let GLOBAL_CLUSTER_LAYER;
+let _tempMarker;
 
-// === Snapshot Data Loaders ===
+// Wire up once DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+  initUI();
+  initMap();
+  loadSnapshots();
+});
+
+// === UI (hamburger + search) ===
+function initUI() {
+  // Hamburger toggle
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('nav');
+  if (hamburger && nav) {
+    hamburger.addEventListener('click', () => {
+      nav.classList.toggle('open');
+      const isOpen = nav.classList.contains('open');
+      nav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      hamburger.setAttribute('aria-expanded', isOpen.toString());
+    });
+
+    // Escape closes menu
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && nav.classList.contains('open')) {
+        nav.classList.remove('open');
+        nav.setAttribute('aria-hidden', 'true');
+        hamburger.setAttribute('aria-expanded', 'false');
+        hamburger.focus();
+      }
+    });
+  }
+
+  // Search form
+  const searchForm = document.getElementById('search');
+  if (searchForm) {
+    searchForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const input = searchForm.querySelector('input[name="q"]');
+      const query = input?.value?.trim();
+      if (!query) return;
+
+      indicateSearchStart(true);
+      try {
+        const loc = await geocode(query);
+        if (!loc) {
+          indicateSearchResult(false, `No results for "${query}"`);
+          recordLedgerLine(`Search "${query}" — NO RESULT — ${new Date().toISOString()}`);
+          return;
+        }
+        indicateSearchResult(true, loc.display_name);
+        centerMapOn(loc.lat, loc.lon, 12);
+        placeTemporaryMarker(loc.lat, loc.lon, loc.display_name);
+        recordLedgerLine(`Search "${query}" → ${loc.lat},${loc.lon} — ${new Date().toISOString()}`);
+      } catch (err) {
+        console.warn('Search error', err);
+        indicateSearchResult(false, 'Search failed');
+        recordLedgerLine(`Search "${query}" — ERROR — ${new Date().toISOString()} — ${String(err)}`);
+      } finally {
+        indicateSearchStart(false);
+      }
+    });
+  }
+}
+
+function indicateSearchStart(isStarting) {
+  const searchForm = document.getElementById('search');
+  if (!searchForm) return;
+  const btn = searchForm.querySelector('button[type="submit"]');
+  if (!btn) return;
+  btn.disabled = !!isStarting;
+  btn.textContent = isStarting ? 'Searching…' : 'Search';
+}
+
+function indicateSearchResult(ok, msg) {
+  // transient feedback under banner; guard against missing banner
+  let el = document.getElementById('search-feedback');
+  if (!el) {
+    el = document.createElement('div');
+    el.id = 'search-feedback';
+    el.style.textAlign = 'center';
+    el.style.marginTop = '0.5rem';
+    el.style.fontWeight = '600';
+    el.style.color = ok ? '#2e7d32' : '#c62828';
+    const banner = document.querySelector('.banner');
+    if (banner && banner.parentNode) {
+      banner.parentNode.insertBefore(el, banner.nextSibling);
+    } else {
+      // Fallback: append to body if banner missing
+      document.body.appendChild(el);
+    }
+  }
+  el.textContent = msg;
+  el.style.color = ok ? '#2e7d32' : '#c62828';
+  clearTimeout(el._clearTimer);
+  el._clearTimer = setTimeout(() => { el.textContent = ''; }, 6000);
+}
+
+function recordLedgerLine(line) {
+  console.log('[LEDGER-CANDIDATE] ' + line);
+}
+
+// === Geocoding ===
+async function geocode(q) {
+  const common = '&addressdetails=1&accept-language=en';
+  let url = 'https://nominatim.openstreetmap.org/search?format=json&limit=3&countrycodes=us&q='
+    + encodeURIComponent(q) + common;
+
+  let payload = await fetchJson(url);
+  if (!Array.isArray(payload) || payload.length === 0) {
+    url = 'https://nominatim.openstreetmap.org/search?format=json&limit=3&q='
+      + encodeURIComponent(q) + common;
+    payload = await fetchJson(url);
+  }
+  if (!Array.isArray(payload) || payload.length === 0) return null;
+
+  const candidate = payload.find(p => p.type === 'postcode') || payload[0];
+  const lat = Number(candidate.lat);
+  const lon = Number(candidate.lon);
+  if (!isFinite(lat) || !isFinite(lon)) return null;
+
+  return { lat, lon, display_name: candidate.display_name };
+}
+
+async function fetchJson(url) {
+  const res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+  if (!res.ok) throw new Error('Network response not ok: ' + res.status);
+  return res.json();
+}
+
+// === Map Initialization ===
+function initMap() {
+  const mapDiv = document.getElementById('map');
+  if (!mapDiv) return;
+
+  const map = L.map('map', { fullscreenControl: true }).setView([39.8, -98.6], 4);
+  GLOBAL_MAP = map;
+
+  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '© OpenStreetMap contributors'
+  }).addTo(map);
+
+  const clusters = L.markerClusterGroup ? L.markerClusterGroup() : L.layerGroup();
+  GLOBAL_CLUSTER_LAYER = clusters;
+  map.addLayer(clusters);
+
+  // TRI markers (national facilities and releases)
+  fetch('/data/tri-2023.json')
+    .then(r => {
+      if (!r.ok) throw new Error('Network response not ok');
+      return r.json();
+    })
+    .then(tri => {
+      if (!Array.isArray(tri)) throw new Error('TRI payload not array');
+      tri.forEach(item => {
+        const lat = toNum(item.latitude ?? item.lat);
+        const lon = toNum(item.longitude ?? item.lng ?? item.lon);
+        if (!isFinite(lat) || !isFinite(lon)) return;
+
+        const release = Math.max(0, toNum(item.release_lbs ?? item.release ?? 0));
+        const radius = Math.max(3, Math.log(release + 1) || 3);
+        const color = release > 1_000_000 ? '#c62828'
+          : release > 100_000 ? '#ef6c00'
+            : '#2e7d32';
+
+        const marker = L.circleMarker([lat, lon], {
+          radius,
+          color,
+          fillColor: color,
+          fillOpacity: 0.6,
+          weight: 1
+        });
+
+        const facility = escapeHtml(item.facility ?? item.name ?? 'Facility');
+        const chemical = escapeHtml(item.chemical ?? item.cas ?? 'Chemical');
+        const city = escapeHtml(item.city ?? '');
+        const county = escapeHtml(item.county ?? '');
+        const releaseStr = release ? release.toLocaleString() : '0';
+
+        const popupHtml = `
+          <div class="popup">
+            <strong>${facility}</strong><br/>
+            ${chemical}<br/>
+            ${releaseStr} lbs released<br/>
+            ${city}${city && county ? ', ' : ''}${county}
+          </div>
+        `;
+        marker.bindPopup(popupHtml);
+
+        if (GLOBAL_CLUSTER_LAYER.addLayer) {
+          GLOBAL_CLUSTER_LAYER.addLayer(marker);
+        } else {
+          marker.addTo(GLOBAL_CLUSTER_LAYER);
+        }
+      });
+    })
+    .catch(err => {
+      console.warn('TRI markers load failed', err);
+      mapDiv.classList.add('data-error');
+    });
+
+  // Superfund markers
+  fetch('/data/superfund.json')
+    .then(r => {
+      if (!r.ok) throw new Error('Network response not ok');
+      return r.json();
+    })
+    .then(sf => {
+      const list = Array.isArray(sf.sites) ? sf.sites : [];
+      list.forEach(site => {
+        const lat = toNum(site.lat ?? site.latitude);
+        const lon = toNum(site.lon ?? site.lng ?? site.longitude);
+        if (!isFinite(lat) || !isFinite(lon)) return;
+
+        const status = escapeHtml(site.npl_status ?? site.status ?? 'NPL');
+        const name = escapeHtml(site.site_name ?? site.name ?? 'Superfund site');
+        const city = escapeHtml(site.city ?? '');
+        const state = escapeHtml(site.state ?? '');
+
+        const marker = L.circleMarker([lat, lon], {
+          radius: 6,
+          color: '#1e88e5',
+          fillColor: '#1e88e5',
+          fillOpacity: 0.5,
+          weight: 1
+        });
+
+        const popupHtml = `
+          <div class="popup">
+            <strong>${name}</strong><br/>
+            ${city}${city && state ? ', ' : ''}${state}<br/>
+            Status: ${status}
+          </div>
+        `;
+        marker.bindPopup(popupHtml);
+
+        if (GLOBAL_CLUSTER_LAYER.addLayer) {
+          GLOBAL_CLUSTER_LAYER.addLayer(marker);
+        } else {
+          marker.addTo(GLOBAL_CLUSTER_LAYER);
+        }
+      });
+    })
+    .catch(err => {
+      console.warn('Superfund markers load failed', err);
+    });
+}
+
+// === Snapshot Tiles ===
 function loadSnapshots() {
-  // Pollution by Factories (national TRI 2023)
+  // TRI snapshot
   fetch('/data/tri-2023.json')
     .then(r => {
       if (!r.ok) throw new Error('Network response not ok');
@@ -29,7 +276,7 @@ function loadSnapshots() {
       if (el) el.textContent = 'data unavailable';
     });
 
-  // Violations & penalties
+  // Violations snapshot
   fetch('/data/violations.json')
     .then(r => {
       if (!r.ok) throw new Error('Network response not ok');
@@ -48,87 +295,29 @@ function loadSnapshots() {
       if (el) el.textContent = 'data unavailable';
     });
 
-  // Superfund snapshot (replaces placeholder)
+  // Superfund snapshot
   fetch('/data/superfund.json')
     .then(r => {
       if (!r.ok) throw new Error('Network response not ok');
       return r.json();
     })
     .then(sf => {
-      if (!sf || typeof sf.national_count !== 'number') throw new Error('Superfund payload invalid');
       const el = document.querySelector('#snapshot-superfund .snapshot-value');
-      if (el) el.textContent = sf.national_count.toLocaleString();
+      const count = toNum(sf.national_count);
+      const asOf = sf.as_of || '';
+      if (el) {
+        if (isFinite(count) && count > 0) {
+          el.textContent = `${count} sites (as of ${asOf})`;
+        } else {
+          el.textContent = 'data unavailable';
+        }
+      }
     })
     .catch(err => {
       console.warn('Superfund snapshot fetch failed', err);
       const el = document.querySelector('#snapshot-superfund .snapshot-value');
       if (el) el.textContent = 'data unavailable';
     });
-}
-
-// === Superfund Map Integration ===
-function addSuperfundMarkers(map) {
-  fetch('/data/superfund.json')
-    .then(r => {
-      if (!r.ok) throw new Error('Network response not ok');
-      return r.json();
-    })
-    .then(data => {
-      if (!data || !Array.isArray(data.sites)) {
-        throw new Error('Superfund sites array missing');
-      }
-      data.sites.forEach(site => {
-        const lat = toNum(site.latitude);
-        const lon = toNum(site.longitude);
-        if (!isFinite(lat) || !isFinite(lon)) return;
-
-        const marker = L.circleMarker([lat, lon], {
-          radius: 5,
-          color: 'blue',
-          fillColor: 'blue',
-          fillOpacity: 0.6
-        });
-
-        const name = escapeHtml(site.site_name ?? 'Superfund Site');
-        const city = escapeHtml(site.city ?? '');
-        const state = escapeHtml(site.state ?? '');
-        const status = escapeHtml(site.npl_status ?? '');
-
-        marker.bindPopup(
-          `<strong>${name}</strong><br>` +
-          `${city}${city && state ? ', ' : ''}${state}<br>` +
-          (status ? `NPL Status: ${status}` : '')
-        );
-
-        marker.addTo(map);
-      });
-    })
-    .catch(err => console.error('Error loading Superfund markers:', err));
-}
-
-// === Map initialization ===
-let GLOBAL_MAP;
-
-function initMap() {
-  // If a map is already initialized, reuse it
-  if (GLOBAL_MAP) return GLOBAL_MAP;
-
-  // Basic Leaflet map setup (centered on US)
-  GLOBAL_MAP = L.map('map', { zoomControl: true }).setView([37.8, -96], 4);
-
-  // Basemap (adjust if you use a different tile provider in your project)
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: '&copy; OpenStreetMap contributors'
-  }).addTo(GLOBAL_MAP);
-
-  // Existing dataset markers (TRI, etc.) should be added here in your project
-  // addTriMarkers(GLOBAL_MAP); // keep your existing call if present
-
-  // Superfund markers
-  addSuperfundMarkers(GLOBAL_MAP);
-
-  return GLOBAL_MAP;
 }
 
 // === Utilities ===
@@ -147,17 +336,17 @@ function escapeHtml(s) {
     .replace(/'/g, '&#39;');
 }
 
-// === Map helper: recenter and temporary marker ===
+// === Map helpers ===
 function centerMapOn(lat, lon, zoom = 12) {
   if (!GLOBAL_MAP) return;
   GLOBAL_MAP.setView([lat, lon], zoom, { animate: true });
 }
 
-let _tempMarker;
 function placeTemporaryMarker(lat, lon, label) {
   if (!GLOBAL_MAP) return;
   if (_tempMarker) {
     GLOBAL_MAP.removeLayer(_tempMarker);
+    _tempMarker = null;
   }
   _tempMarker = L.circleMarker([lat, lon], {
     radius: 8,
@@ -168,7 +357,7 @@ function placeTemporaryMarker(lat, lon, label) {
     dashArray: '2,2'
   }).addTo(GLOBAL_MAP);
   _tempMarker.bindPopup(`<strong>${escapeHtml(label || 'Location')}</strong>`).openPopup();
-  // remove after 10s
+
   setTimeout(() => {
     if (_tempMarker && GLOBAL_MAP) {
       GLOBAL_MAP.removeLayer(_tempMarker);
@@ -176,159 +365,3 @@ function placeTemporaryMarker(lat, lon, label) {
     }
   }, 10000);
 }
-
-// === Bootstrap ===
-// Call these from your page lifecycle (e.g., on DOMContentLoaded)
-document.addEventListener('DOMContentLoaded', () => {
-  // Snapshots and map (from first part)
-  loadSnapshots();
-  initMap();
-
-  // === Search wiring ===
-  // Expects: #search-input (text), #search-button (button)
-  function initSearch() {
-    const input = document.querySelector('#search-input');
-    const button = document.querySelector('#search-button');
-
-    if (!input || !button) return;
-
-    // Submit on button click
-    button.addEventListener('click', () => {
-      const q = String(input.value || '').trim();
-      if (q.length) geocodeAndCenter(q);
-    });
-
-    // Submit on Enter key
-    input.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter') {
-        const q = String(input.value || '').trim();
-        if (q.length) geocodeAndCenter(q);
-      }
-    });
-  }
-
-  // === Client-side geocoding (Nominatim) ===
-  async function geocodeAndCenter(query) {
-    try {
-      // Nominatim public endpoint; returns array of matches
-      const params = new URLSearchParams({
-        q: query,
-        format: 'json',
-        addressdetails: '1',
-        limit: '1'
-      });
-      const url = `https://nominatim.openstreetmap.org/search?${params.toString()}`;
-      const res = await fetch(url, {
-        headers: {
-          // Be polite to the service
-          'Accept': 'application/json'
-        }
-      });
-      if (!res.ok) throw new Error(`Geocoding failed: ${res.status}`);
-
-      const results = await res.json();
-      if (!Array.isArray(results) || results.length === 0) {
-        notifySearchResult('No location found');
-        return;
-      }
-
-      const top = results[0];
-      const lat = toNum(top.lat);
-      const lon = toNum(top.lon);
-      if (!isFinite(lat) || !isFinite(lon)) {
-        notifySearchResult('Invalid coordinates received');
-        return;
-      }
-
-      // Recenter and place a temporary marker with a readable label
-      const label = formatGeocodeLabel(top);
-      centerMapOn(lat, lon, pickZoomForResult(top));
-      placeTemporaryMarker(lat, lon, label);
-      notifySearchResult(`Centered on ${label}`);
-    } catch (err) {
-      console.warn('Geocoding error:', err);
-      notifySearchResult('Search error — try refining your query');
-    }
-  }
-
-  // Choose a zoom based on result type (city vs address)
-  function pickZoomForResult(item) {
-    const cls = (item && item.class) || '';
-    const type = (item && item.type) || '';
-    // address/building gets closer; city/postcode a bit wider
-    if (cls === 'place' && (type === 'city' || type === 'town' || type === 'village')) return 11;
-    if (type === 'postcode') return 10;
-    return 14; // street/address/building
-  }
-
-  // Format a readable popup label from Nominatim result
-  function formatGeocodeLabel(item) {
-    const disp = item && item.display_name ? String(item.display_name) : '';
-    // Keep it concise: first 2–3 components
-    const parts = disp.split(',').map(s => s.trim());
-    const short = parts.slice(0, 3).join(', ');
-    return short || 'Selected location';
-  }
-
-  // Snapshot feedback UI (optional; uses #search-status if present)
-  function notifySearchResult(msg) {
-    const el = document.querySelector('#search-status');
-    if (!el) return;
-    el.textContent = msg;
-    el.setAttribute('aria-live', 'polite');
-  }
-
-  // === Hamburger menu / nav toggle ===
-  // Expects: #menu-toggle (button), #site-nav (nav)
-  function initMenu() {
-    const toggle = document.querySelector('#menu-toggle');
-    const nav = document.querySelector('#site-nav');
-    if (!toggle || !nav) return;
-
-    // Initialize ARIA
-    toggle.setAttribute('aria-expanded', 'false');
-    nav.setAttribute('aria-hidden', 'true');
-
-    const open = () => {
-      nav.classList.add('is-open');
-      nav.setAttribute('aria-hidden', 'false');
-      toggle.setAttribute('aria-expanded', 'true');
-      // Trap focus: first focusable element inside nav
-      const focusable = nav.querySelector('a, button, input, [tabindex]:not([tabindex="-1"])');
-      if (focusable) focusable.focus();
-      document.addEventListener('keydown', escHandler);
-    };
-
-    const close = () => {
-      nav.classList.remove('is-open');
-      nav.setAttribute('aria-hidden', 'true');
-      toggle.setAttribute('aria-expanded', 'false');
-      toggle.focus();
-      document.removeEventListener('keydown', escHandler);
-    };
-
-    const escHandler = (e) => {
-      if (e.key === 'Escape') close();
-    };
-
-    toggle.addEventListener('click', () => {
-      const expanded = toggle.getAttribute('aria-expanded') === 'true';
-      if (expanded) close(); else open();
-    });
-
-    // Close when clicking a nav link (optional)
-    nav.addEventListener('click', (e) => {
-      const t = e.target;
-      if (t && t.closest('a')) {
-        close();
-      }
-    });
-  }
-
-  // === DOM bootstrap (continued) ===
-  document.addEventListener('DOMContentLoaded', () => {
-    // These calls complement the earlier block
-    initSearch();
-    initMenu();
-  });
-
