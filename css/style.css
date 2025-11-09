@@ -3,20 +3,24 @@
 /* // === Color Variables === */
 :root {
   --primary: #1C2A39;
-  /* deep navy */
   --secondary: #5A6B7A;
-  /* steel gray */
   --accent: #2ECC71;
-  /* data green */
   --alert: #E74C3C;
-  /* data red */
   --background: #f5f7fa;
   --text: #222;
   --secondary-light: #e0e6eb;
-  /* lighter steel gray */
 }
 
 /* // === Global Styles === */
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -24,6 +28,8 @@ body {
   background: var(--background);
   color: var(--text);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 /* // === Headings === */
@@ -32,66 +38,100 @@ h2,
 h3 {
   font-family: 'Inter', Helvetica, sans-serif;
   font-weight: 700;
-  margin-top: 0;
+  margin: 0;
 }
 
 /* // === Header === */
 header {
   background: var(--primary);
   color: #fff;
-  padding: 2rem 1rem 1rem;
+  padding: 1.25rem 1rem 1rem;
   text-align: center;
   position: relative;
+  overflow: visible;
 }
 
 header h1 {
-  margin: 0;
-  font-size: 2.5rem;
+  margin: 0.25rem 0 0.25rem;
+  font-size: 2rem;
+  line-height: 1;
 }
 
 header p.tagline {
-  margin: 0.25rem 0 1rem;
-  font-size: 1.2rem;
-  color: #eee;
+  margin: 0.25rem 0 0.5rem;
+  font-size: 1rem;
+  color: #f1f4f6;
+  font-weight: 600;
+  opacity: 0.95;
 }
 
 /* // === Hamburger Menu === */
 .hamburger {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  font-size: 1.8rem;
-  background: none;
-  border: none;
+  top: 0.9rem;
+  left: 0.9rem;
+  font-size: 1.6rem;
+  background: rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  height: 40px;
+  width: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
   cursor: pointer;
   color: #fff;
-  z-index: 1000;
+  z-index: 1100;
+  transition: transform 150ms ease, background 150ms ease;
 }
 
-/* // === Navigation === */
+.hamburger:focus,
+.hamburger:hover {
+  transform: translateY(-2px);
+  background: rgba(0, 0, 0, 0.12);
+  outline: none;
+}
+
+/* // === Navigation (elegant slide) === */
 #nav {
-  display: flex;
-  flex-direction: column;
-  background: var(--secondary);
   position: absolute;
-  top: 3rem;
+  top: calc(100% + 0.5rem);
   left: 0;
+  right: auto;
+  width: 260px;
+  max-width: calc(100% - 2rem);
+  background: linear-gradient(180deg, rgba(90, 107, 122, 0.98), var(--secondary));
   padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  transform-origin: top left;
+  transform: translateY(-8px) scaleY(0.98);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 220ms cubic-bezier(.2, .9, .3, 1), opacity 180ms ease;
+  z-index: 1050;
 }
 
-#nav.hidden {
-  display: none;
+#nav:not(.hidden) {
+  transform: translateY(0) scaleY(1);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 #nav a {
   color: #fff;
   text-decoration: none;
-  margin: 0.5rem 0;
-  font-weight: bold;
+  display: block;
+  padding: 0.5rem 0;
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: 0.01em;
 }
 
-#nav a:hover {
-  text-decoration: underline;
+#nav a+a {
+  border-top: 1px solid rgba(255, 255, 255, 0.04);
+  padding-top: 0.75rem;
+  margin-top: 0.5rem;
 }
 
 /* // === Banner === */
@@ -107,61 +147,70 @@ header p.tagline {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  width: 100%;
+  max-width: 720px;
 }
 
 #search input {
-  width: 350px;
-  padding: 0.6rem;
-  border: 1px solid #ccc;
-  border-radius: 6px;
+  flex: 1 1 420px;
+  min-width: 140px;
+  padding: 0.6rem 0.75rem;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fff;
+  color: var(--text);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+#search input:focus {
+  outline: 2px solid rgba(46, 125, 50, 0.12);
+  border-color: var(--accent);
 }
 
 #search button {
-  padding: 0.6rem 1rem;
+  padding: 0.6rem 0.9rem;
   background-color: var(--accent);
   color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   cursor: pointer;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  box-shadow: 0 6px 18px rgba(46, 125, 50, 0.08);
 }
 
 #search button::before {
-  content: "🔍 ";
+  content: "🔍";
 }
 
-/* // === Main Content === */
-main {
-  max-width: 960px;
-  margin: 0 auto;
-  padding: 2rem 1rem;
+/* // === Map Hero (spacing and layout) === */
+.map-hero {
+  max-width: 1200px;
+  margin: 1.25rem auto 0.5rem;
+  padding: 0 1rem;
+  display: block;
 }
 
-/* // === Section Styling === */
-section {
-  padding: 2rem 1rem;
-  border-top: 4px solid var(--secondary);
-  margin-top: 2rem;
-}
-
-/* // === Footer === */
-footer {
-  background: var(--primary);
-  color: #fff;
-  padding: 1rem;
-  font-size: 0.9rem;
+.map-title {
+  font-size: 1.375rem;
+  margin: 0 0 0.75rem;
   text-align: center;
+  color: var(--primary);
+  font-weight: 800;
 }
 
-footer a {
-  color: #ddd;
-  text-decoration: none;
-  margin: 0 0.5rem;
-  font-weight: 500;
-}
-
-footer a:hover {
-  color: #fff;
-  text-decoration: underline;
+/* ensure map sits below title with clear spacing */
+#map {
+  display: block;
+  width: 100%;
+  height: 520px;
+  border-top: 4px solid var(--secondary);
+  background: #e9eef3;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 /* // === Snapshot Card Styling === */
@@ -169,7 +218,8 @@ footer a:hover {
   background: #fdfdfd;
   border-radius: 8px;
   padding: 24px;
-  margin: 24px 0;
+  margin: 24px auto;
+  max-width: 1200px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
 }
 
@@ -180,9 +230,9 @@ footer a:hover {
 
 .snapshot-grid {
   display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 24px;
+  flex-wrap: wrap;
 }
 
 .snapshot-item {
@@ -200,7 +250,6 @@ footer a:hover {
   padding-bottom: 3px;
 }
 
-/* override any leftover diamonds */
 .snapshot-item::before {
   content: none !important;
 }
@@ -212,6 +261,7 @@ footer a:hover {
   color: var(--text);
 }
 
+/* footnote */
 .footnote {
   font-size: 0.85em;
   color: #555;
@@ -220,22 +270,77 @@ footer a:hover {
   font-style: italic;
 }
 
-/* // === Map Section === */
-#map {
-  display: block;
-  width: 100%;
-  height: 520px;
-  border-top: 4px solid var(--secondary);
-  background: #e9eef3;
-}
-
 /* // === Fullscreen Control Styling === */
 .leaflet-control-fullscreen a {
   background: var(--accent);
   color: #fff;
   border-radius: 4px;
+  padding: 4px 6px;
 }
 
 .leaflet-control-fullscreen a:hover {
-  filter: brightness(0.9);
+  filter: brightness(0.95);
+}
+
+/* // === Accessibility and small tweaks === */
+a:focus,
+button:focus,
+input:focus {
+  outline-offset: 3px;
+}
+
+[data-hidden="true"] {
+  display: none !important;
+}
+
+/* // === Error state for map data */
+#map.data-error::after {
+  content: "Data unavailable — check console for details";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--alert);
+  font-weight: 700;
+  padding: 1rem;
+  height: 100%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+/* // === Responsive === */
+@media (max-width: 800px) {
+  header h1 {
+    font-size: 1.6rem;
+  }
+
+  .hamburger {
+    top: 0.6rem;
+    left: 0.6rem;
+    width: 36px;
+    height: 36px;
+    font-size: 1.3rem;
+  }
+
+  #search input {
+    width: 100%;
+  }
+
+  .map-hero {
+    margin: 0.75rem auto 0.25rem;
+  }
+
+  #map {
+    height: 420px;
+  }
+
+  #nav {
+    width: 100%;
+    left: 0;
+    right: 0;
+    top: calc(100% + 0.5rem);
+    border-radius: 8px;
+  }
 }

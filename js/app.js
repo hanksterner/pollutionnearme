@@ -1,16 +1,46 @@
 // === Boot & Helpers ===
 document.addEventListener('DOMContentLoaded', () => {
+  initUI();
   initMap();
   loadSnapshots();
 });
+
+// === UI Initialization (hamburger, search) ===
+function initUI() {
+  const hamburger = document.getElementById('hamburger');
+  const nav = document.getElementById('nav');
+  if (hamburger && nav) {
+    hamburger.addEventListener('click', () => {
+      const isHidden = nav.classList.toggle('hidden');
+      nav.setAttribute('aria-hidden', isHidden ? 'true' : 'false');
+      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
+      hamburger.setAttribute('aria-expanded', (!expanded).toString());
+    });
+  }
+
+  const searchForm = document.getElementById('search');
+  if (searchForm) {
+    searchForm.addEventListener('submit', e => {
+      e.preventDefault();
+      const input = searchForm.querySelector('input[name="q"]');
+      const query = input?.value?.trim();
+      if (!query) return;
+      // Minimal operational wiring: normalize and broadcast event for later handlers
+      console.log('Search submitted:', query);
+      // Focus map area as immediate feedback
+      const mapEl = document.getElementById('map');
+      if (mapEl) mapEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      // Future: wire to geocoding / ZIP lookup and map centering
+    });
+  }
+}
 
 // === Map Initialization ===
 function initMap() {
   const mapDiv = document.getElementById('map');
   if (!mapDiv) return;
 
-  const map = L.map('map', { fullscreenControl: true })
-    .setView([39.8, -98.6], 4); // US center
+  const map = L.map('map', { fullscreenControl: true }).setView([39.8, -98.6], 4);
 
   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '© OpenStreetMap contributors'
@@ -19,18 +49,22 @@ function initMap() {
   const clusters = L.markerClusterGroup();
   map.addLayer(clusters);
 
-  // Use sealed national dataset
+  // Load sealed national dataset
   fetch('/data/tri-2023.json')
-    .then(r => r.json())
+    .then(r => {
+      if (!r.ok) throw new Error('Network response not ok');
+      return r.json();
+    })
     .then(tri => {
+      if (!Array.isArray(tri)) throw new Error('TRI payload not array');
       tri.forEach(item => {
         const lat = toNum(item.latitude ?? item.lat);
         const lon = toNum(item.longitude ?? item.lng ?? item.lon);
         if (!isFinite(lat) || !isFinite(lon)) return;
 
-        const release = toNum(item.release_lbs ?? item.release);
-        const radius = Math.max(3, Math.log(release + 1));
-        const color = release > 1_000_000 ? 'red' : release > 100_000 ? 'orange' : 'green';
+        const release = Math.max(0, toNum(item.release_lbs ?? item.release ?? 0));
+        const radius = Math.max(3, Math.log(release + 1) || 3);
+        const color = release > 1_000_000 ? '#c62828' : release > 100_000 ? '#ef6c00' : '#2e7d32';
 
         const marker = L.circleMarker([lat, lon], {
           radius,
@@ -40,66 +74,75 @@ function initMap() {
           weight: 1
         });
 
-        const facility = item.facility ?? item.name ?? 'Facility';
-        const chemical = item.chemical ?? item.cas ?? 'Chemical';
-        const city = item.city ?? '';
-        const county = item.county ?? '';
+        const facility = escapeHtml(item.facility ?? item.name ?? 'Facility');
+        const chemical = escapeHtml(item.chemical ?? item.cas ?? 'Chemical');
+        const city = escapeHtml(item.city ?? '');
+        const county = escapeHtml(item.county ?? '');
+        const releaseStr = release ? release.toLocaleString() : '0';
 
-        marker.bindPopup(`
-          <strong>${facility}</strong><br/>
-          ${chemical}<br/>
-          ${release.toLocaleString()} lbs released<br/>
-          ${city}${city && county ? ', ' : ''}${county}
-        `);
-
+        const popupHtml = `
+          <div class="popup">
+            <strong>${facility}</strong><br/>
+            ${chemical}<br/>
+            ${releaseStr} lbs released<br/>
+            ${city}${city && county ? ', ' : ''}${county}
+          </div>
+        `;
+        marker.bindPopup(popupHtml);
         clusters.addLayer(marker);
       });
     })
     .catch(err => {
-      console.warn("TRI markers load failed", err);
+      console.warn('TRI markers load failed', err);
+      const mapEl = document.getElementById('map');
+      if (mapEl) {
+        mapEl.classList.add('data-error');
+      }
     });
-}
-
-function toNum(v) {
-  const n = Number(v);
-  return isNaN(n) ? 0 : n;
 }
 
 // === Snapshot Data Loaders ===
 function loadSnapshots() {
   // Pollution by Factories (national TRI 2023)
   fetch('/data/tri-2023.json')
-    .then(r => r.json())
+    .then(r => {
+      if (!r.ok) throw new Error('Network response not ok');
+      return r.json();
+    })
     .then(tri => {
+      if (!Array.isArray(tri)) throw new Error('TRI payload not array');
       const valid = tri.filter(item =>
         isFinite(toNum(item.latitude ?? item.lat)) &&
         isFinite(toNum(item.longitude ?? item.lng ?? item.lon))
       );
       const facilityCount = valid.length;
-      const total = valid.reduce((sum, item) =>
-        sum + toNum(item.release_lbs ?? item.release), 0
-      );
-      const billions = (total / 1_000_000_000).toFixed(1);
+      const total = valid.reduce((sum, item) => sum + Math.max(0, toNum(item.release_lbs ?? item.release ?? 0)), 0);
+      const billions = (total / 1_000_000_000);
+      const billionsFixed = billions >= 0.1 ? billions.toFixed(1) : billions.toPrecision(1);
       const el = document.querySelector('#snapshot-releases .snapshot-value');
-      if (el) el.textContent = `${facilityCount} facilities, ${billions} billion lbs reported`;
+      if (el) el.textContent = `${facilityCount} facilities, ${billionsFixed} billion lbs reported`;
     })
     .catch(err => {
-      console.warn("TRI snapshot fetch failed", err);
+      console.warn('TRI snapshot fetch failed', err);
       const el = document.querySelector('#snapshot-releases .snapshot-value');
       if (el) el.textContent = 'data unavailable';
     });
 
   // Violations & penalties
   fetch('/data/violations.json')
-    .then(r => r.json())
+    .then(r => {
+      if (!r.ok) throw new Error('Network response not ok');
+      return r.json();
+    })
     .then(vs => {
+      if (!Array.isArray(vs)) throw new Error('Violations payload not array');
       const totalViolations = vs.reduce((s, v) => s + toNum(v.count), 0);
       const totalPenalty = vs.reduce((s, v) => s + toNum(v.penalty), 0);
       const el = document.querySelector('#snapshot-violations .snapshot-value');
-      if (el) el.textContent = `${totalViolations} violations, $${totalPenalty.toLocaleString()} penalties`;
+      if (el) el.textContent = `${totalViolations} violations, $${totalPenalty.toLocaleString()}`;
     })
     .catch(err => {
-      console.warn("Violations snapshot fetch failed", err);
+      console.warn('Violations snapshot fetch failed', err);
       const el = document.querySelector('#snapshot-violations .snapshot-value');
       if (el) el.textContent = 'data unavailable';
     });
@@ -107,4 +150,20 @@ function loadSnapshots() {
   // Superfund placeholder
   const sfEl = document.querySelector('#snapshot-superfund .snapshot-value');
   if (sfEl) sfEl.textContent = 'Data source pending';
+}
+
+// === Utilities ===
+function toNum(v) {
+  if (v === null || v === undefined) return NaN;
+  const n = Number(String(v).replace(/[^0-9.\-eE+]/g, ''));
+  return isNaN(n) ? NaN : n;
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
