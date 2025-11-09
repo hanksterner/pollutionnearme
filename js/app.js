@@ -92,26 +92,35 @@ function recordLedgerLine(line) {
 
 // === Geocoding ===
 async function geocode(q) {
-  // Nominatim requires a proper user-agent and suggests 1s between requests in heavy use.
-  // We'll use a small, polite fetch with format=json and accept-language=en.
-  // Return the first suitable result with numeric lat/lon.
-  const url = 'https://nominatim.openstreetmap.org/search?format=json&limit=3&q=' + encodeURIComponent(q) + '&addressdetails=1&accept-language=en';
+  // Try US-biased search first
+  let url = 'https://nominatim.openstreetmap.org/search?format=json&limit=3&countrycodes=us&q='
+    + encodeURIComponent(q)
+    + '&addressdetails=1&accept-language=en';
   try {
-    const res = await fetch(url, {
-      headers: { 'Accept': 'application/json' }
-    });
+    let res = await fetch(url, { headers: { 'Accept': 'application/json' } });
     if (!res.ok) throw new Error('Geocode network response not ok');
-    const payload = await res.json();
+    let payload = await res.json();
+
+    // If no US results, broaden to global search
+    if (!Array.isArray(payload) || payload.length === 0) {
+      url = 'https://nominatim.openstreetmap.org/search?format=json&limit=3&q='
+        + encodeURIComponent(q)
+        + '&addressdetails=1&accept-language=en';
+      res = await fetch(url, { headers: { 'Accept': 'application/json' } });
+      if (!res.ok) throw new Error('Fallback geocode network response not ok');
+      payload = await res.json();
+    }
+
     if (!Array.isArray(payload) || payload.length === 0) return null;
-    // Prefer results that include a postcode or class=place
-    let candidate = payload.find(p => p.type === 'postcode') || payload[0];
-    // Normalize lat/lon to numbers
+
+    // Prefer results that include a postcode
+    const candidate = payload.find(p => p.type === 'postcode') || payload[0];
     const lat = Number(candidate.lat);
     const lon = Number(candidate.lon);
     if (!isFinite(lat) || !isFinite(lon)) return null;
+
     return { lat, lon, display_name: candidate.display_name };
   } catch (err) {
-    // bubble up to caller
     throw err;
   }
 }
