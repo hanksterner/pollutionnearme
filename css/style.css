@@ -257,6 +257,13 @@ header p.tagline {
   content: none !important;
 }
 
+.snapshot-item sup,
+h2 sup {
+  font-size: 0.7em;
+  /* same as footnote numbers */
+  vertical-align: super;
+}
+
 .snapshot-value {
   display: block;
   font-size: 1em;
@@ -279,6 +286,17 @@ header p.tagline {
   font-size: 0.85em;
   color: #555;
   text-align: left;
+}
+
+.footnotes {
+  margin-top: 1rem;
+  font-size: 0.85em;
+  color: #555;
+  text-align: left;
+  border-top: 1px solid #ddd;
+  /* thin, light gray line */
+  padding-top: 0.5rem;
+  /* breathing room after the line */
 }
 
 .footnotes p {
