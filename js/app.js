@@ -11,10 +11,10 @@ function initUI() {
   const nav = document.getElementById('nav');
   if (hamburger && nav) {
     hamburger.addEventListener('click', () => {
-      const isHidden = nav.classList.toggle('hidden');
-      nav.setAttribute('aria-hidden', isHidden ? 'true' : 'false');
-      const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-      hamburger.setAttribute('aria-expanded', (!expanded).toString());
+      nav.classList.toggle('open');
+      const isOpen = nav.classList.contains('open');
+      nav.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+      hamburger.setAttribute('aria-expanded', isOpen.toString());
     });
   }
 
@@ -25,12 +25,10 @@ function initUI() {
       const input = searchForm.querySelector('input[name="q"]');
       const query = input?.value?.trim();
       if (!query) return;
-      // Minimal operational wiring: normalize and broadcast event for later handlers
       console.log('Search submitted:', query);
-      // Focus map area as immediate feedback
       const mapEl = document.getElementById('map');
       if (mapEl) mapEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Future: wire to geocoding / ZIP lookup and map centering
+      // TODO: wire to geocoding / ZIP lookup and center map
     });
   }
 }
@@ -95,9 +93,7 @@ function initMap() {
     .catch(err => {
       console.warn('TRI markers load failed', err);
       const mapEl = document.getElementById('map');
-      if (mapEl) {
-        mapEl.classList.add('data-error');
-      }
+      if (mapEl) mapEl.classList.add('data-error');
     });
 }
 
@@ -117,10 +113,10 @@ function loadSnapshots() {
       );
       const facilityCount = valid.length;
       const total = valid.reduce((sum, item) => sum + Math.max(0, toNum(item.release_lbs ?? item.release ?? 0)), 0);
-      const billions = (total / 1_000_000_000);
-      const billionsFixed = billions >= 0.1 ? billions.toFixed(1) : billions.toPrecision(1);
+      const billions = total / 1_000_000_000;
+      const billionsStr = billions >= 0.1 ? billions.toFixed(1) : billions.toPrecision(1);
       const el = document.querySelector('#snapshot-releases .snapshot-value');
-      if (el) el.textContent = `${facilityCount} facilities, ${billionsFixed} billion lbs reported`;
+      if (el) el.textContent = `${facilityCount} facilities, ${billionsStr} billion lbs reported`;
     })
     .catch(err => {
       console.warn('TRI snapshot fetch failed', err);
