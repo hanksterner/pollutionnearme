@@ -344,3 +344,22 @@ Actions:
 Status: MVP homepage now complete with national data, clustering, snapshot tiles, search, analytics, and ads scaffolded.
 Next Ritual: Harden copy and finalize plain-language presentation; prepare FAQ/learn-more layer after MVP launch.
 Seal: Complete — MVP baseline achieved.
+──────────────────────────────
+=== PollutionNearMe Build Ledger ===
+Entry 16 [2025-11-08 23:00 EST]
+
+Event: Homepage Copy & Structure Refinement
+
+Actions:
+• Assigned clear title to map section: “Pollution in the United States” to distinguish visualization from data summary.
+• Defined snapshot section title: “Key Pollution Data — 2023” with note that 2023 is the most recent national dataset available.
+• Refined snapshot data points for MVP clarity:
+   – Pollution by Factories (total toxic releases reported, excludes cars/livestock/natural sources).
+   – Violations & Fines (enforcement actions and penalties).
+   – Superfund Sites (official term retained, deeper explanation deferred to FAQ).
+• Removed AQI from snapshot section for MVP, as AQI is local/regional and constantly changing.
+• Identified duplication of snapshot sections in index.html; one will be deleted in next update to streamline layout.
+
+Status: Homepage copy and structure updated for accessibility and clarity; MVP scope tightened to national releases, violations, and Superfund sites.
+
+Seal: Complete — Entry 16 logged.
