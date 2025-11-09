@@ -402,3 +402,29 @@ Next Ritual:
 • Harden copy for citizen-facing clarity and seal MVP baseline for public launch.
 
 Seal: Complete — Entry 18 logged.
+=============================================================
+[Entry 19 | 2025-11-09 16:30 EST]
+Step 2 integration complete.
+
+- Superfund snapshot loader added to app.js
+  • Fetches /data/superfund.json
+  • Displays national_count in #snapshot-superfund tile
+- Superfund map markers implemented
+  • addSuperfundMarkers(map) function created
+  • Blue circle markers with popups for site_name, city/state, NPL status
+  • Called inside initMap()
+- Bootstrap extended
+  • DOMContentLoaded now calls loadSnapshots(), initMap(), initSearch(), initMenu()
+- Search wiring implemented
+  • #search-input and #search-button trigger geocodeAndCenter()
+  • Nominatim client-side geocoding integrated
+  • Map recenters and places temporary marker with formatted label
+- Hamburger menu toggle added
+  • Accessible ARIA attributes (aria-expanded, aria-hidden)
+  • Escape key closes menu
+  • Focus management on open/close
+- Repository update
+  • Committed as "Step 2: integrate Superfund snapshot and markers, plus search and menu wiring"
+  • Pushed to origin/main
+  • Large NPL_Boundaries.gdb flagged; removed in follow-up commit
+  • .gitignore updated to exclude geodatabase
