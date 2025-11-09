@@ -6,14 +6,19 @@ fetch('/data/tri-2023.json')
 
     const snapReleases = document.getElementById('snapshot-releases');
     if (snapReleases) {
+      // Format in billions for readability
+      const formatted = (total / 1_000_000_000).toFixed(1);
       snapReleases.querySelector('.snapshot-value').textContent =
-        `${total.toLocaleString()} lbs reported`;
+        `${formatted} billion lbs reported`;
     }
 
-    // Map with clustering
+    // === Map Initialization ===
     const mapDiv = document.getElementById('map');
     if (mapDiv) {
-      const map = L.map('map').setView([39.8, -98.6], 4); // Center US
+      const map = L.map('map', {
+        fullscreenControl: true
+      }).setView([39.8, -98.6], 4); // Center US
+
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors'
       }).addTo(map);
@@ -40,6 +45,14 @@ fetch('/data/tri-2023.json')
       });
 
       map.addLayer(markers);
+
+      // === Expand Map Button Control ===
+      const expandBtn = document.getElementById('expand-map');
+      if (expandBtn) {
+        expandBtn.addEventListener('click', () => {
+          map.toggleFullscreen();
+        });
+      }
     }
   });
 

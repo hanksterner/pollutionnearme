@@ -1,6 +1,6 @@
-/* === PollutionNearMe Identity Layer === */
+/* // === PollutionNearMe Identity Layer === */
 
-/* Color variables */
+/* // === Color Variables === */
 :root {
   --primary: #1C2A39;
   /* deep navy */
@@ -16,7 +16,7 @@
   /* lighter steel gray */
 }
 
-/* Global */
+/* // === Global Styles === */
 body {
   margin: 0;
   padding: 0;
@@ -26,7 +26,7 @@ body {
   line-height: 1.6;
 }
 
-/* Headings */
+/* // === Headings === */
 h1,
 h2,
 h3 {
@@ -35,7 +35,7 @@ h3 {
   margin-top: 0;
 }
 
-/* Header */
+/* // === Header === */
 header {
   background: var(--primary);
   color: #fff;
@@ -51,12 +51,11 @@ header h1 {
 
 header p.tagline {
   margin: 0.25rem 0 1rem;
-  /* closer to title, more space before banner */
   font-size: 1.2rem;
   color: #eee;
 }
 
-/* Hamburger menu top-left */
+/* // === Hamburger Menu === */
 .hamburger {
   position: absolute;
   top: 1rem;
@@ -69,7 +68,7 @@ header p.tagline {
   z-index: 1000;
 }
 
-/* Nav hidden by default */
+/* // === Navigation === */
 #nav {
   display: flex;
   flex-direction: column;
@@ -95,7 +94,7 @@ header p.tagline {
   text-decoration: underline;
 }
 
-/* Banner with centered search */
+/* // === Banner === */
 .banner {
   background-color: var(--secondary);
   display: flex;
@@ -103,7 +102,7 @@ header p.tagline {
   padding: 0.75rem 1rem;
 }
 
-/* Search bar styling */
+/* // === Search Bar === */
 #search {
   display: flex;
   align-items: center;
@@ -112,7 +111,6 @@ header p.tagline {
 
 #search input {
   width: 350px;
-  /* wide enough for ~30 chars */
   padding: 0.6rem;
   border: 1px solid #ccc;
   border-radius: 6px;
@@ -131,21 +129,21 @@ header p.tagline {
   content: "🔍 ";
 }
 
-/* Main content */
+/* // === Main Content === */
 main {
   max-width: 960px;
   margin: 0 auto;
   padding: 2rem 1rem;
 }
 
-/* Section styling */
+/* // === Section Styling === */
 section {
   padding: 2rem 1rem;
   border-top: 4px solid var(--secondary);
   margin-top: 2rem;
 }
 
-/* Footer */
+/* // === Footer === */
 footer {
   background: var(--primary);
   color: #fff;
@@ -166,7 +164,7 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* === Snapshot Card Styling === */
+/* // === Snapshot Card Styling === */
 #snapshot-card.card {
   background: #fdfdfd;
   border-radius: 8px;
@@ -194,7 +192,6 @@ footer a:hover {
   line-height: 1.4;
 }
 
-/* Headings with permanent underline */
 .snapshot-item strong {
   display: inline-block;
   margin-bottom: 6px;
@@ -203,7 +200,7 @@ footer a:hover {
   padding-bottom: 3px;
 }
 
-/* Ensure no decorative bullets remain */
+/* override any leftover diamonds */
 .snapshot-item::before {
   content: none !important;
 }
@@ -211,7 +208,7 @@ footer a:hover {
 .snapshot-value {
   display: block;
   font-size: 1em;
-  /* reduced size for balance */
+  /* balanced size */
   font-weight: 600;
   /* slightly lighter than bold */
   color: var(--text);
@@ -223,4 +220,10 @@ footer a:hover {
   margin-top: 16px;
   text-align: center;
   font-style: italic;
+}
+
+/* // === Map Controls === */
+.map-controls {
+  text-align: center;
+  margin: 1rem 0;
 }
