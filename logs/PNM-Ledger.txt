@@ -363,3 +363,19 @@ Actions:
 Status: Homepage copy and structure updated for accessibility and clarity; MVP scope tightened to national releases, violations, and Superfund sites.
 
 Seal: Complete — Entry 16 logged.
+──────────────────────────────
+=== PollutionNearMe Build Ledger ===
+Entry 17 [2025-11-09 00:57 EST]
+
+Event: Map & Snapshot Restoration After Expand Map Regression
+
+Actions:
+• Removed Expand Map button from index.html and confirmed script order and snapshot markup integrity.
+• Updated style.css to ensure map visibility with display:block and verified layout consistency across browsers.
+• Repaired app.js: normalized TRI key access, added fallback logging, and guaranteed map renders even if data fails.
+• Verified operational proof: snapshot card populates TRI and Violations data correctly; Superfund placeholder remains.
+• Confirmed map renders with fullscreen control and clustered markers using Leaflet and MarkerCluster.
+
+Status: Functional baseline restored; reproducible across Chrome and Edge.
+Next Ritual: Resume Phase 5 expansion — integrate Superfund and Water Quality feeds, refine snapshot copy, and prepare FAQ layer.
+Seal: Complete — Entry 17 logged.
