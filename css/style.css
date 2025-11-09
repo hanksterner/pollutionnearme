@@ -195,15 +195,16 @@ footer a:hover {
 }
 
 .snapshot-item strong {
-  display: block;
-  margin-bottom: 4px;
-  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 6px;
+  font-weight: 700;
+  border-bottom: 2px solid var(--secondary);
+  padding-bottom: 2px;
+  transition: border-color 0.3s ease;
 }
 
-.snapshot-item::before {
-  content: "♦ ";
-  color: var(--secondary);
-  font-weight: bold;
+.snapshot-item strong:hover {
+  border-color: var(--accent);
 }
 
 .snapshot-value {
@@ -211,6 +212,14 @@ footer a:hover {
   font-size: 1.2em;
   font-weight: bold;
   color: var(--text);
+}
+
+.footnote {
+  font-size: 0.85em;
+  color: #555;
+  margin-top: 16px;
+  text-align: center;
+  font-style: italic;
 }
 
 .footnote {
