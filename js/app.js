@@ -130,7 +130,7 @@ async function fetchJson(url) {
   return res.json();
 }
 
-// === Map Initialization ===
+// === Map Initialization with Layer Toggle ===
 function initMap() {
   const mapDiv = document.getElementById('map');
   if (!mapDiv) return;
@@ -142,35 +142,47 @@ function initMap() {
     attribution: '© OpenStreetMap contributors'
   }).addTo(map);
 
-  // TRI clusters (green)
-  const triClusters = L.markerClusterGroup({
-    iconCreateFunction: cluster => {
-      return L.divIcon({
-        html: `<div class="tri-cluster-icon">${cluster.getChildCount()}</div>`,
-        className: 'tri-cluster-icon',
-        iconSize: [40, 40]
-      });
-    }
-  });
+  // Independent layer groups (no clustering)
+  const triLayer = L.layerGroup();
+  const superfundLayer = L.layerGroup();
+  const violationsLayer = L.layerGroup();
 
-  // Superfund clusters (blue)
-  const superfundClusters = L.markerClusterGroup({
-    maxClusterRadius: 40,
-    disableClusteringAtZoom: 6,
-    iconCreateFunction: cluster => {
-      return L.divIcon({
-        html: `<div class="sf-cluster-icon">${cluster.getChildCount()}</div>`,
-        className: 'sf-cluster-icon',
-        iconSize: [40, 40]
-      });
-    }
-  });
+  GLOBAL_TRI_LAYER = triLayer;
+  GLOBAL_SUPERFUND_LAYER = superfundLayer;
+  GLOBAL_VIOLATIONS_LAYER = violationsLayer;
 
-  GLOBAL_TRI_LAYER = triClusters;
-  GLOBAL_SUPERFUND_LAYER = superfundClusters;
+  // Add all layers to map by default
+  map.addLayer(triLayer);
+  map.addLayer(superfundLayer);
+  map.addLayer(violationsLayer);
 
-  map.addLayer(triClusters);
-  map.addLayer(superfundClusters);
+  // Add toggle control
+  const overlays = {
+    "Pollution by Factories (TRI)": triLayer,
+    "Superfund Sites": superfundLayer,
+    "Violations & Fines": violationsLayer
+  };
+  L.control.layers(null, overlays, { collapsed: false }).addTo(map);
+}
+
+// Superfund clusters (blue)
+const superfundClusters = L.markerClusterGroup({
+  maxClusterRadius: 40,
+  disableClusteringAtZoom: 6,
+  iconCreateFunction: cluster => {
+    return L.divIcon({
+      html: `<div class="sf-cluster-icon">${cluster.getChildCount()}</div>`,
+      className: 'sf-cluster-icon',
+      iconSize: [40, 40]
+    });
+  }
+});
+
+GLOBAL_TRI_LAYER = triClusters;
+GLOBAL_SUPERFUND_LAYER = superfundClusters;
+
+map.addLayer(triClusters);
+map.addLayer(superfundClusters);
 }
 
 // TRI markers (national facilities and releases)
