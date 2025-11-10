@@ -145,7 +145,10 @@ function initMap() {
 
   // Separate cluster layers for TRI and Superfund
   const triClusters = L.markerClusterGroup();
-  const superfundClusters = L.markerClusterGroup({ maxClusterRadius: 60 });
+  const superfundClusters = L.markerClusterGroup({
+    maxClusterRadius: 60,        // smaller radius = more clusters at national zoom
+    disableClusteringAtZoom: 6   // stop clustering once you zoom in closer
+  });
 
   GLOBAL_TRI_LAYER = triClusters;
   GLOBAL_SUPERFUND_LAYER = superfundClusters;
@@ -236,18 +239,18 @@ fetch('/data/superfund.json')
       });
 
       const popupHtml = `
-          <div class="popup">
-            <strong>${name}</strong><br/>
-            ${city}${city && state ? ', ' : ''}${state}<br/>
-            Status: ${status}
-          </div>
-        `;
+        <div class="popup">
+          <strong>${name}</strong><br/>
+          ${city}${city && state ? ', ' : ''}${state}<br/>
+          Status: ${status}
+        </div>
+      `;
       marker.bindPopup(popupHtml);
 
-      if (GLOBAL_CLUSTER_LAYER.addLayer) {
+      if (GLOBAL_SUPERFUND_LAYER.addLayer) {
         GLOBAL_SUPERFUND_LAYER.addLayer(marker);
       } else {
-        marker.addTo(GLOBAL_CLUSTER_LAYER);
+        marker.addTo(GLOBAL_SUPERFUND_LAYER);
       }
     }); // closes forEach
   }) // closes .then(sf => { … })
