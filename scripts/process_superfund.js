@@ -1,52 +1,44 @@
 // scripts/process_superfund.js
-// Generate enriched Superfund dataset for PollutionNearMe
-
 const fs = require('fs');
 const path = require('path');
-const csv = require('csv-parser');
 
-// Input source (adjust to your EPA CSV export or SEMS data)
 const INPUT = path.join(__dirname, '../data/superfund_raw.json');
 const OUTPUT = path.join(__dirname, '../data/superfund.json');
 
+const raw = JSON.parse(fs.readFileSync(INPUT, 'utf8'));
 const sites = [];
-let count = 0;
 
-fs.createReadStream(INPUT)
-  .pipe(csv())
-  .on('data', row => {
-    try {
-      const lat = parseFloat(row.LATITUDE || row.lat || '');
-      const lon = parseFloat(row.LONGITUDE || row.lon || '');
-      if (!isFinite(lat) || !isFinite(lon)) return;
+(raw.features || []).forEach(f => {
+  const props = f.properties || {};
+  const coords = f.geometry?.coordinates || [];
+  const lon = parseFloat(coords[0]);
+  const lat = parseFloat(coords[1]);
+  if (!isFinite(lat) || !isFinite(lon)) return;
 
-      const site = {
-        site_name: row.SITE_NAME || row.name || 'Superfund site',
-        city: row.CITY || '',
-        state: row.STATE || '',
-        npl_status: row.NPL_STATUS || row.status || 'Unknown',
-        lat,
-        lon,
-        // Enriched fields
-        contaminants: row.CONTAMINANTS ? row.CONTAMINANTS.split(';').map(s => s.trim()) : [],
-        remedy: row.REMEDY || '',
-        estimated_cleanup_cost: row.CLEANUP_COST ? Number(row.CLEANUP_COST) : null
-      };
+  const site = {
+    site_name: props.SITE_NAME || 'Superfund site',
+    city: props.CITY_NAME || '',
+    state: props.STATE_CODE || '',
+    npl_status: props.NPL_STATUS_CODE || 'Unknown',
+    lat,
+    lon,
+    // Enriched fields
+    contaminants: props.CONTAMINANTS ? props.CONTAMINANTS.split(';').map(s => s.trim()) : [],
+    remedy: props.REMEDY || '',
+    estimated_cleanup_cost: props.CLEANUP_COST ? Number(props.CLEANUP_COST) : null,
+    url: props.URL_ALIAS_TXT || '',
+    photo: props.FEATURE_INFO_URL || ''
+  };
 
-      sites.push(site);
-      count++;
-    } catch (err) {
-      console.warn('Row parse error', err);
-    }
-  })
-  .on('end', () => {
-    const output = {
-      national_count: count,
-      as_of: new Date().toISOString().slice(0, 10),
-      sites
-    };
+  sites.push(site);
+});
 
-    fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
-    fs.writeFileSync(OUTPUT, JSON.stringify(output, null, 2));
-    console.log(`Wrote ${count} sites to ${OUTPUT}`);
-  });
+const output = {
+  national_count: sites.length,
+  as_of: new Date().toISOString().slice(0, 10),
+  sites
+};
+
+fs.mkdirSync(path.dirname(OUTPUT), { recursive: true });
+fs.writeFileSync(OUTPUT, JSON.stringify(output, null, 2));
+console.log(`Wrote ${sites.length} sites to ${OUTPUT}`);
