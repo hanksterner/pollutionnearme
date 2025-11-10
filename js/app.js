@@ -208,7 +208,6 @@ fetch('/data/tri-2023.json')
     console.warn('TRI markers load failed', err);
     mapDiv.classList.add('data-error');
   });
-} // <-- this closing brace was missing
 
 // Superfund markers
 fetch('/data/superfund.json')
