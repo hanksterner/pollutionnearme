@@ -444,3 +444,30 @@ Step 2 integration complete.
 
 — Operational Proof —
 All changes tested in browser: map loads with TRI and Superfund layers distinct, snapshot card displays updated footnotes, cluster icons styled correctly. Ledger entry sealed for reproducibility.
+================================================================
+Entry 21 — 2025-11-10 14:28 EST
+------------------------------------------------------------
+• Ingest pipeline expanded:
+  - Added scripts/fetch-npl-final.py with refined filtering logic.
+  - Added scripts/fetch-npl-raw.py for raw dataset acquisition.
+  - Added converters: convert-pdf-json.py, convert-pdf-ocr-json.py,
+    convert-txt-json.py, extract-pdf-attachment.py.
+
+• Dataset updates:
+  - Added data/npl.raw.json (authoritative EPA ArcGIS feed).
+  - Generated data/superfund.json baseline (1342 NPL Site records).
+  - Added reference files: data/406185.xlsx, data/All Current Final NPL Sites-20251110105748.pdf,
+    data/nplfinalbydate.txt.
+
+• Git commit sealed:
+  - Commit 185809c on main branch.
+  - Message: "Add updated ingest script and baseline superfund.json dataset".
+  - 12 files changed, 113678 insertions, 19881 deletions.
+
+• Operational proof:
+  - superfund.json created successfully with 1342 sites.
+  - App.js filtering strategy documented to reduce to ~375 active Final NPL sites.
+  - Logs/ingest-errors.txt records anomalies and count validation.
+
+------------------------------------------------------------
+Status: Baseline sealed. Build is up to date as of Entry 21.
