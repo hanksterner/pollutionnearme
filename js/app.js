@@ -1,6 +1,5 @@
 // === Boot & Globals ===
 let GLOBAL_MAP;
-let GLOBAL_CLUSTER_LAYER;
 let _tempMarker;
 
 // Wire up once DOM is ready
@@ -143,11 +142,28 @@ function initMap() {
     attribution: '© OpenStreetMap contributors'
   }).addTo(map);
 
-  // Separate cluster layers for TRI and Superfund
-  const triClusters = L.markerClusterGroup();
+  // TRI clusters (green)
+  const triClusters = L.markerClusterGroup({
+    iconCreateFunction: cluster => {
+      return L.divIcon({
+        html: `<div class="tri-cluster-icon">${cluster.getChildCount()}</div>`,
+        className: 'tri-cluster-icon',
+        iconSize: [40, 40]
+      });
+    }
+  });
+
+  // Superfund clusters (blue)
   const superfundClusters = L.markerClusterGroup({
-    maxClusterRadius: 60,        // smaller radius = more clusters at national zoom
-    disableClusteringAtZoom: 6   // stop clustering once you zoom in closer
+    maxClusterRadius: 40,
+    disableClusteringAtZoom: 6,
+    iconCreateFunction: cluster => {
+      return L.divIcon({
+        html: `<div class="sf-cluster-icon">${cluster.getChildCount()}</div>`,
+        className: 'sf-cluster-icon',
+        iconSize: [40, 40]
+      });
+    }
   });
 
   GLOBAL_TRI_LAYER = triClusters;
@@ -314,10 +330,9 @@ fetch('/data/superfund.json')
   .then(sf => {
     const el = document.querySelector('#snapshot-superfund .snapshot-value');
     const count = toNum(sf.national_count);
-    const asOf = sf.as_of || '';
     if (el) {
       if (isFinite(count) && count > 0) {
-        el.textContent = `${count} sites (as of ${asOf})`;
+        el.textContent = `${count} sites`;  // no "(as of …)" here
       } else {
         el.textContent = 'data unavailable';
       }
