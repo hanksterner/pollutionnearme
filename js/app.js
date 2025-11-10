@@ -179,7 +179,7 @@ fetch('/data/tri-2023.json')
       if (!isFinite(lat) || !isFinite(lon)) return;
 
       const release = Math.max(0, toNum(item.release_lbs ?? item.release ?? 0));
-      const radius = Math.max(3, Math.log(release + 1) || 3);
+      const radius = Math.min(20, Math.max(3, Math.log10(release + 1)));
       const color = release > 1_000_000 ? '#c62828'
         : release > 100_000 ? '#ef6c00'
           : '#2e7d32';
@@ -227,7 +227,18 @@ fetch('/data/superfund.json')
     return r.json();
   })
   .then(sf => {
-    const list = Array.isArray(sf.sites) ? sf.sites : [];
+    let list = Array.isArray(sf.sites) ? sf.sites : [];
+
+    // Filter down to active Final NPL sites
+    list = list.filter(site => {
+      const status = (site.npl_status || site.status || '').trim();
+      const deletion = (site.deletion_date || '').trim();
+      const deletionNotice = (site.deletion_notice || '').trim();
+      const listingDate = (site.listing_date || '').trim();
+
+      return status === 'NPL Site' && !deletion && !deletionNotice && listingDate;
+    });
+
     list.forEach(site => {
       const lat = toNum(site.lat ?? site.latitude);
       const lon = toNum(site.lon ?? site.lng ?? site.longitude);
@@ -321,7 +332,19 @@ fetch('/data/superfund.json')
   })
   .then(sf => {
     const el = document.querySelector('#snapshot-superfund .snapshot-value');
-    const count = toNum(sf.national_count);
+
+    // Apply same filter as markers
+    const list = Array.isArray(sf.sites) ? sf.sites : [];
+    const filtered = list.filter(site => {
+      const status = (site.npl_status || site.status || '').trim();
+      const deletion = (site.deletion_date || '').trim();
+      const deletionNotice = (site.deletion_notice || '').trim();
+      const listingDate = (site.listing_date || '').trim();
+      return status === 'NPL Site' && !deletion && !deletionNotice && listingDate;
+    });
+
+    const count = filtered.length;
+
     if (el) {
       if (isFinite(count) && count > 0) {
         el.textContent = `${count} sites`;  // no "(as of …)" here
