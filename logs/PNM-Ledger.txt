@@ -428,3 +428,19 @@ Step 2 integration complete.
   • Pushed to origin/main
   • Large NPL_Boundaries.gdb flagged; removed in follow-up commit
   • .gitignore updated to exclude geodatabase
+===========================================================
+[ENTRY 20 — 2025-11-09T23:33:00Z]
+
+— Build Status Catch‑Up —
+• Removed legacy GLOBAL_CLUSTER_LAYER declaration; established separate GLOBAL_TRI_LAYER and GLOBAL_SUPERFUND_LAYER for clarity and reproducibility.
+• Implemented distinct cluster options: TRI retains default scaling, Superfund tuned with maxClusterRadius=40 and disableClusteringAtZoom=6.
+• Corrected marker blocks: TRI markers consistently added to GLOBAL_TRI_LAYER; Superfund markers consistently added to GLOBAL_SUPERFUND_LAYER.
+• Applied distinct bubble colors: TRI markers green (scaled by release), Superfund markers blue (fixed radius).
+• Added iconCreateFunction overrides and style.css rules for .tri-cluster-icon and .sf-cluster-icon, ensuring circular bubble visuals with color coding and counts.
+• Updated snapshot card in index.html: retitled to “Key Pollution Data”, clarified footnote 1 to “National pollution data as of 2023 (EPA TRI dataset)”, retained footnote 2 for Superfund timing.
+• Removed redundant “(as of …)” logic from Superfund snapshot in app.js; timing now conveyed solely via footnote.
+• Verified national zoom behavior: TRI bubbles scatter as before; Superfund bubbles now render in correct locations with toggle control integration.
+• Began design discussion on multi‑layer toggle control: Pollution, Violations, Superfund datasets each as independent layers, user can toggle visibility via UI buttons or Leaflet layer control.
+
+— Operational Proof —
+All changes tested in browser: map loads with TRI and Superfund layers distinct, snapshot card displays updated footnotes, cluster icons styled correctly. Ledger entry sealed for reproducibility.
