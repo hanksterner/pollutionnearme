@@ -143,64 +143,71 @@ function initMap() {
     attribution: '© OpenStreetMap contributors'
   }).addTo(map);
 
-  const clusters = L.markerClusterGroup ? L.markerClusterGroup() : L.layerGroup();
-  GLOBAL_CLUSTER_LAYER = clusters;
-  map.addLayer(clusters);
+  // Separate cluster layers for TRI and Superfund
+  const triClusters = L.markerClusterGroup();
+  const superfundClusters = L.markerClusterGroup({ maxClusterRadius: 60 });
 
-  // TRI markers (national facilities and releases)
-  fetch('/data/tri-2023.json')
-    .then(r => {
-      if (!r.ok) throw new Error('Network response not ok');
-      return r.json();
-    })
-    .then(tri => {
-      if (!Array.isArray(tri)) throw new Error('TRI payload not array');
-      tri.forEach(item => {
-        const lat = toNum(item.latitude ?? item.lat);
-        const lon = toNum(item.longitude ?? item.lng ?? item.lon);
-        if (!isFinite(lat) || !isFinite(lon)) return;
+  GLOBAL_TRI_LAYER = triClusters;
+  GLOBAL_SUPERFUND_LAYER = superfundClusters;
 
-        const release = Math.max(0, toNum(item.release_lbs ?? item.release ?? 0));
-        const radius = Math.max(3, Math.log(release + 1) || 3);
-        const color = release > 1_000_000 ? '#c62828'
-          : release > 100_000 ? '#ef6c00'
-            : '#2e7d32';
+  map.addLayer(triClusters);
+  map.addLayer(superfundClusters);
+}
 
-        const marker = L.circleMarker([lat, lon], {
-          radius,
-          color,
-          fillColor: color,
-          fillOpacity: 0.6,
-          weight: 1
-        });
+// TRI markers (national facilities and releases)
+fetch('/data/tri-2023.json')
+  .then(r => {
+    if (!r.ok) throw new Error('Network response not ok');
+    return r.json();
+  })
+  .then(tri => {
+    if (!Array.isArray(tri)) throw new Error('TRI payload not array');
+    tri.forEach(item => {
+      const lat = toNum(item.latitude ?? item.lat);
+      const lon = toNum(item.longitude ?? item.lng ?? item.lon);
+      if (!isFinite(lat) || !isFinite(lon)) return;
 
-        const facility = escapeHtml(item.facility ?? item.name ?? 'Facility');
-        const chemical = escapeHtml(item.chemical ?? item.cas ?? 'Chemical');
-        const city = escapeHtml(item.city ?? '');
-        const county = escapeHtml(item.county ?? '');
-        const releaseStr = release ? release.toLocaleString() : '0';
+      const release = Math.max(0, toNum(item.release_lbs ?? item.release ?? 0));
+      const radius = Math.max(3, Math.log(release + 1) || 3);
+      const color = release > 1_000_000 ? '#c62828'
+        : release > 100_000 ? '#ef6c00'
+          : '#2e7d32';
 
-        const popupHtml = `
-          <div class="popup">
-            <strong>${facility}</strong><br/>
-            ${chemical}<br/>
-            ${releaseStr} lbs released<br/>
-            ${city}${city && county ? ', ' : ''}${county}
-          </div>
-        `;
-        marker.bindPopup(popupHtml);
-
-        if (GLOBAL_CLUSTER_LAYER.addLayer) {
-          GLOBAL_CLUSTER_LAYER.addLayer(marker);
-        } else {
-          marker.addTo(GLOBAL_CLUSTER_LAYER);
-        }
+      const marker = L.circleMarker([lat, lon], {
+        radius,
+        color,
+        fillColor: color,
+        fillOpacity: 0.6,
+        weight: 1
       });
-    })
-    .catch(err => {
-      console.warn('TRI markers load failed', err);
-      mapDiv.classList.add('data-error');
+
+      const facility = escapeHtml(item.facility ?? item.name ?? 'Facility');
+      const chemical = escapeHtml(item.chemical ?? item.cas ?? 'Chemical');
+      const city = escapeHtml(item.city ?? '');
+      const county = escapeHtml(item.county ?? '');
+      const releaseStr = release ? release.toLocaleString() : '0';
+
+      const popupHtml = `
+        <div class="popup">
+          <strong>${facility}</strong><br/>
+          ${chemical}<br/>
+          ${releaseStr} lbs released<br/>
+          ${city}${city && county ? ', ' : ''}${county}
+        </div>
+      `;
+      marker.bindPopup(popupHtml);
+
+      if (GLOBAL_TRI_LAYER.addLayer) {
+        GLOBAL_TRI_LAYER.addLayer(marker);
+      } else {
+        marker.addTo(GLOBAL_TRI_LAYER);
+      }
     });
+  })
+  .catch(err => {
+    console.warn('TRI markers load failed', err);
+    mapDiv.classList.add('data-error');
+  });
 } // <-- this closing brace was missing
 
 // Superfund markers
@@ -239,7 +246,7 @@ fetch('/data/superfund.json')
       marker.bindPopup(popupHtml);
 
       if (GLOBAL_CLUSTER_LAYER.addLayer) {
-        GLOBAL_CLUSTER_LAYER.addLayer(marker);
+        GLOBAL_SUPERFUND_LAYER.addLayer(marker);
       } else {
         marker.addTo(GLOBAL_CLUSTER_LAYER);
       }
