@@ -227,24 +227,36 @@ fetch('/data/superfund.json')
     return r.json();
   })
   .then(sf => {
-    let list = Array.isArray(sf.sites) ? sf.sites : [];
+    const allSites = Array.isArray(sf.sites) ? sf.sites : [];
 
-    // Filter down to active Final NPL sites
-    list = list.filter(site => {
-      const status = (site.npl_status || site.status || '').trim();
+    // Separate into active vs. former
+    const activeSites = allSites.filter(site => {
+      const status = (site.npl_status || site.status || '').toLowerCase();
+      const listingDate = (site.listing_date || '').trim();
       const deletion = (site.deletion_date || '').trim();
       const deletionNotice = (site.deletion_notice || '').trim();
-      const listingDate = (site.listing_date || '').trim();
 
-      return status === 'NPL Site' && !deletion && !deletionNotice && listingDate;
+      const isFinal = status.includes('final npl');
+      const notDeleted = !deletion && !deletionNotice;
+
+      return isFinal && listingDate && notDeleted;
     });
 
-    list.forEach(site => {
+    const formerSites = allSites.filter(site => !activeSites.includes(site));
+
+    // Create separate layer groups
+    const superfundActiveLayer = L.layerGroup();
+    const superfundFormerLayer = L.layerGroup();
+
+    GLOBAL_SUPERFUND_ACTIVE_LAYER = superfundActiveLayer;
+    GLOBAL_SUPERFUND_FORMER_LAYER = superfundFormerLayer;
+
+    // Plot active sites
+    activeSites.forEach(site => {
       const lat = toNum(site.lat ?? site.latitude);
       const lon = toNum(site.lon ?? site.lng ?? site.longitude);
       if (!isFinite(lat) || !isFinite(lon)) return;
 
-      const status = escapeHtml(site.npl_status ?? site.status ?? 'NPL');
       const name = escapeHtml(site.site_name ?? site.name ?? 'Superfund site');
       const city = escapeHtml(site.city ?? '');
       const state = escapeHtml(site.state ?? '');
@@ -257,53 +269,85 @@ fetch('/data/superfund.json')
         weight: 1
       });
 
-      const popupHtml = `
-        <div class="popup">
-          <strong>${name}</strong><br/>
-          ${city}${city && state ? ', ' : ''}${state}<br/>
-          Status: ${status}
-        </div>
-      `;
-      marker.bindPopup(popupHtml);
+      marker.bindPopup(`<div class="popup"><strong>${name}</strong><br/>${city}${city && state ? ', ' : ''}${state}<br/>Status: Active Final NPL</div>`);
+      superfundActiveLayer.addLayer(marker);
+    });
 
-      if (GLOBAL_SUPERFUND_LAYER.addLayer) {
-        GLOBAL_SUPERFUND_LAYER.addLayer(marker);
-      } else {
-        marker.addTo(GLOBAL_SUPERFUND_LAYER);
-      }
-    }); // closes forEach
-  }) // closes .then(sf => { … })
+    // Plot former/deleted sites
+    formerSites.forEach(site => {
+      const lat = toNum(site.lat ?? site.latitude);
+      const lon = toNum(site.lon ?? site.lng ?? site.longitude);
+      if (!isFinite(lat) || !isFinite(lon)) return;
+
+      const name = escapeHtml(site.site_name ?? site.name ?? 'Superfund site');
+      const city = escapeHtml(site.city ?? '');
+      const state = escapeHtml(site.state ?? '');
+      const status = escapeHtml(site.npl_status ?? site.status ?? 'Former');
+
+      const marker = L.circleMarker([lat, lon], {
+        radius: 6,
+        color: '#757575',
+        fillColor: '#757575',
+        fillOpacity: 0.4,
+        weight: 1,
+        dashArray: '2,2'
+      });
+
+      marker.bindPopup(`<div class="popup"><strong>${name}</strong><br/>${city}${city && state ? ', ' : ''}${state}<br/>Status: ${status}</div>`);
+      superfundFormerLayer.addLayer(marker);
+    });
+
+    // Add both layers to map
+    GLOBAL_MAP.addLayer(superfundActiveLayer);
+    GLOBAL_MAP.addLayer(superfundFormerLayer);
+
+    // Update layer control
+    const overlays = {
+      "Pollution by Factories (TRI)": GLOBAL_TRI_LAYER,
+      "Superfund Sites (Active)": superfundActiveLayer,
+      "Superfund Sites (Former/Deleted)": superfundFormerLayer,
+      "Violations & Fines": GLOBAL_VIOLATIONS_LAYER
+    };
+    L.control.layers(null, overlays, { collapsed: false }).addTo(GLOBAL_MAP);
+  })
   .catch(err => {
     console.warn('Superfund markers load failed', err);
   });
 
-// === Snapshot Tiles ===
-function loadSnapshots() {
-  // TRI snapshot
-  fetch('/data/tri-2023.json')
-    .then(r => {
-      if (!r.ok) throw new Error('Network response not ok');
-      return r.json();
-    })
-    .then(tri => {
-      if (!Array.isArray(tri)) throw new Error('TRI payload not array');
-      const valid = tri.filter(item =>
-        isFinite(toNum(item.latitude ?? item.lat)) &&
-        isFinite(toNum(item.longitude ?? item.lng ?? item.lon))
-      );
-      const facilityCount = valid.length;
-      const total = valid.reduce((sum, item) => sum + Math.max(0, toNum(item.release_lbs ?? item.release ?? 0)), 0);
-      const billions = total / 1_000_000_000;
-      const billionsStr = billions >= 0.1 ? billions.toFixed(1) : billions.toPrecision(1);
-      const el = document.querySelector('#snapshot-releases .snapshot-value');
-      if (el) el.textContent = `${facilityCount} facilities, ${billionsStr} billion lbs reported`;
-    })
-    .catch(err => {
-      console.warn('TRI snapshot fetch failed', err);
-      const el = document.querySelector('#snapshot-releases .snapshot-value');
-      if (el) el.textContent = 'data unavailable';
+// Superfund snapshot
+fetch('/data/superfund.json')
+  .then(r => {
+    if (!r.ok) throw new Error('Network response not ok');
+    return r.json();
+  })
+  .then(sf => {
+    const el = document.querySelector('#snapshot-superfund .snapshot-value');
+    const allSites = Array.isArray(sf.sites) ? sf.sites : [];
+
+    // Filter active Final NPL sites
+    const activeSites = allSites.filter(site => {
+      const status = (site.npl_status || site.status || '').toLowerCase();
+      const listingDate = (site.listing_date || '').trim();
+      const deletion = (site.deletion_date || '').trim();
+      const deletionNotice = (site.deletion_notice || '').trim();
+      return status.includes('final npl') && listingDate && !deletion && !deletionNotice;
     });
-} // <-- this closes function loadSnapshots
+
+    const formerSites = allSites.length - activeSites.length;
+
+    if (el) {
+      if (activeSites.length > 0) {
+        el.textContent = `${activeSites.length} active sites, ${formerSites} former/proposed/deleted`;
+      } else {
+        el.textContent = 'data unavailable';
+      }
+    }
+  })
+  .catch(err => {
+    console.warn('Superfund snapshot fetch failed', err);
+    const el = document.querySelector('#snapshot-superfund .snapshot-value');
+    if (el) el.textContent = 'data unavailable';
+  });
 
 // Violations snapshot
 fetch('/data/violations.json')
