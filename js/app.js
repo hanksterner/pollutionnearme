@@ -165,26 +165,6 @@ function initMap() {
   L.control.layers(null, overlays, { collapsed: false }).addTo(map);
 }
 
-// Superfund clusters (blue)
-const superfundClusters = L.markerClusterGroup({
-  maxClusterRadius: 40,
-  disableClusteringAtZoom: 6,
-  iconCreateFunction: cluster => {
-    return L.divIcon({
-      html: `<div class="sf-cluster-icon">${cluster.getChildCount()}</div>`,
-      className: 'sf-cluster-icon',
-      iconSize: [40, 40]
-    });
-  }
-});
-
-GLOBAL_TRI_LAYER = triClusters;
-GLOBAL_SUPERFUND_LAYER = superfundClusters;
-
-map.addLayer(triClusters);
-map.addLayer(superfundClusters);
-}
-
 // TRI markers (national facilities and releases)
 fetch('/data/tri-2023.json')
   .then(r => {
