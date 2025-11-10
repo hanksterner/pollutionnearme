@@ -201,165 +201,167 @@ function initMap() {
       console.warn('TRI markers load failed', err);
       mapDiv.classList.add('data-error');
     });
+} // <-- this closing brace was missing
 
-  // Superfund markers
-  fetch('/data/superfund.json')
-    .then(r => {
-      if (!r.ok) throw new Error('Network response not ok');
-      return r.json();
-    })
-    .then(sf => {
-      const list = Array.isArray(sf.sites) ? sf.sites : [];
-      list.forEach(site => {
-        const lat = toNum(site.lat ?? site.latitude);
-        const lon = toNum(site.lon ?? site.lng ?? site.longitude);
-        if (!isFinite(lat) || !isFinite(lon)) return;
+// Superfund markers
+fetch('/data/superfund.json')
+  .then(r => {
+    if (!r.ok) throw new Error('Network response not ok');
+    return r.json();
+  })
+  .then(sf => {
+    const list = Array.isArray(sf.sites) ? sf.sites : [];
+    list.forEach(site => {
+      const lat = toNum(site.lat ?? site.latitude);
+      const lon = toNum(site.lon ?? site.lng ?? site.longitude);
+      if (!isFinite(lat) || !isFinite(lon)) return;
 
-        const status = escapeHtml(site.npl_status ?? site.status ?? 'NPL');
-        const name = escapeHtml(site.site_name ?? site.name ?? 'Superfund site');
-        const city = escapeHtml(site.city ?? '');
-        const state = escapeHtml(site.state ?? '');
+      const status = escapeHtml(site.npl_status ?? site.status ?? 'NPL');
+      const name = escapeHtml(site.site_name ?? site.name ?? 'Superfund site');
+      const city = escapeHtml(site.city ?? '');
+      const state = escapeHtml(site.state ?? '');
 
-        const marker = L.circleMarker([lat, lon], {
-          radius: 6,
-          color: '#1e88e5',
-          fillColor: '#1e88e5',
-          fillOpacity: 0.5,
-          weight: 1
-        });
+      const marker = L.circleMarker([lat, lon], {
+        radius: 6,
+        color: '#1e88e5',
+        fillColor: '#1e88e5',
+        fillOpacity: 0.5,
+        weight: 1
+      });
 
-        const popupHtml = `
+      const popupHtml = `
           <div class="popup">
             <strong>${name}</strong><br/>
             ${city}${city && state ? ', ' : ''}${state}<br/>
             Status: ${status}
           </div>
         `;
-        marker.bindPopup(popupHtml);
+      marker.bindPopup(popupHtml);
 
-        if (GLOBAL_CLUSTER_LAYER.addLayer) {
-          GLOBAL_CLUSTER_LAYER.addLayer(marker);
-        } else {
-          marker.addTo(GLOBAL_CLUSTER_LAYER);
-        }
-      }); // closes forEach
-    }) // closes .then(sf => { … })
+      if (GLOBAL_CLUSTER_LAYER.addLayer) {
+        GLOBAL_CLUSTER_LAYER.addLayer(marker);
+      } else {
+        marker.addTo(GLOBAL_CLUSTER_LAYER);
+      }
+    }); // closes forEach
+  }) // closes .then(sf => { … })
+  .catch(err => {
+    console.warn('Superfund markers load failed', err);
+  });
+
+// === Snapshot Tiles ===
+function loadSnapshots() {
+  // TRI snapshot
+  fetch('/data/tri-2023.json')
+    .then(r => {
+      if (!r.ok) throw new Error('Network response not ok');
+      return r.json();
+    })
+    .then(tri => {
+      if (!Array.isArray(tri)) throw new Error('TRI payload not array');
+      const valid = tri.filter(item =>
+        isFinite(toNum(item.latitude ?? item.lat)) &&
+        isFinite(toNum(item.longitude ?? item.lng ?? item.lon))
+      );
+      const facilityCount = valid.length;
+      const total = valid.reduce((sum, item) => sum + Math.max(0, toNum(item.release_lbs ?? item.release ?? 0)), 0);
+      const billions = total / 1_000_000_000;
+      const billionsStr = billions >= 0.1 ? billions.toFixed(1) : billions.toPrecision(1);
+      const el = document.querySelector('#snapshot-releases .snapshot-value');
+      if (el) el.textContent = `${facilityCount} facilities, ${billionsStr} billion lbs reported`;
+    })
     .catch(err => {
-      console.warn('Superfund markers load failed', err);
+      console.warn('TRI snapshot fetch failed', err);
+      const el = document.querySelector('#snapshot-releases .snapshot-value');
+      if (el) el.textContent = 'data unavailable';
     });
 
-  // === Snapshot Tiles ===
-  function loadSnapshots() {
-    // TRI snapshot
-    fetch('/data/tri-2023.json')
-      .then(r => {
-        if (!r.ok) throw new Error('Network response not ok');
-        return r.json();
-      })
-      .then(tri => {
-        if (!Array.isArray(tri)) throw new Error('TRI payload not array');
-        const valid = tri.filter(item =>
-          isFinite(toNum(item.latitude ?? item.lat)) &&
-          isFinite(toNum(item.longitude ?? item.lng ?? item.lon))
-        );
-        const facilityCount = valid.length;
-        const total = valid.reduce((sum, item) => sum + Math.max(0, toNum(item.release_lbs ?? item.release ?? 0)), 0);
-        const billions = total / 1_000_000_000;
-        const billionsStr = billions >= 0.1 ? billions.toFixed(1) : billions.toPrecision(1);
-        const el = document.querySelector('#snapshot-releases .snapshot-value');
-        if (el) el.textContent = `${facilityCount} facilities, ${billionsStr} billion lbs reported`;
-      })
-      .catch(err => {
-        console.warn('TRI snapshot fetch failed', err);
-        const el = document.querySelector('#snapshot-releases .snapshot-value');
-        if (el) el.textContent = 'data unavailable';
-      });
+  // Violations snapshot
+  fetch('/data/violations.json')
+    .then(r => {
+      if (!r.ok) throw new Error('Network response not ok');
+      return r.json();
+    })
+    .then(vs => {
+      if (!Array.isArray(vs)) throw new Error('Violations payload not array');
+      const totalViolations = vs.reduce((s, v) => s + toNum(v.count), 0);
+      const totalPenalty = vs.reduce((s, v) => s + toNum(v.penalty), 0);
+      const el = document.querySelector('#snapshot-violations .snapshot-value');
+      if (el) el.textContent = `${totalViolations} violations, $${totalPenalty.toLocaleString()}`;
+    })
+    .catch(err => {
+      console.warn('Violations snapshot fetch failed', err);
+      const el = document.querySelector('#snapshot-violations .snapshot-value');
+      if (el) el.textContent = 'data unavailable';
+    });
 
-    // Violations snapshot
-    fetch('/data/violations.json')
-      .then(r => {
-        if (!r.ok) throw new Error('Network response not ok');
-        return r.json();
-      })
-      .then(vs => {
-        if (!Array.isArray(vs)) throw new Error('Violations payload not array');
-        const totalViolations = vs.reduce((s, v) => s + toNum(v.count), 0);
-        const totalPenalty = vs.reduce((s, v) => s + toNum(v.penalty), 0);
-        const el = document.querySelector('#snapshot-violations .snapshot-value');
-        if (el) el.textContent = `${totalViolations} violations, $${totalPenalty.toLocaleString()}`;
-      })
-      .catch(err => {
-        console.warn('Violations snapshot fetch failed', err);
-        const el = document.querySelector('#snapshot-violations .snapshot-value');
-        if (el) el.textContent = 'data unavailable';
-      });
-
-    // Superfund snapshot
-    fetch('/data/superfund.json')
-      .then(r => {
-        if (!r.ok) throw new Error('Network response not ok');
-        return r.json();
-      })
-      .then(sf => {
-        const el = document.querySelector('#snapshot-superfund .snapshot-value');
-        const count = toNum(sf.national_count);
-        const asOf = sf.as_of || '';
-        if (el) {
-          if (isFinite(count) && count > 0) {
-            el.textContent = `${count} sites (as of ${asOf})`;
-          } else {
-            el.textContent = 'data unavailable';
-          }
+  // Superfund snapshot
+  fetch('/data/superfund.json')
+    .then(r => {
+      if (!r.ok) throw new Error('Network response not ok');
+      return r.json();
+    })
+    .then(sf => {
+      const el = document.querySelector('#snapshot-superfund .snapshot-value');
+      const count = toNum(sf.national_count);
+      const asOf = sf.as_of || '';
+      if (el) {
+        if (isFinite(count) && count > 0) {
+          el.textContent = `${count} sites (as of ${asOf})`;
+        } else {
+          el.textContent = 'data unavailable';
         }
-      })
-      .catch(err => {
-        console.warn('Superfund snapshot fetch failed', err);
-        const el = document.querySelector('#snapshot-superfund .snapshot-value');
-        if (el) el.textContent = 'data unavailable';
-      });
+      }
+    })
+    .catch(err => {
+      console.warn('Superfund snapshot fetch failed', err);
+      const el = document.querySelector('#snapshot-superfund .snapshot-value');
+      if (el) el.textContent = 'data unavailable';
+    });
 
-    // === Utilities ===
-    function toNum(v) {
-      if (v === null || v === undefined) return NaN;
-      const n = Number(String(v).replace(/[^0-9.\-eE+]/g, ''));
-      return isNaN(n) ? NaN : n;
+  // === Utilities ===
+  function toNum(v) {
+    if (v === null || v === undefined) return NaN;
+    const n = Number(String(v).replace(/[^0-9.\-eE+]/g, ''));
+    return isNaN(n) ? NaN : n;
+  }
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  // === Map helpers ===
+  function centerMapOn(lat, lon, zoom = 12) {
+    if (!GLOBAL_MAP) return;
+    GLOBAL_MAP.setView([lat, lon], zoom, { animate: true });
+  }
+
+  function placeTemporaryMarker(lat, lon, label) {
+    if (!GLOBAL_MAP) return;
+    if (_tempMarker) {
+      GLOBAL_MAP.removeLayer(_tempMarker);
+      _tempMarker = null;
     }
+    _tempMarker = L.circleMarker([lat, lon], {
+      radius: 8,
+      color: '#1C2A39',
+      fillColor: '#fff',
+      fillOpacity: 1,
+      weight: 2,
+      dashArray: '2,2'
+    }).addTo(GLOBAL_MAP);
+    _tempMarker.bindPopup(`<strong>${escapeHtml(label || 'Location')}</strong>`).openPopup();
 
-    function escapeHtml(s) {
-      return String(s)
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;');
-    }
-
-    // === Map helpers ===
-    function centerMapOn(lat, lon, zoom = 12) {
-      if (!GLOBAL_MAP) return;
-      GLOBAL_MAP.setView([lat, lon], zoom, { animate: true });
-    }
-
-    function placeTemporaryMarker(lat, lon, label) {
-      if (!GLOBAL_MAP) return;
-      if (_tempMarker) {
+    setTimeout(() => {
+      if (_tempMarker && GLOBAL_MAP) {
         GLOBAL_MAP.removeLayer(_tempMarker);
         _tempMarker = null;
       }
-      _tempMarker = L.circleMarker([lat, lon], {
-        radius: 8,
-        color: '#1C2A39',
-        fillColor: '#fff',
-        fillOpacity: 1,
-        weight: 2,
-        dashArray: '2,2'
-      }).addTo(GLOBAL_MAP);
-      _tempMarker.bindPopup(`<strong>${escapeHtml(label || 'Location')}</strong>`).openPopup();
+    }, 10000);
+  }
 
-      setTimeout(() => {
-        if (_tempMarker && GLOBAL_MAP) {
-          GLOBAL_MAP.removeLayer(_tempMarker);
-          _tempMarker = null;
-        }
-      }, 10000);
-    }
