@@ -417,4 +417,42 @@ input:focus {
   #nav.open {
     max-height: 320px;
   }
+
+  /* === Cluster icon styles === */
+
+  /* TRI clusters (default green) */
+  .tri-cluster-icon {
+    background-color: #2e7d32;
+    /* dark green */
+    color: #fff;
+    /* white text */
+    border-radius: 50%;
+    /* make it circular */
+    text-align: center;
+    font-weight: bold;
+    line-height: 40px;
+    /* vertically center text */
+    width: 40px;
+    height: 40px;
+    border: 2px solid #1b5e20;
+    /* darker green border */
+  }
+
+  /* Superfund clusters (blue) */
+  .sf-cluster-icon {
+    background-color: #1e88e5;
+    /* medium blue */
+    color: #fff;
+    /* white text */
+    border-radius: 50%;
+    /* make it circular */
+    text-align: center;
+    font-weight: bold;
+    line-height: 40px;
+    /* vertically center text */
+    width: 40px;
+    height: 40px;
+    border: 2px solid #0d47a1;
+    /* darker blue border */
+  }
 }
