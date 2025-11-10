@@ -323,50 +323,49 @@ function initMap() {
         const el = document.querySelector('#snapshot-superfund .snapshot-value');
         if (el) el.textContent = 'data unavailable';
       });
-  }
 
-  // === Utilities ===
-  function toNum(v) {
-    if (v === null || v === undefined) return NaN;
-    const n = Number(String(v).replace(/[^0-9.\-eE+]/g, ''));
-    return isNaN(n) ? NaN : n;
-  }
-
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
-
-  // === Map helpers ===
-  function centerMapOn(lat, lon, zoom = 12) {
-    if (!GLOBAL_MAP) return;
-    GLOBAL_MAP.setView([lat, lon], zoom, { animate: true });
-  }
-
-  function placeTemporaryMarker(lat, lon, label) {
-    if (!GLOBAL_MAP) return;
-    if (_tempMarker) {
-      GLOBAL_MAP.removeLayer(_tempMarker);
-      _tempMarker = null;
+    // === Utilities ===
+    function toNum(v) {
+      if (v === null || v === undefined) return NaN;
+      const n = Number(String(v).replace(/[^0-9.\-eE+]/g, ''));
+      return isNaN(n) ? NaN : n;
     }
-    _tempMarker = L.circleMarker([lat, lon], {
-      radius: 8,
-      color: '#1C2A39',
-      fillColor: '#fff',
-      fillOpacity: 1,
-      weight: 2,
-      dashArray: '2,2'
-    }).addTo(GLOBAL_MAP);
-    _tempMarker.bindPopup(`<strong>${escapeHtml(label || 'Location')}</strong>`).openPopup();
 
-    setTimeout(() => {
-      if (_tempMarker && GLOBAL_MAP) {
+    function escapeHtml(s) {
+      return String(s)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#39;');
+    }
+
+    // === Map helpers ===
+    function centerMapOn(lat, lon, zoom = 12) {
+      if (!GLOBAL_MAP) return;
+      GLOBAL_MAP.setView([lat, lon], zoom, { animate: true });
+    }
+
+    function placeTemporaryMarker(lat, lon, label) {
+      if (!GLOBAL_MAP) return;
+      if (_tempMarker) {
         GLOBAL_MAP.removeLayer(_tempMarker);
         _tempMarker = null;
       }
-    }, 10000);
-  }
+      _tempMarker = L.circleMarker([lat, lon], {
+        radius: 8,
+        color: '#1C2A39',
+        fillColor: '#fff',
+        fillOpacity: 1,
+        weight: 2,
+        dashArray: '2,2'
+      }).addTo(GLOBAL_MAP);
+      _tempMarker.bindPopup(`<strong>${escapeHtml(label || 'Location')}</strong>`).openPopup();
+
+      setTimeout(() => {
+        if (_tempMarker && GLOBAL_MAP) {
+          GLOBAL_MAP.removeLayer(_tempMarker);
+          _tempMarker = null;
+        }
+      }, 10000);
+    }
