@@ -275,93 +275,94 @@ function loadSnapshots() {
       const el = document.querySelector('#snapshot-releases .snapshot-value');
       if (el) el.textContent = 'data unavailable';
     });
+} // <-- this closes function loadSnapshots
 
-  // Violations snapshot
-  fetch('/data/violations.json')
-    .then(r => {
-      if (!r.ok) throw new Error('Network response not ok');
-      return r.json();
-    })
-    .then(vs => {
-      if (!Array.isArray(vs)) throw new Error('Violations payload not array');
-      const totalViolations = vs.reduce((s, v) => s + toNum(v.count), 0);
-      const totalPenalty = vs.reduce((s, v) => s + toNum(v.penalty), 0);
-      const el = document.querySelector('#snapshot-violations .snapshot-value');
-      if (el) el.textContent = `${totalViolations} violations, $${totalPenalty.toLocaleString()}`;
-    })
-    .catch(err => {
-      console.warn('Violations snapshot fetch failed', err);
-      const el = document.querySelector('#snapshot-violations .snapshot-value');
-      if (el) el.textContent = 'data unavailable';
-    });
+// Violations snapshot
+fetch('/data/violations.json')
+  .then(r => {
+    if (!r.ok) throw new Error('Network response not ok');
+    return r.json();
+  })
+  .then(vs => {
+    if (!Array.isArray(vs)) throw new Error('Violations payload not array');
+    const totalViolations = vs.reduce((s, v) => s + toNum(v.count), 0);
+    const totalPenalty = vs.reduce((s, v) => s + toNum(v.penalty), 0);
+    const el = document.querySelector('#snapshot-violations .snapshot-value');
+    if (el) el.textContent = `${totalViolations} violations, $${totalPenalty.toLocaleString()}`;
+  })
+  .catch(err => {
+    console.warn('Violations snapshot fetch failed', err);
+    const el = document.querySelector('#snapshot-violations .snapshot-value');
+    if (el) el.textContent = 'data unavailable';
+  });
 
-  // Superfund snapshot
-  fetch('/data/superfund.json')
-    .then(r => {
-      if (!r.ok) throw new Error('Network response not ok');
-      return r.json();
-    })
-    .then(sf => {
-      const el = document.querySelector('#snapshot-superfund .snapshot-value');
-      const count = toNum(sf.national_count);
-      const asOf = sf.as_of || '';
-      if (el) {
-        if (isFinite(count) && count > 0) {
-          el.textContent = `${count} sites (as of ${asOf})`;
-        } else {
-          el.textContent = 'data unavailable';
-        }
+// Superfund snapshot
+fetch('/data/superfund.json')
+  .then(r => {
+    if (!r.ok) throw new Error('Network response not ok');
+    return r.json();
+  })
+  .then(sf => {
+    const el = document.querySelector('#snapshot-superfund .snapshot-value');
+    const count = toNum(sf.national_count);
+    const asOf = sf.as_of || '';
+    if (el) {
+      if (isFinite(count) && count > 0) {
+        el.textContent = `${count} sites (as of ${asOf})`;
+      } else {
+        el.textContent = 'data unavailable';
       }
-    })
-    .catch(err => {
-      console.warn('Superfund snapshot fetch failed', err);
-      const el = document.querySelector('#snapshot-superfund .snapshot-value');
-      if (el) el.textContent = 'data unavailable';
-    });
+    }
+  })
+  .catch(err => {
+    console.warn('Superfund snapshot fetch failed', err);
+    const el = document.querySelector('#snapshot-superfund .snapshot-value');
+    if (el) el.textContent = 'data unavailable';
+  });
 
-  // === Utilities ===
-  function toNum(v) {
-    if (v === null || v === undefined) return NaN;
-    const n = Number(String(v).replace(/[^0-9.\-eE+]/g, ''));
-    return isNaN(n) ? NaN : n;
+// === Utilities ===
+function toNum(v) {
+  if (v === null || v === undefined) return NaN;
+  const n = Number(String(v).replace(/[^0-9.\-eE+]/g, ''));
+  return isNaN(n) ? NaN : n;
+}
+
+function escapeHtml(s) {
+  return String(s)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+// === Map helpers ===
+function centerMapOn(lat, lon, zoom = 12) {
+  if (!GLOBAL_MAP) return;
+  GLOBAL_MAP.setView([lat, lon], zoom, { animate: true });
+}
+
+function placeTemporaryMarker(lat, lon, label) {
+  if (!GLOBAL_MAP) return;
+  if (_tempMarker) {
+    GLOBAL_MAP.removeLayer(_tempMarker);
+    _tempMarker = null;
   }
+  _tempMarker = L.circleMarker([lat, lon], {
+    radius: 8,
+    color: '#1C2A39',
+    fillColor: '#fff',
+    fillOpacity: 1,
+    weight: 2,
+    dashArray: '2,2'
+  }).addTo(GLOBAL_MAP);
+  _tempMarker.bindPopup(`<strong>${escapeHtml(label || 'Location')}</strong>`).openPopup();
 
-  function escapeHtml(s) {
-    return String(s)
-      .replace(/&/g, '&amp;')
-      .replace(/</g, '&lt;')
-      .replace(/>/g, '&gt;')
-      .replace(/"/g, '&quot;')
-      .replace(/'/g, '&#39;');
-  }
-
-  // === Map helpers ===
-  function centerMapOn(lat, lon, zoom = 12) {
-    if (!GLOBAL_MAP) return;
-    GLOBAL_MAP.setView([lat, lon], zoom, { animate: true });
-  }
-
-  function placeTemporaryMarker(lat, lon, label) {
-    if (!GLOBAL_MAP) return;
-    if (_tempMarker) {
+  setTimeout(() => {
+    if (_tempMarker && GLOBAL_MAP) {
       GLOBAL_MAP.removeLayer(_tempMarker);
       _tempMarker = null;
     }
-    _tempMarker = L.circleMarker([lat, lon], {
-      radius: 8,
-      color: '#1C2A39',
-      fillColor: '#fff',
-      fillOpacity: 1,
-      weight: 2,
-      dashArray: '2,2'
-    }).addTo(GLOBAL_MAP);
-    _tempMarker.bindPopup(`<strong>${escapeHtml(label || 'Location')}</strong>`).openPopup();
-
-    setTimeout(() => {
-      if (_tempMarker && GLOBAL_MAP) {
-        GLOBAL_MAP.removeLayer(_tempMarker);
-        _tempMarker = null;
-      }
-    }, 10000);
-  }
+  }, 10000);
+}
 
