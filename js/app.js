@@ -219,9 +219,6 @@ function initMap() {
         const name = escapeHtml(site.site_name ?? site.name ?? 'Superfund site');
         const city = escapeHtml(site.city ?? '');
         const state = escapeHtml(site.state ?? '');
-        const description = escapeHtml(site.description || '');
-        const url = site.url ? escapeHtml(site.url) : '';
-        const photo = site.photo ? escapeHtml(site.photo) : '';
 
         const marker = L.circleMarker([lat, lon], {
           radius: 6,
@@ -232,15 +229,12 @@ function initMap() {
         });
 
         const popupHtml = `
-        <div class="popup">
-          <strong>${name}</strong><br/>
-          ${city}${city && state ? ', ' : ''}${state}<br/>
-          Status: ${status}<br/>
-          ${description}<br/>
-          ${url ? `<a href="${url}" target="_blank">EPA Site Page</a>` : ''}
-          ${photo ? `<br/><img src="${photo}" alt="Site photo" style="max-width:150px;"/>` : ''}
-        </div>
-      `;
+          <div class="popup">
+            <strong>${name}</strong><br/>
+            ${city}${city && state ? ', ' : ''}${state}<br/>
+            Status: ${status}
+          </div>
+        `;
         marker.bindPopup(popupHtml);
 
         if (GLOBAL_CLUSTER_LAYER.addLayer) {
@@ -248,8 +242,8 @@ function initMap() {
         } else {
           marker.addTo(GLOBAL_CLUSTER_LAYER);
         }
-      });
-    })
+      }); // closes forEach
+    }) // closes .then(sf => { … })
     .catch(err => {
       console.warn('Superfund markers load failed', err);
     });
