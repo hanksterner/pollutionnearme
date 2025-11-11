@@ -471,3 +471,24 @@ Entry 21 — 2025-11-10 14:28 EST
 
 ------------------------------------------------------------
 Status: Baseline sealed. Build is up to date as of Entry 21.
+=============================================================
+Entry 22 — 2025-11-10T21:45:00Z
+----------------------------------------
+- Implemented Superfund markers block:
+  • Filtered dataset for `npl_status === "NPL Site"` with valid listing_date and no deletion/deletion_notice.
+  • Circle markers styled in blue (#1e88e5), radius 6, with popups showing site name, city/state, and status.
+  • Layer added to GLOBAL_SUPERFUND_LAYER and toggle control.
+
+- Implemented Superfund snapshot block:
+  • Initial attempts to split active vs. deleted/proposed returned zero due to dataset scope.
+  • Confirmed local `superfund.json` only contains active `"NPL Site"` entries (no Deleted/Proposed).
+  • Simplified snapshot logic for MVP: display active site count only.
+  • Snapshot tile now reports “1342 active sites” in sync with map markers.
+
+- Decision logged:
+  • For MVP, retain lean dataset with active sites only.
+  • Former/proposed/deleted categories deferred until full EPA SEMS/NPL ingestion.
+  • Ceremony preserved: map and snapshot aligned, consistent with dataset truth.
+
+Status: Superfund map and data card operational for MVP. Limited informational depth acknowledged; expansion deferred to future dataset enrichment.
+----------------------------------------
