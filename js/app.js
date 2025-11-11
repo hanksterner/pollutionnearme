@@ -318,11 +318,14 @@ fetch('/data/superfund.json')
       return status === 'NPL Site' && listingDate && !deletion && !deletionNotice;
     });
 
-    const formerSites = list.length - activeSites.length;
+    const formerSites = list.filter(site => {
+      const status = (site.npl_status || site.status || '').trim();
+      return status === 'Deleted NPL Site' || status === 'Proposed NPL Site';
+    });
 
     if (el) {
       if (activeSites.length > 0) {
-        el.textContent = `${activeSites.length} active sites, ${formerSites} former/proposed/deleted`;
+        el.textContent = `${activeSites.length} active sites, ${formerSites.length} former/proposed/deleted`;
       } else {
         el.textContent = 'data unavailable';
       }
