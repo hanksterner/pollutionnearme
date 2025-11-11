@@ -274,13 +274,8 @@ fetch('/data/superfund.json')
 
 // Violations & Penalties markers
 fetch('/data/violations.json')
-  .then(r => {
-    if (!r.ok) throw new Error('Network response not ok');
-    return r.json();
-  })
+  .then(r => r.json())
   .then(vs => {
-    if (!Array.isArray(vs)) throw new Error('Violations payload not array');
-
     vs.forEach(v => {
       const lat = Number(v.lat);
       const lon = Number(v.lon);
@@ -297,63 +292,32 @@ fetch('/data/violations.json')
         weight: 1
       });
 
-      const popupHtml = `
-        <div class="popup">
-          <strong>${escapeHtml(v.facility)}</strong><br/>
-          ${escapeHtml(v.city)}, ${escapeHtml(v.state)}<br/>
-          ${escapeHtml(v.violation)}<br/>
-          ${v.count} violations<br/>
-          $${v.penalty.toLocaleString()} penalties
-        </div>
-      `;
-      marker.bindPopup(popupHtml);
+      marker.bindPopup(`
+        <strong>${escapeHtml(v.facility)}</strong><br/>
+        ${escapeHtml(v.city)}, ${escapeHtml(v.state)}<br/>
+        ${escapeHtml(v.violation)}<br/>
+        ${v.count} violations<br/>
+        $${v.penalty.toLocaleString()} penalties
+      `);
 
       GLOBAL_VIOLATIONS_LAYER.addLayer(marker);
     });
   })
-  .catch(err => {
-    console.warn('Violations markers load failed', err);
-  });
+  .catch(err => console.warn('Violations markers load failed', err));
 
 // Violations & Penalties legend
 const violationsLegend = L.control({ position: 'bottomright' });
-
 violationsLegend.onAdd = function (map) {
   const div = L.DomUtil.create('div', 'info legend');
   div.innerHTML = `
     <h4>Penalties</h4>
-    <i style="background: green; width: 12px; height: 12px; display: inline-block; margin-right: 4px;"></i> ≤ $100,000<br/>
-    <i style="background: orange; width: 12px; height: 12px; display: inline-block; margin-right: 4px;"></i> $100,001 – $1,000,000<br/>
-    <i style="background: red; width: 12px; height: 12px; display: inline-block; margin-right: 4px;"></i> > $1,000,000<br/>
+    <i style="background: green; width: 12px; height: 12px; display:inline-block; margin-right:4px;"></i> ≤ $100,000<br/>
+    <i style="background: orange; width: 12px; height: 12px; display:inline-block; margin-right:4px;"></i> $100,001 – $1,000,000<br/>
+    <i style="background: red; width: 12px; height: 12px; display:inline-block; margin-right:4px;"></i> > $1,000,000<br/>
     <small>Marker size scales with penalty amount</small>
   `;
   return div;
 };
-
-violationsLegend.addTo(GLOBAL_MAP);
-
-// Add to overlays
-const overlays = {
-  "Pollution by Factories (TRI)": triLayer,
-  "Superfund Sites": superfundLayer,
-  "Violations & Penalties": violationsLayer
-};
-
-// Violations & Penalties legend
-const violationsLegend = L.control({ position: 'bottomright' });
-
-violationsLegend.onAdd = function (map) {
-  const div = L.DomUtil.create('div', 'info legend');
-  div.innerHTML = `
-    <h4>Penalties</h4>
-    <i style="background: green; width: 12px; height: 12px; display: inline-block; margin-right: 4px;"></i> ≤ $100,000<br/>
-    <i style="background: orange; width: 12px; height: 12px; display: inline-block; margin-right: 4px;"></i> $100,001 – $1,000,000<br/>
-    <i style="background: red; width: 12px; height: 12px; display: inline-block; margin-right: 4px;"></i> > $1,000,000<br/>
-    <small>Marker size scales with penalty amount</small>
-  `;
-  return div;
-};
-
 violationsLegend.addTo(GLOBAL_MAP);
 
 // === Snapshot Tiles ===
