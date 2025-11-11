@@ -185,6 +185,17 @@ function initMap() {
       document.getElementById('legend-superfund')?.classList.remove('active');
     }
   });
+
+  // === Initial Legend Sync ===
+  if (map.hasLayer(GLOBAL_TRI_LAYER)) {
+    document.getElementById('legend-pollution')?.classList.add('active');
+  }
+  if (map.hasLayer(GLOBAL_SUPERFUND_LAYER)) {
+    document.getElementById('legend-superfund')?.classList.add('active');
+  }
+  if (map.hasLayer(GLOBAL_VIOLATIONS_LAYER)) {
+    document.getElementById('legend-penalties')?.classList.add('active');
+  }
 }
 
 // === Utility to dump all fields into popup ===
