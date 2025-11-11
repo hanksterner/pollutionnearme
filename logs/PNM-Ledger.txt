@@ -492,3 +492,11 @@ Entry 22 — 2025-11-10T21:45:00Z
 
 Status: Superfund map and data card operational for MVP. Limited informational depth acknowledged; expansion deferred to future dataset enrichment.
 ----------------------------------------
+Entry 23 — 2025-11-10T22:42Z
+----------------------------------------
+- Executed fetch-violations.py against ECHO_EXPORTER.csv (~2GB).
+- Extracted facility, city, state, lat, lon, violation type, count, and penalty.
+- Filtered out facilities with zero penalties/violations or missing coordinates.
+- Output: violations.json with 21,057 records, ready for map markers and snapshot tile.
+- Ceremony preserved: dataset transformation documented, operational proof logged.
+----------------------------------------
