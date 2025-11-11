@@ -280,6 +280,34 @@ fetch('/data/superfund.json')
     console.warn('Superfund markers load failed', err);
   });
 
+// === Snapshot Tiles ===
+function loadSnapshots() {
+  // TRI snapshot
+  fetch('/data/tri-2023.json')
+    .then(r => {
+      if (!r.ok) throw new Error('Network response not ok');
+      return r.json();
+    })
+    .then(tri => {
+      if (!Array.isArray(tri)) throw new Error('TRI payload not array');
+      const valid = tri.filter(item =>
+        isFinite(toNum(item.latitude ?? item.lat)) &&
+        isFinite(toNum(item.longitude ?? item.lng ?? item.lon))
+      );
+      const facilityCount = valid.length;
+      const total = valid.reduce((sum, item) => sum + Math.max(0, toNum(item.release_lbs ?? item.release ?? 0)), 0);
+      const billions = total / 1_000_000_000;
+      const billionsStr = billions >= 0.1 ? billions.toFixed(1) : billions.toPrecision(1);
+      const el = document.querySelector('#snapshot-releases .snapshot-value');
+      if (el) el.textContent = `${facilityCount} facilities, ${billionsStr} billion lbs reported`;
+    })
+    .catch(err => {
+      console.warn('TRI snapshot fetch failed', err);
+      const el = document.querySelector('#snapshot-releases .snapshot-value');
+      if (el) el.textContent = 'data unavailable';
+    });
+}
+
 // Superfund snapshot
 fetch('/data/superfund.json')
   .then(r => {
