@@ -216,7 +216,7 @@ header p.tagline {
   position: relative;
 }
 
-/* // === Snapshot Card Styling === */
+/* === Snapshot Card Styling === */
 #snapshot-card.card {
   background: #fdfdfd;
   border-radius: 8px;
@@ -240,7 +240,8 @@ header p.tagline {
 
 .snapshot-item {
   flex: 1 1 220px;
-  text-align: left;
+  text-align: center;
+  /* updated from left to center */
   font-size: 1.05em;
   line-height: 1.4;
 }
@@ -260,7 +261,6 @@ header p.tagline {
 .snapshot-item sup,
 h2 sup {
   font-size: 0.7em;
-  /* same as footnote numbers */
   vertical-align: super;
 }
 
@@ -269,6 +269,8 @@ h2 sup {
   font-size: 1em;
   font-weight: 600;
   color: var(--text);
+  text-align: center;
+  /* added for clarity */
 }
 
 /* existing single-line footnote style */
@@ -280,31 +282,20 @@ h2 sup {
   font-style: italic;
 }
 
-/* new numbered footnotes block */
-.footnotes {
-  margin-top: 0.5rem;
-  font-size: 0.85em;
-  color: #555;
-  text-align: left;
-}
-
+/* numbered footnotes block */
 .footnotes {
   margin-top: 1rem;
   font-size: 0.85em;
   color: #555;
   text-align: left;
   border-top: 1px solid #ddd;
-  /* thin, light gray line */
   padding-top: 0.5rem;
-  /* breathing room after the line */
 }
 
 .footnotes p {
   margin: 0.2rem 0;
   text-indent: -1.2em;
-  /* pulls number out to the left */
   padding-left: 1.2em;
-  /* aligns text neatly after number */
 }
 
 .footnotes sup {
