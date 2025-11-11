@@ -217,7 +217,8 @@ fetch('/data/tri-2023.json')
   })
   .catch(err => {
     console.warn('TRI markers load failed', err);
-    mapDiv.classList.add('data-error');
+    const md = document.getElementById('map');
+    if (md) md.classList.add('data-error');
   });
 
 // Superfund markers
@@ -227,36 +228,25 @@ fetch('/data/superfund.json')
     return r.json();
   })
   .then(sf => {
-    const allSites = Array.isArray(sf.sites) ? sf.sites : [];
+    const sites = Array.isArray(sf.sites) ? sf.sites : [];
 
-    // Separate into active vs. former
-    const activeSites = allSites.filter(site => {
+    // Robust filter: active Final NPL, has listing_date, not deleted
+    const activeSites = sites.filter(site => {
       const status = (site.npl_status || site.status || '').toLowerCase();
       const listingDate = (site.listing_date || '').trim();
       const deletion = (site.deletion_date || '').trim();
       const deletionNotice = (site.deletion_notice || '').trim();
-
       const isFinal = status.includes('final npl');
       const notDeleted = !deletion && !deletionNotice;
-
       return isFinal && listingDate && notDeleted;
     });
 
-    const formerSites = allSites.filter(site => !activeSites.includes(site));
-
-    // Create separate layer groups
-    const superfundActiveLayer = L.layerGroup();
-    const superfundFormerLayer = L.layerGroup();
-
-    GLOBAL_SUPERFUND_ACTIVE_LAYER = superfundActiveLayer;
-    GLOBAL_SUPERFUND_FORMER_LAYER = superfundFormerLayer;
-
-    // Plot active sites
     activeSites.forEach(site => {
       const lat = toNum(site.lat ?? site.latitude);
       const lon = toNum(site.lon ?? site.lng ?? site.longitude);
       if (!isFinite(lat) || !isFinite(lon)) return;
 
+      const status = escapeHtml(site.npl_status ?? site.status ?? 'NPL');
       const name = escapeHtml(site.site_name ?? site.name ?? 'Superfund site');
       const city = escapeHtml(site.city ?? '');
       const state = escapeHtml(site.state ?? '');
@@ -269,46 +259,22 @@ fetch('/data/superfund.json')
         weight: 1
       });
 
-      marker.bindPopup(`<div class="popup"><strong>${name}</strong><br/>${city}${city && state ? ', ' : ''}${state}<br/>Status: Active Final NPL</div>`);
-      superfundActiveLayer.addLayer(marker);
+      const popupHtml = `
+        <div class="popup">
+          <strong>${name}</strong><br/>
+          ${city}${city && state ? ', ' : ''}${state}<br/>
+          Status: ${status}
+        </div>
+      `;
+      marker.bindPopup(popupHtml);
+
+      // Use existing layer group created in initMap
+      if (GLOBAL_SUPERFUND_LAYER.addLayer) {
+        GLOBAL_SUPERFUND_LAYER.addLayer(marker);
+      } else {
+        marker.addTo(GLOBAL_SUPERFUND_LAYER);
+      }
     });
-
-    // Plot former/deleted sites
-    formerSites.forEach(site => {
-      const lat = toNum(site.lat ?? site.latitude);
-      const lon = toNum(site.lon ?? site.lng ?? site.longitude);
-      if (!isFinite(lat) || !isFinite(lon)) return;
-
-      const name = escapeHtml(site.site_name ?? site.name ?? 'Superfund site');
-      const city = escapeHtml(site.city ?? '');
-      const state = escapeHtml(site.state ?? '');
-      const status = escapeHtml(site.npl_status ?? site.status ?? 'Former');
-
-      const marker = L.circleMarker([lat, lon], {
-        radius: 6,
-        color: '#757575',
-        fillColor: '#757575',
-        fillOpacity: 0.4,
-        weight: 1,
-        dashArray: '2,2'
-      });
-
-      marker.bindPopup(`<div class="popup"><strong>${name}</strong><br/>${city}${city && state ? ', ' : ''}${state}<br/>Status: ${status}</div>`);
-      superfundFormerLayer.addLayer(marker);
-    });
-
-    // Add both layers to map
-    GLOBAL_MAP.addLayer(superfundActiveLayer);
-    GLOBAL_MAP.addLayer(superfundFormerLayer);
-
-    // Update layer control
-    const overlays = {
-      "Pollution by Factories (TRI)": GLOBAL_TRI_LAYER,
-      "Superfund Sites (Active)": superfundActiveLayer,
-      "Superfund Sites (Former/Deleted)": superfundFormerLayer,
-      "Violations & Fines": GLOBAL_VIOLATIONS_LAYER
-    };
-    L.control.layers(null, overlays, { collapsed: false }).addTo(GLOBAL_MAP);
   })
   .catch(err => {
     console.warn('Superfund markers load failed', err);
