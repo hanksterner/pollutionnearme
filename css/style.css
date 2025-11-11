@@ -300,11 +300,17 @@ header p.tagline {
   cursor: pointer !important;
 }
 
-#legend-pollution,
-#legend-penalties,
-#legend-superfund {
+#legend-pollution:not(.active),
+#legend-penalties:not(.active),
+#legend-superfund:not(.active) {
   display: none;
-  /* hidden until layer is active */
+}
+
+.map-legend {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  z-index: 1000;
 }
 
 /* === Snapshot Card Styling === */
