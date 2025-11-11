@@ -187,6 +187,16 @@ function initMap() {
   });
 }
 
+// === Utility to dump all fields into popup ===
+function buildPopupContent(obj) {
+  let html = '<div class="popup-data">';
+  for (const [key, value] of Object.entries(obj)) {
+    html += `<div><strong>${escapeHtml(key)}:</strong> ${escapeHtml(String(value))}</div>`;
+  }
+  html += '</div>';
+  return html;
+}
+
 // === TRI markers ===
 function loadTRIMarkers() {
   fetch('/data/tri-2023.json')
@@ -209,8 +219,7 @@ function loadTRIMarkers() {
           color: '#333',
           weight: 1,
           fillOpacity: 0.8
-        }).bindPopup(`<strong>${escapeHtml(item.facility_name || 'Facility')}</strong><br>
-          ${release.toLocaleString()} lbs released`);
+        }).bindPopup(buildPopupContent(item));
 
         GLOBAL_TRI_LAYER.addLayer(marker);
       });
@@ -229,17 +238,13 @@ function loadSuperfundMarkers() {
         const lon = toNum(site.lon ?? site.longitude);
         if (!isFinite(lat) || !isFinite(lon)) return;
 
-        const status = (site.npl_status || site.status || '').trim();
-        if (status !== 'NPL Site') return;
-
         const marker = L.circleMarker([lat, lon], {
           radius: 7,
           fillColor: '#3182bd',
           color: '#0d47a1',
           weight: 2,
           fillOpacity: 0.9
-        }).bindPopup(`<strong>${escapeHtml(site.site_name || 'Superfund Site')}</strong><br>
-          Status: ${escapeHtml(status)}`);
+        }).bindPopup(buildPopupContent(site));
 
         GLOBAL_SUPERFUND_LAYER.addLayer(marker);
       });
@@ -269,9 +274,7 @@ function loadViolationMarkers() {
           color: '#333',
           weight: 1,
           fillOpacity: 0.8
-        }).bindPopup(`<strong>${escapeHtml(v.facility || 'Facility')}</strong><br>
-          Violations: ${v.count}<br>
-          Penalties: $${penalty.toLocaleString()}`);
+        }).bindPopup(buildPopupContent(v));
 
         GLOBAL_VIOLATIONS_LAYER.addLayer(marker);
       });
