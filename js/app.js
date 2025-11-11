@@ -318,24 +318,20 @@ fetch('/data/superfund.json')
     const el = document.querySelector('#snapshot-superfund .snapshot-value');
     const list = Array.isArray(sf.sites) ? sf.sites : [];
 
-    const filtered = list.filter(site => {
-      const status = (site.npl_status || site.status || '').toLowerCase().trim();
+    const activeSites = list.filter(site => {
+      const status = (site.npl_status || site.status || '').trim().toLowerCase();
       const listingDate = (site.listing_date || '').trim();
       const deletion = (site.deletion_date || '').trim();
       const deletionNotice = (site.deletion_notice || '').trim();
 
-      // Match same as markers
-      const isFinal = status.includes('final npl');
-      const notDeleted = !deletion && !deletionNotice;
-
-      return isFinal && listingDate && notDeleted;
+      return status === 'npl site'.toLowerCase() && listingDate && !deletion && !deletionNotice;
     });
 
-    const count = filtered.length;
+    const formerSites = list.length - activeSites.length;
 
     if (el) {
-      if (count > 0) {
-        el.textContent = `${count} sites`;
+      if (activeSites.length > 0) {
+        el.textContent = `${activeSites.length} active sites, ${formerSites} former/proposed/deleted`;
       } else {
         el.textContent = 'data unavailable';
       }
