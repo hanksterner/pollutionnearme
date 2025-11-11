@@ -164,25 +164,25 @@ function initMap() {
   // === Legend Toggle Wiring ===
   GLOBAL_MAP.on('overlayadd', function (e) {
     if (e.name === 'Pollution by Factories (TRI)') {
-      document.getElementById('legend-pollution').style.display = 'block';
+      document.getElementById('legend-pollution')?.classList.add('active');
     }
     if (e.name === 'Violations & Penalties') {
-      document.getElementById('legend-penalties').style.display = 'block';
+      document.getElementById('legend-penalties')?.classList.add('active');
     }
     if (e.name === 'Superfund Sites') {
-      document.getElementById('legend-superfund').style.display = 'block';
+      document.getElementById('legend-superfund')?.classList.add('active');
     }
   });
 
   GLOBAL_MAP.on('overlayremove', function (e) {
     if (e.name === 'Pollution by Factories (TRI)') {
-      document.getElementById('legend-pollution').style.display = 'none';
+      document.getElementById('legend-pollution')?.classList.remove('active');
     }
     if (e.name === 'Violations & Penalties') {
-      document.getElementById('legend-penalties').style.display = 'none';
+      document.getElementById('legend-penalties')?.classList.remove('active');
     }
     if (e.name === 'Superfund Sites') {
-      document.getElementById('legend-superfund').style.display = 'none';
+      document.getElementById('legend-superfund')?.classList.remove('active');
     }
   });
 }
