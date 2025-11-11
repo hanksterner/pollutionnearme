@@ -500,3 +500,29 @@ Entry 23 — 2025-11-10T22:42Z
 - Output: violations.json with 21,057 records, ready for map markers and snapshot tile.
 - Ceremony preserved: dataset transformation documented, operational proof logged.
 ----------------------------------------
+Entry 24 — 2025-11-11 00:58 EST
+------------------------------------------------------------
+Event: Data pipeline correction and deployment
+- Patched fetch-violations.py to sanitize NaN/Infinity coordinates
+- Preserved facilities with null lat/lon for snapshot inclusion
+- Regenerated violations.json with 21,057 records (6 null coords)
+- Deployed authoritative dataset to /data/violations.json
+- Verified browser load: valid JSON, no NaN tokens
+- Snapshot card now reflects full dataset:
+  30,516 violations, $12,676,179,659 penalties
+- Map rendering functional, though bubble scaling requires refinement
+Status: Build baseline restored; ceremony sealed
+------------------------------------------------------------
+Entry 24 — 2025-11-11 00:58 EST
+------------------------------------------------------------
+Event: Data pipeline correction and deployment
+- Patched fetch-violations.py to sanitize NaN/Infinity coordinates
+- Preserved facilities with null lat/lon for snapshot inclusion
+- Regenerated violations.json with 21,057 records (6 null coords)
+- Deployed authoritative dataset to /data/violations.json
+- Verified browser load: valid JSON, no NaN tokens
+- Snapshot card now reflects full dataset:
+  30,516 violations, $12,676,179,659 penalties
+- Map rendering functional, though bubble scaling requires refinement
+Status: Build baseline restored; ceremony sealed
+------------------------------------------------------------
