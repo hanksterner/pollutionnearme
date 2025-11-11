@@ -160,7 +160,7 @@ function initMap() {
   const overlays = {
     "Pollution by Factories (TRI)": triLayer,
     "Superfund Sites": superfundLayer,
-    "Violations & Fines": violationsLayer
+    "Violations & Penalties": violationsLayer
   };
   L.control.layers(null, overlays, { collapsed: false }).addTo(map);
 }
@@ -272,6 +272,90 @@ fetch('/data/superfund.json')
     console.warn('Superfund markers load failed', err);
   });
 
+// Violations & Penalties markers
+fetch('/data/violations.json')
+  .then(r => {
+    if (!r.ok) throw new Error('Network response not ok');
+    return r.json();
+  })
+  .then(vs => {
+    if (!Array.isArray(vs)) throw new Error('Violations payload not array');
+
+    vs.forEach(v => {
+      const lat = Number(v.lat);
+      const lon = Number(v.lon);
+      if (!isFinite(lat) || !isFinite(lon)) return;
+
+      const radius = Math.max(4, Math.log(v.penalty + 1));
+      const color = v.penalty > 1000000 ? 'red' :
+        v.penalty > 100000 ? 'orange' : 'green';
+
+      const marker = L.circleMarker([lat, lon], {
+        radius,
+        color,
+        fillOpacity: 0.6,
+        weight: 1
+      });
+
+      const popupHtml = `
+        <div class="popup">
+          <strong>${escapeHtml(v.facility)}</strong><br/>
+          ${escapeHtml(v.city)}, ${escapeHtml(v.state)}<br/>
+          ${escapeHtml(v.violation)}<br/>
+          ${v.count} violations<br/>
+          $${v.penalty.toLocaleString()} penalties
+        </div>
+      `;
+      marker.bindPopup(popupHtml);
+
+      GLOBAL_VIOLATIONS_LAYER.addLayer(marker);
+    });
+  })
+  .catch(err => {
+    console.warn('Violations markers load failed', err);
+  });
+
+// Violations & Penalties legend
+const violationsLegend = L.control({ position: 'bottomright' });
+
+violationsLegend.onAdd = function (map) {
+  const div = L.DomUtil.create('div', 'info legend');
+  div.innerHTML = `
+    <h4>Penalties</h4>
+    <i style="background: green; width: 12px; height: 12px; display: inline-block; margin-right: 4px;"></i> ≤ $100,000<br/>
+    <i style="background: orange; width: 12px; height: 12px; display: inline-block; margin-right: 4px;"></i> $100,001 – $1,000,000<br/>
+    <i style="background: red; width: 12px; height: 12px; display: inline-block; margin-right: 4px;"></i> > $1,000,000<br/>
+    <small>Marker size scales with penalty amount</small>
+  `;
+  return div;
+};
+
+violationsLegend.addTo(GLOBAL_MAP);
+
+// Add to overlays
+const overlays = {
+  "Pollution by Factories (TRI)": triLayer,
+  "Superfund Sites": superfundLayer,
+  "Violations & Penalties": violationsLayer
+};
+
+// Violations & Penalties legend
+const violationsLegend = L.control({ position: 'bottomright' });
+
+violationsLegend.onAdd = function (map) {
+  const div = L.DomUtil.create('div', 'info legend');
+  div.innerHTML = `
+    <h4>Penalties</h4>
+    <i style="background: green; width: 12px; height: 12px; display: inline-block; margin-right: 4px;"></i> ≤ $100,000<br/>
+    <i style="background: orange; width: 12px; height: 12px; display: inline-block; margin-right: 4px;"></i> $100,001 – $1,000,000<br/>
+    <i style="background: red; width: 12px; height: 12px; display: inline-block; margin-right: 4px;"></i> > $1,000,000<br/>
+    <small>Marker size scales with penalty amount</small>
+  `;
+  return div;
+};
+
+violationsLegend.addTo(GLOBAL_MAP);
+
 // === Snapshot Tiles ===
 function loadSnapshots() {
   // TRI snapshot
@@ -332,7 +416,7 @@ fetch('/data/superfund.json')
     if (el) el.textContent = 'data unavailable';
   });
 
-// Violations snapshot
+// Violations & Penalties snapshot
 fetch('/data/violations.json')
   .then(r => {
     if (!r.ok) throw new Error('Network response not ok');
@@ -340,10 +424,15 @@ fetch('/data/violations.json')
   })
   .then(vs => {
     if (!Array.isArray(vs)) throw new Error('Violations payload not array');
-    const totalViolations = vs.reduce((s, v) => s + toNum(v.count), 0);
-    const totalPenalty = vs.reduce((s, v) => s + toNum(v.penalty), 0);
+
+    // Sum violation counts and penalties
+    const totalViolations = vs.reduce((sum, v) => sum + (Number(v.count) || 0), 0);
+    const totalPenalty = vs.reduce((sum, v) => sum + (Number(v.penalty) || 0), 0);
+
     const el = document.querySelector('#snapshot-violations .snapshot-value');
-    if (el) el.textContent = `${totalViolations} violations, $${totalPenalty.toLocaleString()}`;
+    if (el) {
+      el.textContent = `${totalViolations} violations, $${totalPenalty.toLocaleString()} penalties`;
+    }
   })
   .catch(err => {
     console.warn('Violations snapshot fetch failed', err);
