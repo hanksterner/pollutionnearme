@@ -300,7 +300,7 @@ function loadSnapshots() {
     });
 }
 
-// Superfund snapshot
+// Superfund snapshot (MVP: active sites only)
 fetch('/data/superfund.json')
   .then(r => {
     if (!r.ok) throw new Error('Network response not ok');
@@ -310,7 +310,6 @@ fetch('/data/superfund.json')
     const el = document.querySelector('#snapshot-superfund .snapshot-value');
     const list = Array.isArray(sf.sites) ? sf.sites : [];
 
-    // Active = NPL Site
     const activeSites = list.filter(site => {
       const status = (site.npl_status || site.status || '').trim();
       const listingDate = (site.listing_date || '').trim();
@@ -319,15 +318,9 @@ fetch('/data/superfund.json')
       return status === 'NPL Site' && listingDate && !deletion && !deletionNotice;
     });
 
-    // Former/Proposed = Deleted NPL Sites or Proposed NPL Sites (plural)
-    const formerSites = list.filter(site => {
-      const status = (site.npl_status || site.status || '').trim();
-      return status === 'Deleted NPL Sites' || status === 'Proposed NPL Sites';
-    });
-
     if (el) {
       if (activeSites.length > 0) {
-        el.textContent = `${activeSites.length} active sites, ${formerSites.length} former/proposed/deleted`;
+        el.textContent = `${activeSites.length} active sites`;
       } else {
         el.textContent = 'data unavailable';
       }
