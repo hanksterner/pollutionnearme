@@ -143,27 +143,29 @@ function initMap() {
   }).addTo(map);
 
   const triLayer = L.layerGroup();
-  const superfundLayer = L.layerGroup();
   const violationsLayer = L.layerGroup();
+  const superfundLayer = L.layerGroup();
 
   GLOBAL_TRI_LAYER = triLayer;
-  GLOBAL_SUPERFUND_LAYER = superfundLayer;
   GLOBAL_VIOLATIONS_LAYER = violationsLayer;
+  GLOBAL_SUPERFUND_LAYER = superfundLayer;
 
+  // Add all layers by default
   map.addLayer(triLayer);
-  map.addLayer(superfundLayer);
   map.addLayer(violationsLayer);
+  map.addLayer(superfundLayer);
 
+  // Overlay control — ordered to match snapshot cards
   const overlays = {
-    "Pollution by Factories (TRI)": triLayer,
-    "Superfund Sites": superfundLayer,
-    "Violations & Penalties": violationsLayer
+    "Pollution by Factories": triLayer,
+    "Violations & Penalties": violationsLayer,
+    "Superfund Sites": superfundLayer
   };
   L.control.layers(null, overlays, { collapsed: false }).addTo(map);
 
   // === Legend Toggle Wiring ===
   GLOBAL_MAP.on('overlayadd', function (e) {
-    if (e.name === 'Pollution by Factories (TRI)') {
+    if (e.name === 'Pollution by Factories') {
       document.getElementById('legend-pollution')?.classList.add('active');
     }
     if (e.name === 'Violations & Penalties') {
@@ -175,7 +177,7 @@ function initMap() {
   });
 
   GLOBAL_MAP.on('overlayremove', function (e) {
-    if (e.name === 'Pollution by Factories (TRI)') {
+    if (e.name === 'Pollution by Factories') {
       document.getElementById('legend-pollution')?.classList.remove('active');
     }
     if (e.name === 'Violations & Penalties') {
@@ -190,11 +192,11 @@ function initMap() {
   if (map.hasLayer(GLOBAL_TRI_LAYER)) {
     document.getElementById('legend-pollution')?.classList.add('active');
   }
-  if (map.hasLayer(GLOBAL_SUPERFUND_LAYER)) {
-    document.getElementById('legend-superfund')?.classList.add('active');
-  }
   if (map.hasLayer(GLOBAL_VIOLATIONS_LAYER)) {
     document.getElementById('legend-penalties')?.classList.add('active');
+  }
+  if (map.hasLayer(GLOBAL_SUPERFUND_LAYER)) {
+    document.getElementById('legend-superfund')?.classList.add('active');
   }
 }
 

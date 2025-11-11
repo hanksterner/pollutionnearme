@@ -209,7 +209,6 @@ header p.tagline {
   width: 100%;
   height: 520px;
   min-height: 320px;
-  /* ensures visibility on small screens */
   border-top: 4px solid var(--secondary);
   background: #e9eef3;
   border-radius: 6px;
@@ -217,23 +216,29 @@ header p.tagline {
   position: relative;
 }
 
-/* === Legends === */
+/* === Legend Container and Legends === */
+#legend-container {
+  position: absolute;
+  top: 80px;
+  right: 10px;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .map-legend {
   background: #fff;
   padding: 10px;
-  margin: 10px;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   font-size: 0.85em;
   line-height: 1.4;
-  display: none;
-  /* hidden by default */
   opacity: 0;
   transition: opacity 180ms ease;
 }
 
 .map-legend.active {
-  display: block;
   opacity: 1;
 }
 
@@ -306,13 +311,6 @@ header p.tagline {
   display: none;
 }
 
-.map-legend {
-  position: absolute;
-  top: 80px;
-  right: 10px;
-  z-index: 1000;
-}
-
 /* === Snapshot Card Styling === */
 #snapshot-card.card {
   background: #fdfdfd;
@@ -338,7 +336,6 @@ header p.tagline {
 .snapshot-item {
   flex: 1 1 220px;
   text-align: center;
-  /* updated from left to center */
   font-size: 1.05em;
   line-height: 1.4;
 }
@@ -367,7 +364,6 @@ h2 sup {
   font-weight: 600;
   color: var(--text);
   text-align: center;
-  /* added for clarity */
 }
 
 /* existing single-line footnote style */
@@ -512,37 +508,27 @@ input:focus {
 /* TRI clusters (default green) */
 .tri-cluster-icon {
   background-color: #2e7d32;
-  /* dark green */
   color: #fff;
-  /* white text */
   border-radius: 50%;
-  /* make it circular */
   text-align: center;
   font-weight: bold;
   line-height: 40px;
-  /* vertically center text */
   width: 40px;
   height: 40px;
   border: 2px solid #1b5e20;
-  /* darker green border */
 }
 
 /* Superfund clusters (blue) */
 .sf-cluster-icon {
   background-color: #1e88e5;
-  /* medium blue */
   color: #fff;
-  /* white text */
   border-radius: 50%;
-  /* make it circular */
   text-align: center;
   font-weight: bold;
   line-height: 40px;
-  /* vertically center text */
   width: 40px;
   height: 40px;
   border: 2px solid #0d47a1;
-  /* darker blue border */
 }
 
 /* Responsive snapshot grid for very small screens */
