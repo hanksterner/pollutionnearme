@@ -163,21 +163,6 @@ function initMap() {
     "Violations & Penalties": violationsLayer
   };
   L.control.layers(null, overlays, { collapsed: false }).addTo(map);
-
-  // Violations & Penalties legend
-  const violationsLegend = L.control({ position: 'bottomright' });
-  violationsLegend.onAdd = function () {
-    const div = L.DomUtil.create('div', 'info legend');
-    div.innerHTML = `
-      <h4>Penalties</h4>
-      <i style="background: green; width: 12px; height: 12px; display:inline-block; margin-right:4px;"></i> ≤ $100,000<br/>
-      <i style="background: orange; width: 12px; height: 12px; display:inline-block; margin-right:4px;"></i> $100,001 – $1,000,000<br/>
-      <i style="background: red; width: 12px; height: 12px; display:inline-block; margin-right:4px;"></i> > $1,000,000<br/>
-      <small>Marker size scales with penalty amount</small>
-    `;
-    return div;
-  };
-  violationsLegend.addTo(map);
 }
 
 // TRI markers (national facilities and releases)
@@ -320,6 +305,21 @@ fetch('/data/violations.json')
   })
   .catch(err => console.warn('Violations markers load failed', err));
 
+// Violations & Penalties legend
+const violationsLegend = L.control({ position: 'bottomright' });
+violationsLegend.onAdd = function (map) {
+  const div = L.DomUtil.create('div', 'info legend');
+  div.innerHTML = `
+    <h4>Penalties</h4>
+    <i style="background: green; width: 12px; height: 12px; display:inline-block; margin-right:4px;"></i> ≤ $100,000<br/>
+    <i style="background: orange; width: 12px; height: 12px; display:inline-block; margin-right:4px;"></i> $100,001 – $1,000,000<br/>
+    <i style="background: red; width: 12px; height: 12px; display:inline-block; margin-right:4px;"></i> > $1,000,000<br/>
+    <small>Marker size scales with penalty amount</small>
+  `;
+  return div;
+};
+violationsLegend.addTo(GLOBAL_MAP);
+
 // === Snapshot Tiles ===
 function loadSnapshots() {
   // TRI snapshot
@@ -449,4 +449,3 @@ function placeTemporaryMarker(lat, lon, label) {
     }
   }, 10000);
 }
-
