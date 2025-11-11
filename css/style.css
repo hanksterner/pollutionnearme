@@ -117,7 +117,6 @@ header p.tagline {
   opacity: 1;
   pointer-events: auto;
   max-height: 400px;
-  /* enough to show all links */
   transform: translateY(0) scaleY(1);
 }
 
@@ -214,6 +213,93 @@ header p.tagline {
   border-radius: 6px;
   overflow: hidden;
   position: relative;
+}
+
+.map-legend {
+  background: #fff;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  font-size: 0.85em;
+  line-height: 1.4;
+  opacity: 0;
+  transition: opacity 180ms ease;
+}
+
+.map-legend.active {
+  display: block;
+  opacity: 1;
+}
+
+.map-legend h4 {
+  margin: 0 0 6px;
+  font-size: 0.9em;
+  font-weight: 600;
+}
+
+.map-legend div {
+  margin: 0.25rem 0;
+}
+
+.legend-box {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-right: 6px;
+  border: 1px solid #ccc;
+  vertical-align: middle;
+}
+
+/* Pollution colors (cool spectrum) */
+.pollution-lightblue {
+  background: #a6cee3;
+}
+
+.pollution-blue {
+  background: #1f78b4;
+}
+
+.pollution-green {
+  background: #33a02c;
+}
+
+.pollution-darkgreen {
+  background: #006d2c;
+}
+
+/* Penalty colors (warm spectrum) */
+.penalty-orange {
+  background: #fdae6b;
+}
+
+.penalty-red {
+  background: #e6550d;
+}
+
+.penalty-darkred {
+  background: #bd0026;
+}
+
+.penalty-purple {
+  background: #6e016b;
+}
+
+/* Superfund symbol */
+.superfund-blue {
+  background: #3182bd;
+}
+
+/* Cursor fix for clickable bubbles */
+.leaflet-interactive {
+  cursor: pointer !important;
+}
+
+#legend-pollution,
+#legend-penalties,
+#legend-superfund {
+  display: none;
+  /* hidden until layer is active */
 }
 
 /* === Snapshot Card Styling === */
@@ -408,42 +494,50 @@ input:focus {
   #nav.open {
     max-height: 320px;
   }
+}
 
-  /* === Cluster icon styles === */
+/* === Cluster icon styles (moved outside media query for all screen sizes) === */
 
-  /* TRI clusters (default green) */
-  .tri-cluster-icon {
-    background-color: #2e7d32;
-    /* dark green */
-    color: #fff;
-    /* white text */
-    border-radius: 50%;
-    /* make it circular */
-    text-align: center;
-    font-weight: bold;
-    line-height: 40px;
-    /* vertically center text */
-    width: 40px;
-    height: 40px;
-    border: 2px solid #1b5e20;
-    /* darker green border */
-  }
+/* TRI clusters (default green) */
+.tri-cluster-icon {
+  background-color: #2e7d32;
+  /* dark green */
+  color: #fff;
+  /* white text */
+  border-radius: 50%;
+  /* make it circular */
+  text-align: center;
+  font-weight: bold;
+  line-height: 40px;
+  /* vertically center text */
+  width: 40px;
+  height: 40px;
+  border: 2px solid #1b5e20;
+  /* darker green border */
+}
 
-  /* Superfund clusters (blue) */
-  .sf-cluster-icon {
-    background-color: #1e88e5;
-    /* medium blue */
-    color: #fff;
-    /* white text */
-    border-radius: 50%;
-    /* make it circular */
-    text-align: center;
-    font-weight: bold;
-    line-height: 40px;
-    /* vertically center text */
-    width: 40px;
-    height: 40px;
-    border: 2px solid #0d47a1;
-    /* darker blue border */
+/* Superfund clusters (blue) */
+.sf-cluster-icon {
+  background-color: #1e88e5;
+  /* medium blue */
+  color: #fff;
+  /* white text */
+  border-radius: 50%;
+  /* make it circular */
+  text-align: center;
+  font-weight: bold;
+  line-height: 40px;
+  /* vertically center text */
+  width: 40px;
+  height: 40px;
+  border: 2px solid #0d47a1;
+  /* darker blue border */
+}
+
+/* Responsive snapshot grid for very small screens */
+@media (max-width: 600px) {
+  .snapshot-grid {
+    flex-direction: column;
+    gap: 16px;
   }
 }

@@ -54,6 +54,28 @@
     <div id="map" role="region" aria-labelledby="map-title"></div>
   </div>
 
+  <!-- Legends -->
+  <div id="legend-pollution" class="map-legend">
+    <h4>Pollution (lbs released)</h4>
+    <div><span class="legend-box pollution-lightblue"></span> 0 – 100,000 lbs</div>
+    <div><span class="legend-box pollution-blue"></span> 100,001 – 500,000 lbs</div>
+    <div><span class="legend-box pollution-green"></span> 500,001 – 1,000,000 lbs</div>
+    <div><span class="legend-box pollution-darkgreen"></span> > 1,000,000 lbs</div>
+  </div>
+
+  <div id="legend-penalties" class="map-legend">
+    <h4>Penalties ($)</h4>
+    <div><span class="legend-box penalty-orange"></span> ≤ $100,000</div>
+    <div><span class="legend-box penalty-red"></span> $100,001 – $1,000,000</div>
+    <div><span class="legend-box penalty-darkred"></span> $1,000,001 – $10,000,000</div>
+    <div><span class="legend-box penalty-purple"></span> > $10,000,000</div>
+  </div>
+
+  <div id="legend-superfund" class="map-legend">
+    <h4>Superfund Sites</h4>
+    <div><span class="legend-box superfund-blue"></span> Active NPL Site</div>
+  </div>
+
   <!-- Snapshot Card -->
   <section id="snapshot-card" class="card" aria-labelledby="snapshot-heading">
     <h2 id="snapshot-heading">Key Pollution Data</h2>
@@ -74,12 +96,9 @@
     <div class="footnotes">
       <p><sup>1</sup> National pollution data as of 2023 (EPA TRI dataset).</p>
       <p><sup>2</sup> Based on the ECHO Exporter dataset extracted from EPA systems on November 11, 2025. Includes all
-        enforcement actions
-        from the past ten years and compliance data from the past three years, reported quarterly by facilities
-        regulated under
-        the Clean Air Act, Clean Water Act, RCRA, and SDWA. Totals reflect penalties and violation counts from
-        facilities with
-        recorded enforcement activity, regardless of geolocation.</p>
+        enforcement actions from the past ten years and compliance data from the past three years, reported quarterly by
+        facilities regulated under the Clean Air Act, Clean Water Act, RCRA, and SDWA. Totals reflect penalties and
+        violation counts from facilities with recorded enforcement activity, regardless of geolocation.</p>
       <p><sup>3</sup> Superfund site count as of October 2025 (EPA NPL dataset).</p>
     </div>
   </section>
@@ -96,6 +115,35 @@
 
   <!-- App Script -->
   <script src="js/app.js" defer></script>
+
+  <!-- Legend Toggle Patch -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      map.on('overlayadd', function (e) {
+        if (e.name === 'Pollution by Factories (TRI)') {
+          document.getElementById('legend-pollution').style.display = 'block';
+        }
+        if (e.name === 'Violations & Penalties') {
+          document.getElementById('legend-penalties').style.display = 'block';
+        }
+        if (e.name === 'Superfund Sites') {
+          document.getElementById('legend-superfund').style.display = 'block';
+        }
+      });
+
+      map.on('overlayremove', function (e) {
+        if (e.name === 'Pollution by Factories (TRI)') {
+          document.getElementById('legend-pollution').style.display = 'none';
+        }
+        if (e.name === 'Violations & Penalties') {
+          document.getElementById('legend-penalties').style.display = 'none';
+        }
+        if (e.name === 'Superfund Sites') {
+          document.getElementById('legend-superfund').style.display = 'none';
+        }
+      });
+    });
+  </script>
 </body>
 
 </html>
