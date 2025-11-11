@@ -333,41 +333,6 @@ fetch('/data/violations.json')
     if (el) el.textContent = 'data unavailable';
   });
 
-// Superfund snapshot
-fetch('/data/superfund.json')
-  .then(r => {
-    if (!r.ok) throw new Error('Network response not ok');
-    return r.json();
-  })
-  .then(sf => {
-    const el = document.querySelector('#snapshot-superfund .snapshot-value');
-
-    // Apply same filter as markers
-    const list = Array.isArray(sf.sites) ? sf.sites : [];
-    const filtered = list.filter(site => {
-      const status = (site.npl_status || site.status || '').trim();
-      const deletion = (site.deletion_date || '').trim();
-      const deletionNotice = (site.deletion_notice || '').trim();
-      const listingDate = (site.listing_date || '').trim();
-      return status === 'NPL Site' && !deletion && !deletionNotice && listingDate;
-    });
-
-    const count = filtered.length;
-
-    if (el) {
-      if (isFinite(count) && count > 0) {
-        el.textContent = `${count} sites`;  // no "(as of …)" here
-      } else {
-        el.textContent = 'data unavailable';
-      }
-    }
-  })
-  .catch(err => {
-    console.warn('Superfund snapshot fetch failed', err);
-    const el = document.querySelector('#snapshot-superfund .snapshot-value');
-    if (el) el.textContent = 'data unavailable';
-  });
-
 // === Utilities ===
 function toNum(v) {
   if (v === null || v === undefined) return NaN;
