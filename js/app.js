@@ -310,6 +310,7 @@ fetch('/data/superfund.json')
     const el = document.querySelector('#snapshot-superfund .snapshot-value');
     const list = Array.isArray(sf.sites) ? sf.sites : [];
 
+    // Active = NPL Site
     const activeSites = list.filter(site => {
       const status = (site.npl_status || site.status || '').trim();
       const listingDate = (site.listing_date || '').trim();
@@ -318,6 +319,7 @@ fetch('/data/superfund.json')
       return status === 'NPL Site' && listingDate && !deletion && !deletionNotice;
     });
 
+    // Former/Proposed = Deleted NPL Site or Proposed NPL Site
     const formerSites = list.filter(site => {
       const status = (site.npl_status || site.status || '').trim();
       return status === 'Deleted NPL Site' || status === 'Proposed NPL Site';
