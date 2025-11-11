@@ -319,17 +319,22 @@ fetch('/data/superfund.json')
     const list = Array.isArray(sf.sites) ? sf.sites : [];
 
     const filtered = list.filter(site => {
-      const status = (site.npl_status || site.status || '').toLowerCase();
+      const status = (site.npl_status || site.status || '').toLowerCase().trim();
       const listingDate = (site.listing_date || '').trim();
       const deletion = (site.deletion_date || '').trim();
       const deletionNotice = (site.deletion_notice || '').trim();
-      return status.includes('final npl') && listingDate && !deletion && !deletionNotice;
+
+      // Match same as markers
+      const isFinal = status.includes('final npl');
+      const notDeleted = !deletion && !deletionNotice;
+
+      return isFinal && listingDate && notDeleted;
     });
 
     const count = filtered.length;
 
     if (el) {
-      if (isFinite(count) && count > 0) {
+      if (count > 0) {
         el.textContent = `${count} sites`;
       } else {
         el.textContent = 'data unavailable';
