@@ -230,15 +230,12 @@ fetch('/data/superfund.json')
   .then(sf => {
     const sites = Array.isArray(sf.sites) ? sf.sites : [];
 
-    // Robust filter: active Final NPL, has listing_date, not deleted
     const activeSites = sites.filter(site => {
-      const status = (site.npl_status || site.status || '').toLowerCase();
+      const status = (site.npl_status || site.status || '').trim();
       const listingDate = (site.listing_date || '').trim();
       const deletion = (site.deletion_date || '').trim();
       const deletionNotice = (site.deletion_notice || '').trim();
-      const isFinal = status.includes('final npl');
-      const notDeleted = !deletion && !deletionNotice;
-      return isFinal && listingDate && notDeleted;
+      return status === 'NPL Site' && listingDate && !deletion && !deletionNotice;
     });
 
     activeSites.forEach(site => {
@@ -268,12 +265,7 @@ fetch('/data/superfund.json')
       `;
       marker.bindPopup(popupHtml);
 
-      // Use existing layer group created in initMap
-      if (GLOBAL_SUPERFUND_LAYER.addLayer) {
-        GLOBAL_SUPERFUND_LAYER.addLayer(marker);
-      } else {
-        marker.addTo(GLOBAL_SUPERFUND_LAYER);
-      }
+      GLOBAL_SUPERFUND_LAYER.addLayer(marker);
     });
   })
   .catch(err => {
@@ -319,12 +311,11 @@ fetch('/data/superfund.json')
     const list = Array.isArray(sf.sites) ? sf.sites : [];
 
     const activeSites = list.filter(site => {
-      const status = (site.npl_status || site.status || '').trim().toLowerCase();
+      const status = (site.npl_status || site.status || '').trim();
       const listingDate = (site.listing_date || '').trim();
       const deletion = (site.deletion_date || '').trim();
       const deletionNotice = (site.deletion_notice || '').trim();
-
-      return status === 'npl site'.toLowerCase() && listingDate && !deletion && !deletionNotice;
+      return status === 'NPL Site' && listingDate && !deletion && !deletionNotice;
     });
 
     const formerSites = list.length - activeSites.length;
