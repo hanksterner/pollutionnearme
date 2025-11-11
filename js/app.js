@@ -9,6 +9,9 @@ let GLOBAL_VIOLATIONS_LAYER;
 document.addEventListener('DOMContentLoaded', () => {
   initUI();
   initMap();
+  loadTRIMarkers();
+  loadSuperfundMarkers();
+  loadViolationMarkers();
   loadSnapshots();
 });
 
@@ -82,7 +85,6 @@ function indicateSearchResult(ok, msg) {
     el.style.textAlign = 'center';
     el.style.marginTop = '0.5rem';
     el.style.fontWeight = '600';
-    el.style.color = ok ? '#2e7d32' : '#c62828';
     const banner = document.querySelector('.banner');
     if (banner && banner.parentNode) {
       banner.parentNode.insertBefore(el, banner.nextSibling);
@@ -186,22 +188,102 @@ function initMap() {
 }
 
 // === TRI markers ===
-// (unchanged, loads /data/tri-2023.json and adds markers)
+function loadTRIMarkers() {
+  fetch('/data/tri-2023.json')
+    .then(r => r.json())
+    .then(tri => {
+      tri.forEach(item => {
+        const lat = toNum(item.latitude ?? item.lat);
+        const lon = toNum(item.longitude ?? item.lng ?? item.lon);
+        if (!isFinite(lat) || !isFinite(lon)) return;
+
+        const release = toNum(item.release_lbs ?? item.release ?? 0);
+        let color = '#a6cee3';
+        if (release > 100000) color = '#1f78b4';
+        if (release > 500000) color = '#33a02c';
+        if (release > 1000000) color = '#006d2c';
+
+        const marker = L.circleMarker([lat, lon], {
+          radius: 6,
+          fillColor: color,
+          color: '#333',
+          weight: 1,
+          fillOpacity: 0.8
+        }).bindPopup(`<strong>${escapeHtml(item.facility_name || 'Facility')}</strong><br>
+          ${release.toLocaleString()} lbs released`);
+
+        GLOBAL_TRI_LAYER.addLayer(marker);
+      });
+    })
+    .catch(err => console.warn('TRI markers failed', err));
+}
 
 // === Superfund markers ===
-// (unchanged, loads /data/superfund.json and adds markers)
+function loadSuperfundMarkers() {
+  fetch('/data/superfund.json')
+    .then(r => r.json())
+    .then(sf => {
+      const list = Array.isArray(sf.sites) ? sf.sites : [];
+      list.forEach(site => {
+        const lat = toNum(site.lat ?? site.latitude);
+        const lon = toNum(site.lon ?? site.longitude);
+        if (!isFinite(lat) || !isFinite(lon)) return;
+
+        const status = (site.npl_status || site.status || '').trim();
+        if (status !== 'NPL Site') return;
+
+        const marker = L.circleMarker([lat, lon], {
+          radius: 7,
+          fillColor: '#3182bd',
+          color: '#0d47a1',
+          weight: 2,
+          fillOpacity: 0.9
+        }).bindPopup(`<strong>${escapeHtml(site.site_name || 'Superfund Site')}</strong><br>
+          Status: ${escapeHtml(status)}`);
+
+        GLOBAL_SUPERFUND_LAYER.addLayer(marker);
+      });
+    })
+    .catch(err => console.warn('Superfund markers failed', err));
+}
 
 // === Violations & Penalties markers ===
-// (unchanged, loads /data/violations.json and adds markers)
+function loadViolationMarkers() {
+  fetch('/data/violations.json')
+    .then(r => r.json())
+    .then(vs => {
+      vs.forEach(v => {
+        const lat = toNum(v.lat ?? v.latitude);
+        const lon = toNum(v.lon ?? v.longitude);
+        if (!isFinite(lat) || !isFinite(lon)) return;
+
+        const penalty = Number(v.penalty) || 0;
+        let color = '#fdae6b';
+        if (penalty > 100000) color = '#e6550d';
+        if (penalty > 1000000) color = '#bd0026';
+        if (penalty > 10000000) color = '#6e016b';
+
+        const marker = L.circleMarker([lat, lon], {
+          radius: 6,
+          fillColor: color,
+          color: '#333',
+          weight: 1,
+          fillOpacity: 0.8
+        }).bindPopup(`<strong>${escapeHtml(v.facility || 'Facility')}</strong><br>
+          Violations: ${v.count}<br>
+          Penalties: $${penalty.toLocaleString()}`);
+
+        GLOBAL_VIOLATIONS_LAYER.addLayer(marker);
+      });
+    })
+    .catch(err => console.warn('Violations markers failed', err));
+}
 
 // === Snapshot Tiles ===
 function loadSnapshots() {
   // TRI snapshot
   fetch('/data/tri-2023.json')
-    .then(r => {
-      if (!r.ok) throw new Error('Network response not ok');
-      return r.json();
-    })
+    .then(r => r.json())
     .then(tri => {
       if (!Array.isArray(tri)) throw new Error('TRI payload not array');
       const valid = tri.filter(item =>
@@ -220,62 +302,48 @@ function loadSnapshots() {
       const el = document.querySelector('#snapshot-releases .snapshot-value');
       if (el) el.textContent = 'data unavailable';
     });
-}
 
-// Superfund snapshot (MVP: active sites only)
-fetch('/data/superfund.json')
-  .then(r => {
-    if (!r.ok) throw new Error('Network response not ok');
-    return r.json();
-  })
-  .then(sf => {
-    const el = document.querySelector('#snapshot-superfund .snapshot-value');
-    const list = Array.isArray(sf.sites) ? sf.sites : [];
-
-    const activeSites = list.filter(site => {
-      const status = (site.npl_status || site.status || '').trim();
-      const listingDate = (site.listing_date || '').trim();
-      const deletion = (site.deletion_date || '').trim();
-      const deletionNotice = (site.deletion_notice || '').trim();
-      return status === 'NPL Site' && listingDate && !deletion && !deletionNotice;
+  // Superfund snapshot
+  fetch('/data/superfund.json')
+    .then(r => r.json())
+    .then(sf => {
+      const el = document.querySelector('#snapshot-superfund .snapshot-value');
+      const list = Array.isArray(sf.sites) ? sf.sites : [];
+      const activeSites = list.filter(site => {
+        const status = (site.npl_status || site.status || '').trim();
+        const listingDate = (site.listing_date || '').trim();
+        const deletion = (site.deletion_date || '').trim();
+        const deletionNotice = (site.deletion_notice || '').trim();
+        return status === 'NPL Site' && listingDate && !deletion && !deletionNotice;
+      });
+      if (el) {
+        el.textContent = activeSites.length > 0 ? `${activeSites.length} active sites` : 'data unavailable';
+      }
+    })
+    .catch(err => {
+      console.warn('Superfund snapshot fetch failed', err);
+      const el = document.querySelector('#snapshot-superfund .snapshot-value');
+      if (el) el.textContent = 'data unavailable';
     });
 
-    if (el) {
-      if (activeSites.length > 0) {
-        el.textContent = `${activeSites.length} active sites`;
-      } else {
-        el.textContent = 'data unavailable';
+  // Violations snapshot
+  fetch('/data/violations.json')
+    .then(r => r.json())
+    .then(vs => {
+      if (!Array.isArray(vs)) throw new Error('Violations payload not array');
+      const totalViolations = vs.reduce((sum, v) => sum + (Number(v.count) || 0), 0);
+      const totalPenalty = vs.reduce((sum, v) => sum + (Number(v.penalty) || 0), 0);
+      const el = document.querySelector('#snapshot-violations .snapshot-value');
+      if (el) {
+        el.textContent = `${totalViolations} violations, $${totalPenalty.toLocaleString()} penalties`;
       }
-    }
-  })
-  .catch(err => {
-    console.warn('Superfund snapshot fetch failed', err);
-    const el = document.querySelector('#snapshot-superfund .snapshot-value');
-    if (el) el.textContent = 'data unavailable';
-  });
-
-// Violations & Penalties snapshot
-fetch('/data/violations.json')
-  .then(r => {
-    if (!r.ok) throw new Error('Network response not ok');
-    return r.json();
-  })
-  .then(vs => {
-    if (!Array.isArray(vs)) throw new Error('Violations payload not array');
-
-    const totalViolations = vs.reduce((sum, v) => sum + (Number(v.count) || 0), 0);
-    const totalPenalty = vs.reduce((sum, v) => sum + (Number(v.penalty) || 0), 0);
-
-    const el = document.querySelector('#snapshot-violations .snapshot-value');
-    if (el) {
-      el.textContent = `${totalViolations} violations, $${totalPenalty.toLocaleString()} penalties`;
-    }
-  })
-  .catch(err => {
-    console.warn('Violations snapshot fetch failed', err);
-    const el = document.querySelector('#snapshot-violations .snapshot-value');
-    if (el) el.textContent = 'data unavailable';
-  });
+    })
+    .catch(err => {
+      console.warn('Violations snapshot fetch failed', err);
+      const el = document.querySelector('#snapshot-violations .snapshot-value');
+      if (el) el.textContent = 'data unavailable';
+    });
+}
 
 // === Utilities ===
 function toNum(v) {
