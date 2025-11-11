@@ -526,3 +526,34 @@ Event: Data pipeline correction and deployment
 - Map rendering functional, though bubble scaling requires refinement
 Status: Build baseline restored; ceremony sealed
 ------------------------------------------------------------
+============================================================
+Entry 25 — 2025-11-11T17:00 EST
+Event: Overlay Restoration and Popup Expansion — TRI, Superfund, Violations
+
+Actions:
+• Implemented full marker loaders for all three core overlays:
+  – TRI: parsed lat/lon, scaled release_lbs, color-coded markers, added to GLOBAL_TRI_LAYER.
+  – Superfund: filtered for active NPL sites, styled blue markers, added to GLOBAL_SUPERFUND_LAYER.
+  – Violations: filtered valid coordinates, scaled penalty amounts, styled warm-spectrum markers, added to GLOBAL_VIOLATIONS_LAYER.
+
+• Introduced buildPopupContent(obj) utility:
+  – Iterates over all key-value pairs in each dataset record.
+  – Escapes HTML and formats into readable div blocks.
+  – Wired into bindPopup() for all overlays to restore full data visibility.
+
+• Verified operational proof:
+  – Map renders correctly with clustered overlays.
+  – Popups now display complete JSON record for each facility/site.
+  – Snapshot tiles remain functional and accurate.
+  – Legends toggle correctly per layer visibility.
+  – No console errors; performance stable under load.
+
+• Committed as app.js v22:
+  – Replaces placeholder popups with full data dump.
+  – Preserves all prior ceremony, search, and snapshot logic.
+  – Ready for public inspection and reproducibility.
+
+Status: ✅ Overlay layer restoration complete; full data popups operational.
+Next Ritual: Refine popup styling for readability (e.g. table layout, grouping), then prepare FAQ and Learn pages.
+Seal: Complete
+============================================================
