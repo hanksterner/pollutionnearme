@@ -115,35 +115,6 @@
 
   <!-- App Script -->
   <script src="js/app.js" defer></script>
-
-  <!-- Legend Toggle Patch -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      map.on('overlayadd', function (e) {
-        if (e.name === 'Pollution by Factories (TRI)') {
-          document.getElementById('legend-pollution').style.display = 'block';
-        }
-        if (e.name === 'Violations & Penalties') {
-          document.getElementById('legend-penalties').style.display = 'block';
-        }
-        if (e.name === 'Superfund Sites') {
-          document.getElementById('legend-superfund').style.display = 'block';
-        }
-      });
-
-      map.on('overlayremove', function (e) {
-        if (e.name === 'Pollution by Factories (TRI)') {
-          document.getElementById('legend-pollution').style.display = 'none';
-        }
-        if (e.name === 'Violations & Penalties') {
-          document.getElementById('legend-penalties').style.display = 'none';
-        }
-        if (e.name === 'Superfund Sites') {
-          document.getElementById('legend-superfund').style.display = 'none';
-        }
-      });
-    });
-  </script>
 </body>
 
 </html>
