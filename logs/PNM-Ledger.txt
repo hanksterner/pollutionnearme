@@ -557,3 +557,28 @@ Status: ✅ Overlay layer restoration complete; full data popups operational.
 Next Ritual: Refine popup styling for readability (e.g. table layout, grouping), then prepare FAQ and Learn pages.
 Seal: Complete
 ============================================================
+==================================================================
+Ledger Entry 26 — 2025-11-11 19:41 EST
+------------------------------------------------------------------
+Update Type: Frontend Styling / Map Legends
+
+Summary:
+- Refined legend card presentation beneath map
+- Introduced horizontal flex container (#legend-container) for centered layout
+- Applied left-aligned grid for legend entries, ensuring colored boxes line up neatly
+- Headings remain centered for balance, entries structured for readability
+- Responsive fallback preserved: horizontal on desktop, vertical stack on mobile
+- Eliminated wasted whitespace under map, legends now load elegantly and consistently
+
+Files Updated:
+- css/style.css (Legend container and .map-legend section)
+
+Operational Proof:
+- Legends render correctly in horizontal layout beneath map
+- Entries align cleanly with consistent spacing
+- Verified responsiveness at <800px breakpoint
+- No regressions observed in map rendering or snapshot card hierarchy
+
+Status:
+Baseline advanced and sealed. Build status current since Entry 25.
+==================================================================
