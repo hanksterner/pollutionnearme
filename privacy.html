@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Privacy Statement — Pollution Near Me</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Sticky Header with Nav -->
+  <header class="site-header">
+    <h1>Pollution Near Me</h1>
+    <p class="tagline">Exposing government environmental data in plain view.</p>
+    <div class="hamburger">&#9776;</div>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="terms.html">Terms</a></li>
+        <li><a href="privacy.html" class="active">Privacy</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <h2>Privacy Statement</h2>
+    <p>Effective Date: November 11, 2025</p>
+
+    <h3>Information We Collect</h3>
+    <p>
+      Pollution Near Me does not collect personally identifiable information from visitors. We may collect
+      non‑personal data such as browser type, device information, and aggregate usage statistics to improve site
+      performance.
+    </p>
+
+    <h3>Cookies and Analytics</h3>
+    <p>
+      We use cookies and analytics tools to understand how visitors interact with the site. This helps us improve
+      usability and measure engagement. You can disable cookies in your browser settings.
+    </p>
+
+    <h3>Third‑Party Data</h3>
+    <p>
+      Our maps and dashboards rely on datasets published by government agencies such as the U.S. EPA. We do not control
+      the accuracy of third‑party data sources.
+    </p>
+
+    <h3>Changes to Privacy Statement</h3>
+    <p>
+      We may update this Privacy Statement periodically. Updates will be posted on this page with a new effective date.
+    </p>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div>© 2025 Pollution Near Me. Data sources: EPA & environmental agencies.</div>
+    <div class="footer-links">
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Statement</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+  <!-- Mobile nav toggle script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".site-nav ul");
+      if (hamburger && navMenu) {
+        hamburger.addEventListener("click", function () {
+          navMenu.classList.toggle("show");
+        });
+      }
+    });
+  </script>
+</body>
+</html>

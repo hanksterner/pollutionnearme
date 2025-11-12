@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Terms of Service — Pollution Near Me</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Sticky Header with Nav -->
+  <header class="site-header">
+    <h1>Pollution Near Me</h1>
+    <p class="tagline">Exposing government environmental data in plain view.</p>
+    <div class="hamburger">&#9776;</div>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="news.html">News</a></li>
+        <li><a href="terms.html" class="active">Terms</a></li>
+        <li><a href="privacy.html">Privacy</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <h2>Terms of Service</h2>
+    <p>Effective Date: November 11, 2025</p>
+
+    <h3>Acceptance of Terms</h3>
+    <p>
+      By accessing or using Pollution Near Me, you agree to be bound by these Terms of Service. If you do not agree,
+      you should discontinue use of the site.
+    </p>
+
+    <h3>Use of Content</h3>
+    <p>
+      All maps, dashboards, and articles are provided for informational purposes only. While we source data from
+      authoritative agencies such as the U.S. EPA, we cannot guarantee absolute accuracy or completeness.
+    </p>
+
+    <h3>Restrictions</h3>
+    <ul>
+      <li>You may not misuse the site or attempt to disrupt its operation.</li>
+      <li>You may not republish or resell our content without attribution.</li>
+      <li>You may not misrepresent Pollution Near Me as an official government source.</li>
+    </ul>
+
+    <h3>Changes to Terms</h3>
+    <p>
+      We may update these Terms from time to time. Updates will be posted on this page with a new effective date.
+    </p>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div>© 2025 Pollution Near Me. Data sources: EPA & environmental agencies.</div>
+    <div class="footer-links">
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Statement</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+  <!-- Mobile nav toggle script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".site-nav ul");
+      if (hamburger && navMenu) {
+        hamburger.addEventListener("click", function () {
+          navMenu.classList.toggle("show");
+        });
+      }
+    });
+  </script>
+</body>
+</html>
