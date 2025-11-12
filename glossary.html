@@ -4,8 +4,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <title>Glossary — Pollution Near Me</title>
   <link rel="stylesheet" href="css/style.css">
+
+  <!-- SEO head additions for glossary.html -->
+  <link rel="canonical" href="https://pollutionnearme.org/glossary.html">
+  <meta name="description"
+    content="Glossary of environmental terms used in Pollution Near Me. Definitions of EPA datasets, regulatory programs, and key concepts for transparency and accountability.">
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-C33KSYBWKY"></script>
@@ -13,27 +19,24 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-C33KSYBWKY');
   </script>
 </head>
 
 <body>
-
-  <!-- Sticky Header with Nav -->
+  <!-- Shared header/nav -->
   <header class="site-header">
     <h1>Pollution Near Me</h1>
-    <p class="tagline">Exposing government environmental data in plain view.</p>
+    <p class="tagline">Letting the Sun Shine on EPA Data: Exposing Environmental Violations Nationwide</p>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="glossary.html" class="active">Glossary</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </nav>
   </header>
-
-  <nav class="site-nav">
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="glossary.html">Glossary</a></li>
-      <li><a href="news.html">News</a></li>
-    </ul>
-  </nav>
 
   <!-- Main content -->
   <main class="content">
@@ -71,7 +74,7 @@
     <div class="footer-links">
       <a href="terms.html">Terms of Service</a>
       <a href="privacy.html">Privacy Statement</a>
-      <a href="#">Contact</a>
+      <a href="contact.html">Contact</a>
     </div>
   </footer>
 
