@@ -484,3 +484,32 @@ input:focus {
   height: 40px;
   border: 2px solid #0d47a1;
 }
+
+/* Page content container */
+.content {
+  max-width: 900px;
+  /* keeps text readable */
+  margin: 2rem auto;
+  /* centers content */
+  padding: 0 1rem;
+  /* breathing room on sides */
+  line-height: 1.7;
+  font-size: 1.05em;
+}
+
+/* Section headings */
+.content h2,
+.content h3 {
+  color: var(--primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  text-align: center;
+  /* optional: center major headings */
+}
+
+.content p {
+  margin-bottom: 1rem;
+  text-align: justify;
+  /* elegant block alignment */
+}
