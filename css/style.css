@@ -1,6 +1,6 @@
-/* // === PollutionNearMe Identity Layer === */
+/* === PollutionNearMe Identity Layer === */
 
-/* // === Color Variables === */
+/* === Color Variables === */
 :root {
   --primary: #1C2A39;
   --secondary: #5A6B7A;
@@ -11,7 +11,7 @@
   --secondary-light: #e0e6eb;
 }
 
-/* // === Global Styles === */
+/* === Global Styles === */
 * {
   box-sizing: border-box;
 }
@@ -32,7 +32,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* // === Headings === */
+/* === Headings === */
 h1,
 h2,
 h3 {
@@ -41,23 +41,21 @@ h3 {
   margin: 0;
 }
 
-/* // === Header === */
-header {
+/* === Site Header === */
+.site-header {
   background: var(--primary);
   color: #fff;
-  padding: 1.25rem 1rem 1rem;
   text-align: center;
-  position: relative;
-  overflow: visible;
+  padding: 15px 0;
 }
 
-header h1 {
-  margin: 0.25rem 0 0.25rem;
+.site-header h1 {
+  margin: 0;
   font-size: 2rem;
-  line-height: 1;
+  line-height: 1.2;
 }
 
-header p.tagline {
+.site-header .tagline {
   margin: 0.25rem 0 0.5rem;
   font-size: 1rem;
   color: #f1f4f6;
@@ -65,77 +63,42 @@ header p.tagline {
   opacity: 0.95;
 }
 
-/* // === Hamburger Menu === */
-.hamburger {
-  position: absolute;
-  top: 0.9rem;
-  left: 0.9rem;
-  font-size: 1.6rem;
-  background: rgba(0, 0, 0, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  height: 40px;
-  width: 40px;
-  display: inline-flex;
-  align-items: center;
+/* === Navigation Bar === */
+.site-nav {
+  background: #162d4a;
+  /* slightly darker shade for separation */
+}
+
+.site-nav ul {
+  display: flex;
   justify-content: center;
-  border-radius: 8px;
-  cursor: pointer;
-  color: #fff;
-  z-index: 1100;
-  transition: transform 150ms ease, background 150ms ease;
+  /* horizontal, centered */
+  gap: 30px;
+  list-style: none;
+  margin: 0;
+  padding: 12px 0;
 }
 
-.hamburger:focus,
-.hamburger:hover {
-  transform: translateY(-2px);
-  background: rgba(0, 0, 0, 0.12);
-  outline: none;
-}
-
-/* // === Navigation (elegant slide) === */
-#nav {
-  position: absolute;
-  top: calc(100% + 0.5rem);
-  left: 0;
-  width: 260px;
-  max-width: calc(100% - 2rem);
-  background: linear-gradient(180deg, rgba(90, 107, 122, 0.98), var(--secondary));
-  padding: 1rem;
-  border-radius: 8px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
-  transform-origin: top left;
-  opacity: 0;
-  pointer-events: none;
-  max-height: 0;
-  overflow: hidden;
-  transform: translateY(-8px) scaleY(0.98);
-  transition: transform 220ms cubic-bezier(.2, .9, .3, 1), opacity 180ms ease, max-height 220ms ease;
-  z-index: 1050;
-}
-
-#nav.open {
-  opacity: 1;
-  pointer-events: auto;
-  max-height: 400px;
-  transform: translateY(0) scaleY(1);
-}
-
-#nav a {
+.site-nav a {
   color: #fff;
   text-decoration: none;
-  display: block;
-  padding: 0.5rem 0;
+  /* no underline */
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-weight: 500;
+  transition: color 0.2s ease;
+}
+
+.site-nav a:hover {
+  color: #4cafef;
+  /* subtle accent on hover */
+}
+
+.site-nav a.active {
   font-weight: 700;
-  letter-spacing: 0.01em;
+  /* bold when active */
 }
 
-#nav a+a {
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 0.75rem;
-  margin-top: 0.5rem;
-}
-
-/* // === Banner === */
+/* === Banner === */
 .banner {
   background-color: var(--secondary);
   display: flex;
@@ -143,7 +106,7 @@ header p.tagline {
   padding: 0.75rem 1rem;
 }
 
-/* // === Search Bar === */
+/* === Search Bar === */
 #search {
   display: flex;
   align-items: center;
@@ -187,12 +150,11 @@ header p.tagline {
   content: "🔍";
 }
 
-/* === Map Hero (spacing and layout) === */
+/* === Map Hero === */
 .map-hero {
   max-width: 1200px;
   margin: 1.25rem auto 0.5rem;
   padding: 0 1rem;
-  display: block;
 }
 
 .map-title {
@@ -216,21 +178,17 @@ header p.tagline {
   position: relative;
 }
 
-/* === Legend Container and Legends (horizontal layout beneath map) === */
+/* === Legend Container === */
 #legend-container {
   display: flex;
   justify-content: center;
-  /* center horizontally */
   align-items: flex-start;
   gap: 24px;
-  /* spacing between legends */
   margin-top: 12px;
-  /* space below map */
 }
 
 .map-legend {
   flex: 1 1 220px;
-  /* evenly sized blocks */
   max-width: 280px;
   background: #fff;
   padding: 12px 16px;
@@ -241,14 +199,11 @@ header p.tagline {
   opacity: 0;
   transition: opacity 180ms ease;
   text-align: left;
-  /* align content left */
   border-left: 1px solid #ddd;
-  /* separator between legends */
 }
 
 .map-legend:first-child {
   border-left: none;
-  /* no separator before first legend */
 }
 
 .map-legend.active {
@@ -260,26 +215,22 @@ header p.tagline {
   font-size: 0.9em;
   font-weight: 600;
   text-align: center;
-  /* keep heading centered */
 }
 
-/* Align legend entries in a grid */
 .map-legend div {
   display: flex;
   align-items: center;
   gap: 8px;
-  /* consistent spacing between box and label */
   margin: 0.25rem 0;
 }
 
 .legend-box {
   flex: 0 0 14px;
-  /* fixed width for alignment */
   height: 14px;
   border: 1px solid #ccc;
 }
 
-/* Responsive fallback: stack legends vertically on smaller screens */
+/* Responsive fallback: stack legends vertically */
 @media (max-width: 800px) {
   #legend-container {
     flex-direction: column;
@@ -290,11 +241,10 @@ header p.tagline {
   .map-legend {
     max-width: 90%;
     border-left: none;
-    /* remove separators on mobile */
   }
 }
 
-/* Pollution colors (cool spectrum) */
+/* Pollution colors */
 .pollution-lightblue {
   background: #a6cee3;
 }
@@ -311,7 +261,7 @@ header p.tagline {
   background: #006d2c;
 }
 
-/* Penalty colors (warm spectrum) */
+/* Penalty colors */
 .penalty-orange {
   background: #fdae6b;
 }
@@ -333,7 +283,7 @@ header p.tagline {
   background: #3182bd;
 }
 
-/* Cursor fix for clickable bubbles */
+/* Cursor fix */
 .leaflet-interactive {
   cursor: pointer !important;
 }
@@ -344,7 +294,7 @@ header p.tagline {
   display: none;
 }
 
-/* === Snapshot Card Styling === */
+/* === Snapshot Card === */
 #snapshot-card.card {
   background: #fdfdfd;
   border-radius: 8px;
@@ -381,10 +331,6 @@ header p.tagline {
   padding-bottom: 3px;
 }
 
-.snapshot-item::before {
-  content: none !important;
-}
-
 .snapshot-item sup,
 h2 sup {
   font-size: 0.7em;
@@ -399,16 +345,7 @@ h2 sup {
   text-align: center;
 }
 
-/* existing single-line footnote style */
-.footnote {
-  font-size: 0.85em;
-  color: #555;
-  margin-top: 16px;
-  text-align: center;
-  font-style: italic;
-}
-
-/* numbered footnotes block */
+/* Footnotes */
 .footnotes {
   margin-top: 1rem;
   font-size: 0.85em;
@@ -424,13 +361,7 @@ h2 sup {
   padding-left: 1.2em;
 }
 
-.footnotes sup {
-  vertical-align: super;
-  font-size: 0.7em;
-  margin-right: 0.3em;
-}
-
-/* // === Fullscreen Control Styling === */
+/* === Fullscreen Control Styling === */
 .leaflet-control-fullscreen a {
   background: var(--accent);
   color: #fff;
@@ -442,7 +373,7 @@ h2 sup {
   filter: brightness(0.95);
 }
 
-/* // === Error state for map data === */
+/* === Error state for map data === */
 #map.data-error::after {
   content: "Data unavailable — check console for details";
   display: flex;
@@ -459,7 +390,7 @@ h2 sup {
   right: 0;
 }
 
-/* // === Footer (polished) === */
+/* === Footer (polished) === */
 footer {
   background: var(--primary);
   color: #fff;
@@ -488,7 +419,7 @@ footer {
   color: #fff;
 }
 
-/* // === Accessibility and small tweaks === */
+/* === Accessibility and small tweaks === */
 a:focus,
 button:focus,
 input:focus {
@@ -499,18 +430,10 @@ input:focus {
   display: none !important;
 }
 
-/* // === Responsive === */
+/* === Responsive Adjustments === */
 @media (max-width: 800px) {
-  header h1 {
+  .site-header h1 {
     font-size: 1.6rem;
-  }
-
-  .hamburger {
-    top: 0.6rem;
-    left: 0.6rem;
-    width: 36px;
-    height: 36px;
-    font-size: 1.3rem;
   }
 
   #search input {
@@ -524,21 +447,20 @@ input:focus {
   #map {
     height: 420px;
   }
+}
 
-  #nav {
-    width: calc(100% - 2rem);
-    left: 1rem;
-    right: 1rem;
+@media (max-width: 600px) {
+  .snapshot-grid {
+    flex-direction: column;
+    gap: 16px;
   }
 
-  #nav.open {
-    max-height: 320px;
+  .site-nav ul {
+    gap: 20px;
   }
 }
 
-/* === Cluster icon styles (moved outside media query for all screen sizes) === */
-
-/* TRI clusters (default green) */
+/* === Cluster icon styles === */
 .tri-cluster-icon {
   background-color: #2e7d32;
   color: #fff;
@@ -551,7 +473,6 @@ input:focus {
   border: 2px solid #1b5e20;
 }
 
-/* Superfund clusters (blue) */
 .sf-cluster-icon {
   background-color: #1e88e5;
   color: #fff;
@@ -562,138 +483,4 @@ input:focus {
   width: 40px;
   height: 40px;
   border: 2px solid #0d47a1;
-}
-
-/* Responsive snapshot grid for very small screens */
-@media (max-width: 600px) {
-  .snapshot-grid {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  /* Sticky header */
-  .site-header {
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    background: #2a6ebb;
-    color: #fff;
-    padding: 12px 20px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  /* Tagline styling */
-  .site-header .tagline {
-    font-size: 0.9em;
-    margin-left: 10px;
-    color: #e0e0e0;
-  }
-
-  /* Desktop nav */
-  .site-nav ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    gap: 20px;
-  }
-
-  .site-nav a {
-    color: #fff;
-    text-decoration: none;
-    font-weight: bold;
-  }
-
-  .site-nav a:hover {
-    text-decoration: underline;
-  }
-
-  /* Active link */
-  .site-nav a.active {
-    font-weight: bold;
-    text-decoration: underline;
-    color: #ffd700;
-  }
-
-  /* Hamburger hidden on desktop */
-  .hamburger {
-    display: none;
-  }
-
-  /* Mobile styles */
-  @media (max-width: 768px) {
-    .site-nav ul {
-      display: none;
-      flex-direction: column;
-      background: #2a6ebb;
-      padding: 10px;
-    }
-
-    .site-nav ul.show {
-      display: flex;
-    }
-
-    .hamburger {
-      display: block;
-      cursor: pointer;
-      font-size: 1.5em;
-      color: #fff;
-    }
-
-    /* Site header (title + tagline) */
-    .site-header {
-      background: #1e3a5f;
-      /* deep navy */
-      color: #fff;
-      text-align: center;
-      padding: 15px 0;
-    }
-
-    .site-header h1 {
-      margin: 0;
-      font-size: 1.8em;
-    }
-
-    .site-header .tagline {
-      margin: 0;
-      font-size: 1em;
-      font-weight: 300;
-    }
-
-    /* Navigation bar directly beneath header */
-    .site-nav {
-      background: #162d4a;
-      /* slightly darker shade for separation */
-    }
-
-    .site-nav ul {
-      display: flex;
-      justify-content: center;
-      /* horizontal, centered */
-      gap: 30px;
-      list-style: none;
-      margin: 0;
-      padding: 12px 0;
-    }
-
-    .site-nav a {
-      color: #fff;
-      text-decoration: none;
-      /* no underline */
-      font-weight: 500;
-      transition: color 0.2s ease;
-    }
-
-    .site-nav a:hover {
-      color: #4cafef;
-      /* subtle accent on hover */
-    }
-
-    .site-nav a.active {
-      font-weight: 700;
-      /* bold when active */
-    }
-  }
 }
