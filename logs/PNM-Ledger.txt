@@ -582,3 +582,23 @@ Operational Proof:
 Status:
 Baseline advanced and sealed. Build status current since Entry 25.
 ==================================================================
+==================================================================
+Ledger Entry 27 — 2025-11-11 21:13 EST
+------------------------------------------------------------------
+Update Type: Roadmap Pivot / Post-MVP Expansion
+
+Summary:
+- Documented expansion priorities beyond sealed core pipeline and snapshot logic
+- Map elegance: bubble scaling, clustering, color hierarchy, optional overlays
+- Additional pages: About/Methodology, State/Regional dashboards, FAQ/Glossary, Contact/Feedback
+- Analytics & Monetization: baseline Google Analytics integration, non-intrusive AdSense placements
+- Other essentials: SEO scaffolding, performance checks (lazy loading, compressed JSON), accessibility polish
+
+Operational Proof:
+- MVP baseline sealed at Entry 26 with legend alignment patch
+- Roadmap logged for polish and expansion, no code changes in this entry
+- Build status advanced: ledger reflects current baseline and future trajectory
+
+Status:
+Baseline remains stable. Expansion roadmap formally documented and sealed.
+==================================================================
