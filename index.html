@@ -21,25 +21,24 @@
     href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
   <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"
     defer></script>
-
 </head>
 
 <body>
 
-  <!-- Header -->
-  <header>
-    <button class="hamburger" id="hamburger" aria-controls="nav" aria-expanded="false" aria-label="Open menu">☰</button>
+  <!-- Sticky Header with Nav -->
+  <header class="site-header">
     <h1>Pollution Near Me</h1>
     <p class="tagline">Exposing government environmental data in plain view.</p>
+    <div class="hamburger">&#9776;</div>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html" class="active">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </nav>
   </header>
-
-  <!-- Navigation -->
-  <nav id="nav" aria-hidden="true">
-    <a href="#">Home</a>
-    <a href="#">About</a>
-    <a href="#">Data Sources</a>
-    <a href="#">Contact</a>
-  </nav>
 
   <!-- Banner with search -->
   <div class="banner">
@@ -118,6 +117,19 @@
 
   <!-- App Script -->
   <script src="js/app.js" defer></script>
+
+  <!-- Mobile nav toggle script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".site-nav ul");
+      if (hamburger && navMenu) {
+        hamburger.addEventListener("click", function () {
+          navMenu.classList.toggle("show");
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>
