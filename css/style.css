@@ -513,3 +513,14 @@ input:focus {
   text-align: justify;
   /* elegant block alignment */
 }
+
+/* Page title (first h2 in content) centered */
+.content h2:first-of-type {
+  text-align: center;
+}
+
+/* All other h2 and h3 section headers left-aligned */
+.content h2:not(:first-of-type),
+.content h3 {
+  text-align: left;
+}
