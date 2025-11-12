@@ -1,4 +1,10 @@
-# robots.txt (place at /robots.txt)
 User-agent: *
+Disallow: /archive/
+Disallow: /css/style_css_baseline.v*
+Disallow: /index_html_baseline.v*
+Disallow: /js/app_js_baseline-v*
+Disallow: /logs/
+Disallow: /data/
 Allow: /
+
 Sitemap: https://pollutionnearme.org/sitemap.xml
