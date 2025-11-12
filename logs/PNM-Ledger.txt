@@ -615,3 +615,13 @@ Scope: Site-wide navigation and content formatting
 - Verified consistency and readability across all pages
 
 Status: Build advanced from Entry 27 baseline. Ceremony sealed.
+=== Ledger Entry 29 — 2025-11-12 01:41 EST ===
+Scope: Google Analytics integration
+
+- Inserted Google Analytics global site tag (gtag.js) with Measurement ID G-C33KSYBWKY
+- Snippet added to <head> of all public-facing pages: index.html, about.html, glossary.html, news.html, terms.html, privacy.html
+- Placement verified before closing </head> to ensure early load and accurate pageview tracking
+- Industry category selected: Reference, aligning with platform’s role as a public information resource
+- Confirmed consistent implementation across all pages for reproducibility and defensibility
+
+Status: Ceremony sealed. Analytics tracking active across the platform.
