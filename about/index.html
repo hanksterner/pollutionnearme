@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>About Pollution Near Me — Transparency & Accountability</title>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="../css/style.css">
 
-  <!-- SEO head additions for about.html -->
-  <link rel="canonical" href="https://pollutionnearme.org/about.html">
+  <!-- SEO head additions for About page -->
+  <link rel="canonical" href="https://pollutionnearme.org/about/">
   <meta name="description"
     content="Learn about Pollution Near Me: our mission, methodology, and vision for exposing EPA datasets and advancing environmental accountability nationwide.">
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-C33KSYBWKY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -30,8 +30,8 @@
     <p class="tagline">Letting the Sun Shine on EPA Data: Exposing Environmental Violations Nationwide</p>
     <nav class="site-nav">
       <ul>
-        <li><a href="/" class="active">Home</a></li>
-        <li><a href="/about/">About</a></li>
+        <li><a href="/">Home</a></li>
+        <li><a href="/about/" class="active">About</a></li>
         <li><a href="/glossary/">Glossary</a></li>
         <li><a href="/news/">News</a></li>
       </ul>
@@ -59,13 +59,28 @@
 
   <!-- Footer -->
   <footer>
-    <div>© 2025 Pollution Near Me. Data sources: EPA & environmental agencies.</div>
+    <div>© 2025 Pollution Near Me. Data sources: EPA &amp; environmental agencies.</div>
     <div class="footer-links">
-      <a href="terms.html">Terms of Service</a>
-      <a href="privacy.html">Privacy Statement</a>
-      <a href="contact.html">Contact</a>
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Statement</a>
     </div>
   </footer>
+
+  <!-- App Script -->
+  <script src="../js/app.js" defer></script>
+
+  <!-- Mobile nav toggle script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".site-nav ul");
+      if (hamburger && navMenu) {
+        hamburger.addEventListener("click", function () {
+          navMenu.classList.toggle("show");
+        });
+      }
+    });
+  </script>
 </body>
 
 </html>

@@ -29,7 +29,7 @@
     content="Transparent access to EPA data on toxic releases, enforcement actions, and Superfund sites. Accountability starts with visibility.">
   <meta name="twitter:image" content="https://pollutionnearme.org/assets/og-image.jpg">
 
-  <!-- Google tag (gtag.js) -->
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-C33KSYBWKY"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -40,7 +40,7 @@
 
   <!-- Leaflet core -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
 
   <!-- MarkerCluster plugin -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
@@ -61,10 +61,10 @@
     <p class="tagline">Letting the Sun Shine on EPA Data: Exposing Environmental Violations Nationwide</p>
     <nav class="site-nav">
       <ul>
-        <li><a href="index.html" class="active">Home</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="glossary.html">Glossary</a></li>
-        <li><a href="news.html">News</a></li>
+        <li><a href="/" class="active">Home</a></li>
+        <li><a href="/about/">About</a></li>
+        <li><a href="/glossary/">Glossary</a></li>
+        <li><a href="/news/">News</a></li>
       </ul>
     </nav>
   </header>
@@ -116,7 +116,7 @@
         <span class="snapshot-value">loading…</span>
       </div>
       <div class="snapshot-item" id="snapshot-violations">
-        <strong>Violations & Penalties<sup>2</sup></strong><br>
+        <strong>Violations &amp; Penalties<sup>2</sup></strong><br>
         <span class="snapshot-value">loading…</span>
       </div>
       <div class="snapshot-item" id="snapshot-superfund">
@@ -136,11 +136,10 @@
 
   <!-- Footer -->
   <footer>
-    <div>© 2025 Pollution Near Me. Data sources: EPA & environmental agencies.</div>
+    <div>© 2025 Pollution Near Me. Data sources: EPA &amp; environmental agencies.</div>
     <div class="footer-links">
-      <a href="terms.html">Terms of Service</a>
-      <a href="privacy.html">Privacy Statement</a>
-      <a href="#">Contact</a>
+      <a href="/terms/">Terms of Service</a>
+      <a href="/privacy/">Privacy Statement</a>
     </div>
   </footer>
 
