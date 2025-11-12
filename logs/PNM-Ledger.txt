@@ -602,3 +602,16 @@ Operational Proof:
 Status:
 Baseline remains stable. Expansion roadmap formally documented and sealed.
 ==================================================================
+=== Ledger Entry 28 — 2025-11-12 01:17 EST ===
+Scope: Site-wide navigation and content formatting
+
+- Refactored index.html header and nav: title/tagline centered, horizontal nav bar beneath
+- Removed Terms and Privacy from top nav; retained only in footer
+- Propagated elegant horizontal nav bar across all pages (About, Glossary, News, Terms, Privacy)
+- Introduced .content container with max-width, centered layout, and refined typography
+- Adjusted heading alignment: page titles (first h2) centered; section headers (subsequent h2, all h3) left-aligned
+- Cleaned style.css: removed legacy vertical nav/hamburger, flattened media queries, standardized font weights, eliminated underlines
+- Preserved footer, map hero, legend container, snapshot card, and cluster icon styles
+- Verified consistency and readability across all pages
+
+Status: Build advanced from Entry 27 baseline. Ceremony sealed.
