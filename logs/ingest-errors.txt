@@ -1,0 +1,4 @@
+Unexpected site count: 1342. Verify filter against data/npl.raw.json.
+
+---
+Total anomalies: 1 across 1840 features inspected

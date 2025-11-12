@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Pollution Near Me — Environmental Data & Accountability</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Leaflet core -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
+
+  <!-- MarkerCluster plugin -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js" defer></script>
+
+  <!-- Fullscreen plugin -->
+  <link rel="stylesheet"
+    href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
+  <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"
+    defer></script>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <button class="hamburger" id="hamburger" aria-controls="nav" aria-expanded="false" aria-label="Open menu">☰</button>
+    <h1>Pollution Near Me</h1>
+    <p class="tagline">Exposing government environmental data in plain view.</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav id="nav" aria-hidden="true">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Data Sources</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- Banner with search -->
+  <div class="banner">
+    <form id="search" role="search" aria-label="Site search">
+      <input type="text" name="q" placeholder="Enter ZIP, city, address, or business" aria-label="Search location">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <!-- Hero: properly spaced title above the map -->
+  <div class="map-hero">
+    <h2 class="map-title" id="map-title">Pollution Map of the United States</h2>
+    <div id="map" role="region" aria-labelledby="map-title"></div>
+  </div>
+
+  <!-- Snapshot Card -->
+  <section id="snapshot-card" class="card" aria-labelledby="snapshot-heading">
+    <h2 id="snapshot-heading">Key Pollution Data — 2023*</h2>
+    <div class="snapshot-grid">
+      <div class="snapshot-item" id="snapshot-releases">
+        <strong>Pollution by Factories</strong><br>
+        <span class="snapshot-value">loading…</span>
+      </div>
+      <div class="snapshot-item" id="snapshot-violations">
+        <strong>Violations & Fines</strong><br>
+        <span class="snapshot-value">loading…</span>
+      </div>
+      <div class="snapshot-item" id="snapshot-superfund">
+        <strong>Superfund Sites</strong><br>
+        <span class="snapshot-value">loading…</span>
+      </div>
+    </div>
+    <p class="footnote">*2023 is the most recent year of national data available.</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>© 2025 Pollution Near Me. Data sources: EPA & environmental agencies.</div>
+    <div class="footer-links">
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Statement</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+  <!-- App Script -->
+  <script src="js/app.js" defer></script>
+</body>
+
+</html>

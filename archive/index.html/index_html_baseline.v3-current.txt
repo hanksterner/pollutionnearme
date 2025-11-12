@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pollution Near Me — Environmental Data & Accountability</title>
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- Leaflet core -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js" defer></script>
+
+  <!-- MarkerCluster plugin -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.css" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster/dist/MarkerCluster.Default.css" />
+  <script src="https://unpkg.com/leaflet.markercluster/dist/leaflet.markercluster.js" defer></script>
+
+  <!-- Fullscreen plugin -->
+  <link rel="stylesheet"
+    href="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/leaflet.fullscreen.css" />
+  <script src="https://api.mapbox.com/mapbox.js/plugins/leaflet-fullscreen/v1.0.1/Leaflet.fullscreen.min.js"
+    defer></script>
+</head>
+
+<body>
+
+  <!-- Header -->
+  <header>
+    <button class="hamburger" id="hamburger" aria-controls="nav" aria-expanded="false" aria-label="Open menu">☰</button>
+    <h1>Pollution Near Me</h1>
+    <p class="tagline">Exposing government environmental data in plain view.</p>
+  </header>
+
+  <!-- Navigation -->
+  <nav id="nav" aria-hidden="true">
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Data Sources</a>
+    <a href="#">Contact</a>
+  </nav>
+
+  <!-- Banner with search -->
+  <div class="banner">
+    <form id="search" role="search" aria-label="Site search">
+      <input type="text" name="q" placeholder="Enter ZIP, city, address, or business" aria-label="Search location">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+
+  <!-- Hero: properly spaced title above the map -->
+  <div class="map-hero">
+    <h2 class="map-title" id="map-title">Pollution Map of the United States</h2>
+    <div id="map" role="region" aria-labelledby="map-title"></div>
+  </div>
+
+  <!-- Legends -->
+  <div id="legend-pollution" class="map-legend">
+    <h4>Pollution (lbs released)</h4>
+    <div><span class="legend-box pollution-lightblue"></span> 0 – 100,000 lbs</div>
+    <div><span class="legend-box pollution-blue"></span> 100,001 – 500,000 lbs</div>
+    <div><span class="legend-box pollution-green"></span> 500,001 – 1,000,000 lbs</div>
+    <div><span class="legend-box pollution-darkgreen"></span> > 1,000,000 lbs</div>
+  </div>
+
+  <div id="legend-penalties" class="map-legend">
+    <h4>Penalties ($)</h4>
+    <div><span class="legend-box penalty-orange"></span> ≤ $100,000</div>
+    <div><span class="legend-box penalty-red"></span> $100,001 – $1,000,000</div>
+    <div><span class="legend-box penalty-darkred"></span> $1,000,001 – $10,000,000</div>
+    <div><span class="legend-box penalty-purple"></span> > $10,000,000</div>
+  </div>
+
+  <div id="legend-superfund" class="map-legend">
+    <h4>Superfund Sites</h4>
+    <div><span class="legend-box superfund-blue"></span> Active NPL Site</div>
+  </div>
+
+  <!-- Snapshot Card -->
+  <section id="snapshot-card" class="card" aria-labelledby="snapshot-heading">
+    <h2 id="snapshot-heading">Key Pollution Data</h2>
+    <div class="snapshot-grid">
+      <div class="snapshot-item" id="snapshot-releases">
+        <strong>Pollution by Factories<sup>1</sup></strong><br>
+        <span class="snapshot-value">loading…</span>
+      </div>
+      <div class="snapshot-item" id="snapshot-violations">
+        <strong>Violations & Penalties<sup>2</sup></strong><br>
+        <span class="snapshot-value">loading…</span>
+      </div>
+      <div class="snapshot-item" id="snapshot-superfund">
+        <strong>Superfund Sites<sup>3</sup></strong><br>
+        <span class="snapshot-value">loading…</span>
+      </div>
+    </div>
+    <div class="footnotes">
+      <p><sup>1</sup> National pollution data as of 2023 (EPA TRI dataset).</p>
+      <p><sup>2</sup> Based on the ECHO Exporter dataset extracted from EPA systems on November 11, 2025. Includes all
+        enforcement actions from the past ten years and compliance data from the past three years, reported quarterly by
+        facilities regulated under the Clean Air Act, Clean Water Act, RCRA, and SDWA. Totals reflect penalties and
+        violation counts from facilities with recorded enforcement activity, regardless of geolocation.</p>
+      <p><sup>3</sup> Superfund site count as of October 2025 (EPA NPL dataset).</p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>© 2025 Pollution Near Me. Data sources: EPA & environmental agencies.</div>
+    <div class="footer-links">
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Statement</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+  <!-- App Script -->
+  <script src="js/app.js" defer></script>
+</body>
+
+</html>
