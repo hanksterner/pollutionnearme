@@ -216,26 +216,38 @@ header p.tagline {
   position: relative;
 }
 
-/* === Legend Container and Legends === */
+/* === Legend Container and Legends (horizontal layout beneath map) === */
 #legend-container {
-  position: absolute;
-  top: 80px;
-  right: 10px;
-  z-index: 1000;
   display: flex;
-  flex-direction: column;
-  gap: 8px;
+  justify-content: center;
+  /* center horizontally */
+  align-items: flex-start;
+  gap: 24px;
+  /* spacing between legends */
+  margin-top: 12px;
+  /* space below map */
 }
 
 .map-legend {
+  flex: 1 1 220px;
+  /* evenly sized blocks */
+  max-width: 280px;
   background: #fff;
-  padding: 10px;
+  padding: 10px 14px;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
   font-size: 0.85em;
   line-height: 1.4;
   opacity: 0;
   transition: opacity 180ms ease;
+  text-align: center;
+  border-left: 1px solid #ddd;
+  /* separator between legends */
+}
+
+.map-legend:first-child {
+  border-left: none;
+  /* no separator before first legend */
 }
 
 .map-legend.active {
@@ -259,6 +271,21 @@ header p.tagline {
   margin-right: 6px;
   border: 1px solid #ccc;
   vertical-align: middle;
+}
+
+/* Responsive fallback: stack legends vertically on smaller screens */
+@media (max-width: 800px) {
+  #legend-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .map-legend {
+    max-width: 90%;
+    border-left: none;
+    /* remove separators on mobile */
+  }
 }
 
 /* Pollution colors (cool spectrum) */
