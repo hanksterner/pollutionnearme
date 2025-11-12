@@ -625,3 +625,53 @@ Scope: Google Analytics integration
 - Confirmed consistent implementation across all pages for reproducibility and defensibility
 
 Status: Ceremony sealed. Analytics tracking active across the platform.
+===============================================================
+=== PollutionNearMe Build Ledger ===
+Entry 30 [2025-11-12 14:28 EST]
+
+Event: SEO, Navigation, Analytics & Search Console — Elegant URLs, Canonical Alignment, Social Sharing, GA + Indexing
+
+Actions:
+• .htaccess deployed:
+  – Enforce HTTPS across all routes.
+  – Redirect /index.html → / and *.html → extensionless URLs (/about/, /news/, etc.).
+  – Internally serve .html for extensionless requests (preserve current file layout).
+  – Enable gzip compression and browser caching for static assets.
+  – Apply security headers (X-Content-Type-Options, X-Frame-Options, X-XSS-Protection, Referrer-Policy, CSP).
+  – Custom error documents wired: /404.html and /500.html.
+
+• Navigation refinement:
+  – Top nav trimmed to core pages only: Home, About, Glossary, News.
+  – Terms and Privacy removed from top nav; retained in footer with Contact.
+  – All nav links updated to elegant URLs: /, /about/, /glossary/, /news/.
+
+• Canonical alignment:
+  – Canonical set per page: / (home), /about/, /glossary/, /news/, /terms/, /privacy/.
+
+• Social sharing layer:
+  – Open Graph + Twitter Card tags added to homepage and news page.
+  – og:type, og:title, og:description, og:url, og:image; twitter:card, title, description, image.
+
+• Analytics operability:
+  – Google Analytics (G-C33KSYBWKY) tag present and standardized across core pages.
+  – Basic pageview tracking verified post-deploy.
+
+• Search Console operability:
+  – Site property verified (root domain).
+  – Sitemap referenced/submitted; resubmission protocol established for major content or URL structure changes.
+  – Canonical inspection confirms clean URLs prioritized.
+
+Operational Proof:
+• Manual tests: /index.html 301 → /; /about.html 301 → /about/; extensionless requests served correctly.
+• Head checks: canonical tags match elegant URLs; OG/Twitter tags render expected preview metadata.
+• GA real-time: homepage and news page events observed.
+• Search Console: sitemap recognized; URL inspection favors /about/ over /about.html.
+• Headers: gzip and caching active; CSP and security headers present on responses.
+
+Status:
+Baseline advanced and sealed. SEO, navigation, analytics, and indexing layers are reproducible, aligned, and defensible.
+
+Next Ritual:
+• Add OG/Twitter templates for future article detail pages and image assets (1200×630).
+• Accessibility polish: alt text audit, ARIA roles on interactive map elements, color contrast validation.
+• Monitor GA + Search Console weekly; adjust sitemap cadence on new page additions or structural shifts.
