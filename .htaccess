@@ -1,0 +1,67 @@
+# Enable Rewrite Engine
+RewriteEngine On
+
+### --- Canonical & Elegant URLs ---
+
+# Force HTTPS (redirect http → https)
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# Remove trailing index.html → /
+RewriteCond %{THE_REQUEST} /index\.html
+RewriteRule ^index\.html$ / [R=301,L]
+
+# Redirect .html requests to extensionless URLs
+RewriteCond %{THE_REQUEST} \.html
+RewriteRule ^(.+)\.html$ /$1/ [R=301,L]
+
+# Internally serve .html files when extensionless URL requested
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.+)/$ $1.html [L]
+
+### --- Performance Optimizations ---
+
+# Enable gzip compression
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css
+  AddOutputFilterByType DEFLATE application/javascript application/json
+</IfModule>
+
+# Leverage browser caching
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 1 month"
+  ExpiresByType application/javascript "access plus 1 month"
+  ExpiresByType image/x-icon "access plus 1 year"
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType text/html "access plus 1 day"
+</IfModule>
+
+### --- Security Hardening ---
+
+# Prevent directory listing
+Options -Indexes
+
+# Protect .htaccess itself
+<Files .htaccess>
+  Order allow,deny
+  Deny from all
+</Files>
+
+# Basic security headers
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set X-XSS-Protection "1; mode=block"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+  Header always set Content-Security-Policy "default-src 'self' https:; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline' https:; img-src 'self' data: https:; font-src 'self' https:;"
+</IfModule>
+
+### --- Error Handling ---
+
+# Custom error pages
+ErrorDocument 404 /404.html
+ErrorDocument 500 /500.html
