@@ -1,52 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About — Pollution Near Me</title>
-  <meta name="description" content="Learn about Pollution Near Me’s mission, methodology, and commitment to transparent environmental reporting.">
-  <meta property="og:title" content="About — Pollution Near Me">
-  <meta property="og:description" content="Our purpose is to expose toxic sites, violations, and environmental risks with transparency and reproducibility.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://pollutionnearme.org/about">
-  <meta property="og:image" content="/assets/og-image.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
-  <header>
-    <h1>About Pollution Near Me</h1>
-    <p>Transparency and accountability for environmental data.</p>
+
+  <!-- Sticky Header with Nav -->
+  <header class="site-header">
+    <h1>Pollution Near Me</h1>
+    <p class="tagline">Exposing government environmental data in plain view.</p>
+    <div class="hamburger">&#9776;</div>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <div id="nav"></div>
-
+  <!-- Main content -->
   <main>
-    <section>
-      <h2>Our Purpose</h2>
-      <p>Pollution Near Me is an open project to expose toxic sites, violations, and environmental risks. 
-         We provide a public-facing interface for awareness while documenting the build process in a private ledger.</p>
-    </section>
+    <h2>About Pollution Near Me</h2>
+    <p>
+      Pollution Near Me is a public-facing project that exposes U.S. government environmental data in plain view.
+      Our goal is to make complex datasets accessible, defensible, and accountable for communities, researchers,
+      and policymakers.
+    </p>
 
-    <section>
-      <h2>Methodology</h2>
-      <p>Data sources include EPA datasets, AQI APIs, and other verifiable environmental feeds. 
-         Every dataset is timestamped and reproducible.</p>
-    </section>
+    <h3>Mission</h3>
+    <p>
+      We believe transparency is the foundation of accountability. By transforming raw EPA datasets into clear maps,
+      dashboards, and news updates, we empower people to understand pollution risks and demand action.
+    </p>
 
-    <section>
-      <h2>Accountability</h2>
-      <p>All changes are logged in a build ledger. No baselines are sealed until operational proof is verified.</p>
-    </section>
+    <h3>Methodology</h3>
+    <p>
+      Every dataset we use is sourced from authoritative national systems such as the EPA TRI, ECHO, and NPL programs.
+      We validate, transform, and document each step in a permanent ledger to ensure reproducibility and trust.
+    </p>
+
+    <h3>Vision</h3>
+    <p>
+      Pollution Near Me aims to become the most reliable platform for environmental accountability in the United States.
+      By combining ceremony, clarity, and operational proof, we ensure that every map, snapshot, and article is sealed
+      with integrity.
+    </p>
   </main>
 
+  <!-- Footer -->
   <footer>
-    &copy; 2025 Pollution Near Me. All rights reserved.
+    <div>© 2025 Pollution Near Me. Data sources: EPA & environmental agencies.</div>
+    <div class="footer-links">
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Statement</a>
+      <a href="#">Contact</a>
+    </div>
   </footer>
 
+  <!-- Mobile nav toggle script -->
   <script>
-    fetch('/nav.html')
-      .then(res => res.text())
-      .then(html => { document.getElementById('nav').innerHTML = html; });
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".site-nav ul");
+      if (hamburger && navMenu) {
+        hamburger.addEventListener("click", function () {
+          navMenu.classList.toggle("show");
+        });
+      }
+    });
   </script>
 </body>
 </html>

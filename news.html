@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>News — Pollution Near Me</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Sticky Header with Nav -->
+  <header class="site-header">
+    <h1>Pollution Near Me</h1>
+    <p class="tagline">Exposing government environmental data in plain view.</p>
+    <div class="hamburger">&#9776;</div>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="glossary.html">Glossary</a></li>
+        <li><a href="news.html" class="active">News</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <h2>Environmental News & Updates</h2>
+
+    <article>
+      <h3>Nearly Half of Americans Breathe Unhealthy Air, Report Finds</h3>
+      <p><em>November 09, 2025</em></p>
+      <p>
+        Earlier this year, the American Lung Association released its <em>State of the Air 2025</em> report, showing that almost half of the people in the United States are exposed to dangerous levels of air pollution. The report found that <strong>156 million Americans</strong> live in areas that received failing grades for ozone or particle pollution.
+      </p>
+      <p>
+        Since then, extreme heat and wildfires have continued to worsen air quality in many regions. Doctors warn that pollution is causing more asthma attacks in children, heart problems in adults, and even low birth weight in babies.
+      </p>
+      <p>
+        The report also highlighted inequality: people of color are more than twice as likely as white residents to live in communities with failing grades for all three pollution measures.
+      </p>
+      <p>
+        The American Lung Association cautions that cuts to Environmental Protection Agency programs could leave families even more vulnerable. They are calling for stronger protections to ensure everyone has clean air to breathe.
+      </p>
+      <p><small>Source: American Lung Association, State of the Air 2025</small></p>
+    </article>
+
+    <article>
+      <h3>What Is the Toxics Release Inventory (TRI)?</h3>
+      <p><em>November 10, 2025</em></p>
+      <p>
+        The Toxics Release Inventory, or TRI, is a program run by the U.S. Environmental Protection Agency. It was created in 1986 under the Emergency Planning and Community Right‑to‑Know Act.
+      </p>
+      <p>
+        Every year, thousands of industrial and federal facilities must report how much of certain toxic chemicals they release into the air, water, and land, or how they manage that waste. Common TRI chemicals include things like lead, ammonia, and nitrates.
+      </p>
+      <p>
+        The purpose of TRI is <strong>transparency</strong>. By making this information public, communities, researchers, and policymakers can see where pollution is happening and how much is being released. The data helps track trends, push for pollution prevention, and hold companies accountable.
+      </p>
+      <p>
+        While TRI doesn’t cover every facility or every chemical, it remains one of the most important tools for understanding industrial pollution in the United States.
+      </p>
+      <p><small>Source: U.S. Environmental Protection Agency</small></p>
+    </article>
+
+    <article>
+      <h3>What Is the National Priorities List (Superfund Sites)?</h3>
+      <p><em>November 11, 2025</em></p>
+      <p>
+        The National Priorities List, or NPL, is the U.S. government’s list of the most serious hazardous waste sites in the country. These sites are often called “Superfund sites.”
+      </p>
+      <p>
+        The Environmental Protection Agency uses the NPL to decide which contaminated places need long‑term cleanup. Sites are added to the list after investigation shows they pose a risk to human health or the environment. Once on the NPL, they become eligible for cleanup funded under the federal Superfund program.
+      </p>
+      <p>
+        There are more than a thousand sites currently on the list, ranging from abandoned factories to landfills and military bases. Some have already been cleaned up and removed, while new sites are added each year.
+      </p>
+      <p>
+        The purpose of the NPL is <strong>accountability and protection</strong>: it ensures that the worst pollution problems are not ignored, and that communities living near these sites can expect action to reduce risks.
+      </p>
+      <p><small>Source: U.S. Environmental Protection Agency</small></p>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div>© 2025 Pollution Near Me. Data sources: EPA & environmental agencies.</div>
+    <div class="footer-links">
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Statement</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+  <!-- Mobile nav toggle script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".site-nav ul");
+      if (hamburger && navMenu) {
+        hamburger.addEventListener("click", function () {
+          navMenu.classList.toggle("show");
+        });
+      }
+    });
+  </script>
+</body>
+</html>

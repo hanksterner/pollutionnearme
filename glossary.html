@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Glossary — Pollution Near Me</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Sticky Header with Nav -->
+  <header class="site-header">
+    <h1>Pollution Near Me</h1>
+    <p class="tagline">Exposing government environmental data in plain view.</p>
+    <div class="hamburger">&#9776;</div>
+    <nav class="site-nav">
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="glossary.html" class="active">Glossary</a></li>
+        <li><a href="news.html">News</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Main content -->
+  <main>
+    <h2>Glossary of Environmental Terms</h2>
+    <p>
+      This glossary provides definitions for key terms used throughout Pollution Near Me. It is designed to help
+      visitors understand the datasets, regulatory programs, and terminology that appear in our maps and dashboards.
+    </p>
+
+    <dl>
+      <dt><strong>TRI (Toxics Release Inventory)</strong></dt>
+      <dd>A program run by the U.S. EPA requiring facilities to report annual releases of certain toxic chemicals into
+        the air, water, and land.</dd>
+
+      <dt><strong>ECHO (Enforcement and Compliance History Online)</strong></dt>
+      <dd>An EPA database that tracks violations, penalties, and compliance records for facilities regulated under
+        environmental laws.</dd>
+
+      <dt><strong>NPL (National Priorities List)</strong></dt>
+      <dd>The list of the most serious hazardous waste sites in the U.S., commonly referred to as “Superfund sites.”</dd>
+
+      <dt><strong>Superfund</strong></dt>
+      <dd>A federal program established to clean up contaminated sites, funded through the Comprehensive Environmental
+        Response, Compensation, and Liability Act (CERCLA).</dd>
+
+      <dt><strong>Penalty</strong></dt>
+      <dd>A monetary fine imposed on a facility for violating environmental laws or regulations.</dd>
+    </dl>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div>© 2025 Pollution Near Me. Data sources: EPA & environmental agencies.</div>
+    <div class="footer-links">
+      <a href="#">Terms of Service</a>
+      <a href="#">Privacy Statement</a>
+      <a href="#">Contact</a>
+    </div>
+  </footer>
+
+  <!-- Mobile nav toggle script -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const hamburger = document.querySelector(".hamburger");
+      const navMenu = document.querySelector(".site-nav ul");
+      if (hamburger && navMenu) {
+        hamburger.addEventListener("click", function () {
+          navMenu.classList.toggle("show");
+        });
+      }
+    });
+  </script>
+</body>
+</html>
