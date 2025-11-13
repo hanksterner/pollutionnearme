@@ -704,3 +704,29 @@ MVP Readiness Checklist Sealed:
 
 Status: MVP complete, ceremony enforced, SEO and operational proof sealed. Ready for public release and expansion.
 ------------------------------------------------------------
+logs/PNM-Ledger.txt
+
+------------------------------------------------------------
+Entry 33 — 2025-11-12 20:55 EST
+Post-MVP Expansion Blueprint Sealed:
+
+Phase 1 — Blog Framework
+- Establish dedicated /blog/ section with index page and folder-based posts (/blog/post-slug/).
+- Reuse shared header, nav, footer, and stylesheet for consistency.
+- Add metadata (title, description, Open Graph, Twitter Card) per post.
+- Integrate blog posts into sitemap.xml; enable pagination or infinite scroll.
+- Introduce categories/tags and RSS/Atom feed for syndication.
+
+Phase 2 — Editorial Workflow
+- Integrate ledger logging for each post creation (date, slug, summary).
+- Authoring protocol: posts drafted in Markdown/HTML, converted to canonical structure.
+- Ritualized commit messages: "Add blog post: [slug] — [title]".
+
+Phase 3 — Expansion & Engagement
+- Internal search bar for blog posts; schema.org Article markup for SEO.
+- Community transparency: posts explain dataset refreshes, methodology changes, highlight environmental news.
+- Performance polish: lazy load images, compress assets.
+- Accessibility: semantic headings, alt text, ARIA roles.
+
+Status: Expansion blueprint sealed. Blog-like operability prioritized as Phase 1, with editorial workflow and engagement features staged for subsequent phases.
+------------------------------------------------------------
