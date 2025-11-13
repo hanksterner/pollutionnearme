@@ -675,3 +675,32 @@ Next Ritual:
 • Add OG/Twitter templates for future article detail pages and image assets (1200×630).
 • Accessibility polish: alt text audit, ARIA roles on interactive map elements, color contrast validation.
 • Monitor GA + Search Console weekly; adjust sitemap cadence on new page additions or structural shifts.
+logs/PNM-Ledger.txt
+
+------------------------------------------------------------
+Entry 31 — 2025-11-12 19:50 EST
+Comprehensive site refinement and SEO alignment:
+
+- Homepage (index.html) corrected: duplicate </header> removed, top nav restricted to hero pages only (Home, About, Glossary, News), footer trimmed to Terms + Privacy, canonical URLs aligned to folder paths, scripts deferred for performance.
+- About, Glossary, News pages updated: canonical URLs set to folder paths (/about/, /glossary/, /news/), stylesheet paths corrected to ../css/style.css, nav highlighting applied per page, footers cleaned (Terms + Privacy only), app.js + mobile nav toggle added.
+- Privacy and Terms pages updated: canonical URLs set to /privacy/ and /terms/, stylesheet paths corrected to ../css/style.css, footers cleaned (Terms/Privacy only, active link marked), app.js + mobile nav toggle added.
+- SEO stack updated: sitemap.xml rewritten to reflect folder-based structure with <lastmod>, <changefreq>, <priority> tags; robots.txt introduced to disallow archives, baselines, logs, and datasets while pointing crawlers to sitemap.xml.
+- Google Search Console resubmission: updated sitemap.xml manually resubmitted and confirmed successful, enforcing crawl alignment with new structure.
+
+Status: Build advanced, all hero and legal pages aligned with ceremony, SEO stack sealed (sitemap + robots + resubmission).
+------------------------------------------------------------
+logs/PNM-Ledger.txt
+
+------------------------------------------------------------
+Entry 32 — 2025-11-12 20:10 EST
+MVP Readiness Checklist Sealed:
+
+- Accessibility audit: semantic headings verified, aria-labels applied, color contrast meets WCAG AA.
+- Performance baseline: Lighthouse run confirmed deferred scripts and optimized assets; images compressed.
+- Error handling: 404 page present, redirects from legacy .html paths to folder-based URLs confirmed.
+- Analytics validation: Google Analytics tag firing correctly, no duplicates.
+- Security & compliance: HTTPS enforced, privacy/terms accessible, CSP headers planned.
+- Operational proof: baseline Lighthouse report sealed, sitemap resubmission documented, robots.txt accessible at root.
+
+Status: MVP complete, ceremony enforced, SEO and operational proof sealed. Ready for public release and expansion.
+------------------------------------------------------------
