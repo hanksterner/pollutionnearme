@@ -714,3 +714,17 @@ input:focus {
   margin: 2rem 0 0;
   max-width: 800px;
 }
+
+.site-logo img {
+  height: 48px;
+  width: auto;
+  vertical-align: middle;
+  margin-right: 12px;
+}
+
+.site-header h1 {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 2rem;
+  line-height: 1.2;
+}
