@@ -524,3 +524,112 @@ input:focus {
 .content h3 {
   text-align: left;
 }
+
+/* Blog index container */
+#blog-index {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+/* Each post block */
+.post {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1.5rem;
+}
+
+/* Post title */
+.post-title {
+  font-size: 1.4rem;
+  margin: 0 0 0.5rem;
+}
+
+/* Title link styled like nav links */
+.post-link {
+  color: #006699;
+  /* match your nav link color */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.post-link:hover {
+  text-decoration: underline;
+}
+
+/* Post meta (date) */
+.post-meta {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 0.75rem;
+}
+
+/* Post excerpt */
+.post-excerpt {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  margin: 0;
+}
+
+/* Blog post layout */
+.blog-post {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Blog post header */
+.blog-post header {
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 1rem;
+}
+
+.blog-post h1 {
+  font-size: 2rem;
+  margin: 0 0 0.5rem;
+  color: #222;
+}
+
+.post-meta {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+/* Section headings inside posts */
+.blog-post h2 {
+  font-size: 1.3rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  color: #006699;
+  /* match nav link color */
+}
+
+/* Lists inside posts */
+.blog-post ul {
+  margin: 0 0 1.5rem 1.25rem;
+  padding: 0;
+}
+
+.blog-post li {
+  margin-bottom: 0.75rem;
+}
+
+/* Paragraphs */
+.blog-post p {
+  margin: 0 0 1.25rem;
+}
+
+/* Links inside posts */
+.blog-post a {
+  color: #006699;
+  /* match nav link color */
+  text-decoration: none;
+}
+
+.blog-post a:hover {
+  text-decoration: underline;
+}
