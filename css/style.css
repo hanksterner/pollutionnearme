@@ -643,7 +643,12 @@ input:focus {
 .featured-image img {
   max-width: 100%;
   height: auto;
-  border-radius: 4px;
+  border: 1px solid #ddd;
+  /* Subtle frame */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  /* Gentle shadow for depth */
+  border-radius: 2px;
+  /* Minimal rounding for polish */
 }
 
 /* Thumbnail image in blog index */
@@ -657,6 +662,41 @@ input:focus {
 .post-thumbnail img {
   width: 100%;
   height: auto;
-  border-radius: 4px;
+  border: 1px solid #ddd;
+  /* Subtle frame */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  /* Gentle shadow for depth */
+  border-radius: 2px;
+  /* Minimal rounding for polish */
   object-fit: cover;
+  /* Ensures clean crop if aspect ratio differs */
+}
+
+/* Introductory paragraph styling */
+.intro {
+  font-size: 1.15rem;
+  /* Slightly larger than body text */
+  line-height: 1.6;
+  /* Comfortable readability */
+  color: #2c2c2c;
+  /* Dark neutral tone */
+  font-weight: 400;
+  /* Balanced weight */
+  margin: 1.5rem 0;
+  max-width: 800px;
+  /* Keeps line length readable */
+}
+
+/* Closing paragraph styling */
+.closing {
+  font-size: 1.1rem;
+  /* Slight emphasis, but not oversized */
+  line-height: 1.6;
+  color: #1a1a1a;
+  /* Slightly darker for gravitas */
+  font-style: italic;
+  /* Subtle distinction, conveys reflection */
+  margin: 2rem 0 0 0;
+  /* Extra spacing above to separate from body */
+  max-width: 800px;
 }
