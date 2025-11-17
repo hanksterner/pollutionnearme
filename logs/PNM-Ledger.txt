@@ -730,3 +730,53 @@ Phase 3 — Expansion & Engagement
 
 Status: Expansion blueprint sealed. Blog-like operability prioritized as Phase 1, with editorial workflow and engagement features staged for subsequent phases.
 ------------------------------------------------------------
+=== PollutionNearMe Build Ledger ===
+Entry 34 — 2025-11-17 12:23 EST
+Event: Blog Expansion, SEO Hygiene, and GA4 Internal Traffic Exclusion Activated
+
+Actions:
+• Published two new editorial blog posts under /news/:
+  – news/earth-symptoms-allegory.html → "If Earth’s Symptoms Were Ours: A Climate Allegory"
+     • Featured image: assets/earth-human-symptoms.png
+     • Content: allegory mapping climate symptoms onto human body, grounded in climate data.
+  – news/inconvenient-truth-right-wrong-undetermined.html → "An Inconvenient Truth, 20 Years Later: What Gore Got Right, Wrong, and Still Unknown"
+     • Featured image: assets/inconvenient-truth-featured.png
+     • Content: retrospective analysis of Gore’s predictions and climate outcomes.
+
+• Updated news/index.html:
+  – Unified both posts under consistent .news-post structure.
+  – Added thumbnails, titles, meta dates, excerpts.
+  – Inserted <hr class="section-divider"> for clean separation.
+  – Verified elegant rendering of titles and summaries.
+
+• CSS refinements (css/style.css):
+  – Added .news-post flexbox layout for thumbnail + summary.
+  – Optimized typography (titles, meta, excerpts).
+  – Styled featured images with borders, shadows, object-fit.
+  – Refined .intro and .closing paragraph styles for readability and gravitas.
+
+• Sitemap.xml updated:
+  – Added entries for both new blog posts.
+  – Updated <lastmod> dates for News index and posts.
+  – Preserved canonical structure for homepage, About, Glossary, Terms, Privacy.
+
+• Robots.txt refined:
+  – Disallowed system/internal directories (/archive/, /css/, /js/, /logs/, /data/, /marketing/, /node_modules/, /scripts/).
+  – Kept /assets/ crawlable for featured blog images.
+  – Sitemap reference confirmed.
+
+• GA4 Analytics update:
+  – Added traffic_type=internal parameter to all HTML pages (index, about, glossary, news index, privacy, terms, and both new blog posts).
+  – Created GA4 filter “Exclude Internal Traffic” with condition traffic_type=internal.
+  – Validated in Realtime: parameter visible under page_view events.
+  – Switched filter from Testing → Active; internal sessions now excluded from GA4 data.
+
+Status:
+Blog framework expanded with two posts, styling polished, sitemap and robots hygiene enforced. GA4 internal traffic exclusion fully operational and active. Ceremony sealed; reproducibility and defensibility confirmed.
+
+Next Ritual:
+• Continue blog expansion with additional posts under /news/, maintaining .news-post structure and editorial polish.
+• Stage FAQ/learn layer to explain datasets and editorial context.
+• Monitor GA4 reports to confirm exclusion persists; extend internal traffic tagging strategy for collaborators via cookie/querystring flags if needed.
+• Maintain SEO hygiene with sitemap/robots updates in sync with new content drops.
+Seal: Complete — Entry 34 logged.
