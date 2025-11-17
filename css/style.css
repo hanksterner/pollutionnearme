@@ -633,3 +633,30 @@ input:focus {
 .blog-post a:hover {
   text-decoration: underline;
 }
+
+/* Featured image inside blog post */
+.featured-image {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+.featured-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Thumbnail image in blog index */
+.post-thumbnail {
+  float: left;
+  margin: 0 1rem 1rem 0;
+  width: 160px;
+  height: auto;
+}
+
+.post-thumbnail img {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+}
