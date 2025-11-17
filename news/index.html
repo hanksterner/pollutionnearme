@@ -13,6 +13,9 @@
   <meta name="description"
     content="Environmental news and updates from Pollution Near Me. Reports, datasets, and insights on air quality, toxic releases, and Superfund sites nationwide.">
 
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
   <!-- Open Graph tags -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pollutionnearme.org/news/">
@@ -42,9 +45,9 @@
 <body>
   <!-- Shared header/nav -->
   <header class="site-header">
-    <h1>Pollution Near Me</h1>
+    <h2>Pollution Near Me</h2>
     <p class="tagline">Letting the Sun Shine on EPA Data: Exposing Environmental Violations Nationwide</p>
-    <nav class="site-nav">
+    <nav class="site-nav" aria-label="Main navigation">
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/about/">About</a></li>
@@ -54,57 +57,21 @@
     </nav>
   </header>
 
-  <!-- Main content -->
-  <main class="content">
-    <h2>Environmental News & Updates</h2>
-
-    <article>
-      <h3>Nearly Half of Americans Breathe Unhealthy Air, Report Finds</h3>
-      <p><em>November 09, 2025</em></p>
-      <p>
-        The American Lung Association’s <em>State of the Air 2025</em> report shows that almost half of the U.S.
-        population is exposed to dangerous levels of air pollution. <strong>156 million Americans</strong> live in
-        counties that received failing grades for ozone or particle pollution.
-      </p>
-      <p>
-        Extreme heat and wildfires continue to worsen air quality, leading to more asthma attacks, heart problems, and
-        low birth weight in babies. The report also highlights inequality: people of color are more than twice as likely
-        as white residents to live in communities with failing grades for all three pollution measures.
-      </p>
-      <p><small>Source: American Lung Association</small></p>
-    </article>
-
-    <article>
-      <h3>What Is the Toxics Release Inventory (TRI)?</h3>
-      <p><em>November 10, 2025</em></p>
-      <p>
-        The Toxics Release Inventory (TRI) is a program run by the U.S. Environmental Protection Agency. Created in 1986
-        under the Emergency Planning and Community Right‑to‑Know Act, it requires thousands of facilities to report
-        annual releases of certain toxic chemicals into the air, water, and land.
-      </p>
-      <p>
-        TRI’s purpose is transparency: by making this information public, communities, researchers, and policymakers can
-        see where pollution is happening and how much is being released. The data helps track trends, push for pollution
-        prevention, and hold companies accountable.
-      </p>
-      <p><small>Source: U.S. Environmental Protection Agency</small></p>
-    </article>
-
-    <article>
-      <h3>What Is the National Priorities List (Superfund Sites)?</h3>
-      <p><em>November 11, 2025</em></p>
-      <p>
-        The National Priorities List (NPL) is the U.S. government’s list of the most serious hazardous waste sites,
-        commonly referred to as “Superfund sites.” The EPA uses the NPL to decide which contaminated places need
-        long‑term cleanup. Sites are added after investigation shows they pose a risk to human health or the
-        environment.
-      </p>
-      <p>
-        There are more than a thousand sites currently on the list, ranging from abandoned factories to landfills and
-        military bases. Some have been cleaned up and removed, while new sites are added each year.
-      </p>
-      <p><small>Source: U.S. Environmental Protection Agency</small></p>
-    </article>
+  <!-- Blog index -->
+  <main>
+    <section id="blog-index">
+      <h1>Environmental News & Updates</h1>
+      <ul>
+        <li>
+          <a href="/news/inconvenient-truth-right-wrong-undetermined.html">
+            Al Gore’s Inconvenient Truth Predictions: Right, Wrong, and Still Undetermined
+          </a>
+          <small> — November 16, 2025</small>
+          <p>We revisit Al Gore’s Inconvenient Truth to see which climate predictions came true, which missed, and which
+            remain uncertain.</p>
+        </li>
+      </ul>
+    </section>
   </main>
 
   <!-- Footer -->
