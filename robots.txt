@@ -1,10 +1,13 @@
 User-agent: *
 Disallow: /archive/
-Disallow: /css/style_css_baseline.v*
+Disallow: /css/
 Disallow: /index_html_baseline.v*
-Disallow: /js/app_js_baseline-v*
+Disallow: /js/
 Disallow: /logs/
 Disallow: /data/
+Disallow: /marketing/
+Disallow: /node_modules/
+Disallow: /scripts/
 Allow: /
 
 Sitemap: https://pollutionnearme.org/sitemap.xml
