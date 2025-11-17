@@ -532,39 +532,67 @@ input:focus {
   padding: 0 1rem;
 }
 
-/* Each post block */
-.post {
+/* Section divider between title and posts */
+.section-divider {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 2rem 0;
+}
+
+/* Unified post block styling */
+.news-post {
+  display: flex;
+  align-items: flex-start;
   margin-bottom: 2.5rem;
-  border-bottom: 1px solid #ddd;
   padding-bottom: 1.5rem;
+  border-bottom: 1px solid #ddd;
 }
 
-/* Post title */
-.post-title {
-  font-size: 1.4rem;
-  margin: 0 0 0.5rem;
-}
-
-/* Title link styled like nav links */
-.post-link {
-  color: #006699;
-  /* match your nav link color */
+.news-post a {
+  display: flex;
   text-decoration: none;
-  font-weight: bold;
+  color: inherit;
 }
 
-.post-link:hover {
-  text-decoration: underline;
+/* Thumbnail image in blog index */
+.post-thumbnail {
+  flex-shrink: 0;
+  width: 160px;
+  margin-right: 1rem;
 }
 
-/* Post meta (date) */
+.post-thumbnail img {
+  width: 100%;
+  height: auto;
+  border: 1px solid #ddd;
+  /* Subtle frame */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  /* Gentle shadow */
+  border-radius: 2px;
+  /* Minimal rounding */
+  object-fit: cover;
+  /* Clean crop */
+}
+
+/* Post summary block */
+.post-summary {
+  flex-grow: 1;
+}
+
+.post-title {
+  font-size: 1.2rem;
+  margin: 0 0 0.25rem;
+  font-weight: 600;
+  color: #222;
+}
+
 .post-meta {
   font-size: 0.9rem;
   color: #666;
-  margin: 0 0 0.75rem;
+  margin-bottom: 0.5rem;
 }
 
-/* Post excerpt */
+.summary-text,
 .post-excerpt {
   font-size: 1rem;
   line-height: 1.6;
@@ -572,7 +600,7 @@ input:focus {
   margin: 0;
 }
 
-/* Blog post layout */
+/* Blog post layout (single post view) */
 .blog-post {
   max-width: 800px;
   margin: 2rem auto;
@@ -592,11 +620,6 @@ input:focus {
   font-size: 2rem;
   margin: 0 0 0.5rem;
   color: #222;
-}
-
-.post-meta {
-  font-size: 0.9rem;
-  color: #666;
 }
 
 /* Section headings inside posts */
@@ -644,59 +667,26 @@ input:focus {
   max-width: 100%;
   height: auto;
   border: 1px solid #ddd;
-  /* Subtle frame */
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  /* Gentle shadow for depth */
   border-radius: 2px;
-  /* Minimal rounding for polish */
-}
-
-/* Thumbnail image in blog index */
-.post-thumbnail {
-  float: left;
-  margin: 0 1rem 1rem 0;
-  width: 160px;
-  height: auto;
-}
-
-.post-thumbnail img {
-  width: 100%;
-  height: auto;
-  border: 1px solid #ddd;
-  /* Subtle frame */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  /* Gentle shadow for depth */
-  border-radius: 2px;
-  /* Minimal rounding for polish */
-  object-fit: cover;
-  /* Ensures clean crop if aspect ratio differs */
 }
 
 /* Introductory paragraph styling */
 .intro {
   font-size: 1.15rem;
-  /* Slightly larger than body text */
   line-height: 1.6;
-  /* Comfortable readability */
   color: #2c2c2c;
-  /* Dark neutral tone */
   font-weight: 400;
-  /* Balanced weight */
   margin: 1.5rem 0;
   max-width: 800px;
-  /* Keeps line length readable */
 }
 
 /* Closing paragraph styling */
 .closing {
   font-size: 1.1rem;
-  /* Slight emphasis, but not oversized */
   line-height: 1.6;
   color: #1a1a1a;
-  /* Slightly darker for gravitas */
   font-style: italic;
-  /* Subtle distinction, conveys reflection */
-  margin: 2rem 0 0 0;
-  /* Extra spacing above to separate from body */
+  margin: 2rem 0 0;
   max-width: 800px;
 }
