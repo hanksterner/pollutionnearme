@@ -2,13 +2,20 @@
 
 /* === Color Variables === */
 :root {
-  --primary: #1C2A39;
-  --secondary: #5A6B7A;
-  --accent: #2ECC71;
-  --alert: #E74C3C;
-  --background: #f5f7fa;
-  --text: #222;
-  --secondary-light: #e0e6eb;
+  --primary: #111111;
+  /* deep industrial black */
+  --secondary: #FF6B00;
+  /* bold orange */
+  --accent: #FF6B00;
+  /* unify accent with brand orange */
+  --alert: #D72638;
+  /* sharper warning red */
+  --background: #1A1A1A;
+  /* dark gray background */
+  --text: #F0F0F0;
+  /* light text for contrast */
+  --secondary-light: #333333;
+  /* muted dark gray for panels */
 }
 
 /* === Global Styles === */
@@ -89,8 +96,8 @@ h3 {
 }
 
 .site-nav a:hover {
-  color: #4cafef;
-  /* subtle accent on hover */
+  color: var(--accent);
+  /* orange hover */
 }
 
 .site-nav a.active {
@@ -398,6 +405,7 @@ footer {
   font-size: 0.95rem;
   text-align: center;
   border-top: 4px solid var(--accent);
+  /* now orange */
 }
 
 .footer-links {
@@ -627,8 +635,8 @@ input:focus {
   font-size: 1.3rem;
   margin-top: 1.5rem;
   margin-bottom: 0.75rem;
-  color: #006699;
-  /* match nav link color */
+  color: var(--accent);
+  /* orange headings */
 }
 
 /* Lists inside posts */
@@ -648,8 +656,8 @@ input:focus {
 
 /* Links inside posts */
 .blog-post a {
-  color: #006699;
-  /* match nav link color */
+  color: var(--accent);
+  /* orange headings */
   text-decoration: none;
 }
 
