@@ -12,8 +12,8 @@
   /* sharper warning red */
   --background: #1A1A1A;
   /* dark gray background */
-  --text: #F0F0F0;
-  /* light text for contrast */
+  --text: #000000;
+  /* default body text black */
   --secondary-light: #333333;
   /* muted dark gray for panels */
 }
@@ -46,6 +46,7 @@ h3 {
   font-family: 'Inter', Helvetica, sans-serif;
   font-weight: 700;
   margin: 0;
+  color: #000;
 }
 
 /* === Site Header === */
@@ -73,13 +74,11 @@ h3 {
 /* === Navigation Bar === */
 .site-nav {
   background: var(--primary);
-  /* deep black/charcoal */
 }
 
 .site-nav ul {
   display: flex;
   justify-content: center;
-  /* horizontal, centered */
   gap: 30px;
   list-style: none;
   margin: 0;
@@ -89,7 +88,6 @@ h3 {
 .site-nav a {
   color: #fff;
   text-decoration: none;
-  /* no underline */
   font-family: 'Open Sans', Arial, sans-serif;
   font-weight: 500;
   transition: color 0.2s ease;
@@ -97,14 +95,11 @@ h3 {
 
 .site-nav a:hover {
   color: var(--accent);
-  /* orange hover */
 }
 
 .site-nav a.active {
   font-weight: 700;
-  /* bold when active */
   color: var(--accent);
-  /* orange highlight */
 }
 
 /* === Banner === */
@@ -132,7 +127,7 @@ h3 {
   border-radius: 8px;
   font-size: 1rem;
   background: #fff;
-  color: var(--text);
+  color: #000;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
@@ -159,6 +154,18 @@ h3 {
   content: "🔍";
 }
 
+/* === Content Area Backgrounds === */
+.content,
+.blog-post,
+.news-post,
+.privacy-page,
+.terms-page,
+.glossary-page,
+.about-page {
+  background-color: #f9f9f9;
+  color: #111;
+}
+
 /* === Map Hero === */
 .map-hero {
   max-width: 1200px;
@@ -174,246 +181,7 @@ h3 {
   font-weight: 800;
 }
 
-/* === Map Section === */
-#map {
-  display: block;
-  width: 100%;
-  height: 520px;
-  min-height: 320px;
-  border-top: 4px solid var(--secondary);
-  background: #e9eef3;
-  border-radius: 6px;
-  overflow: hidden;
-  position: relative;
-}
-
-/* === Legend Container === */
-#legend-container {
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 24px;
-  margin-top: 12px;
-}
-
-.map-legend {
-  flex: 1 1 220px;
-  max-width: 280px;
-  background: #fdfdfd;
-  /* keep light background for readability */
-  color: #111;
-  /* dark text for contrast */
-  padding: 12px 16px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  font-size: 0.85em;
-  line-height: 1.4;
-  opacity: 0;
-  transition: opacity 180ms ease;
-  text-align: left;
-  border-left: 1px solid #ddd;
-}
-
-.map-legend:first-child {
-  border-left: none;
-}
-
-.map-legend.active {
-  opacity: 1;
-}
-
-.map-legend h4 {
-  margin: 0 0 8px;
-  font-size: 0.9em;
-  font-weight: 600;
-  text-align: center;
-  color: var(--accent);
-  /* orange headings */
-}
-
-.map-legend div {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 0.25rem 0;
-}
-
-.legend-box {
-  flex: 0 0 14px;
-  height: 14px;
-  border: 1px solid #ccc;
-}
-
-/* Responsive fallback: stack legends vertically */
-@media (max-width: 800px) {
-  #legend-container {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .map-legend {
-    max-width: 90%;
-    border-left: none;
-  }
-}
-
-/* Pollution colors */
-.pollution-lightblue {
-  background: #a6cee3;
-}
-
-.pollution-blue {
-  background: #1f78b4;
-}
-
-.pollution-green {
-  background: #33a02c;
-}
-
-.pollution-darkgreen {
-  background: #006d2c;
-}
-
-/* Penalty colors */
-.penalty-orange {
-  background: #fdae6b;
-}
-
-.penalty-red {
-  background: #e6550d;
-}
-
-.penalty-darkred {
-  background: #bd0026;
-}
-
-.penalty-purple {
-  background: #6e016b;
-}
-
-/* Superfund symbol */
-.superfund-blue {
-  background: #3182bd;
-}
-
-/* Cursor fix */
-.leaflet-interactive {
-  cursor: pointer !important;
-}
-
-#legend-pollution:not(.active),
-#legend-penalties:not(.active),
-#legend-superfund:not(.active) {
-  display: none;
-}
-
-/* === Snapshot Card === */
-#snapshot-card.card {
-  background: #fdfdfd;
-  /* light background for readability */
-  color: #111;
-  /* dark text */
-  border-radius: 8px;
-  padding: 24px;
-  margin: 24px auto;
-  max-width: 1200px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-}
-
-#snapshot-card h2 {
-  margin-bottom: 1rem;
-  text-align: center;
-  color: var(--accent);
-  /* orange heading */
-}
-
-.snapshot-grid {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  flex-wrap: wrap;
-}
-
-.snapshot-item {
-  flex: 1 1 220px;
-  text-align: center;
-  font-size: 1.05em;
-  line-height: 1.4;
-  color: #111;
-  /* dark text on light card */
-}
-
-.snapshot-item strong {
-  display: inline-block;
-  margin-bottom: 6px;
-  font-weight: 700;
-  border-bottom: 3px solid var(--secondary);
-  /* orange underline */
-  padding-bottom: 3px;
-}
-
-.snapshot-item sup,
-h2 sup {
-  font-size: 0.7em;
-  vertical-align: super;
-}
-
-.snapshot-value {
-  display: block;
-  font-size: 1em;
-  font-weight: 600;
-  color: #111;
-  /* readable text */
-  text-align: center;
-}
-
-/* Footnotes */
-.footnotes {
-  margin-top: 1rem;
-  font-size: 0.85em;
-  color: #555;
-  text-align: left;
-  border-top: 1px solid #ddd;
-  padding-top: 0.5rem;
-}
-
-.footnotes p {
-  margin: 0.2rem 0;
-  text-indent: -1.2em;
-  padding-left: 1.2em;
-}
-
-/* === Fullscreen Control Styling === */
-.leaflet-control-fullscreen a {
-  background: var(--accent);
-  color: #fff;
-  border-radius: 4px;
-  padding: 4px 6px;
-}
-
-.leaflet-control-fullscreen a:hover {
-  filter: brightness(0.95);
-}
-
-/* === Error state for map data === */
-#map.data-error::after {
-  content: "Data unavailable — check console for details";
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--alert);
-  font-weight: 700;
-  padding: 1rem;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-}
-
-/* === Footer (polished) === */
+/* === Footer === */
 footer {
   background: var(--primary);
   color: #fff;
@@ -421,7 +189,6 @@ footer {
   font-size: 0.95rem;
   text-align: center;
   border-top: 4px solid var(--accent);
-  /* now orange */
 }
 
 .footer-links {
@@ -441,290 +208,4 @@ footer {
 
 .footer-links a:hover {
   color: #fff;
-}
-
-/* === Accessibility and small tweaks === */
-a:focus,
-button:focus,
-input:focus {
-  outline-offset: 3px;
-}
-
-[data-hidden="true"] {
-  display: none !important;
-}
-
-/* === Responsive Adjustments === */
-@media (max-width: 800px) {
-  .site-header h1 {
-    font-size: 1.6rem;
-  }
-
-  #search input {
-    width: 100%;
-  }
-
-  .map-hero {
-    margin: 0.75rem auto 0.25rem;
-  }
-
-  #map {
-    height: 420px;
-  }
-}
-
-@media (max-width: 600px) {
-  .snapshot-grid {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  .site-nav ul {
-    gap: 20px;
-  }
-}
-
-/* === Cluster icon styles === */
-.tri-cluster-icon {
-  background-color: #2e7d32;
-  color: #fff;
-  border-radius: 50%;
-  text-align: center;
-  font-weight: bold;
-  line-height: 40px;
-  width: 40px;
-  height: 40px;
-  border: 2px solid #1b5e20;
-}
-
-.sf-cluster-icon {
-  background-color: #1e88e5;
-  color: #fff;
-  border-radius: 50%;
-  text-align: center;
-  font-weight: bold;
-  line-height: 40px;
-  width: 40px;
-  height: 40px;
-  border: 2px solid #0d47a1;
-}
-
-/* Page content container */
-.content {
-  max-width: 900px;
-  /* keeps text readable */
-  margin: 2rem auto;
-  /* centers content */
-  padding: 0 1rem;
-  /* breathing room on sides */
-  line-height: 1.7;
-  font-size: 1.05em;
-}
-
-/* Section headings */
-.content h2,
-.content h3 {
-  color: var(--accent);
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  font-weight: 700;
-  text-align: left;
-  /* optional: center major headings */
-}
-
-.content p {
-  margin-bottom: 1rem;
-  text-align: justify;
-  /* elegant block alignment */
-}
-
-/* Page title (first h2 in content) centered */
-.content h2:first-of-type {
-  text-align: center;
-}
-
-/* All other h2 and h3 section headers left-aligned */
-.content h2:not(:first-of-type),
-.content h3 {
-  text-align: left;
-}
-
-/* Blog index container */
-#blog-index {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-/* Section divider between title and posts */
-.section-divider {
-  border: none;
-  border-top: 1px solid #ddd;
-  margin: 2rem 0;
-}
-
-/* Unified post block styling */
-.news-post {
-  display: flex;
-  align-items: flex-start;
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid #ddd;
-}
-
-.news-post a {
-  display: flex;
-  text-decoration: none;
-  color: inherit;
-}
-
-/* Thumbnail image in blog index */
-.post-thumbnail {
-  flex-shrink: 0;
-  width: 160px;
-  margin-right: 1rem;
-}
-
-.post-thumbnail img {
-  width: 100%;
-  height: auto;
-  border: 1px solid #ddd;
-  /* Subtle frame */
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  /* Gentle shadow */
-  border-radius: 2px;
-  /* Minimal rounding */
-  object-fit: cover;
-  /* Clean crop */
-}
-
-/* Post summary block */
-.post-summary {
-  flex-grow: 1;
-}
-
-.post-title {
-  font-size: 1.2rem;
-  margin: 0 0 0.25rem;
-  font-weight: 600;
-  color: #222;
-}
-
-.post-meta {
-  font-size: 0.9rem;
-  color: #666;
-  margin-bottom: 0.5rem;
-}
-
-.summary-text,
-.post-excerpt {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text);
-  margin: 0;
-}
-
-/* Blog post layout (single post view) */
-.blog-post {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  line-height: 1.6;
-  color: var(--text);
-}
-
-/* Blog post header */
-.blog-post header {
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid #ddd;
-  padding-bottom: 1rem;
-}
-
-.blog-post h1 {
-  font-size: 2rem;
-  margin: 0 0 0.5rem;
-  color: #222;
-}
-
-/* Section headings inside posts */
-.blog-post h2 {
-  font-size: 1.3rem;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  color: var(--accent);
-  /* orange headings */
-}
-
-/* Lists inside posts */
-.blog-post ul {
-  margin: 0 0 1.5rem 1.25rem;
-  padding: 0;
-}
-
-.blog-post li {
-  margin-bottom: 0.75rem;
-}
-
-/* Paragraphs */
-.blog-post p {
-  margin: 0 0 1.25rem;
-}
-
-/* Links inside posts */
-.blog-post a {
-  color: var(--accent);
-  /* orange headings */
-  text-decoration: none;
-}
-
-.blog-post a:hover {
-  text-decoration: underline;
-}
-
-/* Featured image inside blog post */
-.featured-image {
-  margin: 2rem 0;
-  text-align: center;
-}
-
-.featured-image img {
-  max-width: 100%;
-  height: auto;
-  border: 1px solid #ddd;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
-  border-radius: 2px;
-}
-
-/* Introductory paragraph styling */
-.intro {
-  font-size: 1.15rem;
-  line-height: 1.6;
-  color: #2c2c2c;
-  font-weight: 400;
-  margin: 1.5rem 0;
-  max-width: 800px;
-}
-
-/* Closing paragraph styling */
-.closing {
-  font-size: 1.1rem;
-  line-height: 1.6;
-  color: #1a1a1a;
-  font-style: italic;
-  margin: 2rem 0 0;
-  max-width: 800px;
-}
-
-.site-logo img {
-  height: 48px;
-  width: auto;
-  vertical-align: middle;
-  margin-right: 12px;
-}
-
-.site-header h1 {
-  display: inline-block;
-  vertical-align: middle;
-  font-size: 2rem;
-  line-height: 1.2;
 }
