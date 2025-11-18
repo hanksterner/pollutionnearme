@@ -482,14 +482,17 @@ footer {
   color: var(--content-muted);
 }
 
-/* === Section headings === */
-.content h2,
-.content h3 {
-  color: #000;
-  margin-top: 1.5rem;
-  margin-bottom: 0.75rem;
-  font-weight: 700;
-  text-align: left;
+.content h2 {
+  text-align: left !important;
+  /* force left alignment */
+  border-bottom: 1px solid #ccc;
+  /* thin underline */
+  padding-bottom: 0.5rem;
+  /* space between title and underline */
+  margin-bottom: 1.5rem;
+  /* space between underline and content */
+  font-size: 2rem;
+  line-height: 1.3;
 }
 
 /* Page title (first h2 in content) centered */
@@ -719,16 +722,4 @@ input:focus {
   max-width: 200px;
   vertical-align: middle;
   margin-right: 12px;
-}
-
-/* Unified heading style for non-blog content pages */
-.about-page h2,
-.glossary-page h2,
-.privacy-page h2,
-.terms-page h2,
-.content h2 {
-  text-align: left;
-  border-bottom: 1px solid #ccc;
-  padding-bottom: 0.25rem;
-  margin-bottom: 1rem;
 }
