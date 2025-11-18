@@ -720,3 +720,15 @@ input:focus {
   vertical-align: middle;
   margin-right: 12px;
 }
+
+/* Unified heading style for non-blog content pages */
+.about-page h2,
+.glossary-page h2,
+.privacy-page h2,
+.terms-page h2,
+.content h2 {
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 0.25rem;
+  margin-bottom: 1rem;
+}
