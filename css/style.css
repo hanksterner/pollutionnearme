@@ -38,9 +38,9 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Open Sans', Arial, sans-serif;
-  background: var(--background);
+  background: #f9f9f9;
   /* dark frame */
-  color: var(--text);
+  color: #000;
   /* light default for dark areas */
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -712,15 +712,4 @@ input:focus {
   max-width: 200px;
   vertical-align: middle;
   margin-right: 12px;
-}
-
-/* Light background for full-width informational and content pages */
-.about-page,
-.privacy-page,
-.terms-page,
-.glossary-page,
-.news-page,
-.blog-page {
-  background-color: #f9f9f9;
-  color: #000;
 }
