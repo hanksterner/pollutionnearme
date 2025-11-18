@@ -60,33 +60,40 @@ h3 {
 
 /* === Site Header === */
 .site-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  /* allows stacking on small screens */
   background: var(--primary);
   color: #fff;
-  text-align: center;
   padding: 15px 0;
-}
-
-.site-header h1 {
-  margin: 0;
-  font-size: 2rem;
-  line-height: 1.2;
-}
-
-.site-header .tagline {
-  margin: 0.25rem 0 0.5rem;
-  font-size: 1rem;
-  color: #f1f4f6;
-  font-weight: 600;
-  opacity: 0.95;
+  text-align: center;
 }
 
 .site-logo img {
   height: 48px;
   width: auto;
   max-width: 200px;
-  /* prevent oversized logo */
-  vertical-align: middle;
   margin-right: 12px;
+  vertical-align: middle;
+}
+
+.site-header h1 {
+  margin: 0;
+  font-size: 2rem;
+  line-height: 1.2;
+  color: #fff;
+}
+
+.site-header .tagline {
+  flex-basis: 100%;
+  /* forces tagline onto its own line */
+  margin: 0.25rem 0 0.5rem;
+  font-size: 1rem;
+  color: #f1f4f6;
+  font-weight: 600;
+  opacity: 0.95;
 }
 
 /* === Navigation Bar === */
