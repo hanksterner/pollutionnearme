@@ -28,7 +28,7 @@
   <!-- News index -->
   <url>
     <loc>https://pollutionnearme.org/news/</loc>
-    <lastmod>2025-11-17</lastmod>
+    <lastmod>2025-11-18</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -53,6 +53,14 @@
   <url>
     <loc>https://pollutionnearme.org/news/ai-cooling-climate-paradox.html</loc>
     <lastmod>2025-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Individual blog post: Permafrost Thaw Pollution -->
+  <url>
+    <loc>https://pollutionnearme.org/news/permafrost-thaw-pollution.html</loc>
+    <lastmod>2025-11-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
