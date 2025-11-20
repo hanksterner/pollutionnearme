@@ -28,7 +28,7 @@
   <!-- News index -->
   <url>
     <loc>https://pollutionnearme.org/news/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -61,6 +61,14 @@
   <url>
     <loc>https://pollutionnearme.org/news/permafrost-thaw-pollution.html</loc>
     <lastmod>2025-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- NEW Individual blog post: Air Quality Health Impact -->
+  <url>
+    <loc>https://pollutionnearme.org/news/air-quality-health-impact.html</loc>
+    <lastmod>2025-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
