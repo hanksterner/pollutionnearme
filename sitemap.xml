@@ -28,9 +28,41 @@
   <!-- News index -->
   <url>
     <loc>https://pollutionnearme.org/news/</loc>
-    <lastmod>2025-11-20</lastmod>
+    <lastmod>2025-11-21</lastmod>
     <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <!-- Individual blog post: Disinformation as Pollution -->
+  <url>
+    <loc>https://pollutionnearme.org/news/disinformation-as-pollution.html</loc>
+    <lastmod>2025-11-21</lastmod>
+    <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Individual blog post: Air Quality Health Impact -->
+  <url>
+    <loc>https://pollutionnearme.org/news/air-quality-health-impact.html</loc>
+    <lastmod>2025-11-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Individual blog post: Permafrost Thaw Pollution -->
+  <url>
+    <loc>https://pollutionnearme.org/news/permafrost-thaw-pollution.html</loc>
+    <lastmod>2025-11-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- Individual blog post: AI Cooling Climate Paradox -->
+  <url>
+    <loc>https://pollutionnearme.org/news/ai-cooling-climate-paradox.html</loc>
+    <lastmod>2025-11-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!-- Individual blog post: Earth Symptoms Allegory -->
@@ -45,30 +77,6 @@
   <url>
     <loc>https://pollutionnearme.org/news/inconvenient-truth-right-wrong-undetermined.html</loc>
     <lastmod>2025-11-16</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Individual blog post: AI Cooling Climate Paradox -->
-  <url>
-    <loc>https://pollutionnearme.org/news/ai-cooling-climate-paradox.html</loc>
-    <lastmod>2025-11-17</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- Individual blog post: Permafrost Thaw Pollution -->
-  <url>
-    <loc>https://pollutionnearme.org/news/permafrost-thaw-pollution.html</loc>
-    <lastmod>2025-11-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
-  </url>
-
-  <!-- NEW Individual blog post: Air Quality Health Impact -->
-  <url>
-    <loc>https://pollutionnearme.org/news/air-quality-health-impact.html</loc>
-    <lastmod>2025-11-20</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
