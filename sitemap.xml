@@ -28,9 +28,17 @@
   <!-- News index -->
   <url>
     <loc>https://pollutionnearme.org/news/</loc>
-    <lastmod>2025-11-22</lastmod>
+    <lastmod>2025-11-24</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- Individual blog post: Toxic Tide -->
+  <url>
+    <loc>https://pollutionnearme.org/news/toxic-tide-sea-level-rise.html</loc>
+    <lastmod>2025-11-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- Individual blog post: California Clean Truck Lawsuit -->
