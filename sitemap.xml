@@ -28,9 +28,17 @@
   <!-- News index -->
   <url>
     <loc>https://pollutionnearme.org/news/</loc>
-    <lastmod>2025-11-24</lastmod>
+    <lastmod>2025-11-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
+  </url>
+
+  <!-- Individual blog post: Clean Water Act Rollback -->
+  <url>
+    <loc>https://pollutionnearme.org/news/clean-water-act-rollback.html</loc>
+    <lastmod>2025-11-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- Individual blog post: Toxic Tide -->
