@@ -8,13 +8,47 @@
   <title>About Pollution Near Me — Transparency & Accountability</title>
   <link rel="stylesheet" href="../css/style.css">
 
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
-
-  <!-- SEO head additions for About page -->
+  <!-- Canonical & SEO -->
   <link rel="canonical" href="https://pollutionnearme.org/about/">
   <meta name="description"
     content="Learn about Pollution Near Me: our mission, methodology, and vision for exposing EPA datasets and advancing environmental accountability nationwide.">
+
+  <!-- Favicon & Logo -->
+  <link rel="icon" href="https://pollutionnearme.org/favicon.ico" sizes="48x48">
+  <link rel="icon" href="https://pollutionnearme.org/assets/logo.png" type="image/png" sizes="96x96">
+  <link rel="apple-touch-icon" href="https://pollutionnearme.org/assets/logo.png">
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "url": "https://pollutionnearme.org",
+    "logo": "https://pollutionnearme.org/assets/logo.png",
+    "name": "Pollution Near Me",
+    "sameAs": [
+      "https://www.tiktok.com/@pollution.near.me",
+      "https://github.com/hanksterner/pollutionnearme",
+      "https://dreadexec.com/vector/CONSPIRACY"
+    ]
+  }
+  </script>
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pollutionnearme.org/about/">
+  <meta property="og:title" content="About Pollution Near Me — Transparency & Accountability">
+  <meta property="og:description"
+    content="Learn about Pollution Near Me: our mission, methodology, and vision for exposing EPA datasets and advancing environmental accountability nationwide.">
+  <meta property="og:image" content="https://pollutionnearme.org/assets/og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://pollutionnearme.org/about/">
+  <meta name="twitter:title" content="About Pollution Near Me — Transparency & Accountability">
+  <meta name="twitter:description"
+    content="Learn about Pollution Near Me: our mission, methodology, and vision for exposing EPA datasets and advancing environmental accountability nationwide.">
+  <meta name="twitter:image" content="https://pollutionnearme.org/assets/og-image.jpg">
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-C33KSYBWKY"></script>
@@ -22,10 +56,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-C33KSYBWKY', {
-      'traffic_type': 'internal'
-    });
+    gtag('config', 'G-C33KSYBWKY', { 'traffic_type': 'internal' });
   </script>
+</head>
 
 <body>
   <!-- Shared header/nav -->
