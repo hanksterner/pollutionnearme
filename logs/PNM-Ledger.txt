@@ -820,3 +820,48 @@ Next Ritual:
 • Maintain SEO hygiene with sitemap/robots updates in sync with new content drops.
 
 Seal: Complete — Entry 35 logged.
+///////////////////////////////////////////////////////////////////////
+=== PollutionNearMe Build Ledger ===
+Entry 36 — 2025-11-27 13:45 EST
+Event: Head Refinement Sweep — Core Pages + Blog Posts 1–9 Aligned with SEO, Schema, and Favicon Standards
+
+Actions:
+• Updated <head> blocks for core site pages:
+  - index.html (Home)
+  - about.html (About)
+  - news/index.html (News hub)
+• Updated <head> blocks for all blog posts 1–9:
+  - ai-cooling-climate-paradox.html
+  - permafrost-thaw-pollution.html
+  - air-quality-health-impact.html
+  - disinformation-as-pollution.html
+  - california-clean-truck-lawsuit.html
+  - toxic-tide-sea-level-rise.html
+  - clean-water-act-rollback.html
+  - plus earlier posts 1–2 already aligned
+• Standardized favicon references:
+  - Absolute URLs for favicon.ico and logo.png
+  - Apple touch icon integration
+• Added Organization schema:
+  - Pollution Near Me logo, URL, name, and sameAs links (TikTok, GitHub, DreadExec)
+• Added NewsArticle schema to all blog posts:
+  - Headline, description, image, author, publisher, publication/modified dates, canonical URL
+• Refined Open Graph and Twitter Card metadata:
+  - Consistent titles, descriptions, and featured images per page/post
+• Verified Google Analytics snippet:
+  - GA4 Measurement ID G-C33KSYBWKY
+  - traffic_type=internal parameter active across all pages
+
+Operational Proof:
+• All core pages and blog posts 1–9 now render with unified SEO stack under HTTPS.
+• Structured data validated via schema.org test tool.
+• Open Graph/Twitter previews display correct featured images and descriptions.
+• GA4 Realtime confirms internal traffic exclusion parameter firing.
+
+Status:
+Baseline advanced and sealed. Core pages and first nine blog posts aligned with ceremony, SEO hygiene, and reproducibility.
+
+Next Ritual:
+• Extend refinement to blog post 10 and subsequent entries.
+• Audit sitemap.xml and robots.txt for new entries.
+• Validate rich snippet visibility in Google Search Console.
