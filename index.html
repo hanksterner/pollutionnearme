@@ -8,15 +8,33 @@
   <title>Pollution Near Me — Exposing Environmental Violations Nationwide</title>
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- SEO head additions -->
+  <!-- Canonical & SEO -->
   <link rel="canonical" href="https://pollutionnearme.org/">
   <meta name="description"
     content="Transparent access to EPA data on toxic releases, enforcement actions, and Superfund sites. Accountability starts with visibility.">
 
-  <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <!-- Favicon & Logo -->
+  <link rel="icon" href="https://pollutionnearme.org/favicon.ico" sizes="48x48">
+  <link rel="icon" href="https://pollutionnearme.org/assets/logo.png" type="image/png" sizes="96x96">
+  <link rel="apple-touch-icon" href="https://pollutionnearme.org/assets/logo.png">
 
-  <!-- Open Graph tags -->
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "url": "https://pollutionnearme.org",
+    "logo": "https://pollutionnearme.org/assets/logo.png",
+    "name": "Pollution Near Me",
+    "sameAs": [
+      "https://www.tiktok.com/@pollution.near.me",
+      "https://github.com/hanksterner/pollutionnearme",
+      "https://dreadexec.com/vector/CONSPIRACY"
+    ]
+  }
+  </script>
+
+  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pollutionnearme.org/">
   <meta property="og:title" content="Pollution Near Me — Exposing Environmental Violations Nationwide">
@@ -24,7 +42,7 @@
     content="Transparent access to EPA data on toxic releases, enforcement actions, and Superfund sites. Accountability starts with visibility.">
   <meta property="og:image" content="https://pollutionnearme.org/assets/og-image.jpg">
 
-  <!-- Twitter Card tags -->
+  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://pollutionnearme.org/">
   <meta name="twitter:title" content="Pollution Near Me — Exposing Environmental Violations Nationwide">
@@ -38,9 +56,7 @@
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-    gtag('config', 'G-C33KSYBWKY', {
-      'traffic_type': 'internal'
-    });
+    gtag('config', 'G-C33KSYBWKY', { 'traffic_type': 'internal' });
   </script>
 
   <!-- Leaflet core -->
