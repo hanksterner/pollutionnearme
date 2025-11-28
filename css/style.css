@@ -36,7 +36,9 @@ body {
 }
 
 /* === Headings === */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: 'Inter', Helvetica, sans-serif;
   font-weight: 700;
   margin: 0;
@@ -109,35 +111,6 @@ h1, h2, h3 {
   color: var(--accent);
 }
 
-/* === Responsive Navigation (Hamburger) === */
-.hamburger {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.6rem;
-  color: #fff;
-  cursor: pointer;
-}
-
-@media (max-width: 768px) {
-  .hamburger {
-    display: block;
-    margin-left: auto;
-  }
-
-  .site-nav ul {
-    display: none;
-    flex-direction: column;
-    background: var(--primary);
-    padding: 10px;
-    gap: 15px;
-  }
-
-  .site-nav ul.show {
-    display: flex;
-  }
-}
-
 /* === Blog Index === */
 #blog-index {
   max-width: 800px;
@@ -164,11 +137,10 @@ h1, h2, h3 {
   background: var(--panel);
 }
 
+/* anchor inside news-post — cleaned up */
 .news-post a {
-  display: flex;
   text-decoration: none;
   color: inherit;
-  flex-wrap: wrap; /* allows stacking on mobile */
 }
 
 .post-thumbnail {
