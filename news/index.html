@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,20 +10,56 @@
 
   <!-- Canonical & SEO -->
   <link rel="canonical" href="https://pollutionnearme.org/news/">
-  <meta name="description" content="Environmental news and updates from Pollution Near Me. Reports, datasets, and insights on air quality, toxic releases, and Superfund sites nationwide.">
+  <meta name="description"
+    content="Environmental news and updates from Pollution Near Me. Reports, datasets, and insights on air quality, toxic releases, and Superfund sites nationwide.">
 
   <!-- Favicon & Logo -->
-  <link rel="icon" href="/favicon.ico" sizes="48x48">
-  <link rel="icon" href="/assets/logo.png" type="image/png" sizes="96x96">
-  <link rel="apple-touch-icon" href="/assets/logo.png">
+  <link rel="icon" href="https://pollutionnearme.org/favicon.ico" sizes="48x48">
+  <link rel="icon" href="https://pollutionnearme.org/assets/logo.png" type="image/png" sizes="96x96">
+  <link rel="apple-touch-icon" href="https://pollutionnearme.org/assets/logo.png">
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "url": "https://pollutionnearme.org",
+    "logo": "https://pollutionnearme.org/assets/logo.png",
+    "name": "Pollution Near Me",
+    "sameAs": [
+      "https://www.tiktok.com/@pollution.near.me",
+      "https://github.com/hanksterner/pollutionnearme",
+      "https://dreadexec.com/vector/CONSPIRACY"
+    ]
+  }
+  </script>
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://pollutionnearme.org/news/">
   <meta property="og:title" content="Environmental News & Updates — Pollution Near Me">
-  <meta property="og:description" content="Latest environmental reports and updates: air quality, toxic releases, and Superfund sites nationwide.">
-  <meta property="og:image" content="/assets/news-og-image.jpg">
+  <meta property="og:description"
+    content="Latest environmental reports and updates: air quality, toxic releases, and Superfund sites nationwide.">
+  <meta property="og:image" content="https://pollutionnearme.org/assets/news-og-image.jpg">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://pollutionnearme.org/news/">
+  <meta name="twitter:title" content="Environmental News & Updates — Pollution Near Me">
+  <meta name="twitter:description"
+    content="Latest environmental reports and updates: air quality, toxic releases, and Superfund sites nationwide.">
+  <meta name="twitter:image" content="https://pollutionnearme.org/assets/news-og-image.jpg">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-C33KSYBWKY"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-C33KSYBWKY', { 'traffic_type': 'internal' });
+  </script>
 </head>
+
 <body>
   <!-- Shared header/nav -->
   <header class="site-header">
@@ -31,7 +68,6 @@
     </a>
     <h1>Pollution Near Me</h1>
     <p class="tagline">Exposing Environmental Violations Nationwide</p>
-    <button class="hamburger" aria-label="Toggle navigation">&#9776;</button>
     <nav class="site-nav">
       <ul>
         <li><a href="/">Home</a></li>
@@ -48,23 +84,181 @@
       <h2>Environmental News & Updates</h2>
       <hr class="section-divider">
 
-      <!-- Responsive article cards -->
-      <div class="news-grid">
-        <article class="news-post">
-          <a href="microfiber-pollution.html">
-            <figure class="post-thumbnail">
-              <img src="../assets/microfiber-pollution-16x9.png" alt="Washing machine with ocean waves inside">
-            </figure>
-            <div class="post-summary">
-              <h3 class="post-title">Invisible Plastics: How Microfibers in Our Clothes Pollute Water, Air, and Bodies</h3>
-              <p class="post-meta">November 27, 2025</p>
-              <p class="summary-text">Synthetic clothing sheds microfibers into water, air, and food chains. Discover the hidden pollution in your laundry—and what you can do about it.</p>
-            </div>
-          </a>
-        </article>
+      <article class="news-post">
+        <a href="/news/microfiber-pollution.html">
+          <figure class="post-thumbnail">
+            <img src="/assets/microfiber-pollution-16x9.png" alt="Washing machine with ocean waves inside">
+          </figure>
+          <div class="post-summary" <h3 ckass="post-title">Invisible Plastics: How Microfibers in Our Clothes Pollute
+            Water, Air, and Bodies</h3>
+        </a>
+        <p class="post-meta">November 27, 2025</p>
+        <p class="summary-text">Synthetic clothing sheds microfibers into water, air, and food chains. Discover the
+          hidden
+          pollution in your laundry—and what you can do about it.</p>
+        </div>
+        </a>
+      </article>
 
-        <!-- Repeat for other posts... -->
-      </div>
+      <article class="news-post">
+        <a href="clean-water-act-rollback.html">
+          <figure class="post-thumbnail">
+            <img src="../assets/clean-water-act-rollback.png" alt="Thumbnail for Clean Water Act rollback article">
+          </figure>
+          <div class="post-summary">
+            <h3 class="post-title">Drying Up Protections: How Narrowing the Clean Water Act Risks Pollution in America’s
+              Streams and Wetlands</h3>
+            <p class="post-meta">November 25, 2025</p>
+            <p class="summary-text">A new EPA proposal narrows Clean Water Act protections, leaving wetlands and streams
+              vulnerable to pollution and exposing communities to greater risk.</p>
+          </div>
+        </a>
+      </article>
+
+      <article class="news-post">
+        <a href="toxic-tide-sea-level-rise.html">
+          <figure class="post-thumbnail">
+            <img src="../assets/toxic-tide-sea-level-rise.png"
+              alt="Thumbnail for Toxic Tide: Sea level rise threatens coastal toxic sites">
+          </figure>
+          <div class="post-summary">
+            <h3 class="post-title">Toxic Tide: How Rising Seas Threaten America’s Coastal Communities with Pollution
+            </h3>
+            <p class="post-meta">November 24, 2025</p>
+            <p class="summary-text">A new study warns thousands of hazardous sites along U.S. coasts could flood,
+              risking
+              chemical contamination and exposing regulatory gaps that endanger communities.</p>
+          </div>
+        </a>
+      </article>
+
+      <article class="news-post">
+        <a href="california-clean-truck-lawsuit.html">
+          <figure class="post-thumbnail">
+            <img src="../assets/california-clean-truck-lawsuit.png"
+              alt="Thumbnail for California Clean Truck Lawsuit blog post">
+          </figure>
+          <div class="post-summary">
+            <h3 class="post-title">Broken Promises on Wheels: How California’s Clean Truck Fight Exposes America’s
+              Pollution
+              Loopholes</h3>
+            <p class="post-meta">November 22, 2025</p>
+            <p class="summary-text">A federal court blocks California’s clean truck rules, leaving communities exposed
+              to
+              diesel pollution and legal smog. This ruling reveals the fragility of climate enforcement and the cost of
+              regulatory loopholes.</p>
+          </div>
+        </a>
+      </article>
+
+      <article class="news-post">
+        <a href="disinformation-as-pollution.html">
+          <figure class="post-thumbnail">
+            <img src="../assets/disinformation-as-pollution.png"
+              alt="Thumbnail for Disinformation as Pollution blog post">
+          </figure>
+          <div class="post-summary">
+            <h3 class="post-title">Disinformation as Pollution: Clearing the Climate Narrative Smog</h3>
+            <p class="post-meta">November 21, 2025</p>
+            <p class="summary-text">False narratives behave like pollution—obscuring visibility, corroding trust, and
+              delaying
+              climate action. COP30’s declaration marks the first official step toward clearing the climate narrative
+              smog.
+            </p>
+          </div>
+        </a>
+      </article>
+
+      <article class="news-post">
+        <a href="air-quality-health-impact.html">
+          <figure class="post-thumbnail">
+            <img src="../assets/featured-air-quality-smog-16x9.jpg"
+              alt="Thumbnail for Air Quality Health Impact blog post">
+          </figure>
+          <div class="post-summary">
+            <h3 class="post-title">Breathing Danger: Why Knowing Your Local Air Quality Matters</h3>
+            <p class="post-meta">November 20, 2025</p>
+            <p class="summary-text">
+              Invisible pollutants like PM2.5, ozone, and nitrogen dioxide quietly damage our lungs, hearts, and brains.
+              Learn
+              how common air contaminants affect your health—and how PollutionNearMe.org helps you track what you're
+              breathing.
+            </p>
+          </div>
+        </a>
+      </article>
+
+      <article class="news-post">
+        <a href="permafrost-thaw-pollution.html">
+          <figure class="post-thumbnail">
+            <img src="../assets/permafrost-thaw-pollution.png" alt="Thumbnail for Permafrost Thaw Pollution blog post">
+          </figure>
+          <div class="post-summary">
+            <h3 class="post-title">Permafrost Thaw Unlocks Hidden Pollution</h3>
+            <p class="post-meta">November 18, 2025</p>
+            <p class="summary-text">
+              New research reveals that thawing permafrost in the Canadian Arctic is releasing toxic substances
+              once locked in frozen ground. These pollutants are now reaching lakes and rivers, threatening
+              ecosystems and freshwater supplies. Scientists warn that climate change is opening underground
+              pathways for contamination, raising urgent questions about monitoring and accountability.
+            </p>
+          </div>
+        </a>
+      </article>
+
+      <article class="news-post">
+        <a href="ai-cooling-climate-paradox.html">
+          <figure class="post-thumbnail">
+            <img src="../assets/ai-cooling-paradox.png"
+              alt="Thumbnail for AI, Cooling, and the Climate Paradox blog post">
+          </figure>
+          <div class="post-summary">
+            <h3 class="post-title">AI, Cooling, and the Climate Paradox</h3>
+            <p class="post-meta">November 17, 2025</p>
+            <p class="summary-text">
+              Artificial intelligence promises climate solutions — smarter grids, predictive models, optimized cooling.
+              But
+              the
+              servers powering these breakthroughs demand enormous energy and water, often drawn from fossil-fuel grids.
+              This
+              editorial explores the paradox: can machines help us survive the heat without overheating the planet?
+            </p>
+          </div>
+        </a>
+      </article>
+
+      <article class="news-post">
+        <a href="earth-symptoms-allegory.html">
+          <figure class="post-thumbnail">
+            <img src="../assets/earth-human-symptoms.png" alt="Thumbnail for If Earth’s Symptoms Were Ours blog post">
+          </figure>
+          <div class="post-summary">
+            <h3 class="post-title">If Earth’s Symptoms Were Ours: A Climate Allegory</h3>
+            <p class="post-meta">November 17, 2025</p>
+            <p class="summary-text">
+              What if humans mirrored the Earth’s climate symptoms? This editorial allegory explores fever, melting ice,
+              rising seas, and biodiversity loss — mapped onto the human body to dramatize the planetary crisis.
+            </p>
+          </div>
+        </a>
+      </article>
+
+      <article class="news-post">
+        <a href="inconvenient-truth-right-wrong-undetermined.html">
+          <figure class="post-thumbnail">
+            <img src="../assets/inconvenient-truth-featured.png" alt="Thumbnail for An Inconvenient Truth blog post">
+          </figure>
+          <div class="post-summary">
+            <h3 class="post-title">An Inconvenient Truth, 20 Years Later: What Gore Got Right, Wrong, and what is Still
+              Unknown</h3>
+            <p class="post-meta">November 16, 2025</p>
+            <p class="summary-text">
+              We revisit Al Gore’s <em>An Inconvenient Truth</em> to see which climate predictions came true,
+              which missed, and which remain uncertain.
+            </p>
+          </div>
+        </a>
+      </article>
     </section>
   </main>
 
@@ -76,6 +270,9 @@
       <a href="/privacy/">Privacy Statement</a>
     </div>
   </footer>
+
+  <!-- App Script -->
+  <script src="../js/app.js" defer></script>
 
   <!-- Mobile nav toggle script -->
   <script>
@@ -90,4 +287,5 @@
     });
   </script>
 </body>
+
 </html>
